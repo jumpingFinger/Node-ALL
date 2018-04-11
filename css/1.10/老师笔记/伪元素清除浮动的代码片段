@@ -1,0 +1,38 @@
+//=> 以下代码是清除浮动的固定代码片段 实际项目中这段代码一般放在reset样式表里面，不需要我们自己写，想要清浮动，直接在父元素标签上加class名为clearfix即可 - “我是一块砖，哪里需要(清浮动)，就往哪里搬(就在父元素上加clearfix)”
+
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+    height: 0;
+    font-size: 0;
+}
+.clearfix{
+    *zoom:1
+}
+
+面试题:让元素消失在我们的视野中（发挥想象力）
+1.opacity: 0;
+2.visibility: hidden;
+3.position: absolute; top/bottom/left/right:-9999px;
+4.display: none;
+5.height: 0;overflow: hidden;
+6.width: 0;overflow: hidden;
+7.background:transparent;color:transparent;
+8.transform: translate(-9999px) / translateX(-9999px) /translateY(-9999px);
+
+
+PS工具
+1.用选区(虚线框)看大小尺寸
+=> 窗口 - 信息（F8）
+=> 如果单位是厘米 -> x下面有个小尖角 ->面板选项 -> 标尺单位:像素
+w 宽度
+h 高度
+
+2.拖到设计稿
+按住空格键（鼠标出现小手形状） + 拖到设计稿
+
+3.缩放设计稿
+alt + 鼠标滚轮

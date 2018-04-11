@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function insert (ary){
+        var   handAry=[];
+        handAry.push(ary[0]); //手上先握一张牌    一般默认第一个
+        for (var i = 1; i < ary.length; i++) {
+                cur=ary[i];
+            for (var j = handAry.length-1; j >=0; j--) {
+                if (cur>handAry[j]){
+                    handAry.splice(j+1,0,cur);
+                        break;
+                }
+                if(j===0){
+                    handAry.unshift(cur);
+                }
+            }
+        }
+        return handAry;
+    }
+
+    console.log(insert([10, 5, 20, 7, 60, 6, 15, 21, 20]));
+</script>
+</body>
+</html>

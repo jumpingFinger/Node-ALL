@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        ul {
+            list-style: none;
+            margin: 0 auto;
+        }
+
+        li {
+            border-bottom: 1px dashed rosybrown;
+        }
+
+        .bg0 {
+            background: red;
+        }
+
+        .bg1 {
+            background: green;
+        }
+
+        .bg2 {
+            background: rebeccapurple;
+        }
+
+        .bg3 {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+</ul>
+<script>
+    //    var oUl=document.getElementById('list'),
+    //            oList=oUl.getElementsByTagName('li');
+    //    for (var i = 0; i < oList.length; i++) {
+    //        var cur=oList[i];
+    //        if (i%2 == 0){
+    //            cur.style.backgroundColor= 'red';
+    //        } else {
+    //            cur.style.backgroundColor= 'green';
+    //        }
+    //
+    //    }
+
+    //    for (var i = 0; i < oList.length; i++) {
+    //        var cur=oList[i];
+    //        switch (i%2){
+    //            case 0:
+    //                cur.style.backgroundColor= 'red';
+    //                break;
+    //            default:
+    //                cur.style.backgroundColor= 'green';
+    //        }
+    //    }
+    //    for (var i = 0; i < oList.length; i++) {
+    //        var cur=oList[i];
+    //        i%2?cur.style.backgroundColor= 'red':cur.style.backgroundColor= 'green';
+    //    }
+
+    //    for (var i = 0; i < oList.length; i++) {
+    //        var cur=oList[i];
+    //        cur.preColor=cur.className='bg'+ i%3;
+    //        cur.onmouseover = function () {
+    //            this.className = 'bg3';
+    //        };
+    //        cur.onmouseout = function () {
+    //            this.className = this.preColor;
+    //        };
+    //        cur.myIndex = i;
+    //        cur.onclick = function () {
+    //            alert(this.myIndex);
+    //        }
+    //    }
+
+//    var sum = function () {
+//        var total = null;
+//        for (var i = 0; i < arguments.length; i++) {
+//            var item = Number(arguments[i]);
+//            !isNaN(item) ? total += item : null;
+//        }
+//        return total;
+//    };
+//    var total = sum(10, 20, 30,'afasd');
+//    console.log(total);
+
+
+//    let sum = (...arg) => eval(arg.join('+'));
+//    console.log(sum(10, 20, 30, '11','dfasfsadf'));
+
+    let sum =(...arg)=>{
+        arg.forEach(function (item,index){
+            isNaN(item)?arg.splice(index,1):null ;
+        });
+        return eval(arg.join('+'));
+    };
+    console.log(sum(10, 20, 30, '11','dsafsa'));
+
+</script>
+</body>
+</html>

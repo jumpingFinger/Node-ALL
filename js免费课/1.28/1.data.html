@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型分类</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    基本数据类型
+        number  数字类型
+        => NaN(not a number)
+           isNaN() 判断是否不是一个数 -> 不是数 true  数 false
+           Number() 强制类型转换  -> 数字 、NaN
+           parseInt(整数)/parseFloat(小数) -> 提取有效数字 没有有效数 NaN
+        string  字符串类型
+        => 用单引号或者双引号引起来的都叫字符串
+           + -  *  /
+           加号特殊性: 如果遇到字符串 加号不是数学运算符号 变成字符串拼接
+        boolean 布尔类型
+        => true/false
+           Boolean()
+           ! 取反
+           !! 取反再取反 相当调用Boolean方法
+           0 '' null undefined NaN 只有这五个为假 其余的都为真
+        null
+        => 空指针对象 属于基本数据类型的值 typeof null ->"object"
+        undefined
+        => 未定义
+        变量只申明未定义结果为undefined
+        对象中不存在某个属性名，我们获取这个不存在的属性名，结果为undefined
+    引用数据类型
+
+        对象数据类型：object 对象  obj
+        var obj = {name:'珠峰培训'}
+        => 增   obj.age = 9;
+           删   obj.name = null (假删除)   delete obj.name (真删除)
+           改   obj.name = '回龙观东大街'
+           查   obj.name / obj['name']   数字 obj[数字]
+           for(var key in obj){obj[key]};
+
+                    array 数组   ary
+                    regExp 正则  reg = /^$/
+                    Math 数学
+                    Date 时间
+                    ...
+        函数数据类型
+        => function 函数名(){}
+           函数名() - > 函数执行
+           函数 -> 函数本身
+
+
+
+        检测数据类型的方法:
+        1.typeof  返回是"对应的数据类型"
+        局限性 typeof null => "object" 所有的对象数据用typeof检测的结果都是"object"
+        2.instanceof
+        3.constructor
+        4.Object.prototype.toString.call(value)
+
+
+
+*/
+
+
+
+</script>
+</body>
+</html>

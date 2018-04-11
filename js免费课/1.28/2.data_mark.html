@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型转换的规律汇总</title>
+</head>
+<body>
+基本数据类型  number string boolean null undefined
+引用数据类型  对象数据类型 和 函数数据类型
+1.把其他的数据类型转换为number数字类型
+=> 其他基本数据 -> number数字  把其他数据直接转数字数据类型
+=> 引用数据类型 -> number数字  先把引用数据类型调用toString() 然后再调用Number()方法转换为数据
+规律: 最后都转换为了数字在做比较
+
+2.把其他数据类型跟string字符串数据类型比较
+number -> string  直接把string转换为数字 再数字比较
+boolean -> string  全都转换为数字 进行比较
+[] -> string  把引用数据类型转换为字符串 然后再跟字符串进行比较(比较值是否相等即可)
+思考题: true == '12px'   1 == NaN   false
+       [12,23,34] == '12,23,34'  '12,23,34'  == '12,23,34'  true
+
+3.其他数据类型跟Boolean数据类型比较   ！ !! Boolean()
+0 "" null undefined NaN
+number -> Boolean  都转换为数字进行比较
+引用数据类型 -> Boolean  把引用数据类型转换toString() 再调用Number()转换为数字  Boolean 也转换数字
+
+4.null 和 undefined 跟其他数据类型比较
+null 和 undefined 在跟其他数据类型比较的时候都不相等 特殊：null跟undefined两个等号的时候相等  三个等号的时候不相等
+null == undefined true
+null === undefined false
+
+5.对象数据跟其他数据类型比较 (按引用地址来操作的)
+对象 = 对象  都不相等 因为操作的是不同的空间地址  [] == []   {} == {}
+对象 = 数字  都转换为数字
+对象 = 字符串 对象转换字符串 再比较字符串里面的值是否相等
+对象 = 布尔  最后都转换为数字
+
+总的规律: 比较的时候最后基本都是转换为数字在做比较,
+         对象和字符串的时候不需要最后都转换为数字，只需要对象转换为字符串即可;
+         null和undefined比较的时候不需要转换为数字 都不相等 但是null和undefiend是相等的(==)
+         对象和对象比较都不相等  因为比较的是不同的引用地址
+
+
+
+
+
+
+
+
+思考题:
+1) 2 == true;   2 == 1  false
+2) null == undefined;   true
+3) [] == false;  引用 - 数字   0  == 0  true
+   ![] == false; 布尔 - 布尔   false == false   true
+4) if('3px' - 3){alert(true)}else{alert(false)};
+   // =>  NaN   false    alert(false)
+5) if('3px' + 3){alert(true)}else{alert(false)};
+   // => '33px'  true    alert(true)
+
+
+
+
+NaN isNaN() Number() parseInt() parseFloat()
+'12' ->  12
+'12px' -> Number('12px') NaN
+          parseInt('12px')和parseFloat('12px')  12
+true   ->  1
+fasle  ->  0
+null   ->  0
+undefined ->  NaN
+
+=> 引用数据类型转换为数字 先调用toString(),再调用Number()转换为数字
+[] -> [].toString() -> ''
+   -> Number('')
+   -> 0
+var obj = {name:'珠峰培训'}
+ -> obj.toString() -> '[object object]'
+    Number('[object object]')
+    ->NaN
+
+
+
+加号这个符号的特殊性:
+1) 如果是数学运算 就把其他的数据类型转换为数学 进行正常的加减乘除
+2) 如果是遇到字符串 就不再进行数学运算 直接进行字符串拼接
+[] + true + false + null + undefined
+=> ''  +  true + false + null + undefined
+=> 'truefalsenullundefined'
+
+true + false + null + undefined + []
+=> 1 + 0  + 0 + NaN + ''
+=> 'NaN'
+
+面试题1:
+1+null+true+undefined+[]+'珠峰'+null+undefined+[]+10
+-> 1+ 0  +  1  + NaN    + '' + '珠峰' + null + undefined + [] + 10
+-> "NaN珠峰nullundefined10"
+
+面试题2:
+10 + null + [] + undefined + 'zhufeng' + null + [] + undefined;
+-> 10 + 0 + '' + undefined + 'zhufeng' + null + [] + undefined;
+-> "10undefinedzhufengnullundefined"
+
+面试题3:
+10 + false + true + null + undefined + null + 'zhufeng' + null + true + undefined;
+-> 10 + 0  + 1  +   0   +  NaN  +  0  + 'zhufeng' + null + true + undefined;
+-> NaN + 'zhufeng' + null + true + undefined;
+-> "NaNzhufengnulltrueundefined"
+
+</body>
+</html>

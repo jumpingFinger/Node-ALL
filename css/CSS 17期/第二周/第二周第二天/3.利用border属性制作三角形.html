@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三角形</title>
+    <style type="text/css">
+        /* 面试题:利用css样式属性实现一个三角形的形状（不切图）*/
+        /* border 边框线
+        1.border-width 边框线的宽度
+        2.border-style 边框线的类型
+          solid 实线 dashed 虚线 dotted点状线
+        3.border-color 边框线的颜色
+        */
+        .triangle {
+            width: 0;
+            height: 0;
+            border-width: 20px;
+            border-style: solid; /*实线*/
+            border-color: red transparent transparent transparent;
+        }
+
+        .triangle1 {
+            width: 0;
+            height: 0;
+            border-width: 20px;
+            border-style: dotted; /*点状线*/
+            border-color: red green blue yellow;
+        }
+    </style>
+    <!-- 三角形的实现原理
+    利用border的三个属性border-width(边框线的宽度),border-style(边框线的类型),border-color(边框线的颜色：上 右 下 左),先实现一个正方形的形状(这个正方形是由4个三角形组合而成);需要哪个方向的三角形，只需要保留这个方向的border属性的颜色，然后让剩下的方向为透明(transparent)即可!
+    三角形的大小是由border-width边框线的宽度属性来控制；
+    三角形的颜色是由border-color边框线的颜色属性来控制;
+    -->
+</head>
+<body>
+<div class="triangle"></div>
+<div class="triangle1"></div>
+</body>
+</html>

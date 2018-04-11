@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style type="text/css">
+        .voteBox {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid lightblue;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .voteBox h3 {
+            line-height: 35px;
+            font-size: 16px;
+            border-bottom: 1px dashed lightcoral;
+        }
+
+        .voteBox .text {
+            display: block;
+            line-height: 35px;
+            font-size: 16px;
+            color: lightcoral;
+        }
+
+        .voteBox .submit {
+            display: block;
+            width: 80px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border: 1px solid #AAA;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="voteBox">
+    <h3>认为于校斌长得帅的请投票！</h3>
+    <span class="text">0</span>
+    <button class="submit">我要投票</button>
+</div>
+
+<script >
+    var  voteBox=document.querySelector('.voteBox'),
+            text=voteBox.querySelector('.text'),
+            submit=voteBox.querySelectorAll('.submit');
+
+    submit.onclick=function(){
+        var n=0;
+        n=sum(n);
+
+        text.innerHTML=n;
+    };
+//    function sum(index) {
+//        return ++index;
+    submit.onclick=function(){
+//        var  old=text.innerHTML;`
+//        old=parseFloat(old);
+//        old++;
+//        text.innerHTML=old;
+  // 以上方法总结:
+        text.innerHTML++;
+    }
+</script>
+</body>
+</html>3

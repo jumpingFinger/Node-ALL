@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>function 函数</title>
+</head>
+<body>
+<script type="text/javascript">
+    //=> 函数: 具有一定功能的方法  它是属于引用数据类型下的一种
+    //=> 函数具有封装的功能:把具有相同作用的代码用函数封装起来,减少冗余的代码,提高代码的重复利用率 ‘低耦合 高内聚’
+    // 函数是可以被执行很多次的 而且每次执行互不影响
+    //函数名: 加小括号 表示的是函数的执行
+    //       不加小括号 表示的是函数自己本身
+
+    // 函数的语法:
+    /*
+    function 函数名(){
+        这里放代码块
+    }
+    函数名();
+    */
+    function fn(){
+        //=> 这里放实现功能方法的代码块
+        console.log(1 + 1);
+        console.log(isNaN('12px'));
+    }
+    console.log(fn);  //函数本身
+    fn();// 2  true
+
+
+    // 创建函数
+    function 函数名(){}
+    //执行函数 - 目的: 为了接收函数执行的返回结果
+    函数名();
+    函数名;
+
+
+
+
+</script>
+</body>
+</html>

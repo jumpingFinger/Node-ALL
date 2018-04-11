@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .bg{
+            background: red;
+            font-size:50px;
+            color:yellow;
+        }
+        /*属性选择器 [属性名]*/
+        [dali]{
+            background: darkcyan;
+        }
+    </style>
+</head>
+<body>
+<div>田大力</div>
+<ul>
+    <li>珠峰培训</li>
+    <li>珠峰培训</li>
+</ul>
+<script type="text/javascript">
+/*   css: background-color  font-size
+     js:  backgroundColor   fontSize
+     */
+    /*style  设置css样式属性 - 样式属性在标签的里面 (行内样式)
+    className 給标签添加样式类名 .class*/
+    var oLi =  document.getElementsByTagName('li');
+    console.log(oLi); // HTMLCollection(1)
+    /*oLi[0].style.backgroundColor = 'red';
+    oLi[0].style.fontSize = '50px';
+    oLi[0].style.color = 'yellow';*/
+
+    /*
+    oLi[0].className = 'bg';
+    oLi[1].className = 'bg';
+    */
+//    for循环 -> 重复的操作
+for (var i = 0; i < oLi.length; i++) {
+    oLi[i].className = 'bg';
+}
+/*初始值     条件          条件成立执行的代码           步长累加
+*  i = 0;   0 < 2        oLi[0].className = 'bg';    1
+*  i = 1    1 <  2       oLi[1].className = 'bg';    2
+*  i = 2    2<  2 条件不成立
+* */
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

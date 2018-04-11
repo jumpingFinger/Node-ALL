@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰故事</title>
+    <style type="text/css">
+        *{
+            margin: 0; /*mo tab*/
+            padding: 0;/*p0 tab*/
+        }
+        body{
+            background-color: green;
+        }
+        a{
+            text-decoration: none;   /*去掉下划线*/
+        }
+        li{
+            list-style:none;/*去掉默认样式*/
+        }
+        em{
+            font-style:normal; /*恢复字体正常*/
+        }
+        .story{
+            width: 830px;/*w830 tab*/
+            background-color:#ffffff;
+        }
+        .story h3{/*后代选择器*/
+            padding:0 10px 0 10px;
+            height: 45px;
+            border-bottom:1px solid #90bba8;/*下边框线 宽度 实线 颜色*/
+            line-height:45px;/*行高和高度的值一样的情况下,可以实现内容的垂直居中*/
+            font-size:18px;/*字体大小*/
+            color:#555;/*字体效果一模一样*/
+        }
+        .story h3 a {
+            font-weight:normal;
+            color:orangered;
+            font-size:14px;
+            float:right;
+        }
+        .story ul li {
+            height: 30px;
+            line-height:30px;
+        }
+        .story ul li a {/*a属于行内元素,他的宽度是本身的宽度*/
+            display: inline-block;/*把行内元素转化为块及元素, ??????????????????????? */
+            font-size:14px;
+            color:darkred;
+            /*面试题单行文本如何出现省略号*/
+            /*4个必备的条件1宽度条件2不换行 强制在同一行.3溢出部分隐藏4已经全部溢出用省略部分*/
+            width: 810px;/*宽度*/
+            white-space: nowrap;
+            overflow:hidden;
+            text-overflow: ellipsis;
+        }
+        .story ul li a em{
+            color:darkgreen;
+        }
+        .story ul li a:hover{/*谁是鼠标移上的对象,就在水后面加hover*/
+            background-color: royalblue;
+        }
+        .story ul li a:hover em{
+            font-weight:bold;
+        }
+        .story ul li span{
+            display: inline-block; /*行内块元素*/
+            /*行内块元素垂直对齐  垂直对齐属性*/
+            vertical-align: 10px;
+            background-color: green;
+            width: 15px;
+            height: 15px;
+            line-height: 15px;/*垂直居中*/
+            text-align: center ;
+            font-size: 12px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+<div class="story">
+    <h3>珠峰故事 <a href="#">更多阅读</a></h3>
+    <ul>
+        <li>
+            <span>1</span>
+            <a href=""><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>10</span>
+            <a href=""><em>高校公开课</em>H5培训12312312312312345646546546578979844564564561123123121231231234564564564564567897894545645645645451212332123123123123123123132123123123123123</a>
+        </li>
+    </ul>
+
+</div>
+
+</body>

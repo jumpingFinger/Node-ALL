@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math数学函数</title>
+</head>
+<body>
+<script type="text/javascript">
+    console.log(Array.prototype);
+    console.dir(Math);
+    /*1.Math.abs()取绝对值*/
+    Math.abs(10); //10
+    Math.abs(-10); //10
+    Math.abs(-10.5); //10.5
+
+    /*2.Math.ceil() 向上取整  ceil - 天花板*/
+    Math.ceil(10.6); //11
+    Math.ceil(10.4); //11
+    Math.ceil(10.5); //11
+
+    Math.ceil(-10.4); //-10
+    Math.ceil(-10.6); //-10
+    Math.ceil(-10.5); //-10
+
+    /* 3.Math.floor() 向下取整  floor  - 地板*/
+    Math.floor(10.6); // 10
+    Math.floor(10.4); // 10
+    Math.floor(10.5); //  10
+
+    Math.floor(-10.4); //  -11
+    Math.floor(-10.6); //  -11
+    Math.floor(-10.5); //  -11
+
+    /* 4.Math.round() 四舍五入*/
+    Math.round(10.6); // 11
+    Math.round(10.4); // 10
+    Math.round(10.5); //  11
+
+    Math.round(-10.4); //  -10
+    Math.round(-10.6); //  -11
+    Math.round(-10.5); //  -10
+    /* 注意: 正数的小数位5 往前入一位  负数的小数位5 不往前入一位*/
+
+    /* 5.Math.random() 获取0-1之间的随机小数*/
+    /*for (var i = 0; i < 100; i++) {
+     console.log(Math.random());
+     }*/
+
+    /*for (var i = 0; i < 100; i++) {
+        console.log(Math.round(Math.random())); // 0 /1
+    }*/
+    /*获取n-m之间的随机整数*/
+    // Math.round(Math.random() * (m - n) + n);
+
+    /*1-61之间的随机整数*/
+    for (var i = 0; i < 100; i++) {
+        console.log(Math.round(Math.random() * 60 + 1));
+    }
+    /*6.Math.max() 获取最大值
+    *7.Math.min() 获取最小值
+    * */
+    console.log(Math.max(12, 13, 15, 11, 9, 10)); //15
+    console.log(Math.min(12, 13, 15, 11, 9, 10)); //9
+
+    /*8.Math.PI 获取圆周率   3.141592653589793 */
+    console.log(Math.PI.toFixed(2)); //3.14
+
+    /*9.Math.pow() 获取多少次幂*/
+    Math.pow(10,2); //100
+    Math.pow(10,3); //1000
+
+    /*10.Math.sqrt() 开平方*/
+    Math.sqrt(100,2); //10
+    Math.sqrt(1000,2); //100
+</script>
+</body>
+</html>

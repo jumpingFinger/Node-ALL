@@ -1,0 +1,96 @@
+2017年第17期CSS正式群 609185443
+wifi  12345678  zhufengpeixun
+
+9:30 - 1:00
+3:00 - 6:00
+晚自习: 7：00- 8：30
+
+A - 周六日
+B C - 周一和周五
+
+李梦   984877081@qq.com
+      18301049981
+
+
+ 高伟杰 -  土木工程
+ 刘娇 -
+ 雷婷 -
+ 田成力
+ 马少帅
+ 于校斌
+ 魏贺娇
+
+File(文件)  => open(打开)
+File  => new =>HTML File (静态文件)
+File => setting(设置) => font 可以修改编辑器的字体大小和皮肤
+
+注释:为了方便开发者去阅读 不会显示在浏览器中(增加和去掉注释的快捷键一样)
+单行注释 ctrl + /
+多行注释  ctrl+shift+/
+
+
+ctrl+D 复制整行代码
+ctrl+Z 返回上一步(撤销)
+ctrl+x 剪切整行代码
+shift+enter 鼠标光标快速跳到下一行
+
+
+
+
+控制台的快捷键 F12  或者 鼠标右键 => 检查
+
+查看图片的路径地址： 鼠标移到图片上 => 鼠标右键 => 复制图片路径地址(谷歌浏览器)
+
+link  style  css样式
+
+
+【网页的组成部分】
+HTML:标记语言  标签
+CSS:层叠样式表
+JS:脚本语言
+比如：HTML 毛坯房  CSS 装修  JS  动态
+          裸体/骨架   美化
+【HTML标签】
+1.什么叫标签？
+1) 由左右尖括号包起来,<标签名>,标签名一般都是小写;  <strong></strong>
+2) 标签一般有开始标签和结束标签组成，结束标签多了一个 /
+3) 不是所有的标签都有开始和结束,有的标签在开始的地方就结束了;这种标签叫单标签(空标签)或者自闭和标签; 比如: <img/>
+4) 快速生成一组标签名  标签名(a) + tab
+
+2.标签属性
+1) 标签属性是由属性名 = "属性值"
+2) 多组属性名和属性值之间用空格隔开
+3) 标签属性一般是在开始标签里面
+
+a 标签属性：
+href="跳转的链接地址"
+target="_blank" 在新窗口打开要链接跳转的页面
+
+【CSS样式】
+css样式的语法:
+//=> 内嵌式
+<style type="text/css">
+选择器{
+    属性名:属性值
+}
+</style>
+css样式style一般放在head标签里的title标签的下面
+
+【CSS 属性】
+1.字体颜色: color:red;  红色
+2.字体大小: font-size: 50px; 50px(像素)
+3.首段缩进：text-indent: 2em; /*1em = 1个字的大小*/
+4.行高:用来控制一行文字和一行文字之间的垂直间距 line-height: 30px;
+5.字符间距:letter-spacing 用来控制字与字之间的左右间距 letter-spacing: 3px;
+6.添加文字修饰: text-decoration: none; 去掉下划线
+              text-decoration: underline; 添加下划线
+7.列表样式: list-style: none; 去掉li默认的小黑点和数字
+8.文字倾斜效果 字体样式 字体风格属性：font-style: normal;
+9.font-weight: normal; 让粗体变成细体 100
+10.font-weight: bold; 让正常字体变成粗体 900
+取值: 100 - 900 normal bold
+11.背景颜色: background-color: aqua;
+
+
+
+

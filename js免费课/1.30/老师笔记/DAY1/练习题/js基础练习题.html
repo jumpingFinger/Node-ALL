@@ -1,0 +1,149 @@
+<!DOCTYPE html><html><head><title>JS 练习题</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style>
+.note-content  {font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, Song, sans-serif;}
+
+</style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h4 id="js-练习题">JS 练习题</h4>
+
+<p>1.请列举出JS中的数据类型都有哪些？ <br>
+2.以下哪一个命名是错误的?</p>
+
+<pre class="prettyprint hljs-light"><code class="language-javascript hljs"><div class="hljs-line">A:<span class="hljs-keyword">var</span> zhufeng;
+</div><div class="hljs-line">B:<span class="hljs-keyword">var</span> _zhufeng;
+</div><div class="hljs-line">C:<span class="hljs-keyword">var</span> $zhufeng;
+</div><div class="hljs-line">D:<span class="hljs-keyword">var</span> <span class="hljs-number">2</span>zhufeng;
+</div><div class="hljs-line">E:<span class="hljs-keyword">var</span> <span class="hljs-keyword">default</span>;
+</div><div class="hljs-line">F:<span class="hljs-keyword">var</span> parent;
+</div></code></pre>
+
+<p>3.写出下面程序输出的结果</p>
+
+
+
+<pre class="prettyprint hljs-light"><code class="hljs javascript"><div class="hljs-line">A: 
+</div><div class="hljs-line">alert(<span class="hljs-built_in">parseInt</span>(<span class="hljs-string">'12.5px'</span>))
+</div><div class="hljs-line">alert(<span class="hljs-built_in">Number</span>(<span class="hljs-string">'12.5px'</span>))
+</div><div class="hljs-line">
+</div><div class="hljs-line">B:
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>([<span class="hljs-number">12</span>]))
+</div><div class="hljs-line">
+</div><div class="hljs-line">C:
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(![<span class="hljs-number">12</span>]))
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(!<span class="hljs-built_in">isNaN</span>([<span class="hljs-number">12</span>]))
+</div><div class="hljs-line">
+</div><div class="hljs-line">D:
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(!![<span class="hljs-number">12</span>]))
+</div></code></pre>
+
+<p>4.写出下面程序的结果，说明原因？</p>
+
+
+
+<pre class="prettyprint hljs-light"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">12</span>;
+</div><div class="hljs-line"><span class="hljs-keyword">var</span> b = a;
+</div><div class="hljs-line">b = <span class="hljs-number">13</span>;
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(a)
+</div><div class="hljs-line">
+</div><div class="hljs-line"><span class="hljs-keyword">var</span> c = {<span class="hljs-attr">name</span>:<span class="hljs-string">'zxt'</span>};
+</div><div class="hljs-line"><span class="hljs-keyword">var</span> d = c;
+</div><div class="hljs-line">d.name = <span class="hljs-string">'zhufeng'</span>
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(c.name);
+</div><div class="hljs-line">
+</div><div class="hljs-line"><span class="hljs-keyword">var</span> e = {<span class="hljs-attr">name</span>:<span class="hljs-string">'zxt'</span>};
+</div><div class="hljs-line"><span class="hljs-keyword">var</span> f = e;
+</div><div class="hljs-line">f = {<span class="hljs-attr">name</span>:<span class="hljs-string">'zhufeng'</span>};
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(e);
+</div></code></pre>
+
+<p>5.说出检测数据类型的四种方式? <br>
+6.写出下面程序的输出结果？</p>
+
+
+
+<pre class="prettyprint hljs-light"><code class="language-javascript hljs"><div class="hljs-line">A:
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> [<span class="hljs-number">12</span>,<span class="hljs-number">23</span>])
+</div><div class="hljs-line">B:
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">typeof</span> [<span class="hljs-number">12</span>,<span class="hljs-number">23</span>]) 
+</div><div class="hljs-line">C:
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span>)
+</div><div class="hljs-line">D:
+</div><div class="hljs-line">consol.log(<span class="hljs-keyword">typeof</span> <span class="hljs-literal">NaN</span>)
+</div></code></pre>
+
+<p>7.基础知识填空</p>
+
+
+
+<pre class="prettyprint hljs-light"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-number">1</span>) js中的数据类型包含哪些（写详细）;
+</div><div class="hljs-line"><span class="hljs-number">2</span>) 检测数据类型的方法(至少写出两种);
+</div><div class="hljs-line"><span class="hljs-number">3</span>) 其他的数据类型转换为number类型的方式有哪些（三种）;
+</div><div class="hljs-line"><span class="hljs-number">4</span>) 函数中内置接收参数的集合是;
+</div><div class="hljs-line"><span class="hljs-number">5</span>) 把函数体中的某个值返回到外面用;
+</div></code></pre>
+
+<p>8.写出下面表达式的运算结果</p>
+
+<pre class="prettyprint hljs-light"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-number">1</span>) <span class="hljs-number">2</span> == <span class="hljs-literal">true</span>;
+</div><div class="hljs-line"><span class="hljs-number">2</span>) <span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span>;
+</div><div class="hljs-line"><span class="hljs-number">3</span>) [] == <span class="hljs-literal">false</span>;
+</div><div class="hljs-line"><span class="hljs-number">3</span>) ![] == <span class="hljs-literal">false</span>;
+</div><div class="hljs-line"><span class="hljs-number">4</span>) <span class="hljs-keyword">if</span>(<span class="hljs-string">'3px'</span> * <span class="hljs-number">3</span>){alert(<span class="hljs-literal">true</span>)}<span class="hljs-keyword">else</span>{alert(<span class="hljs-literal">false</span>)};
+</div><div class="hljs-line"><span class="hljs-number">5</span>) <span class="hljs-keyword">if</span>(<span class="hljs-string">'3px'</span> + <span class="hljs-number">3</span>){alert(<span class="hljs-literal">true</span>)}<span class="hljs-keyword">else</span>{alert(<span class="hljs-literal">false</span>)};
+</div></code></pre>
+
+<p>9.将上面代码中的for循环改写成while循环 ，将if else判断改写成switch判断 </p>
+
+
+
+<pre class="prettyprint hljs-light"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-keyword">var</span> oLis=<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"li"</span>);
+</div><div class="hljs-line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;oLis.length;i++){    <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>){
+</div><div class="hljs-line">        oLis[i].className=<span class="hljs-string">"bcRed"</span>;
+</div><div class="hljs-line">    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(n==<span class="hljs-number">1</span>){
+</div><div class="hljs-line">        oLis[i].className=<span class="hljs-string">"bcYell"</span>;
+</div><div class="hljs-line">    }<span class="hljs-keyword">else</span>{
+</div><div class="hljs-line">        oLis[i].className=<span class="hljs-string">"bcBlue"</span>;
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">}    
+</div></code></pre>
+
+<p>10.</p>
+
+
+
+<pre class="prettyprint hljs-light"><code class="language-javascript hljs"><div class="hljs-line">写一个方法sum来实现任意数求和的功能(说明：任意数求和指的是，在方法执行的时候，不管传多少个数字，都可以累加求和)
+</div><div class="hljs-line"><span class="hljs-number">1</span>、实现基础的要求   
+</div><div class="hljs-line"><span class="hljs-number">2</span>、把求和结果返回到函数外面，在外面接收的
+</div><div class="hljs-line"><span class="hljs-number">3</span>、对于非有效数字可以过滤掉，不进行累加求和
+</div></code></pre>
+
+<p>11.有几种办法可以实现以下需求？</p>
+
+<pre class="prettyprint hljs-light"><code class="language-javascript hljs"><div class="hljs-line">&lt;input type=<span class="hljs-string">"button"</span> value=<span class="hljs-string">"按钮"</span>/&gt;
+</div><div class="hljs-line">&lt;input type="button" value="按钮"/&gt;
+</div><div class="hljs-line">&lt;input type="button" value="按钮"/&gt;
+</div><div class="hljs-line">&lt;input type="button" value="按钮"/&gt;
+</div><div class="hljs-line">&lt;input type="button" value="按钮"/&gt;
+</div><div class="hljs-line">以上是页面中的5个按钮，要求循环给5个按钮绑定点击事件，当点击的时候，弹出类似于"我是第x个按钮"这样的话语，你有几种办法可以实现?
+</div><div class="hljs-line">1、循环绑定事件，用自定义属性或者闭包的方式实现的获得满分(15分)
+</div><div class="hljs-line">2、一个个的单独绑定事件的只能获取8分
+</div></code></pre>
+
+<p>12.按照上述HTML结构编写对应的JS代码，实现如下的需求</p>
+
+<pre class="prettyprint hljs-light"><code class="language-javascript hljs"><div class="hljs-line">&lt;body&gt;
+</div><div class="hljs-line"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'ul1'</span>&gt;</span>
+</span></div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>   
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div><div class="hljs-line">&lt;<span class="hljs-regexp">/body&gt;
+</span></div><div class="hljs-line">按照上述HTML结构编写对应的JS代码，实现如下的需求：
+</div><div class="hljs-line">/<span class="hljs-regexp">/-&gt;获取#ul1下的所有li,实现奇数行和偶数行的隔行变色 (奇数行红色|偶数行绿色)
+</span></div><div class="hljs-line">/<span class="hljs-regexp">/-&gt;鼠标滑过每一个li让当前行的背景颜色变为粉色(pink)，鼠标离开恢复开始的颜色
+</span></div><div class="hljs-line">/<span class="hljs-regexp">/-&gt;鼠标点击每一个li弹出“我是第N个li” (n是每一个li的索引+1)</span>
+</div></code></pre></div></body></html>

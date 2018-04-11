@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环遍历数组的每一项</title>
+</head>
+<body>
+<script type="text/javascript">
+    var ary = [12,23,34,'zhufeng'];
+    Array.prototype.aa = 100; /* 原型上写的属性和方法 是实例公有的属性和方法*/
+    //for  itar
+    for (var i = 0; i < ary.length; i++) {
+        console.log(ary[i]);  //12 34  34 'zhufeng'
+    }
+
+    // for in  itin
+    for (var key in ary) {
+        console.log(ary[key]);  //12 34  34 'zhufeng'  100
+    }
+    /*总结:
+    * for和for in 循环都可以循环数组中的每一项的值
+    * for in 可以循环遍历原型上公有的属性; for 循环没法遍历原型上公有的属性
+    * */
+
+
+</script>
+</body>
+</html>

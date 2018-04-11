@@ -1,0 +1,413 @@
+*{
+    margin: 0;
+    padding:0;
+}
+a{
+    text-decoration:none;
+}
+li{
+    list-style: none;
+}
+.carousel-caption{
+    position: relative;
+    width: 100%;
+    height: 540px;
+    /*box-sizing:border-box;*/
+}
+.banner-img a{
+    display: block;
+    width: 100%;
+    height: 540px;
+    background: url("http://www-file.huawei.com/-/media/CORPORATE/Images/home/big-banner/2017/big-banner-mwc-bg-v2.jpg") no-repeat center;
+    /*box-sizing: border-box;*/
+}
+.banner-dot{
+    position: absolute;
+    bottom: 10px;
+    width:100%;
+    text-align: center; /*为了让三个小点居中显示*/
+    font-size: 0;/*解决行内块元素受空格或者换行符导致的问题*/
+}
+.banner-dot li{
+    display: inline-block;/*让三个小点在一行显示*/
+    width: 12px;
+    height: 12px;
+    background-color: #333;
+    border-radius: 50%;
+    list-style:none;
+    margin:0 5px;
+}
+.banner-dot .cur{
+    background: #FFFFFF;
+}
+.arrow-left{
+    position: absolute;
+    left: 30px;
+    top: 50%;/*重点 垂直居中,top:50% margin-top:宽度的一般可以让元素之中垂直居中*/
+    margin-top: -38px;
+    width: 34px;
+    height: 75px;
+    background: url("../images/arrow.png") no-repeat -103px -511px;
+}
+.arrow-right{
+    position: absolute;
+    right: 30px;
+    top: 50%;/*重点 垂直居中,top:50% margin-top:宽度的一般可以让元素之中垂直居中*/
+    margin-top: -38px;
+    width: 34px;
+    height: 75px;
+    background: url("../images/arrow.png") no-repeat -103px -616px;
+}
+/*图片部分*/
+.lg-container{
+    max-midth:1440px;/*块元素水平居中的因素: 1需要宽度 2需要margin:0 auto*/
+    padding:0 15px;
+    margin:20px auto 0;   /*版心在任何情况下都要居*/
+    /*background: rebeccapurple;*/
+}
+.lg-container .col{
+    position: relative;
+    float: left;
+    width: 50%;
+    padding:0 10px;
+    /*background: red;*/
+}
+.lg-container .col img{
+    display: block;/*去掉图像的下边距 3px*/
+    width: 110%;/*为了让图片不出现留白*/
+    height: 100%;
+    transition:all 1s ease;
+}
+.lg-container .col .mask{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;     /*黑色,且有50%的透明度*/
+    opacity: .5;
+    transition:all 1s ease;
+    /*overflow: hidden;*/
+}
+.lg-container .col .text{
+    position: absolute;
+    left: 0;
+    bottom:0;
+    width: 100%;
+    min-height: 110px;
+    padding:0 30% 0 40px;
+    border-bottom: 20px;
+    color: #fff;
+}
+.lg-container .col a{
+    position: relative; /*第二个text会下去 参照物没有对*/
+    /*width: 100%;*/
+    display: block;  /*a是行内元素,需要设置成块*/
+    overflow: hidden; /*不出现留白*/
+}
+.col .text h3{
+    font-size: 25px;
+    /*文字内容以后要从文字内容:字体大小 颜色,字体粗细,行间距*/
+    font-weight:400;
+    line-height: 1.2;
+    margin:30px 0 10px 0;
+    transform: translateY(40%);
+    transition:all 1s ease;
+}
+.col .text p{
+    font-size: 16px;
+    line-height: 1.5;
+    transform: translateY(80%);
+    opacity: 0;
+    transition:all 1s ease;
+}
+.lg-container .col:nth-child(2) a:nth-child(1){
+   margin-bottom: 3%;
+}
+.lg-container .col a:hover .mask{
+    opacity: .7;
+}
+.lg-container .col a:hover img{
+    transform: translatex(-20px);
+}
+.col a:hover p{
+    transform: translatey(0);
+    opacity: 1;
+}
+.col a:hover h3{
+    transform: translatey(0);
+}
+.lg-container .co{
+    width: 100%;
+}
+.lg-container .co img{
+    width: 100%;
+}
+.lg-container .co a:hover img{
+    transform: translatex(0)
+}
+.row{
+    width: 100%;
+    /*height: 100%;*/
+    box-sizing: border-box;
+    margin:25px auto 0;
+    background-color: #F5F5F5;
+    padding:0 4%;
+    font-weight: 400;
+}
+.row a{
+    text-decoration:none;
+    color:#333;
+    font-family: frutigernext,Microsoft YaHei,Arial,Helvetica,sans-serif;
+}
+.row h2{
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    font-size: 30px;
+    font-weight: 400;
+    color: #333;
+}
+.row-left{
+    float: left;
+    width: 33.33%;
+    /*height: 100%;*/
+    /*background:red;*/
+    box-sizing: border-box;
+}
+.row-left ul{
+}
+.row-left li{
+    margin-top:10px;
+    list-style: none;
+    line-height: 32px;
+    font-size: 21px;
+}
+.row-left li p{
+    font-size: 16px;
+    color:#999999;
+}
+.row-left{
+    float: left;
+    width: 33.33%;
+    height: 100%;
+    /*background: green;*/
+    box-sizing: border-box;
+}
+.row-left h2 a:hover{
+    color:#006ad0;
+}
+.row-left ul li a:hover{
+    color:#006ad0;
+}  /*a不继承父元素的颜色,每次需要单独设置他的颜色*/
+.row-right{
+    float: left;
+    width: 66.66%;
+    height: 100%;
+    box-sizing: border-box;
+    padding:0 0 0 45px;
+}
+.row-right h2{
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    font-size: 30px;
+    padding-left: -45px;
+    box-sizing: border-box;
+}
+.row-right h2 a:hover{
+    color:#006ad0;
+}
+.row-down{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 40px;
+}
+.row-downPart:nth-child(1){
+    float: left;
+    width: 50%;
+    /*box-sizing: border-box;*/
+    padding-right: 2%;
+}
+.row-downPart:nth-child(2){
+    float: left;
+    width: 50%;
+    /*box-sizing: border-box;*/
+    padding-left: 2%;
+}
+.row-downPart .bg1{
+    display: block;
+    float: left;
+    width: 100%;
+    height: 200px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    background: url("http://www-file.huawei.com/-/media/CORPORATE/Images/home/event/2017/event-mwc.jpg?h=184&la=zh&w=420") no-repeat center;
+    background-size:cover;
+}
+.row-downPart .bg2{
+    float: left;
+    width: 100%;
+    height:200px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    background: url("http://www-file.huawei.com/-/media/CORPORATE/Images/home/event/2017/mbbf2017.jpg?h=184&la=zh&w=420") no-repeat center;
+    background-size:cover;
+}
+.row-downPart a,.row-downPart p{
+    font-size:20px;
+    color: #333;
+}
+.row-downPart a:hover{
+    color:#006ad0;
+}
+.friendlyLink{
+    width: 100%;
+    box-sizing: border-box;
+    padding:30px 50px;
+    background-color: #000;
+    font-weight: 400;
+    color:#ccc;
+    border-bottom:1px solid #424141;
+}
+.friendlyLink-left{
+    width: 66%;
+    box-sizing: border-box;
+}
+.friendlyLink-left-list{
+    float:left;
+    width: 25%;
+    color:#FFF;
+}
+.friendlyLink-left-list h4{
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        font-size: 20px;
+        color:#ccc;
+}
+.friendlyLink-left-list li{
+    line-height: 28px;
+    font-size: 16px;
+    color:#ccc;
+}
+.friendlyLink-left-list li a{
+    color:#ccc;
+}
+.friendlyLink-right{
+    float: left;
+    width: 33.3%;
+    box-sizing: border-box;
+}
+.friendlyLink-right h4{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    color:#ccc;
+}
+.friendlyLink-right ul{
+    box-sizing: border-box;
+    padding:15px 0;
+    overflow: hidden;
+}
+.friendlyLink-right li{
+    float: left;
+    width: 35px;
+    height:35px;
+
+}
+.friendlyLink-right li:nth-child(1){
+    margin-right: 10px;
+    background: url("../images/arrow.png") no-repeat 0 -450px;
+}
+.friendlyLink-right li:nth-child(2){
+    margin-right: 10px;
+    background: url("../images/arrow.png") no-repeat -30px -450px;
+}
+.copyright{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 25px 0;
+    background-color: #000;
+}
+.copyright-left{
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding-left: 2%;
+}
+.copyright-left h5{
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    padding-right: 3%;
+    color: #ccc;
+
+}
+.copyright-left a{
+    float: left;
+    font-size: 16px;
+    color: #ccc;
+}
+.copyright-right{
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+}
+.copyright-right li{
+    float: right;
+    margin-right: 20px;
+    font-size: 16px;
+}
+.copyright-right li a{
+    color: #ccc;
+}
+.copyright-right li:nth-child(1) a::before{
+    content: "|";
+    padding-right: 8px;
+}
+.copyright-right li:nth-child(2) a::before{
+    content: "|";
+    padding-right: 8px;
+}
+.right-icon{
+    position: fixed;
+    right:0;
+    bottom: 30%;
+}
+.right-icon ul li{
+    height: 48px;
+    width: 48px;
+    margin-bottom: 3px;
+    background: #c3c3c3;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.right-icon ul li:nth-child(1){
+    background:#c3c3c3 url("../images/arrow.png") no-repeat 0 -512px;
+}
+.right-icon ul li:nth-child(2){
+    background:#c3c3c3 url("../images/arrow.png") no-repeat 0 -560px;
+}
+.right-icon ul li:nth-child(3){
+    background:#c3c3c3 url("../images/arrow.png") no-repeat 0 -608px;
+}
+.right-icon ul li:nth-child(4){
+    background:#c3c3c3 url("../images/arrow.png") no-repeat 0 -656px;
+}
+.right-icon ul li:nth-child(1):hover{
+    background-color: #bf0303;
+}
+.right-icon ul li:nth-child(2):hover{
+    background:#bf0303 url("../images/arrow.png") no-repeat 0 -752px;
+}
+.right-icon ul li:nth-child(3):hover{
+    background:#bf0303 url("../images/arrow.png") no-repeat 0 -800px;
+}
+.right-icon ul li:nth-child(4):hover{
+    background:#bf0303 url("../images/arrow.png") no-repeat 0 -848px;
+}

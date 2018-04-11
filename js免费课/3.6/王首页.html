@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0
+        }
+        ul{
+            list-style: none;
+        }
+        .box{
+            width: 100%;
+            height: 580px;
+            background: url(images/pic0.jpg) no-repeat center top;
+            position: relative;
+            -webkit-transition: background 1s;
+            -moz-transition: background 1s;
+            /*-ms-transition: background 0.5s;*/
+            -o-transition: background 1s;
+            transition: background 1s;
+
+        }
+        .bList{
+            position: absolute;
+            width: 240px;
+            height: 350px;
+            top:70px;
+            right: 50px;
+            background: -webkit-linear-gradient(top,rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 20%,rgba(255,255,255,0.9) 85%,rgba(255,255,255,0) 100%);
+            background: linear-gradient(top,rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 20%,rgba(255,255,255,0.9) 85%,rgba(255,255,255,0) 100%);
+            padding-top: 50px;
+        }
+        .bList li{
+            line-height: 30px;
+            font-size: 14px;
+            /*font-family: Microsoft yahei;*/
+            padding: 0 15px;
+        }
+        .bList li  i{
+            font-style: normal;
+            padding: 0 5px 0 2px;
+        }
+        .bList li:hover,.bList li.cur{
+            background: #fff;
+            padding: 15px;
+        }
+        .bList li:hover span,.bList li.cur span{
+            display: block;
+            font-size: 24px;
+            color: #ff6428;
+        }
+        .bList li:hover i,.bList li.cur i{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <ul class="bList">
+        <li class="cur"><span >谈判官</span><i>:</i>杨幂、黄子韬情定谈判桌</li>
+        <li><span>乡村爱情10</span><i>:</i>刘能帮晓峰找初恋</li>
+        <li><span>美好生活</span><i>:</i>张嘉译李小冉中年初恋</li>
+        <li><span>神秘巨星</span><i>:</i>阿米尔·汗最新力作！</li>
+        <li><span>独孤天下</span><i>:</i>胡冰卿张丹峰互怼日常</li>
+        <li><span>王牌对王牌</span><i>:</i>王源沈腾斗鸡眼比拼</li>
+        <li><span>利刃出击</span><i>:</i>杨烁变身热血武警</li>
+        <li><span>开通连续包月</span><i>:</i>送5天会员！</li>
+    </ul>
+</div>
+<script>
+    var oBox=document.getElementById('box'),
+            oUl=oBox.getElementsByTagName('ul')[0],
+            oLis=oUl.getElementsByTagName('li');
+    var prviousIndex=0;
+    for (var i = 0; i < oLis.length; i++) {
+        oLis[i].currentIndex=i;
+        oLis[i].onmouseover=function  () {
+            oLis[prviousIndex].className=null;
+            oBox.style.background='url(images/pic'+this.currentIndex+'.jpg) no-repeat center top';
+            prviousIndex=this.currentIndex;
+        };
+        oLis[i].onmouseout= function () {
+            this.className='cur';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        a{
+            text-decoration:none;
+        }
+        #newsBox{
+            width: 500px;
+            margin:20px auto;
+            padding:20px;
+            border: 1px solid lightblue;
+            /*css3*/
+            border-radius: 10px;
+        }
+        #newsBox .plus{
+            display: block;
+            /*margin-top:10px;*/
+            width: 200px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border: 1px solid lightcoral;
+            font-size: 35px;
+            color: lightcoral;
+            font-weight: normal;
+            margin:20px auto 0 auto;
+            /*CSS3的过渡动画*/
+            /*transition-property:过渡样式属性(那些样式发生改变会执行过渡动画.默认ALL,所有当前元素样式发生改变都会执行这个过渡效果)*/
+            /*transition-duration:动画执行的时间(单位一般使用s)*/
+            /*transition-timing-function:动画运动的方式(linear 匀速 ease/ease-in/ease-out/ease-in-out非匀速)*/
+            /*transition-delay:动画延迟时间,默认0s,不延迟,立即执行动画*/
+            /*transition:all 1s linear 0s;*/
+        }
+        #newsBox ul li {
+            padding:5px 10px;
+            border-bottom:1px dashed #AAA;
+        }
+        #newsBox ul li{
+            position: relative;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            /*文字截取*/
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        #newsBox ul li .minus{
+            display: none;
+            position: absolute;
+            top:10px;
+            right:10px;
+            width: 30px;
+            height: 15px;
+            line-height: 15px;
+            text-align: center;
+            font-size: 15px;
+            color: #555;
+            border:1px solid red;
+        }
+        #newsBox ul li:hover .minus{
+            display: block;
+        }
+        #newsBox ul li .minus:hover{
+            background: rgba(0,0,0,.5);
+            /*opacity: 0.5;*/
+        }
+        #newsBox .plus:hover{
+            /*CSS3的动画渐变*/
+            background:-webkit-linear-gradient(red,lightcyan,lightpink);
+        }
+        #newsBox .plus:active{
+            background:-webkit-linear-gradient(darkcyan,lawngreen,lightsalmon) ;
+        }
+    </style>
+</head>
+<body>
+<section id="newsBox">
+    <ul class="item">
+        <li>
+            <span>新闻</span>
+            <a href="javascript:;" class="minus">-</a>
+        </li>
+    </ul>
+    <a href="javascript:;" class="plus">+</a>
+    <!--&lt;!&ndash;项目我们一般会使用a标签作为按钮,因为A标签的:hover是兼容所有的浏览器,我们可以基于这个写一些样式-我们要组织他的调转,需要用javascript->-->
+</section>
+<script>
+   //  1.分析要完成的需求
+   //     ->增加   ->删除
+    //2.想要操作哪些元素,先把这些元素获取到
+    //      nwebox     newsbox .item    newsbox .item  li        newsbox .item  li .minus     newsbox .item  li  .plus
+    //  3.按照思路一步步实现即可
+    var newsBox=document.querySelector('#newsBox'),
+            plus=newsBox.querySelector('.plus'),
+            item=newsBox.querySelector('.item'),
+            itemList=item.querySelectorAll('li'),
+            minusList=item.querySelectorAll('.minus ');
+
+    /*=>当点击plus增加的时候,我们需要:
+    1.动态创建li以及li中的span和a
+    2.把动态创建的添加到ul的末尾
+     */
+
+        plus.onclick=function sum(){
+            //=>创建li
+            var oLi=document.createElement('li');
+            //=>创建span到li中
+            var oSpan=document.createElement('span');
+            oSpan.innerHTML=Math.random();
+            oLi.appendChild(oSpan);
+            //=>创建A到li中
+            var oLink=document.createElement('a');
+            oLink.innerHTML='-';
+            oLink.className='minus';
+            oLink.href='javascript:;';
+            oLi.appendChild(oLink);
+         //   =>绑定点击事件
+            oLink.onclick = function () {
+                var par = this.parentNode;
+                item.removeChild(par);
+            };
+
+            //把创建完成的li存放在li中
+            item.appendChild(oLi);
+
+        };
+/*      循环所有的minus按钮,绑定点击事件,点击的时候
+1.获取当前点击按钮的父元素(也就是li)
+2.在li容器中把他的父元素移除掉即可
+ */
+   for (var i = 0; i < minusList.length; i++) {
+       //minusList[i]：每一次循环得到的当前这个按钮
+       minusList[i].onclick = function () {
+           //=>this:代表点击的MINUS
+           var par = this.parentNode;
+           item.removeChild(par);
+       }
+   }
+
+</script>
+</body>
+</html>

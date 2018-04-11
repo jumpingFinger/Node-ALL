@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>box-sizing</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav a{
+            float: left;
+            width: 20%;
+            border-right:10px solid #fff;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            text-decoration: none;
+            font-size:30px;
+            color:#fff;
+            box-sizing: border-box;
+        }
+        .nav a:nth-child(2n+1){
+            /*2n+1 / odd 奇数行*/
+            background: #000;
+        }
+        .nav a:nth-child(2n){
+            /*2n /even 偶数行*/
+            background: red;
+        }
+        /*
+        正常的盒子模型的计算公式：
+        宽度 =  width + padding的左右 + border的左右
+        高度 =  height + padding的上下 + border的上下
+
+        怪异的盒子模型的计算公式：box-sizing:borer-box
+        宽度 = width
+        高度 = height
+
+        content-box：padding和border不被包含在定义的width和height之内。对象的实际宽度等于设置的width值和border、padding之和，即 ( Element width = width + border + padding )此属性表现为标准模式下的盒模型。
+
+        border-box：padding和border被包含在定义的width和height之内。对象的实际宽度就等于设置的width值，即使定义有border和padding也不会改变对象的实际宽度，即 ( Element width = width )
+此属性表现为怪异模式下的盒模型
+
+
+
+        */
+    </style>
+</head>
+<body>
+<div class="nav">
+    <a href="#">新闻</a>
+    <a href="#">新闻</a>
+    <a href="#">新闻</a>
+    <a href="#">新闻</a>
+    <a href="#">新闻</a>
+</div>
+</body>
+</html>

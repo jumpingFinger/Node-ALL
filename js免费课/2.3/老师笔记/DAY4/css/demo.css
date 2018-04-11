@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: nono;
+}
+a{
+    text-decoration: none;
+}
+
+/* 倒计时的css样式*/
+.time{
+    width: 800px;
+    height:150px;
+    margin:100px auto;
+    padding-top:50px;
+    background: red;
+    text-align: center;
+    font-size:30px;
+}
+.time a{
+    color:#fff;
+}

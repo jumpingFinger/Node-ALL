@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id = 'teacher'>王燕老师</div>
+<!--
+【DOM动态操作】
+1.document.createElement 表示创建一个元素
+2.容器.appendChild('元素') 表示把元素添加到指定容器的末尾
+3.容器.insertBefore('newEle','refEle')
+5.元素.cloneNode();  只克隆外层标签
+ 元素.cloneNode(true); 表示把元素包括元素里面的内容完全克隆一份
+6.容器.removeChild('元素') 表示在指定容器中把元素移除掉
+7.容器.replaceChild('newEle','refEle'); 用元素去替换另一个元素
+8.setAttribute 设置属性
+  getAttribute 获取属性
+  removeAttribute 移除属性
+-->
+<script type="text/javascript">
+    var oDiv = document.createElement('div');
+    oDiv.innerHTML = '珠峰培训';
+    oDiv.style.backgroundColor = 'red';
+    document.body.appendChild(oDiv);
+
+    var oDiv1 = document.getElementById('teacher');
+    document.body.insertBefore(oDiv,oDiv1);
+
+    var oDiv2 = oDiv.cloneNode(true);
+    document.body.appendChild(oDiv2);
+
+    document.body.removeChild(oDiv2);
+
+    var  oP = document.createElement('p');
+    oP.innerHTML = '我是替换的元素';
+    document.body.replaceChild(oP,oDiv);
+
+
+
+    oDiv1.setAttribute('name','珠峰的王燕大哥');
+    console.log(oDiv1.getAttribute('name')); //'珠峰的王燕大哥'
+    oDiv1.removeAttribute('name');
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var    url='http://www.zhufengpeixun.cn/stu?name=lucy&age=28&lx=&sex#teacher';
+         var  link=document.createElement('a');
+            link.href=url;
+       var HASH= link.hash, search=link.search,result={};
+        console.log(HASH);
+        console.log(search);
+        result.hash=HASH.substring(1);
+        console.log(result);
+    var   ary=search.substring(1).split('&');
+            console.log(ary);
+    for (var i = 0; i < ary.length; i++) {
+        var newAry=ary[i];
+       var  str= newAry.split('=');
+        console.log(str);
+        result[str[0]]=str[1];
+    }
+    console.log(result);
+
+</script>
+</body>
+</html>

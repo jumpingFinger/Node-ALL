@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- ctrl+D 复制整行代码-->
+<div id="btnBox">
+    <input type="button" value="button_1">
+    <input type="button" value="button_2">
+    <input type="button" value="button_3">
+    <input type="button" value="button_4">
+    <input type="button" value="button_5">
+</div>
+<script type="text/javascript">
+    var btnBox = document.getElementById('btnBox'),
+            inputs = document.getElementsByTagName('input');
+    // console.log(inputs.length);
+    /*for (var i = 0; i < inputs.length; i++) { //i = 5
+        /!* 方法一:
+        inputs[i].zhufeng = i;
+        inputs[i].onclick = function () {
+            alert(this.zhufeng);
+        }*!/
+
+        /!*方法二: 自执行函数的方法  会形成一个私有的作用域  “闭包” - 保护 保存
+        * 形参 - 私有变量
+        * 内存的释放问题
+        * *!/
+        /!*
+        ~function (i) {
+            inputs[i].onclick = function () {
+                alert(i); // 0 1 2 3 4
+            }
+        }(i);
+
+        inputs[i].onclick = function (i) {
+            return function () {
+                alert(i); // 0 1 2 3 4
+            }
+        }(i);
+
+
+         *!/
+    }*/
+
+    /*方法三: 块级作用域(私有的作用域) ES6/7  babel 编译ES6*/
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].onclick = function () {
+            alert(i);
+        }
+    }
+
+    /* 解决在鼠标事件中i索引出问题:
+    * 1. 利用自定义属性的方法去解决;
+    * 2. 利用闭包的保存机制;
+    * 3. 利用ES6的块级作用域的方法解决;
+    * */
+
+
+    /* 初始值     判断条件    条件成立执行的代码                    步长累加
+    * i = 0      0< 5      inputs[0].onclick = function () {     1
+                             alert(0);
+                           }
+    *
+    *i = 1      1< 5      inputs[1].onclick = function () {     2
+                              alert(1);
+                         }
+    *i = 5     5<5   条件不成立 大括号里面的代码不执行了
+    *
+    * */
+</script>
+</body>
+</html>

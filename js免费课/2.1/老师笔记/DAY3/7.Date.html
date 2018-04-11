@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间</title>
+</head>
+<body>
+<script type="text/javascript">
+    //    Date.prototype 可以查找所有时间常用的方法
+    // 实例 是类 一个具体的细分  实例可以借用类原型上所有的方法
+    var time = new Date();
+    console.log(time); //Thu Feb 01 2018 17:45:18 GMT+0800 (中国标准时间)
+    console.log(time.getFullYear());
+    /*年 2018*/
+    console.log(time.getMonth() + 1);
+    /* 月 2   1-12 (0-11)*/
+    console.log(time.getDate());
+    /*日 1*/
+    console.log(time.getDay());
+    /*星期几  4  日 - 一  */
+    console.log(time.getHours());
+    console.log(time.getMinutes());
+    console.log(time.getSeconds());
+    console.log(time.getMilliseconds());
+
+    console.log(time.getTime());
+    //当前时间距离 1970-01-01 00:00:00 的毫秒数
+    // 1517478834673  换成小时    1517478834673/1000/60/60 ->小时
+
+    /*  定时器:
+    window.setInterval(function,时间)  表示每隔多长时间运行,调用一次函数(一直执行)
+    *window.setTimeout(function,时间)  表示每隔多长时间运行一次
+    *
+    * 清除定时器:
+    * window.clearInterval();
+     window.clearTimeout();
+    * */
+    var i = 0;
+   /* window.setInterval(function () {
+        if(i>10){
+            return;
+        }
+        console.log(i++);
+    }, 1000);*/
+
+   var timer =  window.setTimeout(function () {
+        console.log(i++);
+    },1000);
+
+</script>
+</body>
+</html>

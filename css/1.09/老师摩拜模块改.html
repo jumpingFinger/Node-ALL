@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="">
+    <!--<link rel="stylesheet" href="css/reset.css">-->
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html, .slide{
+            width: 100%;
+            height: 100%;
+        }
+        .slide-inner{
+            width: 100%;
+            height: 100%;
+            background:url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-6.jpg") no-repeat center;
+            background-size: cover;
+        }
+        .wrap{
+            /*display: block;*/
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            overflow: hidden;
+            /*height: 80px;*/
+        }
+        .nav{
+            width: 1040px;
+            height: 80px;
+            padding: 15px 20px;
+            /*background-color: red;*/
+            margin:0 auto;  /*为了实现margin的属性,需要把.nav的定位去掉,给到父元素*/
+            overflow: hidden;
+        }
+        .nav .logo{
+            float: left;
+            margin-top: 21px;
+        }
+        .nav .nav-links{
+            float: right;
+            height: 80px;
+            line-height: 80px;
+        }
+        .nav .nav-links a{
+            color:#FFFFFF;
+            padding: 0 20px;
+        }
+        .pic{
+            overflow: hidden;
+        }
+        .pic .item{
+            float: left;
+            width: 25%;
+            min-height:260px;
+        }
+        .pic .item:nth-child(1){
+            background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-6.jpg") no-repeat center;
+            background-size: cover;
+        }
+        .pic .item .picText{
+            float: left;
+            width: 100%;
+            height: 34px;
+        }
+        .pic .item .picText h3{
+            display: block;
+            width: 100%;
+            height:32px;
+            /*margin: 0 auto;*/
+            line-height: 32px;
+            text-align: center;
+            font-size: 22px;
+            color: #F2F2F2;
+            margin-top: 18px;
+        }
+
+        .pic .item:nth-child(2){
+            background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-3.jpg") no-repeat center;
+            background-size: cover;
+        }
+        .pic .item:nth-child(3){
+            background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-5.jpg") no-repeat center;
+            background-size: cover;
+        }
+        .pic .item:nth-child(4){
+            background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-1.jpg") no-repeat center;
+            background-size: cover;
+        }
+        .links-wrap{
+            border: 1px solid white;
+            width: 60%;
+            padding: 0 20px;
+            overflow: hidden;
+            margin: 30px 0;
+        }
+        .links-wrap .box{
+            float: left;
+            width: 33%;
+            overflow: hidden;
+        }
+        .icon1{
+            float:left;
+            width: 50px;
+            height: 50px;
+            background: url("https://mobike.com/cn/assets/themes/moby/img/icon-wechat.png") no-repeat center;
+            background-size:contain;
+            margin-right: 5%;
+        }
+        .icon2{
+            float:left;
+            width: 50px;
+            height: 50px;
+            background: url("https://mobike.com/cn/assets/themes/moby/img/icon-rp.png") no-repeat center;
+            background-size:contain;
+            margin-right: 5%;
+        }
+        .icon3{
+            float:right;
+            width: 50px;
+            height: 50px;
+            background: url("https://mobike.com/cn/assets/themes/moby/img/icon-credit.png") no-repeat center;
+            background-size:contain;
+            margin-right: 5%;
+        }
+        .text{
+            float:left;
+            padding-top: 6px;
+        }
+        .text h4{
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .text p{
+            font-size: 12px;
+        }
+        .links-wrap .box:last-child .text{
+            float:right;
+        }
+        .links-wrap .box:nth-child(2){
+            text-align: center;
+        }
+        .links-wrap .box:nth-child(2) .icon2{
+            display: inline-block;
+            float: none;
+        }
+        .links-wrap .box:nth-child(2) .text{
+            display: inline-block;
+            float: none;
+            text-align: left;
+            vertical-align:top;/*重点:重点 重点 行内块元素的对齐用基线对齐*/
+
+        }
+
+        .slide-inner .headWrap{
+            border: 1px solid white;
+            width: 66%;
+            height: 100%;
+            padding: 0 17%;
+            overflow: hidden;
+            line-height: 100%
+        }
+        .slide-inner .headWrap h1{
+            margin-top: 45%;
+            color: #FFFFFF;
+            font-size: 35px;
+        }
+        .links-wrap1{
+            border: 1px solid white;
+            width: 100%;
+        }
+        .footer{
+            max-width: 1080px;
+            padding: 45px 250px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        a{
+            text-decoration:none;
+            font-size: 10px;
+            color:#000;
+        }
+        .footer li{
+            list-style: none;
+
+        }
+        .main-links{
+            float: left;
+            width: 22%;
+            margin-right: 40px;
+        }
+        .main-links li{
+            line-height: 1.7; /*如果行高没有单位表示的是字体大小的多少倍*/
+        }
+        .main-links .font-logo {
+            display: block;
+            width: 160px;
+            height: 61px;
+            margin-bottom: 10px;
+            background: url("https://mobike.com/cn/assets/themes/moby/img/logo-text.svg") no-repeat;
+            background-size: cover;
+            text-indent: -9999px;
+            /*让logo标签里面的文字内容消失*/
+        }
+        .footer-list-wrap{
+            float: right;
+            overflow: hidden;
+        }
+        .footer-list{
+            float: left;
+            margin-left: 80px;
+        }
+        .footer-list:first-child{
+            margin: 0;
+        }
+        .footer-list h3{
+            margin-bottom: 10px;
+        }
+        .footer-list li {
+            line-height: 2;
+            /* 2 * 16 = 32px*/
+        }
+        .footer-list li a:hover{
+            color:#e23d0e
+        }
+        .main-links  li{
+            font-size: 10px;
+        }
+        .main-links a{
+            font-size: 10px;
+            color: #000;
+        }
+        .main-links li:nth-child(2),.main-links li:nth-child(4){
+            font-size: 10px;
+        }
+        .footer-list h3{
+            font-size: 14px;
+        }
+        @media screen  and (max-width:1080px)  {
+            .pic .item{
+                width: 50%;
+            }
+            .footer {
+                display: flex;
+                padding:45px 3%;
+                flex-wrap: wrap;
+            }
+            .main-links {
+                width: 100%;
+                padding-bottom: 10px;
+
+            }
+            .main-links li {
+                font-size: 16px;
+                font-weight:normal;
+            }
+            .main-links li a {
+                font-size: 16px;
+                font-weight:normal
+            }
+            .main-links li:nth-child(2), .main-links li:nth-child(4) {
+                font-size: 16px;
+            }
+            .main-links li:nth-child(4){
+                font-weight: 300;
+            }
+            .footer-list {
+                margin-left:50px;
+            }
+            .links-wrap {
+                width: 90%;
+                padding: 0 5%;
+            }
+            .nav .nav-links {
+                display: none;
+            }
+        }
+        @media screen  and (max-width:640px) {
+            .pic .item{
+                width: 100%;
+            }
+            .links-wrap .box {
+                width: 100%;
+                padding-bottom: 20px;
+            }
+            .links-wrap .box:nth-child(2) {
+                text-align: left;
+            }
+            .links-wrap .box:nth-child(3) .text {
+                margin-left: 70px;
+                float: left;
+            }
+            .links-wrap .box:nth-child(3) .icon3 {
+                float: none;
+            }
+            .footer-list {
+                margin-left: 0;
+                width: 50%;
+                padding-bottom: 20px;
+                min-height: 134px;
+            }
+            .footer-list-wrap{
+                width: 100%;
+            }
+            .footer-list:nth-child(3) {
+                float:none;
+                display: inline-block;
+            }
+            .footer-list:nth-child(4){
+                float: left;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="nav">
+        <h1 class="logo"><!--logo-->
+            <a href="#">
+                <svg width="100" height="37" viewBox="0 0 100 37" xmlns="http://www.w3.org/2000/svg"><title>Mobike 摩拜单车</title><g fill="#FFF" fill-rule="evenodd"><path d="M96.394 8.998l-10.633.184a.403.403 0 0 1-.384-.52c.708-2.505 2.96-4.364 5.647-4.41a5.828 5.828 0 0 1 1.8.248 5.992 5.992 0 0 1 3.947 3.965.41.41 0 0 1-.376.533m3.028 1.16a8.444 8.444 0 0 0-2.65-6.09 8.243 8.243 0 0 0-5.838-2.24c-2.77.066-5.307 1.497-6.88 3.96a8.182 8.182 0 0 0-1.108 2.75c-.935 4.59 1.786 8.692 5.723 9.89a8.13 8.13 0 0 0 2.517.35c3.326-.058 6.348-2.172 7.61-5.293a.202.202 0 0 0-.185-.277l-1.243-.006a1.954 1.954 0 0 0-1.57.77c-1.1 1.44-2.805 2.35-4.64 2.38a5.827 5.827 0 0 1-4.226-1.697 6.01 6.01 0 0 1-1.658-3.04l12.966-.224a1.212 1.212 0 0 0 1.18-1.23M17.836 8.102v8.333c0 .62.276 1.205.754 1.59l1.29 1.036c.128.104.318.01.318-.16V8.152c0-3.11-2.326-5.792-5.356-5.945-1.943-.1-3.682.82-4.765 2.28-.97-1.31-2.45-2.194-4.153-2.28C2.686 2.04 0 4.697 0 7.987V18.9c0 .17.19.264.318.16l1.29-1.037c.478-.384.754-.97.754-1.59v-8.33c0-1.79 1.314-3.353 3.054-3.472 1.91-.13 3.502 1.425 3.502 3.356v8.45c0 .62.28 1.206.754 1.59l1.29 1.037c.13.104.318.01.318-.16V8.153c0-.057-.006-.11-.008-.168h.008c0-1.93 1.592-3.486 3.502-3.354 1.74.12 3.054 1.685 3.054 3.474M64.564 19.04c.127.118.33.025.33-.15V3.03c0-.583-.25-1.14-.683-1.526L62.84.294c-.128-.117-.326-.022-.326.15V16.27c0 .575.24 1.125.66 1.51l1.39 1.26zm-33.392-2.38c-3.28 0-5.95-2.72-5.95-6.065 0-3.343 2.67-6.064 5.95-6.064 3.282 0 5.95 2.723 5.95 6.066 0 3.345-2.668 6.066-5.95 6.066m8.333-6.065c0-4.68-3.74-8.49-8.333-8.49-4.592 0-8.33 3.81-8.33 8.49 0 4.683 3.738 8.493 8.33 8.493 4.594 0 8.333-3.81 8.333-8.493M50.26 16.66c-3.278 0-5.943-2.712-5.95-6.05v-.03c.007-3.336 2.672-6.05 5.95-6.05 3.28 0 5.95 2.722 5.95 6.065 0 3.345-2.67 6.066-5.95 6.066m8.33-6.064c0-4.68-3.737-8.49-8.33-8.49-2.33 0-4.438.98-5.95 2.554V3.03c0-.583-.25-1.14-.683-1.526l-1.37-1.21a.196.196 0 0 0-.328.15v10.092l-.004.06s0 .037.002.057v.293h.005c.182 4.52 3.846 8.142 8.324 8.142 4.593 0 8.33-3.81 8.33-8.493m21.69 8.185H81.3c.167 0 .26-.194.157-.327L74.16 8.87l7.17-5.825c.148-.12.066-.36-.123-.36h-2.22a2.79 2.79 0 0 0-1.813.645L71.59 7.857V2.79c0-.584-.25-1.142-.685-1.526L69.535.05a.198.198 0 0 0-.328.154V16.27c0 .577.242 1.126.662 1.51l1.39 1.262c.125.116.33.023.33-.15v-7.934l.707-.575 5.82 7.626c.375.484 1.125.77 2.158.77m-20.313 8.986h-4.136v-1.74c0-.087.07-.156.157-.156h3.98v1.896zm0 2.94h-3.98a.157.157 0 0 1-.156-.157v-1.714h4.136v1.868zm1.075-1.87h4.15v1.713a.155.155 0 0 1-.154.154h-3.996v-1.868zm0-2.966h3.996c.086 0 .154.07.154.155v1.74h-4.15V25.87zm6.025 7.46h-6.025v-1.554h4.704a.52.52 0 0 0 .523-.52v-5.94a.52.52 0 0 0-.52-.516h-2.066l.498-.754c.073-.107.035-.22-.11-.22h-.886c-.105 0-.18.01-.23.084l-.59.89h-3.705l-.59-.89c-.05-.074-.123-.085-.228-.085h-.887c-.145 0-.183.114-.11.22l.5.755h-2.07a.52.52 0 0 0-.52.517v5.94c0 .287.234.52.52.52h4.69v1.554h-6.166c0 .593.48 1.073 1.077 1.073h5.09v2.147c0 .087.07.156.157.156h.762c.083 0 .154-.07.154-.157V34.4h6.025c.086 0 .155-.07.155-.158v-.757a.156.156 0 0 0-.156-.156zm20.946-.004H82.84v-2.012h3.994c.086 0 .157-.07.157-.155v-.79a.156.156 0 0 0-.155-.156H82.84v-2.428a.154.154 0 0 0-.155-.153h-.765a.155.155 0 0 0-.156.153v2.428H78.28a.05.05 0 0 1-.042-.078l2.25-3.425h7.026c.087 0 .157-.07.157-.155v-.76a.155.155 0 0 0-.155-.152h-6.322l1.055-1.598c.073-.108.036-.22-.11-.22h-.886c-.103 0-.178.01-.227.085l-1.15 1.734h-4.147c0 .59.48 1.068 1.076 1.068h2.37l-2.19 3.335a.818.818 0 0 0 .71 1.267h4.072v2.012h-6.53c0 .59.482 1.07 1.074 1.07h5.456v2.154c0 .087.072.156.156.156h.765c.085 0 .155-.07.155-.156v-2.154h5.168c.085 0 .156-.07.156-.156v-.758a.156.156 0 0 0-.156-.156M14.188 26.42c0 .592.48 1.07 1.075 1.07h.12l-1.102 1.18a.155.155 0 0 0 .01.22l.56.517a.16.16 0 0 0 .223-.01l1.013-1.104v1.42c0 .087.07.156.157.156h.76a.155.155 0 0 0 .157-.158v-1.39l1.01 1.075a.16.16 0 0 0 .223.01l.55-.517a.156.156 0 0 0 .007-.22l-1.103-1.18h1.05c.09 0 .158-.068.158-.155v-.76a.155.155 0 0 0-.157-.154h-1.74v-.64a.156.156 0 0 0-.156-.155h-.76a.155.155 0 0 0-.157.156v.64h-1.897zm5.33 0c0 .592.48 1.07 1.075 1.07h.12l-1.102 1.18a.155.155 0 0 0 .01.22l.56.517a.16.16 0 0 0 .223-.01l1.013-1.104v1.42c0 .087.07.156.158.156h.76a.155.155 0 0 0 .156-.158v-1.39L23.5 29.4c.058.063.16.068.22.01l.55-.517a.156.156 0 0 0 .01-.22l-1.105-1.18h1.05c.09 0 .158-.068.158-.155v-.76a.155.155 0 0 0-.157-.154h-1.74v-.64a.156.156 0 0 0-.155-.156h-.76a.155.155 0 0 0-.157.156v.64h-1.897zm5.068 7.4h-4.343v-.68h4a.16.16 0 0 0 .158-.158v-.76a.158.158 0 0 0-.155-.153h-4v-.687h2.82c.307 0 .61-.084.87-.246l.454-.282a.154.154 0 0 0 .05-.21l-.39-.643a.154.154 0 0 0-.216-.053l-.2.122c-.26.158-.556.242-.86.242H14.43c0 .59.48 1.07 1.073 1.07h3.665v.684h-4.74c0 .59.482 1.07 1.075 1.07h3.665v.68h-5.082c0 .592.48 1.073 1.075 1.073h4.008l-.007.55c0 .106-.09.193-.195.193H16.89c0 .59.48 1.07 1.074 1.07h1.553a.717.717 0 0 0 .72-.713l.007-1.1h4.343c.088 0 .157-.07.157-.155v-.76a.156.156 0 0 0-.157-.156"></path><path d="M24.603 24.37H19.31v-.598a.156.156 0 0 0-.157-.158h-.762a.157.157 0 0 0-.154.158v.598H13.23a.816.816 0 0 0-.818.814v7.737c0 .945-.23 1.873-.672 2.708l-.47.91c-.04.075.008.17.104.17h.824c.086 0 .194-.01.233-.092l.664-1.4c.258-.73.394-1.502.394-2.283v-7.335c0-.087.07-.157.156-.157h10.96c.086 0 .156-.07.156-.155v-.758a.156.156 0 0 0-.157-.156m13.697-.545a.16.16 0 0 0-.212-.058l-.705.41a1.483 1.483 0 0 1-.734.197h-3.753c0 .59.48 1.068 1.076 1.068h1.235v2.395h-2.312c0 .59.48 1.067 1.076 1.067h1.235v2.484h-2.312c0 .59.48 1.068 1.076 1.068h1.263v.465c0 .945-.23 1.873-.672 2.708l-.467.91c-.04.074.008.17.102.17h.824c.086 0 .194-.008.233-.092l.662-1.4a6.846 6.846 0 0 0 .394-2.283v-.476h2.185a.154.154 0 0 0 .156-.154v-.76a.155.155 0 0 0-.155-.154H36.31v-2.485h2.185a.154.154 0 0 0 .156-.154v-.76a.154.154 0 0 0-.155-.152H36.31v-2.394h.625c.254 0 .505-.067.724-.192l.96-.547a.155.155 0 0 0 .057-.212l-.38-.665zm7.573.545h-6.637c0 .59.48 1.067 1.076 1.067l1.777.002v1.737l-2.855.002c0 .59.48 1.066 1.076 1.066h1.778v1.74h-2.854c0 .592.48 1.07 1.076 1.07h1.777v1.74l-2.854.002c0 .59.48 1.067 1.076 1.067h1.776v2.682c0 .087.07.156.155.156h.764c.086 0 .157-.07.157-.157v-2.683h2.71c.09 0 .16-.07.16-.157v-.76a.156.156 0 0 0-.16-.154h-2.71v-1.74h2.71c.09 0 .16-.068.16-.155v-.757a.156.156 0 0 0-.16-.155h-2.71v-1.74h2.71c.09 0 .16-.07.16-.157v-.756a.156.156 0 0 0-.16-.156h-2.71v-1.74h2.71c.09 0 .16-.067.16-.155v-.757a.156.156 0 0 0-.16-.155"></path></g></svg>
+            </a>
+        </h1>
+        <div class="nav-links">   <!--导航   nav begin-->
+            <a href="#">产品</a>
+            <a href="#">摩拜科技</a>
+            <a href="#">城市</a>
+            <a href="#">新闻</a>
+            <a href="#">关于</a>
+        </div>     <!--slide begin-->
+    </div>
+</div>
+<!--中间文字-->
+<!--slide begin-->
+<div class="slide">   <!--   banner图,轮播图,焦点图-->
+    <div class="slide-inner">
+        <div class="headWrap">
+            <h1>让自行车回归城市</h1>
+        </div>
+    </div>
+
+</div>
+<!--图片模块  pic-->
+<div class="pic">
+    <a href="#" class="item">
+        <div class="picText">
+            <h3>大国品牌</h3>
+        </div>
+    </a>
+    <a href="#" class="item">
+        <div class="picText">
+            <h3>摩拜科技</h3>
+        </div>
+    </a>
+    <a href="#" class="item">
+        <div class="picText">
+            <h3>摩拜生活</h3>
+        </div>
+    </a>
+    <a href="#" class="item">
+        <div class="picText">
+            <h3>摩拜校招</h3>
+        </div>
+    </a>
+</div>
+<div class="links-wrap">
+    <div class="box">
+        <div class="icon1"></div>
+        <div class="text">
+            <h4>微信小程序</h4>
+            <p>微信扫一扫,直接用车</p>
+        </div>
+    </div>
+    <div class="box">
+        <div class="icon2"></div>
+        <div class="text">
+            <h4>红包车</h4>
+            <p>骑膜拜,能赚钱</p>
+        </div>
+    </div>
+    <div class="box">
+        <div class="text">
+            <h4>信用分</h4>
+            <p>文明骑行,信用生活</p>
+        </div>
+        <div class="icon3"></div>
+    </div>
+
+</div>
+<!--footer begin-->
+<div class="links-wrap1">
+    <div class="footer">
+        <ul class="main-links">
+            <li><a href="#" class="font-logo">Mobike</a>
+            <li>Mobike Technology Co, Ltd
+            <li>客服电话 <a href="tel:400-811-7799">400-811-7799</a>
+            <li>北京摩拜科技有限公司
+        </ul>
+        <!--foot ringht-->
+        <div class="footer-list-wrap">
+            <div class="footer-list">
+                <h3>产品</h3>
+                <ul><li><a href="#">经典版</a></li>
+                    <li><a href="#">轻骑</a></li>
+                    <li><a href="#">智能版</a></li>
+                </ul>
+            </div>
+            <div class="footer-list">
+                <h3>生活</h3>
+                <ul>
+                    <li><a href="#">城市</a></li>
+                    <li><a href="#">新闻资讯</a></li>
+                </ul>
+            </div>
+            <div class="footer-list">
+            <h3>关于</h3>
+            <ul>
+                <li><a href="#">关于Mobike</a></li>
+                <li><a href="#">加入我们</a></li>
+                <li><a href="#">练习我们</a></li>
+            </ul>
+        </div>
+            <div class="footer-list">
+                <h3>社交网络</h3>
+                <ul>
+                    <li><a href="#">微博</a></li>
+                    <li><a href="#">微信</a></li>
+                    <li><a href="#">知乎专栏</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

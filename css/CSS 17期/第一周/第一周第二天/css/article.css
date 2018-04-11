@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #797979;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+em{
+    font-style: normal;
+}
+.article{
+    width: 830px;
+    background-color: white;
+}
+.article h3{
+    padding-left:10px;
+    padding-right:10px;
+    height:45px;
+    border-bottom: 1px solid #90bba8;
+    line-height:45px;
+    font-size: 18px;
+    color:#555;
+}
+.article h3 a{
+    font-weight: normal;
+    color:#00a67c;
+    font-size: 14px;
+    float:right;
+}
+.article ul li{
+    /*可以设置宽高属性  不独占一行*/
+    display: inline-block;
+    width: 47%;
+    line-height: 30px; /*控制行与行之间的垂直间距*/
+    margin-left:1%;
+    margin-right:1%;
+    /*margin:0 1%*/
+}
+.article ul li a{
+    float: left; /*左浮动:靠左显示*/
+    /*display: inline-block;*/
+    color:#487d98;
+    font-size:14px;
+    width:69%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.article ul li a:hover{
+    color:#d9534f
+}
+.article ul li span{
+    float:right; /*fr tab*/
+    color:#487d98;
+    font-size:14px;
+}
+.article ul li i{
+    float: left; /*fl tab*/
+   /* display: inline-block;*/
+    width: 15px;
+    height: 4px;
+    background: blue;
+    margin-top:12px;
+    margin-right:10px;
+}

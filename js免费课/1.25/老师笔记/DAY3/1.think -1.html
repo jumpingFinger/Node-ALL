@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东面试题</title>
+</head>
+<body>
+<script type="text/javascript">
+    /* 等号的三种情况:
+    *   =   赋值
+    *   ==  比较
+    *   ===   绝对等于(值相等  数据类型也要相等)
+    * */
+    var num = 'abc123';
+    num = parseInt(num); //NaN
+    if (num == 123) {
+        alert(123);
+    } else if (num == NaN) { //NaN == NaN
+        alert(NaN);
+    } else if (typeof num == 'number') { //typeof NaN
+        alert('number'); //'number'
+    } else {
+        alert('str');
+    }
+</script>
+</body>
+</html>

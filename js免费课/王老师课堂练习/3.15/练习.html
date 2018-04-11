@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary = [12, 51, 12, 5, 5, 6, 6, 6, 8, 9, 15, 20, 16, 28, 13, 28];
+    Array.prototype.myUnique=function myUnique(){
+        var obj={};
+        for (var i = 0; i < this.length; i++) {
+            var cur=this[i];
+            if(obj[cur]){
+                this[i]=this[this.length-1];
+                this.length--;
+                i--;
+            }
+            obj[cur]=true;
+        }
+        obj=null;
+        return this;
+    };
+    console.log(ary.myUnique());
+    Array.prototype.myBullueSort=function (){
+        for (var i = 0; i < this.length-1; i++) {
+            for (var j = i+1; j < this.length; j++) {
+                if(this[i]>this[j]){
+                    var temp=this[i];
+                    this[i]=this[j];
+                    this[j]=temp;
+                }
+            }
+        }
+        return this;
+    };
+    // console.log(ary.myBullueSort());
+    Array.prototype.myQuickSort=function () {
+        if(this.length<2) return this;
+        var middleItem=this.splice(Math.floor(this.length-1/2),1)[0],
+            left=[],
+            right=[];
+        this.forEach(function (value){
+            value<middleItem?left.push(value):right.push(value);
+        });
+        return left.myQuickSort().concat(middleItem,right.myQuickSort())
+    };
+    // console.log(ary.myQuickSort());
+    Array.prototype.myInsertionSort=function () {
+        var ary=this.splice(0,1);
+        this.forEach(function (value){
+            for (var i = ary.length-1; i >=0; i--) {
+                if(value>ary[i]){
+                    ary.splice(i+1,0,value);
+                    break;
+                }else{
+                    if(i===0){
+                        ary.unshift(value);
+                    }
+                }
+            }
+        });
+        return ary;
+    };
+    // console.log(ary.myInsertionSort());
+
+</script>
+</body>
+</html>

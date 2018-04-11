@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+       *{
+           /* m0 tab*/
+           margin: 0;
+           /*p0 tab*/
+           padding: 0;
+       }
+       body{
+           background-color: #797979;
+       }
+        a{
+            text-decoration: none; /*去掉a默认的下划线*/
+        }
+        li{
+            list-style: none; /*去掉li默认的样式*/
+        }
+        em{
+            font-style: normal; /*把斜体变成正常字体*/
+        }
+        .story{
+            width: 830px; /*宽度 w830 tab*/
+            background-color: white; /*背景颜色:白色*/
+        }
+       .story h3{
+            padding-left:10px;
+            padding-right:10px;
+           /*padding:0 10px 0 10px; 上右下左*/
+            height:45px; /*高度 h45 tab*/
+            border-bottom: 1px solid #90bba8;
+            /*下边框线:宽度 实线 颜色*/
+            line-height:45px;
+           /*行高和高度的值一样的情况下 可以实现文字内容始终垂直居中*/
+           font-size: 18px;/*字体大小*/
+           color:#555; /*字体颜色*/
+        }
+        .story h3 a{
+            font-weight: normal;
+            color:#00a67c;
+            font-size: 14px;
+            /*浮动*/
+            float:right; /*右浮动 => 靠右显示*/
+        }
+        .story ul li{
+            height: 30px; /*高度*/
+            line-height:30px; /*行高*/
+        }
+        .story ul li a{
+            display: inline-block;
+            /*display: block; 把行内元素转化块及元素 独占一行*/
+            /*a属于行内元素 它的宽度是本身内容的宽度*/
+            font-size:14px;
+            color:#666;
+            /*面试题:单行文本如何出现省略号(4个必备的条件 缺一不可)*/
+            width: 800px;/*宽度*/
+            white-space: nowrap; /*不换行 强制在同一行显示*/
+            overflow: hidden; /*溢出部分隐藏*/
+            text-overflow: ellipsis;
+            /*文本隐藏的方式: 以省略号的方式隐藏*/
+        }
+       .story ul li a em{
+           color:#1d9fd3
+       }
+       /*:hover 谁是鼠标移上的对象 就在谁后面加:hover*/
+       .story ul li a:hover{
+            background-color: #f2f2f2;
+       }
+       .story ul li a:hover em{
+            font-weight: bold;
+        }
+        .story ul li span{
+            display: inline-block;
+            /*行内块元素垂直对齐(垂直对齐属性) vertical-align 基线对齐*/
+            vertical-align: 10px;
+            width:15px;
+            height:15px;
+            line-height: 15px; /* 垂直居中*/
+            text-align: center; /*水平居中*/
+            background-color: #fd8c84;
+            font-size: 12px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<!--珠峰故事-->
+<div class="story">
+    <h3>珠峰故事<a href="#">阅读更多</a></h3>
+    <ul>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校高校课</em>H5培训公开课高校公开课高校公开课高校公开课高校公开课高校公开课高校公开课高校公开开课H5训公开课高校H5培训公开课高校公开课高校公开课高校公开课高校公开课高校公开课高校公开课高校公开课H5训公开课高校课H5训公开课高校</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+        <li>
+            <span>1</span>
+            <a href="#"><em>高校公开课</em>H5培训</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .bg0{
+            background: red;
+        }
+        .bg1{
+            background: green;
+        }
+        .bg2{
+
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="11"></li>
+    <li class="11"></li>
+    <li class="11"></li>
+    <li class="11"></li>
+    <li class="11"></li>
+    <li class="11"></li>
+    <li class="11"></li>
+</ul>
+<script>
+    ~function () {
+        var oList=document.getElementsByTagName("li");
+        for (var i = 0; i < oList.length; i++) {
+            oList[i].cur= oList[i].className='bg'+i%2;
+            oList[i].onmouseover=function (){
+                this.className='bg2';
+            };
+            oList[i].onmouseout=function (){
+                this.className=this.cur;
+            }
+        }
+
+    }()
+</script>
+</body>
+</html>

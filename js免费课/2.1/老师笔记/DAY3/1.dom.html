@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js的组成</title>
+</head>
+<body>
+<input type="text" name="tab1">
+<div id="tab" class="tab">珠峰培训</div>
+<ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script type="text/javascript">
+    /*
+    1.ECMAScript - 数据类型 操作语句 变量的命名规范....
+    2.DOM - document object model
+    3.BOM - brower object model
+
+    基本： *  .class #id  div
+    关系选择器： div p  div>p  div+p   div~p
+    属性选择器: [属性名]  [属性名 = 属性值]  [属性名 ^= 属性值]
+     [属性名 $= 属性值]  [属性名 *= 属性值]
+   伪类： a:link a:visited a:hover a:active
+         :nth-child()  :last-child  :first-child
+   伪元素:
+         :before
+         :after
+         :first-letter
+         :first-line
+         :placeholder
+    */
+    //【1.获取dom元素的方法】
+    /* 1. document.getElementById('ID名');  通过id名获取元素
+          id 唯一  不能重复的  即使重复也是默认第一个起作用
+          id的上下文只能是document
+          注意: 在IE6、7下 会把input的name属性当成id获取
+          技巧: 实际项目中尽量不要让input的name属性和id重名
+    * */
+    /*var tab = document.getElementById('tab');
+    tab.style.backgroundColor = 'red';
+    console.log(tab.tagName); //谷歌：DIV  IE6/7 INPUT*/
+
+    /*
+    * 2.[context].getElementsByTagName('标签名') 通过标签名获取元素
+    *   上下文: 除了document外 范围还可以缩小
+    *   所获的结果是一个类数组集合: 以索引作为属性名 而且索引是依次递增 还有一个叫lenght的长度属性
+    *   注意: 集合中就算只有一个 也不能直接用整个集合去进行操作
+    *        必须要通过集合的索引值去进行操作
+    * */
+    /*var oLis = document.getElementsByTagName('li');
+    // oLis.style.backgroundColor = 'red'; //Uncaught TypeError: Cannot set property 'backgroundColor' of undefined
+    oLis[0].style.backgroundColor = 'red';
+    console.log(oLis);*/
+
+    /*3.[context].getElementsByClassName('class类名'); 表示通过class类名去获取元素
+    获取的结果： 类数组集合
+    在IE6-8下不兼容   bgClass
+    * */
+    /*var tab = document.getElementsByClassName('tab');
+    tab[0].style.color = 'red';
+    console.log(tab);*/
+
+    /* 4.document.getElementsByName('name属性值') 通过name属性来获取元素
+    *  上文下只能是document
+    *  一般是用来操作表单元素  name = '';
+    * */
+    /*var ipt = document.getElementsByName('tab1');
+    ipt[0].style.backgroundColor = 'red';*/
+
+    /*5.document.body 获取body元素
+        document.documentElement  获取根元素html
+    * */
+    /*var oBody = document.body;
+    oBody.style.backgroundColor = 'yellow';*/
+
+   /*
+    /!*获取一屏幕的宽度*!/
+    document.body.clientWidth  || document.documentElement.clientWidth();
+
+    /!*获取一屏幕的高度*!/
+    document.body.clientHeight  || document.documentElement.clientHeight();
+
+    */
+   /* 6.document.querySelector(选择器)  选择一个
+       document.querySelectorAll(选择器)  选择所有
+       括号里面的选择器完全遵循css选择器的规范
+      IE 低版本浏览器不兼容，主要是用在移动端开发;
+   * */
+//   document.querySelector('ul li').style.backgroundColor = 'blue';
+    var oLis = document.querySelectorAll('ul li');
+    oLis[0].style.backgroundColor = 'blue';
+    oLis[1].style.backgroundColor = 'blue';
+    oLis[2].style.backgroundColor = 'blue';
+    //IE 低版本浏览器报错: 对象不支持“querySelectorAll”属性或方法
+    /*for (var i = 0; i < oLis.length; i++) {
+      oLis[i].style.backgroundColor = 'blue';
+    }*/
+
+
+
+</script>
+
+</body>
+</html>

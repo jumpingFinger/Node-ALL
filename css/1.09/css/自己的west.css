@@ -1,0 +1,84 @@
+body,html{
+    width: 100%;
+    height: 100%;
+}
+.bigPic1, .bigPic2{
+    width: 100%;
+    height: 400px;
+    background: url("../images/bg.webp") no-repeat  top center;
+}
+.west {
+    width: 100%;
+    height: 100%;
+    background: url("../images/bg1.webp") no-repeat center;
+    overflow: hidden;
+    padding:0 10%;
+}
+.west1{
+    float: left;
+     width: 200px;
+     height: 180px;
+     background: url("https://xyq.res.netease.com/pc/gw/20170118103441/img/west_01_3ca39fe.png") no-repeat ;
+    margin-top: 30%;
+    /*通过animition调用下列制定好的动画名称*/
+    animation:west1 1s steps(8) infinite;/*函数动画*/
+ }
+.west2{
+    float: left;
+    width: 200px;
+    height: 180px;
+    background: url("https://xyq.res.netease.com/pc/gw/20170118103441/img/west_02_47bad19.png") no-repeat ;
+    margin-top: 30%;
+    animation:west2 1s steps(8) infinite;
+}
+.west3{
+    float: left;
+    width: 170px;
+    height: 240px;
+    background: url("https://xyq.res.netease.com/pc/gw/20170118103441/img/west_03_f962447.png") no-repeat ;
+    margin-top: 30%;
+    animation:west3 1s steps(8) infinite;
+}
+.west4{
+    float: left;
+    width: 210px;
+    height: 200px;
+    background: url("https://xyq.res.netease.com/pc/gw/20170118103441/img/west_04_6516d80.png") no-repeat ;
+    margin-top: 30%;
+    animation:west4 1s steps(8) infinite;
+}
+/*第一步:通过关键帧制定好动画的名称*/
+/*0相当于from 开始帧*/
+/*100% 相当于 to 结束帧*/
+@keyframes west1{
+    0%{
+        background-position:0 0;
+    }
+    100%{
+        background-position: -1600px 0;
+    }
+}
+@keyframes west2{
+    0%{
+        background-position:0 0;
+    }
+    100%{
+        background-position: -1600px 0;
+    }
+}
+@keyframes west3{
+    0%{
+        background-position: 0px 0;
+    }
+    100%{
+        background-position: -1360px 0;
+    }
+}
+@keyframes west4{
+    0%{
+        background-position:0 0;
+    }
+    100%{
+        background-position: -1680px 0;
+    }
+}

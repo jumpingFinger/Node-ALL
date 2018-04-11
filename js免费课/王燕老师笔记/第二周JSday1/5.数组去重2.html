@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //利用对象不重名的特征进行数组去重
+    //把数组的每一项存入对象中，存入前先判断下对象中是否已经有这一项，若对象已经有，则说明这项是重复的，需要删除，若没有这一项，则存入对象中（以便后面的数据再判断是否是重复）
+    var ary = [22,5,3,3,3,5];
+    var obj = {};//把数组的这项作为属性名和属性值存入对象中 obj[22]=22
+    //{22:22,5:5,3:3}
+   /* for(var i = 0;i<ary.length;i++){
+        var cur = ary[i];
+        if(obj[cur] == cur){//若对象中没有这项 obj[cur]值是undefined
+            //若相等，说明之前存过，也就是这项是重复项，需要删除
+            ary.splice(i,1);
+            i--;
+        }else{
+            obj[cur] = cur;
+        }
+    }*/
+
+   //若存入对象时 obj[22] = true;
+    for(var i = 0;i<ary.length;i++){
+        var cur = ary[i];
+        if(obj[cur]){//Boolean(undefined)->false
+            ary.splice(i,1);
+            i--;
+        }else{
+            obj[cur] = true
+        }
+    }
+    //console.log(ary);
+
+</script>

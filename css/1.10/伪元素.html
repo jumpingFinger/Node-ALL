@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪元素</title>
+    <style type="text/css">
+        .zfpx::before{
+            content: '更大呀';
+            color: #00A6A4;
+        }
+        .zfpx::after{    /*兼容单冒号写,应该是双冒号*/
+            content: '周大爷';
+            color: rosybrown;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<!--伪元素:天生自带属性content:"";
+::before 在元素之前添加内容       伪元素的内容无法选中
+::after 在元素之后添加内容-->
+<div class="zfpx">珠峰培训</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration:none;
+        }
+        li{
+            list-style: none;
+        }
+        .lg-container{
+            max-midth:1440px;/*块元素水平居中的因素: 1需要宽度 2需要margin:0 auto*/
+            padding:0 15px;
+            margin:20px auto 0;   /*版心在任何情况下都要居*/
+            /*background: rebeccapurple;*/
+        }
+        .lg-container .col{
+            position: relative;
+            float: left;
+            width: 50%;
+            padding:0 10px;
+            /*background: red;*/
+        }
+        .lg-container .col img{
+            display: block;/*去掉图像的下边距 3px*/
+            width: 110%;/*为了让图片不出现留白*/
+            height: 100%;
+            transition:all 1s ease;
+        }
+        .lg-container .col a{
+            position: relative; /*第二个text会下去 参照物没有对*/
+            /*width: 100%;*/
+            display: block;  /*a是行内元素,需要设置成块*/
+            overflow: hidden; /*不出现留白*/
+        }
+        .lg-container .col:nth-child(2) a:nth-child(1){
+            margin-bottom: 3%;
+        }
+    </style>
+</head>
+<body>
+<div class="lg-container clearfix">
+    <div class="col">
+        <a href="#">
+            <img src="http://www-file.huawei.com/-/media/CORPORATE/Images/home/small-banner/2017/ww-se5-small-banner-cn.jpg?h=704&la=zh&w=700" alt="">
+        </a>
+    </div>
+    <div class="col">
+        <a href="#">
+            <img src="http://www-file.huawei.com/-/media/CORPORATE/Images/home/small-banner/2017/banner-new-year-message-2018.jpg?h=342&la=zh&w=700" alt="">
+        </a>
+        <a href="#">
+            <img src="http://www-file.huawei.com/-/media/CORPORATE/Images/home/small-banner/2017/small-banner-dt.jpg?h=342&la=zh&w=700" alt="">
+        </a>
+    </div>
+</div>
+</body>
+</html>

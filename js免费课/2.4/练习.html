@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>这是要显示的号码</p>
+<script>
+    var oP=document.getElementsByTagName('p')[0];
+    function random (n,m)
+    {
+        return Math.round(Math.random()*(m-n)+n);
+    }
+    var  result='';
+    function randomCode (){
+        var str='0123456789';
+        for(var i=0;i<4;i++){
+         var   index=random(0,9);
+         var   code=str[index];
+            if(result.indexOf(code)>-1){
+                i--;
+                continue;
+            }
+            result+=code;
+        }
+        return result;
+    }
+
+//    function computed (){
+//            i--;
+//            if(i==0){
+//                oP.innerHTML= randomCode();
+//                window.clearInterval(timer);
+//            }else{
+//                oP.innerHTML=randomCode();
+//            }
+//    }
+//    var  timer=window.setInterval(computed,1000);
+//            function computed(){
+//                var lastTime=new Date();
+//                const starTime=new Date();
+//                console.log(starTime);
+//                var  areaTime=lastTime-starTime;
+//                if (areaTime>10*1000){
+//                    oP.innerHTML= randomCode();
+//                window.clearInterval(timer);
+//                }
+//
+//                oP.innerHTML=randomCode();
+//            }
+//            computed();
+
+
+</script>
+</body>
+</html>

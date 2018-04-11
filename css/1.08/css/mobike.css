@@ -1,0 +1,171 @@
+
+body,html, .slide{
+    width: 100%;
+    height: 100%;
+}
+.slide-inner{
+    width: 100%;
+    height: 100%;
+    background:url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-6.jpg") no-repeat center;
+    background-size: cover;
+}
+.wrap{
+    /*display: block;*/
+     position: absolute;
+     top:0;
+     left:0;
+     width: 100%;
+     overflow: hidden;
+     /*height: 80px;*/
+ }
+.nav{
+    width: 1040px;
+    height: 80px;
+    padding: 15px 20px;
+    /*background-color: red;*/
+    margin:0 auto;  /*为了实现margin的属性,需要把.nav的定位去掉,给到父元素*/
+    overflow: hidden;
+}
+.nav .logo{
+    float: left;
+    margin-top: 21px;
+}
+.nav .nav-links{
+    float: right;
+    height: 80px;
+    line-height: 80px;
+}
+.nav .nav-links a{
+    color:#FFFFFF;
+    padding: 0 20px;
+}
+.pic{
+    overflow: hidden;
+}
+.pic .item{
+    float: left;
+    width: 25%;
+    min-height:260px;
+}
+.pic .item:nth-child(1){
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-6.jpg") no-repeat center;
+    background-size: cover;
+}
+.pic .item .picText{
+    float: left;
+    width: 100%;
+    height: 34px;
+}
+.pic .item .picText h3{
+    display: block;
+    width: 100%;
+    height:32px;
+    /*margin: 0 auto;*/
+    line-height: 32px;
+    text-align: center;
+    font-size: 22px;
+    color: #F2F2F2;
+    margin-top: 18px;
+}
+
+.pic .item:nth-child(2){
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-3.jpg") no-repeat center;
+    background-size: cover;
+}
+.pic .item:nth-child(3){
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-5.jpg") no-repeat center;
+    background-size: cover;
+}
+.pic .item:nth-child(4){
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-1.jpg") no-repeat center;
+    background-size: cover;
+}
+.links-wrap{
+    /*display: block;*/
+    /*position: relative;*/
+    top:0;
+    left:0;
+    width: 100%;
+    height: 140px;
+    /*background-color: #00A6A4;*/
+}
+.box1{
+    width: 980px;
+    height: 140px;
+    padding: 15px 10px;
+    margin:0 auto;  /*为了实现margin的属性,需要把.nav的定位去掉,给到父元素*/
+    overflow: hidden;
+    /*background-color: red;*/
+}
+.box2{
+    float: left;
+    width:33.3%;
+    height: 140px;
+}
+.box2 .icon2{
+    float: left;
+    width: 40px;
+    height: 40px;
+    background: url("https://mobike.com/cn/assets/themes/moby/img/icon-wechat.png") no-repeat center;
+    background-size:contain;
+    margin-top: 35px;
+}
+.box2 .icon3{
+    float: left;
+    width: 40px;
+    height: 40px;
+    background: url("https://mobike.com/cn/assets/themes/moby/img/icon-rp.png") no-repeat center;
+    background-size:contain;
+    margin-top: 35px;
+}
+.box2 .icon4{
+    float: left;
+    width: 40px;
+    height: 40px;
+    background: url("https://mobike.com/cn/assets/themes/moby/img/icon-credit.png") no-repeat center;
+    background-size:contain;
+    margin-top: 35px;
+}
+.box2 .text2{
+    display: block;
+    width: auto;
+    height: 40px;
+    margin-top: 35px;
+}
+.box2 .text2 h4{;
+    width: auto;
+    height: 20px;
+    line-height: 20px;
+}
+.box2 .text2 p{
+    display: block;
+    width: auto;
+    height: 20px;
+    line-height: 20px;
+}
+.box2 .icon2 {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/icon-wechat.png") no-repeat center;
+    background-size:contain;
+    margin-top: 35px;
+}
+.box2 .icon3{
+    background: url("https://mobike.com/cn/assets/themes/moby/img/icon-rp.png") no-repeat center;
+    background-size:contain;
+    margin-top: 35px;
+}
+.slide-inner .headWrap{
+     position: absolute;
+     width:70%;
+     height: 100%;
+     margin: 0 15%;
+     /*background-color: #00a77b;*/
+ }
+.slide-inner .headWrap h1{
+    float: left;
+    width: 100%;
+    height:60px;
+    margin-top: 32%;
+    font-size: 35px;
+    color: #F2F2F2;
+
+}

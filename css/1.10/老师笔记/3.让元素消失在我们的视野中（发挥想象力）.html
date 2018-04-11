@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>让元素消失在我们的视野中（发挥想象力）</title>
+    <style type="text/css">
+        .box{
+            width: 300px;
+            height: 300px;
+            background: red;
+            /*1.opacity: 0; 透明度为0*/
+            /*2.visibility: hidden; 可见性的元素隐藏*/
+            /*3.position: absolute;
+            left:-9999px;
+            用定位属性，方位足够大的负值或者正值，至少要脱离窗口之外
+            */
+            /*4.display: none; 让元素隐藏*/
+           /* 5.高度为0 然后溢出隐藏
+            height: 0;
+            overflow: hidden;*/
+            /*6.宽度为0 然后溢出隐藏
+            width: 0;
+            overflow: hidden;*/
+            /*7.设置颜色为透明
+            background:transparent;
+            color:transparent;*/
+           /* 8.利用transform的translate属性给足够大的值,把元素移到窗口之外
+           transform: translate(-9999px);*/
+        }
+    </style>
+</head>
+<body>
+<div class="box">珠峰培训</div>
+</body>
+</html>

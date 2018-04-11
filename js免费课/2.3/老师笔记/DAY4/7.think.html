@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滴滴面试原题</title>
+</head>
+<body>
+<script type="text/javascript">
+    var a = 1;
+    var obj = {
+        name: "tom"
+    };
+    function fn() {
+        var a2 = a;
+        var obj2 = obj;
+        obj2.name = "jack";
+    }
+    fn();
+    console.log(a); //1
+    console.log(obj); // {name:'jack'}
+
+</script>
+</body>
+</html>

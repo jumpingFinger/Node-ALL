@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-size:14px;
+        }
+        li{
+            list-style: none;
+        }
+        #tabs {
+            margin: 20px auto;
+            width: 400px;
+        }
+        #tabs ul{
+            position:relative;
+            overflow:hidden;
+            top:1px;
+        }
+        #tabs li {
+            float: left;
+            width: 50px;
+            height:30px;
+            padding:0 10px;
+            margin-right:10px;
+            border:1px solid #1a1a1a;
+            text-align: center;
+            line-height: 30px;
+            background-color:#eeeeee;
+        }
+        #tabs div {
+            display:none;
+            width: 100%;
+            height: 200px;
+            line-height:200px;
+            text-align:center;
+            border:1px solid #1a1a1a;
+            background-color:#eeeeee;
+        }
+        #tabs li.selected {
+            background: #fff;
+            border-bottom-color: #fff;
+        }
+        #tabs div.selected{
+            background:  #fff;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tabs">
+    <ul>
+        <li class="selected">新闻</li>
+        <li>资讯</li>
+        <li>天哥</li>
+    </ul>
+    <div class="selected">新闻内容</div>
+    <div>资讯内容</div>
+    <div>天哥</div>
+</div>
+<script>
+    var oTabs=document.getElementById('tabs');
+       var  oLis=oTabs.getElementsByTagName('li');
+    var oDivs=oTabs.getElementsByTagName('div');
+//    for (var i = 0; i < oLis.length; i++) {
+//      var  previousIndex=0;
+//        oLis[i].cur=i;
+//        oLis[i].onmouseover=function() {
+//            if (previousIndex===this.cur){
+//                return;
+//            }
+//           oDivs[previousIndex].className=oLis[previousIndex].className=null;
+//            oDivs[this.cur].className= this.className='selected';
+//           previousIndex=this.cur;
+//        }
+//    }
+    for (let i = 0; i < oLis.length; i++) {
+            var  previousIndex=0;
+        oLis[i].onmouseover=function() {
+            if (previousIndex===i){
+                return;
+            }
+            oDivs[previousIndex].className=oLis[previousIndex].className=null;
+            oDivs[i].className= oLis[i].className='selected';
+            previousIndex=i;
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding:0;
+}
+li{
+    list-style: none;
+}
+#tab ul{
+    overflow: hidden; /*清浮动的方法*/
+    border-top:1px solid #000;
+
+}
+#tab{
+    width: 305px;
+    margin:50px auto; /*块级元素水平居中*/
+}
+#tab li{
+    float: left;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border-left:1px solid #000;
+    text-align: center;
+}
+#tab li:last-child{
+    border-right:1px solid #000;
+}
+#tab ul .cur{
+    background: chartreuse;
+}
+#tab div{
+    display: none;
+    width: 303px;
+    height: 300px;
+    line-height: 300px;
+    text-align: center;
+    border:1px solid #000;
+
+}
+#tab .cur{
+    display: block;
+    background: chartreuse;
+}

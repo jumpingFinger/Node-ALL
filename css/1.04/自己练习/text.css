@@ -1,0 +1,65 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+a{
+    text-decoration:none;
+}
+li{
+    list-style:none;
+}
+em{
+    font-style:normal;
+}
+.article{
+    width:880px;
+    background-color:lightseagreen;
+}
+.article h3{
+    margin-left:16px;
+    padding-top: 10px;
+    height: 50px;
+    border-bottom:2px solid rebeccapurple;
+    line-height: 50px;
+    font-size: 20px;
+}
+.article h3 a{
+    margin-right: 14px;
+    margin-top: -5px;
+    float: right;
+    font-weight:normal;
+    color: darkorange;
+    font-size: 14px;
+}
+.article ul{
+    display:inline-block;
+}
+.article ul li{
+    display:inline-block;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    width: 417px;
+}
+.article ul li i{
+    float:left;
+    /*display:block;*/
+    width:8px;
+    height: 3px;
+    background-color:grey;
+    margin-left: 5px;
+}
+.article ul li a{
+    color:springgreen;
+    float: left;;
+    width: 300px;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+.article ul li span{
+    float:right;
+    background: indianred;
+}
+
+

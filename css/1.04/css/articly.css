@@ -1,0 +1,71 @@
+*{
+    margin: 0; /*mo tab*/
+    padding: 0;/*p0 tab*/
+}
+
+a{
+    text-decoration: none;   /*去掉下划线*/
+}
+li{
+    list-style:none;/*去掉默认样式*/
+}
+em{
+    font-style:normal; /*恢复字体正常*/
+}
+.text{
+    width: 830px;/*w830 tab*/
+    background-color:#ffffff;
+}
+.text h3{/*后代选择器*/
+    padding:0 10px 0 10px;
+    height: 45px;
+    border-bottom:1px solid #90bba8;/*下边框线 宽度 实线 颜色*/
+    line-height:45px;/*行高和高度的值一样的情况下,可以实现内容的垂直居中*/
+    font-size:18px;/*字体大小*/
+    color:#555;/*字体效果一模一样*/
+}
+.text h3 a {
+    font-weight:normal;
+    color:orangered;
+    font-size:14px;
+    float:right;
+}
+.text ul{
+    display:inline-block;
+}
+.text ul li {
+    display:inline-block;
+    width: 402px;
+    height: 30px;
+    line-height:40px;
+    color:gold;
+}
+.text ul li a{
+    /*display: inline-block;*/
+    float:left;
+    font-size:14px;
+    width:60%;/*宽度*/
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+
+}
+.text ul li a:hover{/*谁是鼠标移上的对象,就在水后面加hover*/
+    background-color: royalblue;
+}
+.text ul li a:hover em{
+    font-weight:bold;
+}
+span{
+    float:right;
+}
+.text ul li i{
+    display: block;
+    float:left;
+    width: 15px;
+    height:4px;
+    background-color: chocolate;
+    /*vertical-align: 19px;*/
+    margin-top:16px;
+    margin-right:14px;
+}

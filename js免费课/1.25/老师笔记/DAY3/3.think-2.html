@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东面试题</title>
+</head>
+<body>
+<script type="text/javascript">
+    //京东面试题:
+    for(var i=0;i<10;i++){
+        alert(i); //0
+        break;
+    }
+    alert(i); // 0
+
+    for(var i=0;i<10;i++){
+        continue;
+        alert(i); //continue和break后面的代码都不执行
+    }
+    alert(i); // 10
+
+   /* break: 指的是跳出整个循环体 (不进行后面的步长累加操作)
+   *  continue: 指的是跳出当前循环体 (只是跳出当前循环 但是继续进行步长的累加)
+   *  共同点: 放在两个关键字后面的js代码都不会输出;
+   * */
+   for (var i = 0; i < 5; i++) {
+       console.log(i); // 0
+       break;
+       console.log(i);
+   }
+
+   for (var i = 0; i < 5; i++) {
+       console.log(i); //0 1 2 3 4
+       continue;
+       console.log(i);
+   }
+</script>
+</body>
+</html>

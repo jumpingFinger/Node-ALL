@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .bcRed{
+            background: red;
+        }
+        .bcYell{
+            background: yellow;
+        }
+        .bcBlue{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+<script type="text/javascript">
+    /*将下面代码中的for循环改写成while循环 ，将if else判断改写成switch判断*/
+    var oLis = document.getElementsByTagName("li");
+    var i=0;
+    while(i<oLis.length){
+        switch (i%3){
+            case 0:
+                oLis[i].className='bcRed';
+                break;
+            case 1:
+                oLis[i].className='bcYell';
+                break;
+            default:
+                oLis[i].className='bcBlue';
+        }
+        i++;
+    }
+
+
+
+
+//    for (var i = 0; i < oLis.length; i++) {
+//        n = i%3;
+//        if (n == 0) {
+//            oLis[i].className = "bcRed";
+//        } else if (n == 1) {
+//            oLis[i].className = "bcYell";
+//        } else {
+//            oLis[i].className = "bcBlue";
+//        }
+//    }
+//
+</script>
+</body>
+</html>

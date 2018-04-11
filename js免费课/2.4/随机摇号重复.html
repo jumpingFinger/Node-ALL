@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        p {
+            /*display: block;*/
+            width: 500px;
+            height: 100px;
+            font-size: 60px;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            padding: 70px 0;
+            color: red;
+        }
+        button {
+            display: block;
+            /*width:50px;*/
+            height: 50px;
+            margin: 50px auto;
+            background: red;
+            cursor:pointer;
+        }
+        /*倒数时间样式*/
+        .bg {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -130px;
+            font-size: 45px;
+            color: red;
+            width: 400px;
+            height: 100px;
+            vertical-align: middle;
+            text-align: center;
+            /*background: red;*/
+            z-index: 1;}
+        /*弹出遮罩层的样式*/
+        .bg1 {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 15% 0;
+            /*line-height: 100px;*/
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2;
+            text-align: center;
+            font-size: 100px;
+            color: red;
+        }
+        /*重置次数按钮样式*/
+        .bg2{
+            display: block;
+            position: absolute;
+            bottom:50px;
+            right:0;
+            font-size: 30px;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            vertical-align: middle;
+            color: #fff;
+            background: yellow;
+        }
+        .bg3{
+            display: block;
+            position: absolute;
+            top:189px;
+            left: 479px;
+            width: 300px;
+            height: 200px;
+            /*background: rgba(0,0,0,0.4);*/
+            z-index: 2;
+            text-align: center;
+            line-height: 100%;
+            font-size: 40px;
+            color: #00A6A4;
+            transition: all 1s ease;
+            cursor:pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <p id="oP">幸运号码</p>
+    <button>点击开始摇号</button>
+</div>
+<script>
+    var oP = document.getElementById('oP'), button = document.getElementsByTagName('button')[0];
+    function random(n, m) {
+        return Math.round(Math.random() * (m - n) + n);
+    }
+    function randomCode() {
+        var result = '';
+        var str = '0123456789xyz';
+        for (var i = 0; i < 6; i++) {
+            var index = random(0, str.length - 1),
+                    code = str[index];
+            if(result.indexOf(code)>-1){
+                i--;
+                continue;
+            }
+            result += code;
+        }
+        return result;
+    }  //获取随机数
+    function returnCode (index){
+        backGro.innerHTML='本次中奖号码为:'+index;
+    }   //  接受最后结果用在遮罩层上
+    function timer() {
+        var timer = window.setInterval(computed, 500);
+        var n = 0;
+        function computed() {
+            n++;
+            if (n > 20) {
+                bg.innerHTML = randomCode();
+                clearTimeout(timer);
+            }
+            var aa = randomCode();
+            oP.innerHTML = aa;
+            returnCode(aa);
+        }
+        computed();
+    }       //0-10秒刷新随机数
+    var n=0;      //  限制点击次数为1次
+    button.onclick = function () {
+        n++;
+        if(n>1){
+            alert('本次抽奖已经结束,请重新激活抽奖');
+            clearNum ();
+           return;
+        }
+        oBg();
+        timer1();
+        timer();
+    };  //点击执行 所有方法;
+    //倒数秒表
+    var bg = document.createElement('div');
+    function oBg() {
+        bg.className = 'bg';
+        document.body.appendChild(bg);
+    }    //添加bg
+    function oBg1() {
+        document.body.removeChild(bg);
+    }   //10秒结束移除bg
+    function timer1() {
+        var timer1 = window.setInterval(computed1, 1000);
+        var n1 = 0;
+        function computed1() {
+            n1++;
+            if (n1 == 1) {
+                bg.innerHTML = "答案即将揭晓:"+(11 - n1 )+ 's';
+            } else if (n1<=10&&n1>1){
+                bg.innerHTML = "答案即将揭晓:0"+(11 - n1 )+ 's';
+            }   else {
+                oBg1();
+                oBg2();
+                clearTimeout(timer1);
+            }
+        }
+        computed1();
+    }
+    //10秒结束遮罩层 恭喜
+    var backGro = document.createElement('div');
+    function oBg2() {
+        document.body.appendChild(backGro);
+        backGro.className = 'bg1';
+    }  //显示遮罩层
+    backGro.onclick=function() {
+        document.body.removeChild(backGro);
+    }  //  点击遮罩层隐藏
+    //清空点击次数限制
+    var clearNumber=document.createElement('div');
+    function clearNum (){
+        document.body.appendChild(clearNumber);
+        clearNumber.className='bg2';
+        clearNumber.innerHTML="再来一次";
+    }
+    clearNumber.onclick=function () {
+        n=0;
+        oBg3();
+        timer2();
+        return n;
+    };
+    function oBg3() {
+        document.body.removeChild(clearNumber);
+        document.body.appendChild(bg2);
+        bg2.className='bg3';
+        bg2.innerHTML='次数已经激活';
+    }
+    var bg2 =document.createElement('div');
+    function timer2() {
+        var timer4=window.setTimeout(computed2,1500);
+        function computed2() {
+            document.body.removeChild(bg2);
+        }
+    }
+</script>
+</body>
+</html>

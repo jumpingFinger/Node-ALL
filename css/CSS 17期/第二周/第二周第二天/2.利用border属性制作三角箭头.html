@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三角箭头形状</title>
+    <style type="text/css">
+       .arrow{
+           width: 200px; /*w200 tab*/
+           height: 200px; /*h200 tab*/
+           border-top:10px solid  #000; /*上边框线 solid实线*/
+           border-left:10px solid #000; /*左边框线*/
+           transform:rotate(225deg);
+           /*transform 转换 改变 rotate 角度 单位deg*/
+           margin:30px auto; /*上下 30px auto左右*/
+       }
+        /* 三角箭头的实现原理:
+        首先实现正方形的任意相邻的两条边;然后利用transform属性旋转一定的角度
+        rotate达到我们想要的任何方向的箭头;
+        三角箭头的大小由正方形的宽度和高度控制;
+        三角箭头的粗细由 border这个属性的border-width来控制;
+        三角箭头的颜色由border这个属性的border-color来控制;
+        */
+    </style>
+</head>
+<body>
+<div class="arrow"></div>
+</body>
+</html>

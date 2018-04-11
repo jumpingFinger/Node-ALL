@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>rem</title>
+    <style>
+        html {
+            font-size: 100px;
+            /*为了减小和设计稿的误差 而且方便我们计算 我们一般给100px*/
+        }
+
+        /*1rem = 100px*/
+        .box {
+            width: 3rem;
+            height: 3rem;
+            background: #000;
+        }
+
+        .box1 {
+            width: 2rem;
+            height: 2rem;
+            background: red;
+        }
+
+        .box2 {
+            width: 3rem;
+            height: 3rem;
+            background: green;
+        }
+
+        /*320  375  414
+          50    ?    ？*/
+        @media screen and (min-width: 320px) {
+            html {
+                font-size: 50px;
+            }
+        }
+
+        @media screen and (min-width: 375px) {
+            html {
+                font-size: 58.59375px;
+            }
+        }
+
+        @media screen and (min-width: 414px) {
+            html {
+                font-size: 64.6875px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 常用的单位
+px 像素 (固定写死)
+%  相对单位(参照)
+em
+deg 角度单位
+s / ms
+rem => 相对单位
+rem(root element)根元素: html
+rem一般用在根元素html上，表示的是根元素的字体大小;默认大小是16px
+-->
+
+<div class="box"></div>
+<div class="box1"></div>
+<div class="box2"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var   ary=[1,12,5,6,50,7,30,22,33,15,25];
+    //冒泡排序  :实现原理: 当前项和后一项进行两两比较,当前项比后一项要打  两者交换位置    把最大的放在最后
+
+   // 要进行比较的轮数  ary.length-1
+    //   每一轮要进行比较的次数ary.length-1-轮数
+
+                function bubble(ary){
+                    for (var i = 0; i < array.length-1; i++) {    //外层的循环是比较的轮数,最后的1个不需要拿出来进行比较,所以少一轮
+                          //里层循环是每次比较的次数(不用跟自己比也不需要跟第一轮过后的最后一个比较)
+                        for (var j = 0; j < array.length-1-i; j++) {
+                            if(ary[j]>ary[j+1]){    //当前项大于后一项
+                                var  temp=ary[j];
+                                ary[j]=ary[j+1];
+                                ary[j+1]=temp;
+                            }
+                        }
+                    }
+                    return  ary;
+                }
+
+
+
+          //      var  a=34, b=10, temp=a;   a=b;   b=temp;
+
+
+</script>
+</body>
+</html>

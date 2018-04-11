@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .main{
+            border: 10px solid red;
+        }
+        .left{
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: #2b142f;
+        }
+        .right{
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: darkblue;
+        }
+        .clearfix::after{     /*clearfix 我是一块转 哪里需要就往哪里搬:这一段代码一般放在,三个条件缺一不可*/
+            content:'';/*伪元素天生自带的属性*/
+            display: block;/*块级元素*/
+            clear:both;/*把左右浮动都清理掉*/
+            /*可以写不可以写 4个条件 一般为了写全都加上*/
+            visibility: hidden;  /*所有的课件元素都隐藏*/
+            overflow: hidden;/*溢出隐藏*/
+            height: 0;
+            font-size: 0;
+        }
+        .clearfix{
+            *zoom:1;  /*为了兼容低版本浏览器*/
+        }
+    </style>
+
+</head>
+<body>
+<div class="main clearfix">
+    <div class="left"></div><!--  子代是父子关系用>来用快捷键   +表示兄弟关系(并列关系)-->
+    <div class="right"></div>
+</div>
+<div class="main1 clearfix">  <!--clearfix 我是一块转 哪里需要就往哪里搬:这一段代码一般放在-->
+    <div class="left"></div><!--  子代是父子关系用>来用快捷键   +表示兄弟关系(并列关系)-->
+    <div class="right"></div>
+</div>
+
+</body>
+</html>

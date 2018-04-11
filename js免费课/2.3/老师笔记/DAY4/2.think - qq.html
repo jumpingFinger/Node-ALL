@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /* 题目A*/
+    /*var a = 'abc' + 123 + 456;
+     console.log(a); // 'abc123456'*/
+
+
+    /*题目B*/
+    var a = '456' - '123'; //456 - 123
+    console.log(a); //333
+
+
+    /*题目C*/
+    var a = 1;   //1
+    var b = '2'; //2
+    var c = a > b ? (a < b ? a : b) : (a == b ? a : b);
+    console.log(c);
+    //=>(a == b ? a : b)
+    //=>b
+    //2
+
+
+    //思考题四:
+    var result = 10 + null + [] + undefined + 'zhufeng' + null + [] + undefined;
+    console.log(result);
+    //=> 10 + null -> 10 + 0 =10
+    //=> 10 + []  -> 10 + '' =  '10'
+    //=>'10' + undefined + 'zhufeng' + null + [] + undefined;
+    //=> '10undefinedzhufengnullundefined'
+
+    //思考题五:
+    var result1 = 10 + false + true + null + undefined + null + 'zhufeng' + null + true + undefined;
+    console.log(result1);
+    //=> 10 + 0 + 1 + 0 + NaN + 0 = NaN
+    //=>NaN + 'zhufeng' + null + true + undefined
+    // => 'NaNzhufengnulltrueundefined'
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    1.HASH值比较容易处理
+    验证是否存在HASH值
+    如果不存在HASH值我们不需要处理
+    如果存在HASH值
+        在原有URL中获取的HASH值
+        把原有RUL的的HASH的部分干掉
+    2.处理问号传参
+        验证是否存在问号
+        若果不存在不处理
+        如果存在?
+            截取问号后面的信息截取出来
+
+
+     */
+    var   str='http://www.baidu.com/stu?name=lucy&age=82&friend=&sex#teacher';
+
+    var indexeHash=str.indexOf('#');
+
+    // ES6 针对字符串新增的  includes 方法:   验证是否存在某个字符串  str.includes()  返回true包含,false不包含
+
+    if(indexeHash !== -1){
+         var  HASH=str.substring(indexeHash+1);
+        str=str.substring(0,indexeHash);  //此时把HASH移除
+    }
+
+
+    var indexASK=str.indexOf('?');
+    if(indexASK !== -1){
+         var  ASK=str.substring(indexASK+1);
+    }
+
+
+
+</script>
+</body>
+</html>

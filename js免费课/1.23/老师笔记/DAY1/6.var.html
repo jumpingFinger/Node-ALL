@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 申明变量 var 变量名本身没有任何意义 它代表的是变量名后面存储的值
+js本身是一种松散型的语言 所以变量名可以存储各种数据类型的值;
+1000000 数字类型  number
+'魏贺娇' 字符串  string
+{name:'田成力','age':60} 对象数据类型
+
+申明用var
+赋值用 =
+
+File =>setting =>editor => live Template => javascript +
+驼峰命名法:第一个单词的首字母小写 其余每一个有意义的单词的首字母大小
+匈牙利命名法: 取数据类型首字母作为前缀 oBox aBox
+
+数据类型:
+[]  array 数组 比如: aItems
+'' 或者 ""  string  字符串  比如: sUserName
+{}  object 对象  比如: oBox
+function  fn  函数(重点)
+boolean b 布尔(true/false)
+-->
+
+
+<!--ul>li*4  tab-->
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    var money = 1000000;
+    money = 10;
+    console.log(money);  //log tab  10
+
+    var name = '魏贺娇';
+    var Name = '雷婷';
+    console.log(name); //'魏贺娇'
+
+    var obj = {name:'田成力','age':60};
+    console.log(obj); //{name: "田成力", age: 60}
+
+    var oBox = document.getElementById('div'); //获取id名 #div
+    var oLis = document.getElementsByTagName('li');//获取class名 li
+
+    //变量:可以改变的量
+    //常量:不可以改变的量
+   // es6/7（ECMAScript6/7）中声明变量的方法用let
+    let age = 18;
+
+    //es6/7 中声明常量的方法 const
+    const name = '王娟娟';
+    //name = '魏贺娇'  写法直接报错 常量是不容许修改的
+</script>
+</body>
+</html>

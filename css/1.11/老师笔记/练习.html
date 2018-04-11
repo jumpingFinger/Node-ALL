@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /*轮播图*/
+        .box{
+            position: relative;
+            width: 100%;
+            height: 540px;
+        }
+        .bg a{
+            display: block;
+            width: 100%;
+            height: 540px;
+            background: url(http://www-file.huawei.com/-/media/CORPORATE/Images/home/big-banner/2017/mate10-bg-big-banner-cn.jpg) no-repeat center;
+        }
+        .dot{
+            position: absolute;
+            width: 100%;
+            /*height: 50px;*/
+            /*line-height: 50px;*/
+            text-align: center;
+            bottom:20px;
+            font-size: 0;
+        }
+        .dot ul li{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius:50%;
+            background: #333;
+            list-style: none;
+            margin:0 5px;
+        }
+        .arrow-left{
+            position: absolute;
+            left: 30px;
+            top:50%;
+            margin-top: -38px;
+            width: 34px;
+            height: 76px;
+            background: url("../images/arrow.png") no-repeat -103px  -511px;
+        }
+        .arrow-right{
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            margin-top: -38px;
+            width: 34px;
+            height: 76px;
+            background: url("../images/arrow.png") no-repeat -103px  -616px;
+        }
+        /*图片区域*/
+        .pic-box{
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .pic{
+            max-width: 1480px;
+            overflow: hidden;
+            margin: 20px auto 0;
+            padding:0 15px;
+        }
+        .pic-inner{
+            position: relative;
+            float: left;
+            width: 50%;
+            overflow: hidden;
+        }
+        .pic-inner a{
+            display: block;
+            width: 100%;
+            height: 100%;
+
+        }
+        .pic-inner a img{
+            display: block;
+            width: 110%;
+            height: 100%;
+        }
+        .pic-inner-bg{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            opacity:0;
+            transition: all 1.5s cubic-bezier(.19,1,.22,1);
+        }
+        .pic-inner-text {
+            position: absolute;
+            bottom:0;
+            left: 0;
+            width: 100%;
+            min-height: 110px;
+            color: #FFFFFF;
+            margin-bottom:20px;
+            padding:0 30% 0 40px;
+        }
+        .pic-inner-text h3{
+            marin:30px 0 10px ;
+            font-size: 30px;
+            font-weight:400;
+            transform: translateY(60%);
+            transition: all 1s cubic-bezier(.19,1,.22,1);
+        }
+        .pic-inner-text p{
+            font-size:16px;
+            line-height:1.5; /*1.5 * 16 = 24px*/
+            transform: translateY(80%);
+            opacity:0;
+            transition: all 1.5s cubic-bezier(.19,1,.22,1);
+        }
+        .pic-inner:hover a img{
+            transform: translateX(-30px);
+        }
+        .pic-inner:hover .pic-inner-bg{
+           opacity:.5;
+        }
+        .pic-inner:hover h3{
+            transform: translateY(0);
+        }
+        .pic-inner:hover p{
+            transform: translateY(0);
+            opacity:1;
+        }
+        .pic-inner2-left ,.pic-inner2-right{
+            width: 100%;
+            height: 50%;
+            box-sizing: border-box;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<!--轮播图-->
+<div class="box">
+    <div class="bg">
+        <a href="#"></a>
+    </div>
+    <div class="dot">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="arrow-left"></div>
+    <div class="arrow-right"></div>
+</div>
+<!--图片区域-->
+<div class="pic-box">
+    <div class="pic">
+        <div class="pic-inner">
+            <a href="">
+                <img src="http://www-file.huawei.com/-/media/CORPORATE/Images/home/small-banner/2017/ww-se5-small-banner-cn.jpg?h=704&la=zh&w=700" alt="">
+            </a>
+            <div class="pic-inner-bg"></div>
+            <div class="pic-inner-text">
+                <h3>迎接未来世界的正确姿势</h3>
+                <p>人工智能应用于医疗、金融、制造、能源、教育等垂直行业，必将与重大的社会经济变革、教育变革、思想变革、文化变革等同步，成为下一次工业革命的核心驱动力。</p>
+            </div>
+        </div>
+        <div class="pic-inner">
+            <div class="pic-inner2-left">
+                <a href="">
+                    <img src="http://www-file.huawei.com/-/media/CORPORATE/Images/home/small-banner/2017/banner-new-year-message-2018.jpg?h=342&la=zh&w=700" alt="">
+                </a>
+                <div class="pic-inner-bg"></div>
+                <div class="pic-inner-text">
+                    <h3>迎接未来世界的正确姿势</h3>
+                    <p>人工智能应用于医疗、金融、制造、能源、教育等垂直行业，必将与重大的社会经济变革、教育变革、思想变革、文化变革等同步，成为下一次工业革命的核心驱动力。</p>
+                </div>
+            </div>
+            <div class="pic-inner2-right">
+                <a href="">
+                    <img src="http://www-file.huawei.com/-/media/CORPORATE/Images/home/small-banner/2017/small-banner-dt.jpg?h=342&la=zh&w=700" alt="">
+                </a>
+                <div class="pic-inner-bg"></div>
+                <div class="pic-inner-text">
+                    <h3>迎接未来世界的正确姿势</h3>
+                    <p>人工智能应用于医疗、金融、制造、能源、教育等垂直行业，必将与重大的社会经济变革、教育变革、思想变革、文化变革等同步，成为下一次工业革命的核心驱动力。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

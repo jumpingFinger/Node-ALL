@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串常用的方法</title>
+</head>
+<body>
+<script type="text/javascript">
+    console.dir(String.prototype);
+    /*字符串: 用单引号或者双引号引起来的都叫做字符串
+    * 由一到多个字符组成 可以用str.length 看字符的长度
+    * */
+    var str = 'good good study,day day up! no zuo, no die';
+    console.log(str.length); //42
+    console.log(str[0]); //g  str[0] -> 代表第一个字符
+    console.log(str[str.length - 1]); //e   str[str.length-1] ->代表最后一个
+    console.log(str[1000]); // undefined  获取超出索引长度的字符 结果为undefiend
+
+    /* 1.charAt(索引) 获取索引对应的字符
+    */
+    console.log(str.charAt(0));  //g
+    console.log(str.charAt(1000));// ""  空字符串
+    /* 区别: 通过str[索引] 和str.charAt(索引) 如果索引超出字符的长度
+    * str[索引] -> undefined
+    * str.charAt(索引)  -> ''
+    * */
+
+    /*2.charCodeAt(索引) 获取的是索引对应的字符的unicode码*/
+    console.log(str.charCodeAt(0)); //g -> 103
+    /*48~57：0-9
+     65~90：A-Z
+     97~122：a-z*/
+
+    /*3.String.fromCharCode(unicode码)  把unicode码转换为相对应的字符 刚好跟charCodeAt 相反*/
+    console.log(String.fromCharCode(103)); //g
+
+    /*4.字符串截取*/
+    /*1) str.substr(n,m) 表示从索引n开始截取m个*/
+    console.log(str.substr(0, 2)); // go
+
+    /*2)str.substring(n,m)表示从索引n截取到索引m (不包括索引m)*/
+    //console.log(str.substring(0, 2)); //go
+    // console.log(str.substring(0, -2)); //substring不支持负数作为索引
+
+    /*3) str.slice(n,m)  和substring用法一样 但是负数作为索引
+    *   负数索引 ： 索引  +  length 得到一个整数索引
+    * */
+    //console.log(str.slice(0, -2)); //good good study,day day up! no zuo, no d
+
+    /* 共同点: 这三个方法都表示字符串截取 如果只传一个参数 都表示截取到字符串的末尾*/
+    console.log(str.substr(1)); //ood good study,day day up! no zuo, no die
+    console.log(str.substring(1)); //ood good study,day day up! no zuo, no die
+    console.log(str.slice(1)); //ood good study,day day up! no zuo, no die
+
+    /* 3) toUpperCase() 把小写转化为大写
+          toLowerCase() 把大写转化为小写
+    * */
+    console.log(str.toUpperCase()); //"GOOD GOOD STUDY,DAY DAY UP! NO ZUO, NO DIE"
+    console.log(str.toLowerCase());//"good good study,day day up! no zuo, no die"
+
+    /* 4).indexOf('字符') 查找字符第一次出现 对应的索引
+          lastIndexOf('字符') 查找字符最后一次出现 对应的索引
+    * */
+    console.log(str.indexOf('g')); //0
+    console.log(str.lastIndexOf('g')); //5
+
+    /*5)split 按照指定的内容进行拆分 跟数组中的join相对应*/
+    console.log(str.split(''));
+    //["g", "o", "o", "d", " ", "g", "o", "o", "d", " ", "s", "t", "u", "d", "y", ",", "d", "a", "y", " ", "d", "a", "y", " ", "u", "p", "!", " ", "n", "o", " ", "z", "u", "o", ",", " ", "n", "o", " ", "d", "i", "e"]
+    console.log(str.split('!')); //["good good study,day day up", " no zuo, no die"]
+
+    /*6)trimLeft() 去掉开头的空格
+    * trimRight() 去掉结束的空格
+     * trim 去掉首尾空格*/
+    var str1 = '  zhu  feng   ';
+    console.log(str1.trimLeft()); //'zhu  feng   '
+    console.log(str1.trimRight());//'  zhu  feng';
+    console.log(str1.trim());//'zhu  feng'
+
+    /*7.replace 替换 表示把字符替换成指定的内容
+    弊端:replace 只能一个一个去替换
+    所以实际项目中不这么做;我们用正则去整体替换
+     g - global 全局 全部
+    * */
+    var str2 = '2017zhufeng2018zhufeng';
+    console.log(str2.replace(/zhufeng/g, '珠峰')); //2017珠峰2018珠峰
+
+   /* console.log(str2.replace('zhufeng', '珠峰')); //2017珠峰2018zhufeng
+    console.log(str2.replace('zhufeng', '珠峰').replace('zhufeng', '珠峰')); //2017珠峰2018珠峰*/
+</script>
+</body>
+</html>

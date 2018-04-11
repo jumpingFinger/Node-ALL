@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0; 
+            box-sizing: border-box;
+        }
+        #bb{
+            width: 100%;
+        }
+        .box{
+            width: 1240px;
+            margin:0 auto;
+            overflow: hidden;
+        }
+        .box1{
+            float: left;
+            width: 60%;
+            transition:all .5s ease;
+            background: red;
+            height: 300px;
+        }
+        .box2{
+            float: right;
+            width: 40%;
+            transition:all .5s ease;
+            background: rebeccapurple;
+            height: 300px;
+        }
+        .box:hover .box1{
+            width: 40%;
+        }  .box:hover .box2{
+
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+<div id="bb">
+    <div class="box">
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </div>
+</div>
+<script>
+//    var ary = [12,23,24,42,1];1
+//    var res = ary.map(function (item,index,) {
+//        return 10;
+//    })
+//    console.log(res);//-->[120,230,240,420,10];
+//    console.log(ary);//-->[12,23,24,42,1]；
+var ary = [12,23,24,42,1];
+var res = ary.forEach(function (item,index,input) {
+    input[index] = item*10;
+})
+console.log(res);
+console.log(ary);
+</script>
+</body>
+</html>

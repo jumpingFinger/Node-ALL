@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0; /*m0 tab*/
+            padding: 0; /*p0 tab*/
+        }
+
+        li {
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+        }
+
+        .bg1 {
+            background: red;
+        }
+
+        .bg2 {
+            background: blue;
+        }
+
+        .bg3 {
+            background: yellow;
+        }
+
+        .bg4 {
+            background: beige;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>01:课程介绍</li>
+    <li>02:前端市场发展趋势</li>
+    <li>03:常用的开发工具</li>
+    <li>04:浏览器内核介绍</li>
+    <li>05:导入JS的三种方式</li>
+    <li>06:JS常用的输出方式</li>
+    <li>07:学会使用控制台</li>
+    <li>08:JS中的变量和常量</li>
+    <li>09:JS中的命名规范</li>
+    <li>10:数据类型分类和检测</li>
+</ul>
+<script type="text/javascript">
+    var oLis = document.getElementsByTagName('li');
+    for (var i = 0; i < oLis.length; i++) {
+        oLis[i].index = i;
+        oLis[i].bg = oLis[i].className = 'bg' + (i % 3 + 1);
+        oLis[i].onmouseover = function () {
+            this.className = 'bg4';
+        };
+        oLis[i].onmouseout = function () {
+            this.className = this.bg;
+        };
+        oLis[i].onclick = function () {
+            alert('这是第' + (this.index + 1) + '个li');
+        }
+    }
+</script>
+</body>
+</html>

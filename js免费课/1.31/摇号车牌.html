@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+<p id="licensePlate"></p>
+<input type="button" value="摇号" id="shakeBtn"/>
+</div>
+</body>
+<script>
+//  var   areal='ACEFGBO';
+//        result='';
+//    cur=Math.round(Math.random()*6);
+//        ary=areal[cur];
+//    result='京'+ary;
+//    console.log(result);
+    
+//    var licensePlate=document.getElementById('licensePlate'),
+//            shakeBtn=document.getElementById('shakeBtn');
+//    var n=0;
+//    shakeBtn.onclick=function () {
+//      n++;
+//      if(n>3){
+//          return;
+//      };
+//      var num1='ACEFGBO';
+//      var num2='QWERTYUIOPASDFGHJKLZXCVBNM0123456789';
+//      var result='';
+//      var cur=Math.round(Math.random()*(num1.length));
+//        var  ary=num1[cur];
+//         result='京'+ary;
+////        console.log(result);
+//      for (var i = 0; i < 5; i++) {
+//         var cur1=Math.round(Math.random()*(num2.length));
+//          var  ary1=num2[cur1];
+//          result+=ary1;
+//      }
+//      licensePlate.innerHTML=result;
+//  }
+//   function random() {
+//
+//   }
+/* 马少帅思想*/
+//var licensePlate = document.getElementById('licensePlate'),
+//        shakeBtn = document.getElementById('shakeBtn');
+//var n = 0;
+//var str1 = 'ACEFGBO';
+//var str2 = 'QWERTYUIOPASDFGHJKLZXCVBNM0123456789';
+//    shakeBtn.onclick = function () {
+//        n++;
+//         if (n > 3) {
+//          return;
+//             }
+//        var result = '';
+//     var index1 = random(str1.length-1,0);
+//        var ranStr1 = str1.charAt(index1);
+//        result = '京' + ranStr1;
+//         for (var i = 0; i < 5; i++) {
+//          var index2 =  random(str2.length - 1,0);
+//         var ranStr2 = str2.charAt(index2);
+//         result += ranStr2;
+//         }
+//     licensePlate.innerHTML = result;
+//};
+
+function random(m,n) {
+    return Math.round(Math.random()*(m - n) + n);
+}
+
+var licensePlate = document.getElementById('licensePlate'),
+        shakeBtn = document.getElementById('shakeBtn');
+var n = 0;
+var str1 = 'ACEFGBO';
+var str2 = 'QWERTYUIOPASDFGHJKLZXCVBNM0123456789';
+shakeBtn.onclick = function () {
+    n++;
+    if (n > 3) {
+        return;
+    }
+    var result = '';
+    var index1 = random(str1.length-1,0);
+    var ranStr1 = str1.charAt(index1);
+    result = '京' + ranStr1;
+    for (var i = 0; i < 5; i++) {
+        var index2 =  random(str2.length - 1,0);
+        var ranStr2 = str2.charAt(index2);
+        result += ranStr2;
+    }
+    licensePlate.innerHTML = result;
+};
+
+function random(m,n) {
+    return Math.round(Math.random()*(m - n) + n);
+}
+
+//    var licensePlate = document.getElementById('licensePlate'),
+//      shakeBtn = document.getElementById('shakeBtn');
+//    var n=0;
+// var str1 = 'ACEFGBO';
+// var str2 = 'QWERTYUIOPASDFGHJKLZXCVBNM0123456789';
+//        shakeBtn.onclick=function () {
+//            n++;
+//            if(n>3){
+//                return;
+//            }
+//                 result='';
+//            var index1=random(str1.length-1,0);
+//            var ranStr1=str1.charAt(index1);
+//             result = '京' + ranStr1;
+//         for (var i = 0; i < 5; i++) {
+//             var index2 =  random(str2.length - 1,0);
+//             var ranStr2 = str2.charAt(index2);
+//                  result += ranStr2;
+//    }
+//    licensePlate.innerHTML = result;
+//    function random(m,n) {
+//        return Math.round(Math.random()*(m-n)+n);
+//    }
+
+</script>
+</body>
+</html>

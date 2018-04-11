@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="http://www.swiper.com.cn/dist/css/swiper.min.css?v=407">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<!--header -->
+<header>
+    <a href="#" class="logo"></a>
+    <a href="javascript:;" class="menu"></a>
+</header>
+
+<!--swiper-->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <a href="#">
+                <img src="images/banner1.jpg" alt="">
+            </a>
+        </div>
+        <div class="swiper-slide">
+            <a href="#">
+                <img src="images/banner2.jpg" alt="">
+            </a>
+        </div>
+        <div class="swiper-slide">
+            <a href="#">
+                <img src="images/banner3.jpg" alt="">
+            </a>
+        </div>
+        <div class="swiper-slide">
+            <a href="#">
+                <img src="images/banner4.jpg" alt="">
+            </a>
+        </div>
+
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+</div>
+
+<!--main-->
+<section class="main">
+    <a class="sec_a" href="#">
+        <img src="images/pic.jpg" alt="">
+        <h2>Vue.js从理论精讲到项目实战课程</h2>
+        <span class="price">￥5000.00元</span>
+    </a>
+    <a class="sec_a" href="#">
+        <img src="images/pic.jpg" alt="">
+        <h2>Vue.js从理论精讲到项目实战课程</h2>
+        <span class="price">￥5000.00元</span>
+    </a>
+    <a class="sec_a" href="#">
+        <img src="images/pic.jpg" alt="">
+        <h2>Vue.js从理论精讲到项目实战课程</h2>
+        <span class="price">￥5000.00元</span>
+    </a>
+    <a class="sec_a" href="#">
+        <img src="images/pic.jpg" alt="">
+        <h2>Vue.js从理论精讲到项目实战课程</h2>
+        <span class="price">￥5000.00元</span>
+    </a>
+    <a class="sec_a" href="#">
+        <img src="images/pic.jpg" alt="">
+        <h2>Vue.js从理论精讲到项目实战课程</h2>
+        <span class="price">￥5000.00元</span>
+    </a>
+    <a class="sec_a" href="#">
+        <img src="images/pic.jpg" alt="">
+        <h2>Vue.js从理论精讲到项目实战课程</h2>
+        <span class="price">￥5000.00元</span>
+    </a>
+    <a class="sec_a" href="#">
+        <img src="images/pic.jpg" alt="">
+        <h2>Vue.js从理论精讲到项目实战课程</h2>
+        <span class="price">￥5000.00元</span>
+    </a>
+    <a class="sec_a" href="#">
+        <img src="images/pic.jpg" alt="">
+        <h2>Vue.js从理论精讲到项目实战课程</h2>
+        <span class="price">￥5000.00元</span>
+    </a>
+</section>
+
+<script type="text/javascript" src="http://www.swiper.com.cn/dist/js/swiper.min.js?v=407"></script>
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        loop: true, /*无缝滚动播放*/
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination'
+        }
+    });
+
+    //rem 动态计算根元素的字体大小
+    function refreshRem(){
+        var dewS=640,
+                winW=document.documentElement.clientWidth,
+                ratio=winW/dewS;
+        document.documentElement.style.fontSize =ratio*100+'px'
+    }
+    refreshRem();
+    window.addEventListener('resize',refreshRem,false);
+</script>
+</body>
+</html>

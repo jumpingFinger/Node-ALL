@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数数据类型</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /*【函数的基础操作】
+     1.含义: 具有一定功能的方法
+     也是属于引用数据类型  都是按照引用地址来操作的
+
+
+     2.函数的创建
+     function 函数名(){
+     JS code
+     }
+     var obj = {name:'珠峰'}
+
+     3.函数的执行
+     函数可以执行n次 每次执行没有关系
+     函数名()
+     函数名
+
+     4.函数的参数  -> 函数提供的一个入口
+     形参: 形式的参数  -> 未知数
+     实参: 实实在在写的值
+
+     5.arguments 是一个实参集合  只有函数特有 天生自带
+
+     6.函数的返回值 return
+     return 后面写的代码都不执行
+     如果函数里面不写return或者return啥也没有  函数执行的返回结果都为undefined
+
+
+     */
+
+
+
+
+
+
+
+
+    /*如果没有传实参 实参为undefined 结果为NaN的情况 所以我们做一个处理*/
+    /*
+     function fn(num1,num2){
+     /!*|| 或者 只要有一个为真 结果就为真
+     && 必须要都为真 结果才为真
+     *!/
+     /!*if(typeof num1 == 'undefined'){num1 = 0}
+     if(typeof num2 == 'undefined'){num2 = 0}*!/
+
+     /!*typeof num1 == 'undefined'? num1 = 0:null;
+     typeof num2 == 'undefined'? num2 = 0:null;*!/
+
+     /!*js 中的容错处理  undefined -> false  num1 = 0 *!/
+     var num1 = num1 || 0;
+     var num2 = num2 || 0;
+
+     console.log(num1 + num2);
+     //console.log(1 + 1);
+     }
+     fn(1,1); //2
+     fn(1);  // num = 1  num2 =  undefined 1+undefined = NaN
+     */
+
+    function sum(num1, num2) {
+        var total = null;
+        total = num1 + num2;
+        return total;
+        console.log(1);
+        //console.log(arguments);
+        //console.log(arguments.callee); // 代表的是函数本身
+        // 类数组集合:索引 从0开始 依次递增  有一个length的长度属性
+        /* 0: 10
+         1: 20
+         3: 30
+         length: 3
+         callee: f sum(){} 函数本身
+         * */
+    }
+    var res = sum(10, 20);
+    console.log(res); //30
+
+    /*需求: 任意数求和
+     * 必须要是数字才可以进行累加
+     * */
+
+    function sum() {
+        var total = null;
+        for (var i = 0; i < arguments.length; i++) {
+            var cur = Number(arguments[i]);
+            //!isNaN(cur) 如果形参是一个数字 才进行累加
+            /*if(!isNaN(cur)){
+             total += cur;
+             }*/
+            !isNaN(cur) ? total += cur : null;
+        }
+        return total;
+    }
+    var res = sum(12, 23, 45, 56, 'zhufeng', '123');
+    console.log(res); //259
+</script>
+</body>
+</html>

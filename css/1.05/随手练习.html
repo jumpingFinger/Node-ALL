@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+       * {
+           margin: 0;
+           padding: 0;
+       }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            /*position:fixed;*/
+        }
+        .header{
+            width: 100%;
+            height: 60px;
+            /*background: #000;*/
+            border: 10px solid  #000000;
+            position:absolute;
+            /*position: relative;*/
+            /*position:fixed;!*滚动条滚动 固定不动的模块都是用的这个属性值*!*/
+            /*top: 20px;*/
+            /*right: 20px;*/
+            /*bottom: 0;*/
+            /*left: 0;*/
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: orangered;
+        }
+        /*让一个固定宽度的块水平居中- 只要确保左右的值伪auto就可以达到水平居中
+               margin:20px auto;*/
+
+
+    </style>
+</head>
+<body>
+<div class="header"></div>
+<div class="box1"></div>
+<div class="box2"></div>
+<div style="height:1000px;"></div><!--加空的DIV是为了让页面出现滚动条,方便查看固定定位的效果
+style="" 行内式,把CSS 写在了标签里面-->
+
+
+</body>
+</html>

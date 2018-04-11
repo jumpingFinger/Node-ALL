@@ -1,0 +1,119 @@
+
+main img{
+    display: block;
+    width: 100%;
+}
+.hd{
+    padding:.24rem 0 .08rem;
+    background:#299df2 url("https://mjs.sinaimg.cn/wap/project/homev8/8.2.75/homev8/img/bg.png") no-repeat bottom;
+    background-size: cover;
+}
+.hd .logo{
+    float: left;
+    width: 1.72rem;
+    height: .76rem;
+    margin: .04rem 0 .32rem .2rem;
+    background: url("../images/logo.png") no-repeat;
+    background-size: cover;
+    text-indent: -9999px; /*让文字隐藏起来*/
+}
+.hd .hd_nav{
+    width: 100%;
+    float: left;
+    font-size: .32rem;
+    line-height: 1.1; /*行内为字体大小的1.1倍*/
+}
+.hd_nav_a{
+    float: left;
+    width: 14.28%; /*100% 平分为7等份所以每等份的大小为100/7 */
+    text-align: center; /*每个a的文字内容在平分的等份里面水平居中*/
+    color:#fff;
+    margin-bottom:.24rem;
+}
+.swiper-container{
+    width: 100%;
+    position: relative;
+}
+.swiper-pagination{
+    position: absolute;
+    width: 100%;
+    bottom:.3rem;
+    text-align: center;
+    font-size:0; /*去掉行内块元素默认的间距*/
+}
+.swiper-pagination li{
+    display: inline-block; /*IE6,7下不兼容*/
+    *display:inline;
+    *zoom:1;
+    width: .2rem;
+    height: .2rem;
+    background: #fff;
+    border-radius: 50%;
+    margin:0 .08rem;
+}
+/*浮动：图片+文字 只要图片浮动 文字自然会排在图片后边*/
+.s_card_a{
+    position: relative;
+    display: block;
+    padding:.22rem 0;
+    margin:0 .2rem;
+    border-bottom: 1px solid #e4e4e4;
+}
+.m_f_div{
+    float: left;
+    width: 2rem;
+    height: 1.34rem;
+    margin:0 .26rem 0 0;
+}
+.m_f_con h2{
+    font-size: .34rem;
+    color: #1a1a1a;
+    font-weight: 400;
+    line-height: .48rem;
+    /*面试题:多行文本出现省略号*/
+    display: -webkit-box; /*弹性盒模型*/
+    overflow: hidden; /*溢出隐藏*/
+    -webkit-line-clamp:2;/*显示的行数*/
+    -webkit-box-orient: vertical;/*文字的排列方式:垂直方向*/
+}
+.comment{
+    position: absolute;
+    bottom: .22rem;
+    right: 0;
+    font-size:.22rem;
+    color:#888;
+    line-height: 1.4;
+}
+.comment .icon{
+    display: inline-block;
+    width: .16rem;
+    height: .16rem;
+    background: url("../images/icon.png") no-repeat;
+    background-size: cover;
+}
+.m_f_img{
+    width: 100%;
+    height: auto;
+    float: none;
+    margin:.18rem 0 .22rem
+}
+/*三小图*/
+.s_card_b .m_f_div{
+    width: 33.33%;
+    height:auto;
+    margin: .18rem 0 .22rem;
+    padding-left:.1rem;
+    box-sizing: border-box; /*这个属性只跟padding和border有关系*/
+}
+.s_card_b .comment{
+    position: static;
+    text-align: right;
+}
+.s_card_c .m_f_div{
+    width: 50%;
+}
+.s_card_d .m_f_div{
+    width: 100%;
+}
+
+

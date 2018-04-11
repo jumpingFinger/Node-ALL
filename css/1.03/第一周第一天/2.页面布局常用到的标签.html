@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        p{
+            /*首段缩进*/
+            text-indent: 2em; /*1em = 1个字的大小*/
+            /*行高:用来控制一行文字和一行文字之间的垂直间距*/
+            line-height: 30px;
+            /*letter-spacing:用来控制字与字之间的间距*/
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+        /* a 默认的下划线*/
+        a{
+            text-decoration: none; /*去掉下划线*/
+        }
+        /*:hover 想要给谁添加鼠标移上的效果 只需要在它后面加:hover即可*/
+        a:hover{
+            color:red;
+            text-decoration: underline;/* 添加下划线*/
+            background-color: aqua; /*背景颜色*/
+        }
+        li{
+            list-style: none; /*去掉li默认的小黑点和数字*/
+        }
+        /*em{
+            font-style: normal;  !* 让斜体变成正常字体*!
+        }
+        i{
+            font-style: normal;
+        }*/
+        /* 分组（并集）选择器*/
+        em,i{
+            font-style: normal;
+        }
+        strong{
+            font-weight: normal; /*让粗体变成细体*/
+        }
+    </style>
+</head>
+<body>
+<!-- 无意义 用来划分块结构-->
+<div></div>
+
+<!--这里放我们自己写的代码-->
+<a href="http://www.zhufengpeixun.cn/" target="_blank">珠峰首页</a>
+<b>珠峰培训</b>
+<strong>新闻</strong>
+
+<em>珠峰培训11</em>
+<i>珠峰培训22</i>
+
+<span>耿大爷</span>
+<h1>新闻</h1>
+<h2>新闻</h2>
+<h3>新闻</h3>
+<h4>新闻</h4>
+<h5>新闻</h5>
+<h6>新闻</h6>
+<!-- 无序列表 -->
+<ul>
+    <li><a href="#">保障失业人员失业期间的基本生活</a></li>
+    <li><a href="#">保障失业人员失业期间的基本生活</a></li>
+</ul>
+<!-- 有序列表 -->
+<ol>
+    <li>保障失业人员保障失业人员失业期间的基本生活保障失业人员失业期间的基本生活保障失业人员失业期间的基本生活保障失业人员失业期间的基本生活保障失业人员失业期间的基本生活保障失业人员失业期间的基本生活保障失业人员失业期间的基本生活失业期间的基本生活</li>
+    <li>保障失业人员失业期间的基本生活</li>
+    <li>保障失业人员失业期间的基本生活</li>
+    <li>保障失业人员失业期间的基本生活</li>
+</ol>
+<!-- 定义列表
+dt title => 定义列表的标题
+dd description  => 定义列表的描述
+-->
+<dl>
+    <dt>创办时间</dt>
+    <dd>2018年</dd>
+</dl>
+
+<p>据了解，为进一步提高失业人员基本生活保障水平，人力资源社会保障部、财政部曾出台《关于调整失业保险金标准的指导意见》，提出在确保基金运行安全的前提下，随着经济社会发展，分步实施，循序渐进，逐步将失业保险金标准提高到最低工资标准的90%。浙江此次制定政策调整计划，正是按照国家有关部委的指导意见，结合本省实际进行的。
+    近年来，浙江一方面通</p>
+</body>
+</html>

@@ -1,0 +1,135 @@
+作业思考题:
+typeof isNaN("1px");  //typeof true ->  "Boolean"
+
+typeof parseInt(null);  //typeof NaN ->  "number"
+
+isNaN(parseInt(typeof NaN));
+ => typeof NaN   -> 'number'
+ => parseInt('number') -> NaN
+ => isNaN(NaN)
+ => true
+
+!parseInt(null) + !!isNaN(0) + Number([])
+=> !parseInt(null) ->!NaN ->true
+=> !!isNaN(0) ->Boolean(isNaN(0)) -> false
+=> Number([]) -> [].toSting() .Number() ->0
+=> true  +  false  +  0 -> 1+0+0 =1
+=> Number(true) -> 1  Number(false) ->0
+
+
+!parseInt(null)
+=> !NaN  -> true
+
+!!isNaN(0)
+=> false
+
+Number([])
+=> 0
+
+true + false +0
+=>  1 + 0 + 0 =1
+
+typeof 1
+=> "number"
+
+console.log(typeof !parseInt(null) + !!isNaN(0) + Number([]));
+=> typeof !parseInt(null) ->"boolean"
+   !!isNaN(0) -> false
+   Number([]) -> 0
+   "boolean"  +  false + 0 (加号遇到字符串属于字符串拼接)
+=> "booleanfalse0"
+
+console.log(!!typeof Number(undefined));
+=>Number(undefined) -> NaN
+  typeof NaN  -> "number"
+  !!"number" -> true
+
+
+console.log(isNaN(null) + typeof typeof Number([]));
+=> isNaN(null) -> Number(null) -> isNaN(0) ->false
+   typeof typeof Number([])  ->  "string"
+   false  +   "string" (加号遇到字符串属于字符串拼接)
+   "falsestring"
+
+
+
+console.log(!typeof parseFloat("0"));
+=> parseFloat("0")   -> 0
+   typeof  0  -> 'number'
+   !'number' -> false
+
+
+//思考题一:obj[age] 和 obj['age'] 的区别?
+var age = 'name';
+var obj = {
+    name:'耿大大',
+    age:18
+};
+console.log(obj.age);
+console.log(obj['age']);
+console.log(obj[age]);
+
+//思考题二:
+var sex = 'man';
+var obj = {
+    man: '耿大大',
+    sex: 'man',
+    0: 1
+};
+console.log(obj.sex);
+console.log(obj[0]);
+obj.sex = 'woman';
+console.log(obj['sex']);
+console.log(obj[sex]);
+
+//思考题三:
+console.log(typeof typeof typeof []);
+
+//思考题四:
+1+null+true+undefined+[]+'珠峰'+null+undefined+[]+10
+
+
+//思考题五:
+var result1 = 10 + false + true + null + undefined + null + 'zhufeng' + null + true + undefined;
+console.log(result1);
+
+//思考题六:
+var result = 10 + null + [] + undefined + 'zhufeng' + null + [] + undefined;
+console.log(result);
+
+//思考题七:
+var str = 'abc123';
+var num = parseInt(str); //NaN
+if(num==NaN){   //NaN == NaN  false
+    alert(NaN);
+}else if(typeof num == 'number'){ // typeof NaN  -> 'number'
+    alert('number');  //'number'
+}else{
+    alert('str');
+}
+
+//思考题八:
+for(var i=1;i<10;i+=2){
+    if(i<5){
+        i++;
+        continue;
+    }else{
+        i+=3;
+        break;
+    }
+    console.log(i);
+}
+console.log(i);
+
+
+for(var i=0;i<10;i++){
+    if(i<=4){
+        i++;
+        continue;
+    }else{
+        i--;
+        break;
+    }
+    console.log(i);
+}
+console.log(i);

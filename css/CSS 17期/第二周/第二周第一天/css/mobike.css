@@ -1,0 +1,72 @@
+body, html, .slide {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-inner {
+    width: 100%;
+    height: 100%;
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-2.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.nav {
+    /*让nav脱离文档流 叠加在图片上*/
+    width: 1040px;
+    padding: 15px 20px; /*左右各20px的内边距*/
+    margin: 0 auto; /*水平居中效果*/
+    background: red;
+    overflow: hidden; /*清除浮动产生的影响*/
+}
+
+.nav .logo {
+    float: left;
+    /*fl tab;logo靠左边显示*/
+    margin-top:21px;
+}
+
+.nav .nav-links {
+    float: right;
+    /*fr tab;文字列表靠右显示*/
+    height: 80px;
+    line-height: 80px;
+}
+.nav .nav-links a{
+    color:#fff;/*白色*/
+    padding:0 20px;
+}
+
+.pic {
+    overflow: hidden;
+}
+.pic .item {
+    float: left;
+    width: 25%;
+    min-height: 260px;
+}
+.pic .item:nth-child(1) {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-1.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.pic .item:nth-child(2) {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-2.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.pic .item:nth-child(3) {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-3.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.pic .item:nth-child(4) {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-4.jpg") no-repeat center;
+    background-size: cover;
+}

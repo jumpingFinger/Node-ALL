@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css的引入方式</title>
+    <!-- 3. css引入方式之外链式：引入一个外部的css样式表-->
+    <link rel="stylesheet" href="css/index.css">
+
+
+    <style type="text/css">
+        /*2.css引入方式之内嵌式*/
+        @import "css/index1.css"; /*4.css引入方式之导入式*/
+        h2{
+           color:red
+        }
+    </style>
+</head>
+<body>
+<!-- 1.css引入方式之行内式(不推荐) 弊端: 杂 乱 没法复用-->
+<div style="background-color: #1d9fd3">珠峰培训</div>
+<h2>欢迎大家来到珠峰培训！</h2>
+<h3>欢迎大家来到珠峰培训！</h3>
+
+<!--
+css引入方式总结：
+1.行内式 <div style="属性名:属性值;属性名:属性值"></div>
+
+2.内嵌式(一般放在头部head标签里面的title的下面)
+<style type="text/css">
+   选择器{
+        属性名:属性值;
+        属性名:属性值;
+        ...
+   }
+</style>
+
+3.外链式(引入一个外部的css文件)
+<link rel="stylesheet" href="引入的外部的css文件的路径">
+
+4.导入式(引入一个外部的css文件)
+<style type="text/css">
+@import 'CSS的路径'
+</style>
+-->
+</body>
+</html>

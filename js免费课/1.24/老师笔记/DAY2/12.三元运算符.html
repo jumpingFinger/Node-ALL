@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*三元运算符的语法:
+    * 条件 ? 条件成立执行的代码 : 条件不成立执行的代码
+    * */
+    var num =10;
+/*    if(num > 5){
+        console.log('ok');
+    }else{
+        console.log('no');
+    }*/
+    num > 5 ?  console.log('ok'): console.log('no');
+
+    // 把if 改为三元运算符的时候，要是没有else,三元运算符需要有东西去占位，不能不写，null /undefined/void(0)
+    if(num > 9){
+        console.log(num);
+    }
+    num > 9 ? console.log(num): null;
+    //num > 9 ? console.log(num): undefined;
+    //num > 9 ? console.log(num): void(0);
+
+    //如果判断条件里有多个操作语句 改为三元运算符:
+    if(num > 9){
+        console.log(num);
+        num++;//=> num = num +1 表示自身累加1
+    }else{
+        console.log(num);
+        num--;
+    }
+    //num > 9 ? (console.log(num),num++) : (console.log(num),num--);
+
+
+</script>
+</body>
+</html>

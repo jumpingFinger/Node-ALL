@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    var i = 1;
+//    function fn() {
+//        return function (n) {
+//            console.log(n + i++);
+//        };}
+//        var f = fn();
+//    console.log(f(10));
+//    console.log(fn()(10));
+//    console.log(f(20));
+//    console.log(fn()(20));
+
+//function fn(i) {
+//    return function (n) {
+//        console.log(n + (++i));
+//    }
+//}
+//var f = fn(10);
+//f(20);//31
+//fn(10)(20);  //31
+//f(30);  //41
+//fn(20)(10);  //30
+//f(40);//  52
+//console.log(this);
+//    function fn() {
+//        console.log(this);
+//    }
+//    fn();
+
+var num = 1,
+        obj = {
+            num: 2,
+            fn: (function (num) {
+                this.num *= 2;
+                num += 2;
+                return function () {
+                    this.num *= 3;
+                    num++;
+                    console.log(num);
+                }
+            })(num)//=>把全局下的num存储的值赋值给形参
+        };
+var fn = obj.fn;
+fn();   //  4
+obj.fn();   //5
+console.log(num, obj.num);  //6   6
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    console.log(String.prototype);
+    var str = 'no zuo,no die!';
+    /* [索引对应的字符]*/
+    //var res = str.charAt(0);  //n
+    //var res = str.charCodeAt(0);  // n - 110
+    //var res = String.fromCharCode(110);  //n
+
+    /*[字符的截取]*/
+    //var res =str.substr(0,3); //no
+    // var res1 =str.substr(1); //o zuo,no die!
+    //var res = str.substring(0,3); // no
+    //var res = str.slice(0,-3); // 0,11    no zuo,no d
+
+    /*[字符的查找]*/
+    //var res = str.indexOf('n'); //0
+    //var res = str.indexOf('s'); // -1
+    //var res = str.lastIndexOf('n'); // 7
+
+    /*[字符的拆分]*/
+    //var res = str.split(','); // ["no zuo", "no die!"]
+    //var res = str.split(''); // ["n", "o", " ", "z", "u", "o", ",", "n", "o", " ", "d", "i", "e", "!"]
+
+    /* [字符大小写的转换]*/
+    //var res = str.toUpperCase();  //NO ZUO,NO DIE!
+    //var res1 = res.toLowerCase(); //no zuo,no die!
+
+
+    /* [字符的替换]*/
+   //var res  = str.replace('no','不').replace('no','不'); // 不 zuo,不 die!
+    var res = str.replace(/no/g,'不'); //global 全局 不 zuo,不 die!
+    console.log(res);
+
+    /*[去掉字符的空格]*/
+    var str1 = '   no zuo,no die!   ';
+    console.log(str1.trimLeft()); //'no zuo,no die!   '
+    console.log(str1.trimRight());//'   no zuo,no die!'
+    console.log(str1.trim());//'no zuo,no die!'
+
+    /*
+    ![]  == false     布尔 =  布尔   ！true  -> false == false  ->true
+    []   == false     引用 = 布尔    0 == 0  true
+    */
+
+
+
+
+</script>
+</body>
+</html>

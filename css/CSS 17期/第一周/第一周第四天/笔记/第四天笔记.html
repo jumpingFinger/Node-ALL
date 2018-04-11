@@ -1,0 +1,195 @@
+<!DOCTYPE html><html><head><title>第四天笔记</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style></style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+<div><div class="toc"><div class="toc">
+<ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li><a href="#第四天笔记">第四天笔记</a><ul>
+<li><a href="#正常文档流">正常文档流</a></li>
+<li><a href="#文档流的分类">文档流的分类</a></li>
+<li><a href="#脱离文档流">脱离文档流</a></li>
+<li><a href="#影响正常文档流的因素">影响正常文档流的因素</a><ul>
+<li><a href="#定位position">定位(position)</a></li>
+</ul>
+</li>
+<li><a href="#如何快速的去区分绝对固定相对">如何快速的去区分绝对/固定/相对</a></li>
+<li><a href="#z-index-改变元素的层级关系">z-index   改变元素的层级关系</a></li>
+<li><a href="#如何让元素在一行显示">如何让元素在一行显示?</a><ul>
+<li><a href="#浮动-float">浮动 float</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<h4 id="第四天笔记">第四天笔记</h4>
+
+
+
+<h5 id="正常文档流">正常文档流</h5>
+
+<blockquote>
+  <p>元素在页面中排列方式，要么是从上往下，要么是从左往右依次排列；</p>
+</blockquote>
+
+
+
+<h5 id="文档流的分类">文档流的分类</h5>
+
+<blockquote>
+  <p>块级元素(独占一行): 从上往下依次排列 <br>
+  行内元素(不独占一行): 从左往右依次排列</p>
+</blockquote>
+
+
+
+<h5 id="脱离文档流">脱离文档流</h5>
+
+<blockquote>
+  <p>不按照正常的文档流(块级元素和行内元素的排列方式)去排列，比如说页面中会出现有的模块重叠或者叠加的情况，那么这样它就不按照正常的文档流去排列了，会脱离文档流;</p>
+</blockquote>
+
+
+
+<h5 id="影响正常文档流的因素">影响正常文档流的因素</h5>
+
+
+
+<h6 id="定位position">定位(position)</h6>
+
+<ul><li><p>定位的取值: </p>
+
+<ul>
+<li>position:absolute  绝对定位</li>
+<li>postion:relative 相对定位</li>
+<li>position:fixed 固定定位</li>
+<li>position: static  遵循正常的文档流</li></ul></li>
+<li><p>定位的特点</p>
+
+<ul>
+<li>固定定位: 脱离正常的文档流（平行漂浮起来），它原本的位置被其他的元素給占领；不会随着滚动的滚动而滚动(固定不动)</li>
+<li>绝对定位: 脱离正常的文档流（平行漂浮起来）,它原本的位置被其他的元素給占领；会随着滚动的滚动而滚动；</li>
+<li>相对定位: 不脱离文档流，还是按照正常的文档流去排列</li></ul></li>
+<li><p>定位的方位（只要定位元素加方位才起作用）</p>
+
+<ul>
+<li>top（上） right（右）  bottom（下）  left (左)</li>
+<li>如果同时有top和bottom方位,不管谁的值大,最后都听top的</li>
+<li>如果同时有left和right方位,不管谁的值大,最后都听left的 <br>
+<code>总结: 以后在实际项目中,方位只需要设top或者bottom中的一个,left或right中的一个就可以</code></li></ul></li>
+</ul>
+
+
+
+<h5 id="如何快速的去区分绝对固定相对">如何快速的去区分绝对/固定/相对</h5>
+
+<ul><li>是否脱离正常文档流 <br>
+<ul>
+<li>相对   不脱离</li>
+<li>绝对/固定  脱离</li></ul></li>
+<li>参照物 <br>
+<ul>
+<li><code>固定定位</code>   整个窗口</li>
+<li><code>相对定位</code>   自己本身(相对它原来的位置) </li>
+<li><code>绝对定位</code>   查找机制: 绝对定位首先会看它直接的父元素有没有加position，如果有这个属性，参照物就是它的父元素；如果没有，则会继续往上查找，直到找到最外层的html为止； <br>
+<code>技巧: 写完绝对定位，就立马給它的父元素加一个相对定位</code> <br>
+<code>相对定位的用途:1.结合方位（想要方位起作用而且还不让元素脱离文档流） 2.作为绝对定位的参照物(不要加方位)</code></li></ul></li>
+</ul>
+
+
+
+<h5 id="z-index-改变元素的层级关系">z-index   改变元素的层级关系</h5>
+
+<blockquote>
+  <p>z-index 是position定位元素所特有的属性；它只有和定位元素一起用的时候才起作用； <br>
+  z-index 越大 层级越大 越在上 反之 层级越小 越在下；</p>
+</blockquote>
+
+
+
+<h5 id="如何让元素在一行显示">如何让元素在一行显示?</h5>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="hljs arduino"><div class="hljs-line"><span class="hljs-number">1.</span>利用<span class="hljs-built_in">display</span>:<span class="hljs-keyword">inline</span>-block
+</div><div class="hljs-line">行内块元素会受换行符和空格的影响产生间距  
+</div><div class="hljs-line">=&gt; 解决办法: 給行内块元素的父元素加 font-<span class="hljs-built_in">size</span>:<span class="hljs-number">0</span> 消除换行符和空格产生的间距的影响;
+</div><div class="hljs-line">
+</div><div class="hljs-line">在IE低版本浏览器(IE8以下 - IE6/<span class="hljs-number">7</span>)不兼容  
+</div><div class="hljs-line">`css hack 浏览器的兼容处理`
+</div><div class="hljs-line">=&gt; 解决办法: 
+</div><div class="hljs-line">*<span class="hljs-built_in">display</span>:<span class="hljs-keyword">inline</span>;
+</div><div class="hljs-line">*zoom:<span class="hljs-number">1</span>;
+</div><div class="hljs-line">
+</div><div class="hljs-line"><span class="hljs-number">2.</span>利用浮动也可以让元素在一行显示
+</div><div class="hljs-line">&lt;style type=<span class="hljs-string">"text/css"</span>&gt;
+</div><div class="hljs-line">*{
+</div><div class="hljs-line">    margin: <span class="hljs-number">0</span>;
+</div><div class="hljs-line">    padding: <span class="hljs-number">0</span>;
+</div><div class="hljs-line">}
+</div><div class="hljs-line">.main{
+</div><div class="hljs-line">    font-<span class="hljs-built_in">size</span>: <span class="hljs-number">0</span>;
+</div><div class="hljs-line">}
+</div><div class="hljs-line">.box1{
+</div><div class="hljs-line">    <span class="hljs-built_in">width</span>: <span class="hljs-number">200</span>px;
+</div><div class="hljs-line">    <span class="hljs-built_in">height</span>: <span class="hljs-number">200</span>px;
+</div><div class="hljs-line">    <span class="hljs-built_in">background</span>: #<span class="hljs-number">000</span>;
+</div><div class="hljs-line">    <span class="hljs-built_in">display</span>: <span class="hljs-keyword">inline</span>-block;
+</div><div class="hljs-line">    *<span class="hljs-built_in">display</span>:<span class="hljs-keyword">inline</span>;
+</div><div class="hljs-line">    *zoom:<span class="hljs-number">1</span>;
+</div><div class="hljs-line">}
+</div><div class="hljs-line">.box2{
+</div><div class="hljs-line">    <span class="hljs-built_in">width</span>: <span class="hljs-number">200</span>px;
+</div><div class="hljs-line">    <span class="hljs-built_in">height</span>: <span class="hljs-number">200</span>px;
+</div><div class="hljs-line">    <span class="hljs-built_in">background</span>: red;
+</div><div class="hljs-line">    <span class="hljs-built_in">display</span>: <span class="hljs-keyword">inline</span>-block;
+</div><div class="hljs-line">    *<span class="hljs-built_in">display</span>:<span class="hljs-keyword">inline</span>;
+</div><div class="hljs-line">    *zoom:<span class="hljs-number">1</span>;
+</div><div class="hljs-line">}
+</div><div class="hljs-line">&lt;/style&gt;
+</div><div class="hljs-line">&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"main"</span>&gt;
+</div><div class="hljs-line">    &lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"box1"</span>&gt;&lt;/div&gt;
+</div><div class="hljs-line">    &lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"box2"</span>&gt;&lt;/div&gt;
+</div><div class="hljs-line">&lt;/div&gt;
+</div></code></pre>
+
+
+
+<h6 id="浮动-float">浮动 float</h6>
+
+<ul><li>浮动的取值 <br>
+<ul>
+<li>float:left 设置浮动对象在左（靠左显示）</li>
+<li>float:right 设置浮动对象在右（靠右显示）</li>
+<li>float:none 不设置浮动对象（默认值）</li></ul></li>
+<li>浮动元素的特点 <br>
+<ul>
+<li>浮动元素会脱离文档流</li>
+<li>任何元素都可以浮动</li>
+<li>浮动元素具有块元素的特点<code>用了浮动属性就不需要再加属性display:block</code></li>
+<li>如果都是左浮动，从左往右依次排列；如果都是右浮动，从右往左依次排列;</li></ul></li>
+<li>浮动产生的负作用 <br>
+<ul>
+<li>浮动会导致父元素的高度为0；</li>
+<li>給浮动元素的父元素设置背景颜色  不会起作用</li>
+<li>给浮动元素的父元素设置边框线 也没有被撑开</li>
+<li>给浮动元素的父元素设置内边距  也没有被撑开</li></ul></li>
+<li>清除浮动的方法(面试题：如何清浮动) <br>
+<ul>
+<li>手动給浮动元素的父元素加一个高度属性；<code>实际项目不推荐使用 - 高度不要随便写死</code>  </li>
+<li>給浮动元素的父元素加一个overflow：hidden  </li></ul></li>
+</ul></div></body></html>

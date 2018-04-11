@@ -1,0 +1,86 @@
+.header{
+    position: relative;
+    width: 1204px;
+    height: 84px;
+    margin:0 auto;
+    /*background: darkgray;*/
+}
+.header h1{
+    float: left;
+    margin-right:65px;
+}
+.header h1 .logo{
+    display: block;
+    width: 176px;
+    height: 52px;
+    margin-top:16px;
+    background: url("../images/logo.png") no-repeat;
+    text-indent: -9999px; /*让logo下面的文字内容隐藏*/
+}
+
+.header ul{
+    float: left;
+}
+.header ul li{
+    float: left;
+    line-height: 84px;
+    font-size:14px;
+    padding:0 50px 0 20px;
+}
+.header ul li a{
+    color:#2a2a2a;
+}
+.header ul li a:hover{
+    color:#2b7dd1;
+}
+
+.header .shopping-cart{
+    float: left;
+}
+.header .shopping-cart .cart-txt{
+    line-height: 84px;
+    font-size:14px;
+    color:#2a2a2a
+}
+.cart-txt .cart-icon{
+    display: inline-block;
+    width: 24px;
+    height: 22px;
+    margin-right:7px;
+    background: url("../images/cart-icon.png") no-repeat;
+    vertical-align: -5px; /*行内块元素的垂直对齐方式*/
+}
+.cart-layer {
+    display: none;
+    position: absolute;
+    top:62px;
+    right:35px;
+    width: 349px;
+    height: 411px;
+    background: #fff;
+    /*box-shaow:盒子的阴影
+    1.x轴的偏移量
+    2.y轴的偏移量
+    3.阴影的模糊值
+    4.阴影模糊的外延值
+    5.阴影的颜色
+    */
+    box-shadow:0 2px 6px rgba(2,2,2,.34);
+}
+.shopping-cart:hover .cart-layer{
+    display: block;/*鼠标移上让下拉层显示*/
+}
+.shopping-cart:hover .cart-icon{
+    background: url("../images/cart-icon-hover.png") no-repeat;
+}
+.shopping-cart:hover .cart-txt{
+    color:#2b7dd1;
+    cursor: pointer; /*让鼠标变成一个小手的形状*/
+}
+.header .user-center{
+    float: right;
+}
+.header .user-center li{
+    padding:0 31px 0 4px;
+}
+

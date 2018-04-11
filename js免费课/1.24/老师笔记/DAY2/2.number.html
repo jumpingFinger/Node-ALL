@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>number数据类型</title>
+</head>
+<body>
+<!--
+整数,浮点数,NaN都是number数据类型
+NaN(not a number) 不是一个数
+isNaN:不是一个数这个命题是否成立,
+      不是一个数字 => true
+      是一个数字  => false
+1.Number(): 把其他数据类型转化为数字类型(强制转换),返回的结果只有两种情况，  要么是数，要么是NaN
+  强制转换: 从左往右依次查找，只要发现有一个非有效的数字,返回的结果就是NaN
+2.parseInt(): 它没有Number那么霸道,它的查找机制是:从左往右依次查找，把查找的有效数字提取出来，非有效数字直接忽略掉;取到的结果是整数,小数点直接省略;
+3.parseFloat(): 它的查找机制和parseInt一样,区别在于parseFloat会保留小数
+
+总结:NaN 和 任何的数字比较都不相等，包括它自己本身  NaN == NaN  false
+
+特殊值情况:
+Number('') => 0
+Number(null) => 0
+Number(undefined) =>NaN
+-->
+<script type="text/javascript">
+    var num = isNaN(10);
+    console.log(num); //false
+
+    var num1 = isNaN('10px');
+    console.log(num1); // true
+
+    console.log(Number('10')); //10
+    console.log(Number('10px')); //NaN
+    console.log(parseInt('10px')); //10
+    console.log(parseInt('10.3')); //10
+    console.log(parseInt('10.6')); //10
+
+    console.log(parseFloat('10.6')); //10.6
+
+    console.log(NaN == 10);//false
+    console.log(NaN == NaN); //false
+
+    // 1 NaN  '1' true  false  null  undefined
+    //{name:'珠峰'}  [1,2,3] - 引用数据类型在调用NaN检测的时候需要先调用tostring(),再调用Number方法转换为数字
+    //isNaN()
+
+    //toFixed()保留几位小数点  括号里面如果不写参数 表示数字四舍五入
+    //参数的取值范围(0~20)
+    console.log(12.5.toFixed(2));
+    Math.PI.toFixed(2);
+    (12).toFixed(2);  //12.00
+    12.6.toFixed(); //13
+    12.4.toFixed(); //12
+    12.4.toFixed(-2); //toFixed() digits argument must be between 0 and 20
+
+</script>
+</body>
+</html>

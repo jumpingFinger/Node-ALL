@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .bg1{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<script>
+    var oLis=document.getElementsByTagName('li'), oDivs=document.getElementsByTagName('div');
+
+    for (var i = 0; i < 3; i++) {
+        oLis.currentIdex=i;
+        console.dir(oLis.currentIdex);
+        oLis[i].className='bg1';
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary=[12,13,5,5,8,5,7,7,7,56,25,18,27,55,30,25];
+    Array.prototype.myUnique=function (){
+        for (var i = 0; i < this.length-1; i++) {
+            for (var j = i+1; j < this.length; j++) {
+               if(this[i]==this[j]){
+                   this.splice(j,1);
+                   j--;
+               }
+            }
+        }
+        return this;
+    };
+    // console.log(ary.myUnique());
+    Array.prototype.myUnique1=function (){
+        var obj={};
+        for (var i = 0; i < this.length; i++) {
+          if(obj[this[i]]){
+              this.splice(i,1);
+              i--;
+          }
+          obj[this[i]]=true;
+        }
+        return this;
+    };
+    // console.log(ary.myUnique1());
+    Array.prototype.myBulleSort=function (){
+        for (var i = 0; i < this.length-1; i++) {
+            for (var j = 0; j < this.length-1-i; j++) {
+                if(this[j]>this[j+1]){
+                    var temp=null;
+                    temp=this[j];
+                    this[j]=this[j+1];
+                    this[j+1]=temp;
+                }
+            }
+        }
+        temp=null;
+        return this;
+    };
+    // console.log(ary.myUnique1().myBulleSort());
+    Array.prototype.myQuickSort=function(){
+        if(this.length<2) return this;
+        var middleItem=this.splice(Math.floor((this.length-1)/2),1)[0],
+            left=[],
+            right=[];
+        this.forEach(function(value){
+            value<=middleItem?left.push(value):right.push(value);
+        });
+        return left.myQuickSort().concat(middleItem,right.myQuickSort())
+    };
+    // console.log(ary.myUnique1().myQuickSort());
+    Array.prototype.myInsertionSort=function (){
+        var ary=this.splice(0,1);
+        this.forEach(function (value){
+            for (var i = ary.length-1; i >=0; i--) {
+              if(value>ary[i]){
+                  ary.splice(i+1,0,value);
+                  break;
+              }else{
+                  if(i===0){
+                      ary.unshift(value);
+                  }
+              }
+            }
+        });
+        return ary;
+    };
+    // console.log(ary.myUnique1().myInsertionSort());
+
+    //判断一个位置是否有值,严格===判断,如果数组中成员不严格等于undefined,默认值不会生效,
+    // let[f=1]=[null];
+    // console.log(f);
+    // function fn() {
+    //     console.log('哈哈')
+    // }
+    // let [x=fn(),y=0]=[1];
+    //只要变量所占在数组中的位置的值不是undefined,fn()根本不会触发执行
+
+    // let obj={
+    //     n1:'p1',
+    //     n2:'p2'
+    // };
+    // let {n1,n2}=obj;
+    // console.log(n1, n2);
+
+    //变量名不等于属性名
+    // let {n1:x1,n2:x2}=obj;
+    // console.log(x1, x2);
+
+    // let {n,m:m1}={n:'11',m:'22'};
+    // console.log(n,m1);
+
+    // let {n1:x1,n2:x2}={n1:'p1',n2:'p2'};
+
+    // let obj={n1:[1,2,3],n2:'1456'};
+    //
+    // let {n2,n1:[x,y]}=obj;
+    // console.log(n2, x, y);
+
+    // let obj={
+    //     s:{n:'1'},
+    //     n:[1,'2',3,'4'],
+    //     m:[[1]]
+    // };
+ //   let {m:[x1],s:{n},n:[,...m2]}=obj;
+ //   console.log(x1, n, m2);    // x1 [1]  , n '1' , m2 ['2',3,'4']
+
+    // let {a:cc=22}={a:12};
+    // console.log(cc);  //12
+    // //默认值生效的条件是对象的属性值必须是严格等于(===)undefined
+    //
+    // let {v=3}={v:undefined};
+    // console.log(v);   //3
+    //
+    // let {d=3}={d:null};
+    // console.log(d);//  null
+
+ //   let {f:{b}}={v:null};
+    // f:undefined
+    //{b}=undefined
+ //   console.log(b);//Cannot destructure property `b` of 'undefined' or 'null'
+    //如果结构模式中嵌套的是对象,而且子对象所在的父属性不存在,就会报错
+
+
+    //赋的值不是一个对象是其他数据类型的值,会默认将其他数据类型转为对象
+  //  let{x,y}=1;  //__proto__:Number
+  //  let{x,y,__proto__}=1;
+  //  console.log(__proto__);
+  //  console.log(x, y);//undefined undefined
+ //   console.log(Object(1));
+
+    // console.log(Object([1, 2, 3]));
+    // let {length,__proto__}=[1,2,3];
+    // console.log(length, __proto__);
+    //
+    // let a;
+//    {a}={a:'a'};
+    //JS引擎会将{a}理解成一个代码块
+    //为了避免错误,不要将{}写在行首
+ //   evel("({s:'s',d:'d'})");
+ //   ({a}={a:'a'});
+ //   console.log(a);//  ({}=[]);
+
+    //null 和 undefined 无法转为对象,所以解构赋值会报错
+
+//    let {p:x}=undefined;  // Cannot destructure property `p` of 'undefined' or 'null'
+ //   let {p:x}=null;
+
+    //函数参数的问题
+    //函数的参数是可以加默认值的,只有不传实参的时候才会走默认值
+    // function fn1(x='x',y){
+    //     console.log(x,y);
+    // }
+    // fn1=(1,2);
+
+    // function fn2({x=0,y=0}={}){
+    //     return {x,y}
+    // }
+    // console.log(fn2({x: 1}));  //{x: 1, y: 0}
+    //
+    // function fn3({x,y}={x:0,y:0}){
+    //     return {x,y}
+    // }
+    // console.log(fn3({x: 1}));//{x: 1, y: undefined}
+    //
+    // //一般我们会把默认值放到后面
+    // function fn4(x,y=1,z){
+    //
+    // }
+    // fn4(1,2,3);//不行
+    //
+    // //参数集合
+    // function fn5 (){
+    //     //arguments.length 实际参数的长度
+    // }
+    // fn5(1,2,3,4,5);
+    //
+    // function fn6(x=0,y,z){
+    //
+    // }
+    // fn6();
+    // console.log(fn6.length); //=>2   这里的length值得是形参的长度
+    //=>如果没有默认值的情况下,形参的长度
+    //=>如果有默认值,正好显示的是默认值的位置
+
+    //参数作用域的问题
+    let n=10,m=20;//函数的赋值从外面找
+    function fn1(x=n,y=m){
+    //    let n=10,m=20;    这样不行x和y都没有定义
+        console.log(x, y);   // 10  20
+    }
+    fn1();
+
+    //形参所在的这个小括号,是一个单独的作用域,遇到变量了先看自己作用域下有没有,没有再往上一级找
+    // let x=10;
+    // function fn2(x=1,y=x){
+    //     console.log(y);// y=1
+    // }
+//    fn2();
+
+    //扩展运算符 ...
+    //可以将数组变成非数组,也可以将数组变成数组
+
+//    let ary1=[1,2,3];
+//    console.log(...ary1);  //1 2 3
+    //将字符串变成数组
+
+    // function fn(){
+    //     return [...arguments].sort();
+    // }
+    // console.log(fn(3, 2, 5, 4, 1));
+
+    //应用
+    //求最大值的方法
+    // Math.max(1,2,3,5456,45,56,45);
+    // "Math.max("+ary1+")";
+    // console.log(eval("Math.max(" + ary1 + ")"));
+    //
+    let fn=function (){};
+    //     console.log(fn.name);
+    //
+    // console.log((function (){}).name);
+
+    //bind
+    let obj={};
+    var fn1=fn.bind(obj);
+    fn1();
+    console.log(fn1.name); //bound fn
+
+    //new Function
+    let f=new Function('n','return n');
+    console.log(f.name);
+    //anonymous
+
+    function fn(x){
+        let a=1;
+        return a
+    }
+
+    let fn=(x)=>{};
+</script>

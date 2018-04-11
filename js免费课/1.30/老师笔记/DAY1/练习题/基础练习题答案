@@ -1,0 +1,125 @@
+数据类型转换汇总:
+1),
+2), DE
+3),
+
+12
+NaN
+
+isNaN([12])  =>[12].toString() -> "12" -> Number("12") -> 12
+               isNaN(12)  -> false
+
+isNaN(![12])  => ![12] -> isNaN(false) -> isNaN(0) -> false
+
+!isNaN([12])  => !false ->true
+
+isNaN(!![12]) => [12] ->true   ->isNaN(true) ->isNaN(1) -> false
+
+
+4)
+var a = 12;  // a = 12
+var b = a;  //b =a = 12
+b = 13;    //b = 13;
+console.log(a)   //12
+
+var c = {name:'zxt'};  //c = aaafff000 name:'zxt' ->  name:'zhufeng'
+var d = c;  //d = c =aaafff000
+d.name = 'zhufeng'
+console.log(c.name); // 'zhufeng'
+
+var e = {name:'zxt'};  //e =aaafff000
+var f = e;             //f= e = aaafff000
+f = {name:'zhufeng'};  //f = aaafff111
+console.log(e);  //  name:'zxt'
+
+5,
+typeof
+instanceof
+constructor
+Object.prototype.toString.call(value)  "[Object 数据类型]"
+
+6,
+typeof [12,23]   -> "object"
+typeof typeof [12,23]  ->  typeof  "object" -> "string"
+typeof null  ->  "object"
+typeof NaN   ->  "number"
+
+7.
+1) js中的数据类型包含哪些（写详细）;
+2) 检测数据类型的方法(至少写出两种);
+3) 其他的数据类型转换为number类型的方式有哪些（三种）;
+Number() parseInt() parseFloat()
+4) 函数中内置接收参数的集合是;  arguments
+5) 把函数体中的某个值返回到外面用;  return
+
+
+8.
+1) 2 == true;      -> 数字 == 布尔  2 == 1    false
+2) null == undefined;   -> true    null == 0 false
+3) [] == false;         -> 引用 == 布尔  0 == 0  true
+3) ![] == false;        -> 布尔 == 布尔  false == false  true
+
+0 "" null undefined NaN 为假 其余全为真
+
+4) if('3px' * 3){alert(true)}else{alert(false)}; -> false
+5) if('3px' + 3){alert(true)}else{alert(false)}; -> true
+
+9.
+while(条件){
+    -> Js code
+}
+
+
+var oLis=document.getElementsByTagName("li");
+for(var i=0;i<oLis.length;i++){
+    if(n==0){
+        oLis[i].className="bcRed";
+    }else if(n==1){
+        oLis[i].className="bcYell";
+    }else{
+        oLis[i].className="bcBlue";
+    }
+}
+
+var i=0;
+while(i<oLis.length){
+    swicth(n){
+         case 0:
+             oLis[i].className="bcRed";
+             break;
+         case 1:
+             oLis[i].className="bcYell";
+             break;
+         default:
+             oLis[i].className="bcBlue";
+     }
+    i++;
+}
+
+10.
+function sum(){
+   var total = null;
+   for(var i=0;i<aruguments.length;i++){
+       var cur = aruguments[i];
+
+       if(isNaN(cur) == false){
+           total+=cur;
+       }
+
+       !isNaN(cur)? total+=cur:null;
+   }
+   return total;
+}
+sum(12,23,'zhufeng','aa')
+
+
+
+
+
+
+
+
+
+
+
+

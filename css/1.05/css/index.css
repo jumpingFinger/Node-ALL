@@ -1,0 +1,93 @@
+*{
+    margin: 0;   /*m0 tab*/
+    padding: 0;/* p0  tab*/
+}
+html,body,.main{/*分组选择器 并集选择器 符号逗号*/
+    width: 100%;
+    height: 100%
+}
+.item {
+    float: left; /*   fl tab*/
+    width: 33.3%;
+    height: 33.3%;
+    background: #000;
+}
+/*:nth-child(n) 第几个元素
+:nth-child(2n)  偶数行
+odd even*/
+.item:nth-child(1){
+    background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515151027202&di=b8409d7d8f2fc7a4f9c1259e9a7affd4&imgtype=0&src=http%3A%2F%2Fimg3.100bt.com%2Fupload%2Fttq%2F20130102%2F1357110064365.gif") no-repeat center;
+    background-size:cover;
+    /*position: relative;*/
+    overflow: hidden;
+    position:relative;
+}
+.item:nth-child(2){
+    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515150983708&di=1954febd33e23763675949319b6721c0&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20150103%2Fmp644089_1420275120659_20.gif")no-repeat center;
+    background-size:cover;
+}
+.item:nth-child(2):hover video{
+    display: none;
+}
+.item:nth-child(3){
+    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515151150385&di=5750875798c36fc05da5662c073b4352&imgtype=0&src=http%3A%2F%2Fm.vstou.com%2Fimg%2F201511%2Fghg1.jpg") no-repeat center;
+    background-size:cover;
+}
+.item:nth-child(4){
+    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515151188814&di=1be72103474ddf4a59a8e853bd0e0307&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201512%2F01%2F20151201023639_wKPZc.gif")no-repeat center;
+    background-size:cover;
+
+}
+
+.item:nth-child(5){
+    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515150844131&di=7c94d20c26c051f7b054a8e43ec8b194&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201508%2F29%2F20150829014726_JRcr5.thumb.700_0.gif")no-repeat center;
+    background-size:cover;
+ }
+.item:nth-child(5) video{
+    display: none;
+}
+.item:nth-child(5):hover video{
+    display: block;
+}
+.item:nth-child(6){
+    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515150300232&di=1fd0e9dedfeb8d742709622f1f89e280&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201509%2F18%2F20150918170138_GVPsf.thumb.700_0.gif")no-repeat center;
+    background-size:cover;
+}
+.item:nth-child(7){
+    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515150765744&di=427334a4f46ee874898e8dec764a91ef&imgtype=0&src=http%3A%2F%2Fp7.qhimg.com%2Ft019c7e15c3eb25da67.gif%3Fsize%3D564x564")no-repeat center;
+    background-size:cover;
+}
+.item:nth-child(8){
+    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515151210706&di=534e3eecc2867d4085c3d31d35c155eb&imgtype=0&src=http%3A%2F%2Fimg.hb.aicdn.com%2F900266383ffb366f89887bce2e3c9bc1fa56f7944a631-tvf5Lk_fw580")no-repeat center;
+    background-size:cover;
+}
+.item:nth-child(9){
+    background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515151872386&di=c8842f1df7db094858224f44cd98e05e&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%253D580%2Fsign%3D27e7fe7478310a55c424defc87444387%2F4c086e061d950a7bd2d92a430bd162d9f3d3c94d.jpg")no-repeat center;
+    background-size:cover;
+}
+.item video{
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+.bg{
+    position:absolute;/*绝对定位*/
+    top:100%; /*距离item上面的距离*/
+    left:0;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    text-align: center;
+    font-size: 50px;
+    color: #ffffff;
+    background: #000;
+    /*transition动画(4个属性)
+    1过渡动画的名称
+    2.过渡动画的时间 1 S
+    3.过渡动画的运动曲线 ease 匀速过渡
+    4.延迟时间*/
+    transition: all 2s ease;
+}
+.item:nth-child(1):hover .bg{
+    top:0%;
+}

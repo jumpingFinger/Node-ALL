@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<script>
+    var  oLis=document.getElementsByTagName('li');
+//    console.log(oLis);
+
+//    oLis[0].index=0;
+    //    console.log(oLis[0].index);
+    for (var i = 0; i < oLis.length; i++) {
+        oLis[i].myIndex=i;
+        oLis[i].onclick=function(){
+          alert(this.myIndex);
+        }
+    }
+    console.log(oLis[0]);
+
+</script>
+</body>
+</html>

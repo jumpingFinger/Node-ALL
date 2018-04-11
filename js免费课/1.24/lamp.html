@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开关灯切换效果</title>
+    <style type="text/css">
+        #btn{
+            display: block;
+            width: 300px;
+            height: 50px;
+            border: 1px solid #000;
+            margin:0 auto;
+        }
+
+    </style>
+</head>
+<body>
+<button id="btn">开关灯的按钮</button>
+<script>
+    /*要操作谁就要获取谁*/
+    var oBtn=document.getElementById('btn');    // 获取的是按钮
+    var oBody=document.body;   /*获取body元素*/
+    // 给我们想要操作的元素添加一个点击事件
+    // 黑=>白=>黑
+    oBtn.onclick = function () {
+        if(oBody.style.backgroundColor == "black") {
+            oBody.style.backgroundColor ="white";
+        }else if (oBody.style.backgroundColor =="white") {
+            oBody.style.backgroundColor = "red";
+        }else if (oBody.style.backgroundColor =="red") {
+            oBody.style.backgroundColor = "black";
+        }else{
+            oBody.style.backgroundColor = "black";
+        }
+    }
+
+
+</script>
+</body>
+</html>

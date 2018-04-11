@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    var ary=[10,20,1,5,8,7,1,20,1,20,6,50,6,50]
+//    for (var i = 0; i < ary.length-1; i++) {
+//       var ass= ary[i]
+//        for (var j = i+1; j < ary.length; j++) {
+//            if(ass===ary[j]){
+//                ary.splice(j,1);
+//                i--;
+//            }
+//        }
+//    }
+//    console.log(ary);
+
+//var ary=[10,20,1,5,8,7,1,20,1,20,6,50,6,50]
+//for (var i = 0; i < ary.length-1; i++) {
+//    var ass=ary[i];
+//    var  as=ary.slice(i+1);
+//    if (as.indexOf(ass)>-1){
+//        ary.splice(i,1);
+//        i--;
+//    }
+//}
+//alert(ary);
+
+//var ary=[10,20,1,5,8,7,1,20,1,20,6,50,6,50]
+//var obj = {};
+//for (var i = 0; i < ary.length; i++) {
+//    var cur=ary[i];
+//    if (typeof obj[cur] !=='undefined') {
+//        ary.splice(i,1);
+//        i--;
+//        continue;
+//    }
+//    obj[cur]=cur;
+//}
+//alert(ary);
+
+//var ary=[10,20,1,5,8,7,1,20,1,20,6,50,6,50]
+//var obj = {};
+//for (var i = 0; i < ary.length; i++) {
+//    var cur=ary[i];
+//    if (typeof obj[cur] !=='undefined') {
+//            ary[i]=ary[ary.length-1]
+//            ary.length--;
+//        i--;
+//        continue;
+//    }
+//    obj[cur]=cur;
+//}
+//ary.sort(function (a,b) {
+//    return a-b;
+//});
+//alert(ary);
+
+//       function abc(Array) {
+//           var obj = {};
+//           for (var i = 0; i < array.length; i++) {
+//               var cur=array[i];
+//               if (typeof obj[cur] !=='undefined') {
+//                   array[i]=array[array.length-1]
+//                   array.length--;
+//                   i--;
+//                   continue;
+//               }
+//               obj[cur]=cur;
+//           }
+//                 return array;
+//       }
+//        array=[10,20,1,5,8,7,1,20,1,20,6,50,6,50];
+//                alert(array.abc());
+
+    Array.prototype.aa=function () {
+        var obj = {};
+        for (var i = 0; i < this.length; i++) {
+            var cur=this[i];
+            if (typeof obj[cur] !=='undefined') {
+                this[i]=this[this.length-1]
+                this.length--;
+                i--;
+                continue;
+            }
+            obj[cur]=cur;
+        }
+        return this;
+    }
+        var ary=[10,20,1,5,8,7,1,20,1,20,6,50,6,50];
+   alert(ary.aa());
+
+</script>
+</body>
+</html>

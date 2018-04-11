@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任何数求和</title>
+</head>
+<body>
+<script type="text/javascript">
+    function sum() {
+        var total = null;
+        for (var i = 0; i < arguments.length; i++) {
+            var cur = Number(arguments[i]);
+            /*isNaN(cur) == false ? total += cur : null;*/
+            !isNaN(cur) ? total += cur : null;
+        }
+        return total;
+    }
+    console.log(sum(10, 20, '30', 'zhufeng', 40));
+    console.log(sum(10, 20, '30', 'zhufeng', 40, 50, 60));
+</script>
+</body>
+</html>

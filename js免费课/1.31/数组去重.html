@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    Array.prototype.myUnqiue=function () {
+        var obj={};
+        for (var i = 0; i < this.length; i++) {
+           var cur=this[i];
+            if(typeof obj[cur]!=='undefined'){
+                this[i]=this[this.length-1];
+                this.length--;
+                i--;
+            }
+            obj[cur]=cur;
+        }
+        return this;
+    }
+    var  ary=[10,30,1,50,2,10,30,1,60,70,5,60]
+        newAry=ary.myUnqiue();
+        newAry.sort(function (a,b) {
+            return a-b;
+        });
+    console.log(newAry);
+</script>
+</body>
+</html>

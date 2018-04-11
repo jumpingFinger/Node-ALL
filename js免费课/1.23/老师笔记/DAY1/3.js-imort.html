@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js导入方式之内嵌式</title>
+    <!-- 为什么css代码一般要放在头部?
+    先让css样式加载出来,减少结构单独呈现的时间(防止有那么一小段时间只有结构没有css样式的情况)，所以我们的css代码一般都放在头部head标签里面 而且在title标签的下面 link style
+    -->
+</head>
+<body>
+<div>点我啊！</div>
+<!--
+为什么我们js的代码一般放在body的下面?
+我们的代码是自上而下依次加载，js大部分是在操作dom元素，所以我们要等dom元素加载完成之后，再进行相关的操作，所以我们js的代码一般都放在结构的下面
+
+如果非得要放在上面，则怎么办呢？(下面的写法都是让dom结构加载 然后再加载js的代码)
+window.onload = function(){} - js的写法
+$(document).ready(function(){}) - jquery的写法
+-->
+<script type="text/javascript">
+    // 这里放我们写的js的代码
+    alert('我们班的田成力戴了一个眼睛！')
+</script>
+</body>
+</html>

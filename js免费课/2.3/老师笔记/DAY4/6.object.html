@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*obj.属性名   obj['属性名'] -> obj里面去查找一个叫做属性名的
+    * */
+    var age = 'name';
+    var obj = {
+        name:'耿大大',
+        age:18
+    };
+    console.log(obj.age); // 18
+    console.log(obj['age']);  //18
+    console.log(obj[age]); //obj['name'] -> '耿大大'
+
+
+    var sex = 'man';
+    var obj = {
+        man: '耿大大',
+        sex: 'man',
+        0: 1
+    };
+    obj.sex = 'woman'; // 修改 sex： man  -  woman
+    console.log(obj['sex']); // woman
+    console.log(obj[sex]); //obj['man']  -  '耿大大'
+</script>
+</body>
+</html>

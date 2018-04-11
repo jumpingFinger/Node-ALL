@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>媒体查询</title>
+    <style type="text/css">
+        .box{
+            width: 300px;
+            height: 300px;
+            background: #000;
+        }
+        @media screen and (min-width:320px) {
+            .box{
+                background: red;
+            }
+        }
+        @media screen and (min-width:640px) {
+            .box{
+                background: green;
+            }
+        }
+        @media screen and (min-width:768px) {
+            .box{
+                background: yellow;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 每个部分之间要用空格隔开 否则会导致媒体查询失效
+1.@media 媒体 媒介
+2.设备类型 ->
+  screen  移动设备
+  TV  电视设备
+  print 打印机
+  all 代表所有类型
+3.连接符
+and  和
+only 仅仅
+not  排除某种机型
+5.(判断条件)
+min-width  最小宽度
+min-height 最小高度
+max-width  最大宽度
+max-height 最大高度
+ 320 ~ 640
+ @media screen and (min-width:320px) and (max-width:640px){}
+...
+6.大括号包起来的css代码块
+{
+ css code
+}
+-->
+<div class="box"></div>
+</body>
+</html>

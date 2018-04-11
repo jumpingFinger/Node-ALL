@@ -1,0 +1,134 @@
+.carousel-caption{
+    position: relative;
+    width: 100%;
+    height: 540px;
+}
+.banner-img a{
+    display: block;
+    width: 100%;
+    height: 540px;
+    background: url(http://www-file.huawei.com/-/media/CORPORATE/Images/home/big-banner/2017/mate10-bg-big-banner-cn.jpg) no-repeat center;
+}
+.banner-dot{
+    position: absolute;/*定位元素会导致宽度失效 我们需要手动添加一个宽度*/
+    width: 100%;
+    bottom:20px;
+    text-align: center; /*为了让三个小点居中显示*/
+    font-size: 0;/*解决行内块元素受空格或者换行符导致的间距问题*/
+}
+.banner-dot li{
+    display: inline-block;/*让三个小点在一行显示*/
+    width: 12px;
+    height: 12px;
+    background: #333;
+    border-radius: 50%; /*让正方形变成圆形*/
+    list-style: none; /*去掉li默认小黑点*/
+    margin:0 5px;
+}
+.banner-dot .cur{
+    background: #fff;
+}
+.arrow-left{
+    position: absolute;
+    left:30px;
+    top:50%;
+    margin-top:-38px;
+    /*top:50%; margin-top:- 宽度的一半 就可以让元素始终垂直居中*/
+    width: 34px;
+    height: 76px;
+    background: url("../images/hw1_sprite.png") no-repeat -103px  -511px;
+}
+.arrow-right{
+    position: absolute;
+    right:30px;
+    top:50%;
+    margin-top:-38px;
+    width: 34px;
+    height: 76px;
+    background: url("../images/hw1_sprite.png") no-repeat -103px  -616px;
+}
+
+.lg-container{
+    max-width: 1440px;
+    padding:0 15px;
+    margin:20px auto 0;
+    /*块元素水平居中的因素:width 宽度   margin 左右为auto*/
+}
+.lg-container .col{
+    position: relative;
+    float: left;
+    width: 50%;
+    padding:0 10px;
+}
+.lg-container .col a{
+    position: relative;
+    display: block;
+    overflow: hidden;/*溢出的部分隐藏起来*/
+}
+.lg-container .col img{
+    display: block;
+    width: 110%; /*为了让图片不出现留白*/
+    height: 100%;
+    transition: all 1s cubic-bezier(.19,1,.22,1);
+}
+.lg-container .col .mask{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity:0;
+    transition: all 1s cubic-bezier(.19,1,.22,1);
+}
+.lg-container .col .txt{
+    position: absolute;
+    left:0;
+    bottom:0;
+    width: 100%;
+    min-height: 110px;
+    padding:0 30% 0 40px;
+    margin-bottom:20px;
+    color:#fff;
+}
+.col .txt h3{
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.2; /*1.2 *30 = 36px*/
+    margin:30px 0 10px;
+    transform: translateY(60%);
+    transition: all 1s cubic-bezier(.19,1,.22,1);
+    /*以后只要是文字内容：字体大小 字体颜色 字体粗细 字体的间距（line-height/margin/padding）*/
+}
+.col .txt p{
+    font-size:16px;
+    line-height:1.5; /*1.5 * 16 = 24px*/
+    transform: translateY(80%);
+    opacity:0;
+    transition: all 1s cubic-bezier(.19,1,.22,1);
+}
+/*第二个col 下边的第一个a 加一个下间距*/
+.lg-container .col:nth-child(2) a:nth-child(1){
+    margin-bottom:3%
+}
+
+/*以下代码都表示的是鼠标以上的动画效果*/
+.col a:hover .mask{
+    opacity:.5;
+}
+.col a:hover img{
+    transform: translateX(-30px);
+}
+.col a:hover p{
+    transform: translateY(0);
+    opacity:1;
+}
+.col a:hover h3{
+    transform: translateY(0);
+}
+.lg-container .col01{
+    width: 100%;
+}
+.lg-container-col .col{
+    width: 33.33%;
+}

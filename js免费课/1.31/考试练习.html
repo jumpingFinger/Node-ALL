@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//       Array.prototype.myUnqiue=function myUnqiue(){
+//            var obj={};
+//           for (var i = 0; i < this.length; i++) {
+//                var cur=this[i];
+//               if(typeof obj[cur]!=='undefined'){
+//                   this[i]=this[this.length-1];
+//                   this.length--;
+//                   i--;
+//                   continue;
+//               }
+//               obj[cur]=cur;
+//           }
+//           return this;
+//       }
+//       var ary=[10,20,1,3,7,50,20,70,50,20,10,3]
+//        var newAry=ary.myUnqiue();
+//       newAry.sort(function (a,b) {return a-b;});
+//        alert(newAry);
+//        function sum() {
+//            total=null;
+//            for (var i = 0; i < arguments.length; i++) {
+//                cur=Number(arguments[i]);
+//                !isNaN(cur)?total+=cur:null;
+//            }
+//            return total;
+//        }
+//        var total=sum(10,20,30,40)
+//        alert(total);
+//var ary=[10,20,1,3,7,50,20,70,50,20,10,3];
+//for (var i = 0; i <ary.length-1; i++) {
+//        var  cur=ary[i];
+//    for (var j = i+1; j < ary.length; j++) {
+//           if (cur==ary[j]){
+//               ary.splice(j,1);
+//               j--;
+//           }
+//    }
+//}
+//alert(ary);
+//
+//       Array.prototype.myUnqiue=function myUnqiue() {
+//           for (var i = 0; i <this.length-1; i++) {
+//               var  cur=this[i];
+//               for (var j = i+1; j < this.length; j++) {
+//                   if (cur==this[j]){
+//                       this.splice(j,1);
+//                       j--;
+//                   }
+//               }
+//           }
+//           this.sort(function (a,b) {return b-a;});
+//           return this;
+//       };
+// var ary=[10,20,1,3,7,50,20,70,50,20,10,3];
+//    alert(ary.myUnqiue());
+
+//var ary=[10,20,1,3,7,50,20,70,50,20,10,3];
+//for (var i = 0; i < ary.length; i++) {
+//    var cur=ary[i];
+//    var newAry=ary.slice(i+1);
+//    if (newAry.indexOf(cur)>-1){
+//        ary.splice(i,1);
+//        i--;
+//    }
+//}
+
+    Array.prototype.myUnqiue=function myUnqiue(){
+        for (var i = 0; i < this.length; i++) {
+            var cur=this[i];
+            var newAry=this.slice(i+1);
+            if (newAry.indexOf(cur)>-1){
+                this.splice(i,1);
+                i--;
+            }
+        }
+        this.sort(function (a,b) {
+            return a-b;
+        });
+        return this;
+    };
+var ary=[10,20,1,3,7,50,20,70,50,20,10,3];
+alert(ary.myUnqiue());
+
+    Array.prototype.myUnqiue=function myUnqiue(){
+        for (var i=0;i<this.length;i++){
+            var  cur=this[i];
+            var newAry=this.slice(i+1);
+            if(newAry.indexOf(cur)>-1){
+                this.splice(i,1);
+                i--;
+            }
+        }
+        this.sort(function (a,b) {
+            return a-b;});
+        return this;
+        };
+    var  ary=[10,20,1,3,7,20,70,30,10,52];
+    alert(ary.myUnqiue());
+</script>
+</body>
+</html>

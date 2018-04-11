@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    height: 0;
+}
+body{
+    background-color: #2b142f;
+}
+.box{
+    width: 90px;
+    height: 320px;
+    /*background-color: green;*/
+    margin:auto;/*左右自动居中*/
+    transform-origin:top;/*设置旋转基点*/
+    animation:go 2s infinite;/*调用一个动画*/
+    /*动画的名字 动画的时间 动画的次数(无数次)*/
+}
+.box:hover{
+    animation-play-state:paused;/*动画运行状态:暂停*/
+}
+@keyframes go{ /*定义一个动画， go是随便用的*/
+    0%{transform:rotate(-20deg)}/*变换属性:旋转 负值逆时针*/
+    50%{transform:rotate(20deg)}
+    100%{transform:rotate(-20deg)}
+
+    
+}
+.box .string{
+    width: 5px;
+    height: 220px;
+    background-color: #000;
+    margin:auto;
+}
+.box .tie{
+    width: 0px;
+    height: 0px;
+    /*border-top:50px solid red;*/
+    margin: -5px auto;
+    border-top: none;
+    border-bottom:24px solid #000000;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+}
+.box .bulb{
+    width: 50px;
+    height: 50px;
+    margin: 3px auto;
+    /*background-color: red;*/
+    border-radius: 50%;/*圆角属性*/
+    /*阴影属性 水平位移 数值位移 模糊半径 阴影大小 颜色 阴影扩散的方向*/
+    box-shadow: 0px 0px 10px 0px #fff inset;
+}
+.box .bulb .wick{
+    width: 20px;
+    height: 20px;
+    margin: 3px auto;
+    border-radius:50%;
+    box-shadow: 0px 0px 10px 0px #fff inset;
+}

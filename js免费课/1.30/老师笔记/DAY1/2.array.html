@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //创建对象:
+/*    var obj = {name:'珠峰'};  // 字面量创建方式
+    var obj = new Object(); //实例创建方式*/
+
+    //创建数组:
+    //也是属性名(索引值):属性值; length的长度属性
+    /*var ary = [12,23,34,'zhufeng'];
+     console.log(ary);*/
+    // var ary = new Array();
+
+    // 【类数组】
+    // -> 类似数组 但是又不是数组 所以也没能调用数组上的方法
+    //getElementsByTagName
+    //arguments
+    // 后面会学习把类数组转换为数组(正式课会封装一个方法)
+    console.dir(document.getElementsByTagName('*')); //HTMLCollection(6)
+
+    function fn(){
+        console.log(arguments);
+    }
+    fn(12,23,34)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //if else的语法:
+    /*
+     if(条件1){
+         条件1成立执行的代码
+     }else if(条件2){
+        条件1不成立 条件2成立执行的代码
+     }else{
+         以上条件都不成立执行的代码
+     }
+     */
+    var num = 10;
+    if (num > 5) {
+        console.log('ok'); //ok
+    }
+
+    if(1){
+        console.log(1 + 1); //2
+    }
+   /* 3 - '3px' -> NaN -> 5种情况为假情况中的一种 -> false
+   * 3 + '3px' '33px' -> true
+   * */
+
+    if (3 - '3px') {
+        console.log('ok');
+    } else if (3 + '3px') {
+        console.log('yes'); //yes
+    }
+
+</script>
+</body>
+</html>

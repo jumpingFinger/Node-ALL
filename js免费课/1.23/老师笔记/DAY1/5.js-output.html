@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box{
+            /*-webkit-border-radius:;
+            -moz-border-radius:;
+            -o-border-radius:
+            border-radius:;*/
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+    //=>放我们写的js代码
+
+    /*
+    *调出控制面板:F12 / FN+F12 /鼠标右键 - 检查
+    * */
+
+    //=>1.alert表示在浏览器窗口弹窗输出，而且有一个确定的按钮，我们确定按钮，弹窗就会消失
+    //alert('每周五我们的耿大大都要去爬山！');
+
+    //=>2.confirm表示在浏览器窗口弹出输出，有一个确定和取消的按钮;
+    //=> 确定按钮 -> true
+    //=> 取消按钮 -> false
+    //=> 我们可以根据返回的结果true或者false 去判断用户的操作行为是确定还是取消按钮;
+    //confirm('你确定要删除吗？')
+
+    //=>3.prompt表示在浏览器窗口弹窗输出，确定和取消的按钮
+    //=> 确定按钮 -> 不输入内容: ''   输入内容: 输入的内容是啥 输出的就是啥
+    //=> 取消按钮 -> null
+    //prompt('我要申请退货！')
+
+    //=> 4.console.log 在控制台输出我们写的内容(以后我们调试页面中的bug常用这种方式)
+    // 快捷键: log('内容') tab   表示在控制面板console中输出内容
+    console.log('李月环家住通州，来回3小时！');
+    console.log("李月环,于校斌");
+
+    //=>5.console.dir 在控制台输出元素的详细信息
+    var oBody = document.documentElement; // 代表的是html根元素
+    console.dir('oBody');
+
+    //=>6.console.table  表示把json格式的字符串以表格的形式在控制台输出
+    //[]数组
+    //{属性名:属性值,属性名:属性值} 对象
+    var obj = [{'name':'珠峰耿大爷','age':18},{'name':'珠峰周妈妈','age':16}];
+    console.table(obj);
+
+    //=> 7.在浏览器中输入
+    /*get Element By Id
+    获取  元素   通过 id*/
+
+    //innerHTML 表示的是在元素中插入内容 而且标签名会被当成标签去解析
+    var oBox = document.getElementById('box'); /*表示的是通过id名获取元素*/
+     //oBox.innerHTML = '<a href="https://www.baidu.com">百度一下</a>';
+
+    //=>innerTxt 表示在元素中插入元素内容 但是标签名不会被解析 而是被当成普通的字符(一串英文字符)
+    //oBox.innerText = '<a href="https://www.baidu.com">百度一下</a>'
+
+    //=> 表示直接在浏览器中输出内容(添加到body标签的最后)
+    document.write('咋们是JS正式课第17期！')
+</script>
+
+</body>
+</html>

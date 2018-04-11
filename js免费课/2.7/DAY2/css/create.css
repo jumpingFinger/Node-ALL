@@ -1,0 +1,87 @@
+#newsBox {
+    margin: 20px auto;
+    border: 1px solid lightblue;
+    padding: 20px;
+    width: 500px;
+
+    /*--CSS3--*/
+    border-radius: 10px;
+}
+
+#newsBox ul {
+
+}
+
+#newsBox ul li {
+    position: relative;
+    border-bottom: 1px dashed #CCC;
+    padding: 5px 10px;
+}
+
+#newsBox ul li span {
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+
+    /*--文字截取：超出一行文字省略--*/
+    text-overflow: ellipsis; /*裁切*/
+    white-space: nowrap; /*不换行*/
+    overflow: hidden; /*溢出隐藏*/
+}
+
+#newsBox ul li .minus {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid lightcoral;
+    width: 30px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    font-size: 16px;
+    color: lightcoral;
+}
+
+#newsBox ul li:hover .minus {
+    display: block;
+}
+
+#newsBox ul li .minus:hover {
+    background: linen;
+}
+
+#newsBox .plus {
+    display: block;
+    margin: 20px auto 0 auto;
+    border: 1px solid lightskyblue;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 20px;
+    color: lightskyblue;
+
+    /*--CSS3的过渡动画：当元素的某样式发生改变，会执行一个动画效果完成
+      transition-property：过渡样式属性（哪些样式发生改变会执行过渡动画，默认ALL，所有当前元素样式发生改变都会执行这个过渡效果）
+      transition-duration：动画执行的时间（单位一般使用S）
+      transition-timing-function：动画运动的方式（linear匀速 ease/ease-in/ease-out/ease-in-out非匀速）
+      transition-delay：动画延迟时间，默认0S，不延迟，立即执行动画
+    --*/
+    /*transition: all 10s linear 0s;*/
+}
+
+#newsBox .plus:hover {
+    /*--CSS3中的背景颜色线性渐变--*/
+    background: -webkit-linear-gradient(top left, lightcyan, lightgoldenrodyellow, linen);
+}
+
+#newsBox .plus:active {
+    background: -webkit-linear-gradient(top left, lightpink, lightsalmon, lightskyblue);
+}
+
+
+
+
+

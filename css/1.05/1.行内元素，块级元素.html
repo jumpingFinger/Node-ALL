@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        h1{
+
+            background: darkmagenta; /*bg tab*/
+        }
+        a{
+
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<!-- 面试题:元素的分类
+=> 是否独占一行
+=> 天生自带属性display的值
+=> 是否可以设置宽高属性
+=> 如果不设置宽高/设置宽高
+=> 是否可以嵌套其他元素
+
+1.块级元素  div h1-h6 ul li ol li dl dt dd p....
+1)独占一行
+2)天生自带属性display:block
+3)可以设置宽高属性
+4)块级元素如果不设置宽高属性的情况下，它的宽度是它父元素的宽度(继承父元素的宽度),高度是它本身内容的高度
+5)块级元素可以嵌行内元素
+6) ul和ol下面紧跟着只能是li,dl下面紧跟着只能是dt和dd,p标签里面不能嵌套任何的块元素（里面可以嵌套行内元素）包括它自己本身
+
+2.行内元素  a span strong b em i...
+1)不独占一行
+2)天生自带属性display:inline
+3)设置宽高属性不起作用 如果非要宽高起作用 就需要转换为具有块元素的特点 display:block/display:inline-block;
+4)行内元素如果不设置宽高属性的情况下，它的宽高都是本身内容的宽高
+5)行内元素是不可以嵌套块级元素（报一个色块的错误）
+
+3.行内块元素 img
+不独占一行
+天生自带属性display:inline
+可以设置宽高属性
+
+
+
+
+
+-->
+<p></p>
+<ul>
+    <li><span></span></li>
+</ul>
+
+<h1>珠峰培训</h1>
+<img src="https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/24d8e16f4a5d4f2478f7484d495c75eb_259_194.jpg" alt="">
+<a href="#">珠峰培训首页</a>
+<span>珠峰培训首页</span>
+<strong>珠峰培训首页</strong>
+<b>珠峰培训首页</b>
+<em>珠峰培训首页</em>
+<i>珠峰培训首页</i>
+</body>
+</html>

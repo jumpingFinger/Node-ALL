@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .bigBox{
+            width: 500px;
+            height: 500px;
+            background: #000;
+            /*overflow: hidden; !*为了解决margin-top的传递问题*!*/
+            /*padding-top:1px;*/
+            /*border-top:1px solid transparent;*/
+            padding-top:30px;
+        }
+        .smallBox{
+            width: 200px;
+            height: 200px;
+            background:red;
+            /*margin-top:30px;*/
+        }
+        /*
+        margin-top的传递问题(面试题):
+        1.给父元素加overflow:hidden(实际项目中最常的解决办法)
+        2.给父元素加属性padding-top:1px或者border-top:1px solid  transparent(这2个属性还需要在原本的高度上减去对应的值);
+        3.给子元素上加的margin-top(传递问题) 换成给父元素加padding-top;
+        */
+    </style>
+</head>
+<body>
+<div class="bigBox">
+    <div class="smallBox"></div>
+</div>
+
+</body>
+</html>

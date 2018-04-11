@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for in</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*for in 循环 是用来循环遍历对象中的键值对
+    *  for(key in obj) {}
+    *
+    *  for in 快捷键:itin tab
+    *  for 快捷键 itar tab
+    * */
+    var obj = {
+        name:'珠峰培训',
+        age: 9,
+        teacher: "耿大大",
+        0: 10
+    };
+    console.log(obj);
+    // 打印输出的时候:带数字的属性名会在对象的最前面 其他的属性名按照我们写的顺序依次排列
+    for (var key in obj) {
+        console.log(key); //输出的结果是属性名
+        console.log(obj[key]); // 输出的结果的是key值对应的value值
+        console.log(obj.key); //=>obj.key <=> obj['key'] 说明在 获取obj里面有一个叫做key的属性名  undefined
+    }
+
+
+</script>
+</body>
+</html>

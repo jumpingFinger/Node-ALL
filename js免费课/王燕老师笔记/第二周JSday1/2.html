@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //var ary = [10,56,32,45];
+    //console.dir(ary);
+    /*数组的方法从四个维度来记忆:
+    * 1.方法的含义
+    * 2.方法是否有参数
+    * 3.方法是否有返回值
+    * 4.原有数组是否发生改变
+    * */
+
+
+    /*原有数组发生改变*/
+    //push() 往数组的末尾添加内容  参数：添加的内容  返回值：添加完内容后数组的长度
+    var ary = [10, 56, 32, 45];
+    /* var result = ary.push(66,88);
+     console.log(ary);
+     console.log(result);*/
+
+    //unshift() 往数组的起始位置添加内容 参数：添加的内容  返回值：添加完内容后数组的长度
+    /*  var result = ary.unshift(11,22);
+      console.log(ary);
+      console.log(result);*/
+
+    //shift() 删除数组的第一项 参数：无  返回值：删除的内容
+    //    var result = ary.shift();
+    //    console.log(result);
+    //    console.log(ary)
+
+    //pop() 删除数组的最后一项 参数：无  返回值：删除的内容
+    /* var result = ary.pop();
+     console.log(result);
+     console.log(ary)*/
+
+    //通过原生的方式，给数组的末尾添加一项内容或者删除数组的最后一项
+    //    var ary = [10,56,32,45];
+    //    ary[ary.length] = 55;
+    //    ary.length--;
+    //    console.log(ary);
+
+    //splice(n,m,x) 从索引n（包含索引n这一项）开始删除m个,用x（指从第三项开始往后的所有的参数）的内容替换删除的内容  返回值：把删除的内容放在新数组里返回
+    //var ary = [10,56,32,45];
+    //var result = ary.splice(2); //从索引2开始一直删除到最后
+    //var result = ary.splice(1,2);//从索引1开始删除2个
+    /*var result = ary.splice(1,2,55,77);*///从索引1开始删除2个，用55,77替换删除的内容
+    //var result = ary.splice(1,0,55,77);//新增内容放在索引1的前面
+
+
+    //排序
+    //reverse() 反向排列 参数：无 返回值：反向排列后的数组
+    /*var ary = [10,56,32,45];
+    var result = ary.reverse();
+    console.log(ary);
+    console.log(result);*/
+
+    //sort() 若没传参数，只能对10以内的数排列
+    //通过传参（函数的定义），可以实现对任意数排列
+    /* var ary = [5,2,7,1];
+     var result = ary.sort()*/
+    /*var ary = [10,56,32,45];
+    var result = ary.sort(function(a,b){
+       // return a-b; //从小到大
+        return b-a ;//从大到小
+    });
+     console.log(ary);
+     console.log(result);*/
+
+    /*原有数组不发生改变*/
+    //slice(n,m)  从数组索引n开始截取到索引m （包前不包后） 返回值：截取后的数组
+    /* var ary = [10,56,32,45];
+     var result = ary.slice(1);
+     console.log(result);*/
+
+    //concat() 合并数组 返回值：返回合并后的新的数组
+    var ary1 = [10, 20, 5];
+    var ary2 = [30, 50];
+    var obj = {name: "lily"}
+    //var result= ary1.concat(ary2);
+    //var result = ary1.concat(obj,5);//参数表示合并的内容，参数个数可以有多个
+    //var result = [].concat(ary1,ary2,obj,5);
+    //var result = [].concat(ary1);//克隆
+    //var result = ary1.concat();//克隆
+    //var result = ary1.slice(0); //克隆
+    /* console.log(ary1);
+     console.log(ary2);*/
+    //console.log(result);
+
+    //join()数组的每一项按照指定的字符拼接成字符串
+    var ary = [10, 56, 32, 45];
+    //var result = ary.join("+");//"10+56+32+45"
+    //console.log(eval(result));;//eval提供了一个环境，将字符串转换成js代码，并且执行
+    //var result  = ary.join();//"10,56,32,45"
+    var result = ary.join("");//把数组每一项靠一起返回一个新字符串 "10563245"
+    console.log(result);
+
+    //toString() 将数组转换成字符串
+    var result = ary.toString();//"10,56,32,45"
+    console.log([].toString());//""
+    console.log(result);
+
+    //功能：判断数组中是否存在这一项 不兼容ie8及以下浏览器
+    //indexOf()和lastIndexOf() 查找数组中的某一项 若找到则返回这一项的索引，若找不到则返回-1
+    //indexOf()从左往右找
+    //lastIndexOf()从右往左找
+    var ary = [10, 56, 32, 45, 56, 77];
+    //var result = ary.indexOf(566);
+    var result = ary.lastIndexOf(56);
+    //if(ary.indexOf(566)>-1){} //能找到
+    //if(ary.indexOf(566)==-1){}//数组没有这一项
+    console.log(result);
+
+    //es5迭代方法
+    //自己课后搜索下这些方法的用法
+    //forEach map some every filter reduce reduceRight
+
+
+</script>

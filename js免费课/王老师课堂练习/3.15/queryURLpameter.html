@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    ~function () {
+        var str = 'https://www.baidu.com/s?wd=javascript&rsv_spt=1',
+            index = str.indexOf('?'),
+            newStr = str.slice(index + 1),
+            ary = newStr.split('&'),
+            obj = {};
+        ary.forEach(function (value) {
+            var ary1 = value.split('=');
+            obj[ary1[0]] = ary1[1];
+        });
+        console.log(obj);
+    }();
+
+    ~function () {
+        var ary = [12, 51, 12, 5, 5, 6, 6, 6, 8, 9, 15, 20, 16, 28, 13, 28];
+        Array.prototype.myUnique = function myUnique() {
+            for (var i = 0; i < this.length - 1; i++) {
+                var curItem = this[i];
+                for (var j = i + 1; j < this.length; j++) {
+                    var item = this[j];
+                    if (item == curItem) {
+                        this[j] = this[this.length - 1];
+                        this.length--;
+                        j--;
+                    }
+                }
+            }
+            return this;
+        };
+        // console.log(ary.myUnique());
+        Array.prototype.myUnqiue1 = function myUnqiue1() {
+            var obj = {};
+            for (var i = 0; i < this.length; i++) {
+                var curItem = this[i];
+                if (obj[curItem]) {
+                    this[i] = this[this.length - 1];
+                    this.length--;
+                }
+                obj[curItem] = true;
+            }
+            obj = null;
+            return this;
+        };
+        // console.log(ary.myUnqiue1());
+        Array.prototype.myBullueSort = function myBullueSort() {
+            for (var i = 0; i < this.length - 1; i++) {
+                for (var j = 0; j < this.length - 1 - i; j++) {
+                    if (this[j] > this[j + 1]) {
+                        var temp = this[j];
+                        this[j] = this[j + 1];
+                        this[j + 1] = temp;
+                    }
+                }
+                temp = null;
+            }
+            return this;
+        };
+        // console.log(ary.myUnique().myBullueSort());
+        Array.prototype.myQuickSort = function myQuickSort() {
+            if (this.length < 2) return this;
+            var middleItem = this.splice((this.length - 1 / 2), 1)[0],
+                left = [],
+                right = [];
+            this.forEach(function (value) {
+                value < middleItem ? left.push(value) : right.push(value);
+            });
+            return left.myQuickSort().concat(middleItem, right.myQuickSort());
+        };
+        // console.log(ary.myUnique().myQuickSort());
+        Array.prototype.myInsertionSort = function myInsertionSort() {
+            var ary = this.splice(0, 1);
+            this.forEach(function (value) {
+                for (var i = ary.length - 1; i >= 0; i--) {
+                    if (value > ary[i]) {
+                        ary.splice(i + 1, 0, value);
+                        break;
+                    } else {
+                        if (i === 0) {
+                            ary.unshift(value);
+                        }
+                    }
+                }
+            });
+            return ary;
+        };
+        // console.log(ary.myUnique().myInsertionSort());
+    }();
+
+    ~function () {
+        var date = new Date();   //=>已当前时间为基准,创建的时间对象
+        console.dir(date);
+        var year = date.getFullYear();
+        //    console.log(date.getFullYear());
+        //     console.log(date.getMonth());  //=>从0到11月   我们要多一个1
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        //     console.log(date.getDate());  // 日
+        var week = date.getDay();//=>从0到6
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var seconds = date.getSeconds();
+        var mSeconds = date.getMilliseconds();
+//        console.log(date.getTime());  //距离1970年的时间
+        var zero = function (num) {
+            return num < 10 ? '0' + num : num;
+        };
+        var getWeek = function (week) {
+            var ary = ['日', '一', '二', '三', '四', '五', '六'];
+            return '星期' + ary[week];
+        };
+        var str = zero(year) + '年' + zero(month) + '月' + zero(day) + "日" + zero(hour) + '时' + zero(minute) + '分' + zero(seconds) + '秒' + getWeek(week);
+        // console.log(str);
+        // var getWeek=function (week) {
+        //        return week>0?'星期'+week:'星期日';
+        //    };
+        // console.log(getWeek(week));
+
+    }();
+
+    ~function () {
+        var now = new Date();
+        var target = new Date('2018/03/15 18:00:00');
+        var oTime = target - now;
+        var hour = Math.floor(oTime / (1000 * 60 * 60));
+        console.log(hour);
+        oTime = oTime - hour * 1000 * 60 * 60;
+        var minutes = Math.floor(oTime / (60 * 1000));
+        console.log(minutes);
+        oTime = oTime - minutes * 60 * 1000;
+        var seconds = Math.floor(oTime / 1000);
+        var zero = function (num) {
+            num < 10 ? '0' + num : num;
+        };
+        var str = zero(hour) + '时' + zero(minutes) + '分' + zero(seconds) + '秒';
+
+        var oSpan = 3333333333333
+
+    }();
+
+    ~function () {
+        var ary = [12, 51, 12, 5, 5, 6, 6, 6, 8, 9, 15, 20, 16, 28, 13, 28];
+        Array.prototype.myUnique22=function () {
+            for (var i = 0; i < this.length; i++) {
+                for (var j = i+1; j < this.length; j++) {
+                    if(this[i]==this[j]){
+                        this[j]=this[this.length-1];
+                        this.length--;
+                        j--;
+                    }
+                }
+            }
+            return this;
+        };
+        // console.log(ary.myUnique22());
+        Array.prototype.myUnique33=function () {
+            var obj={};
+            this.forEach(function(value,index){
+                if(obj[value]){
+                    this.splice(index,1);
+                }
+                obj[value]=true;
+            });
+            obj=null;
+            return this;
+        };
+        // console.log(ary.myUnique33());
+        Array.prototype.myBullueSort22=function (){
+            for (var i = 0; i < this.length-1; i++) {
+                for (var j = 0; j < this.length-1-i; j++) {
+                   if(this[j]>this[j+1]){
+                       var temp=this[j];
+                       this[j]=this[j+1];
+                       this[j+1]=temp;
+                   }
+                }
+            }
+            return this;
+        };
+        // console.log(ary.myBullueSort22());
+    }();
+
+    ~function () {
+        var ary = [12, 51, 12, 5, 5, 6, 6, 6, 8, 9, 15, 20, 16, 28, 13, 28];
+        Array.prototype.myUnique=function myUnique(){
+            for (var i = 0; i < this.length-1; i++) {
+                for (var j = i+1; j < this.length; j++) {
+                    if(this[i]==this[j]){
+                        this[j]=this[this.length-1];
+                        this.length--;
+                        j--;
+                    }
+                }
+            }
+            return this;
+        };
+        // console.log(ary.myUnique());
+        Array.prototype.myUnique111=function myUnique111(){
+            var obj={};
+            this.forEach(function(value,index){
+                if(obj[value]){
+                    this.splice(index,1);
+                }
+                obj[value]=true;
+            });
+            obj=null;
+            return this;
+        };
+        console.log(ary.myUnique111());
+        Array.prototype.myBullueSort11=function myBullueSort11(){
+            for (var i = 0; i < this.length-1; i++) {
+                for (var j = 0; j < this.length-1-i; j++) {
+                    if(this[j]>this[j+1]){
+                        var temp=this[j];
+                        this[j]=this[j+1];
+                        this[j+1]=temp;
+                    }
+                }
+            }
+            temp=null;
+            return this;
+        };
+        // console.log(ary.myBullueSort11());
+        Array.prototype.myQuickSort11=function myQuickSort11(){
+            if(this.length<2) return this;
+            var middleItem=this.splice(Math.floor(this.length-1/2),1)[0],
+                left=[],
+                right=[];
+            this.forEach(function (value){
+                value<middleItem?left.push(value):right.push(value);
+            });
+            return left.myQuickSort11().concat(middleItem,right.myQuickSort11());
+        };
+        // console.log(ary.myQuickSort11());
+        Array.prototype.myInsertionSort11=function myInsertionSort11() {
+            var ary=this.splice(0,1);
+            this.forEach(function (value){
+                for (var i = ary.length-1; i >=0; i--) {
+                    if(value>ary[i]){
+                        ary.splice(i+1,0,value);
+                        break;
+                    }else{
+                        if(i===0){
+                            ary.unshift(value);
+                        }
+                    }
+                }
+            });
+            return ary;
+        };
+        // console.log(ary.myInsertionSort11());
+    }();
+</script>

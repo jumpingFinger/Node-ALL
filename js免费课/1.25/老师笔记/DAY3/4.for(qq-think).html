@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fo循环</title>
+</head>
+<body>
+<script type="text/javascript">
+    //=> 腾讯面试题 i = i + 2
+    /*初始值     条件          条件成立执行的代码       步长累加
+    * i=0       0< 10          i++   1             i+=2   i =3
+    * i=3       3<10           i++;  4             i+=2   i = 6
+    * i= 6      6<10           i--;  5  break 直接中断整个循环体
+    * i = 5
+    * */
+    for(var i=0;i<10;i+=2){
+        if(i<=5){
+            i++;  //i = i + 1
+            continue;
+        }else{
+            i--; //i = i - 1
+            break;
+        }
+        console.log(i);
+    }
+    console.log(i); //5
+</script>
+</body>
+</html>

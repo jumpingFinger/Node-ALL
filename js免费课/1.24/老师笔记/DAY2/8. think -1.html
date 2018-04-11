@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //要区分开 obj['age'] 和 obj[age]的区别?
+    // 我们获取对象属性名的方法有且只有两种情况:
+    //obj.属性名
+    //obj['属性名']
+
+    //obj[变量名] 这种方法不是获取对象属性名的方法
+    var age = 'name';
+    var obj = {
+        name:'耿大大',
+        age:18
+    };
+    console.log(obj.age); //18
+    console.log(obj['age']); //obj['age']  = obj.age = 18
+    console.log(obj[age]);//obj[一个叫做age的变量名 = 'name'] => obj['name'] => 耿大大
+</script>
+</body>
+</html>

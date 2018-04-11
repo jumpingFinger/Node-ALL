@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        p {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            display: block;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        button {
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<p id="oP">随机生成的数</p>
+<button>点击开始摇号</button>
+<script>
+    var  button=document.getElementsByTagName('button')[0];
+    var oP = document.getElementById('oP');
+    function random(n, m) {
+        return Math.round(Math.random() * (m - n) + n);
+    }
+    function randomCode() {
+        var result = '';
+        var str = '0123456789';
+        for (var i = 0; i < 4; i++) {
+            var index = random(0, 9);
+            var code = str[index];
+            if (result.indexOf(code) > -1) {
+                i--;
+                continue;
+            }
+            result += code;
+        }
+        return result;
+    }
+            button.onclick=function () {
+                var timer = window.setInterval(computed, 500),
+                        n = 0;
+                function computed() {
+                    n++;
+                    if (n >= 10) {
+                        clearInterval(timer);
+                    }
+                    var bb = randomCode();
+                    oP.innerHTML = bb;
+                }
+                computed();
+            }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2454 @@
+html,body{
+    color: #333;
+}
+
+
+/*header*/
+.header {
+    width: 100%;
+    height:60px;
+}
+.primary{
+    min-width: 984px;
+    height: 60px;
+    padding:0 20px;
+    border-bottom: 1px solid #CC5A18;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+    background:linear-gradient(to bottom, #FA8723 0, #F57614 100%);
+}
+/*这里的宽度为啥这么设置??????*/
+.wrapper {
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+    height: 60px;
+}
+.header .primary .wrapper ul {
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+}
+.header .primary .wrapper ul li {
+    float: left;
+    overflow: hidden;
+}
+.header .primary .wrapper ul li:nth-child(1) a{
+    display: block;
+    width: 200px;
+    height: 60px;
+    background: url(http://img.xiami.net/static/img/common/logo/default.png) no-repeat;
+    line-height: 60px;
+    text-align: center;
+}
+.header .primary .wrapper ul li:nth-child(2) a {
+    float: left;
+    display: block;
+    width: 90px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+.header .primary .wrapper ul li:nth-child(2) a:nth-child(1){
+    background: linear-gradient(to bottom, #DB6600 0, #F57614 100%);
+}
+.header .primary .wrapper ul li:nth-child(3) {
+    width: 250px;
+    padding:15px 0 15px 20px;
+}
+.header .primary .wrapper ul li:nth-child(3) a{
+    display: block;
+    float: left;
+    width: 60px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    color: #fff;
+    /*这里开始是啥玩意*/
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    border-width: 1px 0 1px 1px;
+    border-style:solid;
+    border-color: #DB6B16;
+    background: linear-gradient(to bottom, #FA8C1E 0, #FA8014 100%);
+}
+.header .primary .wrapper ul li:nth-child(3) a:hover {
+    border-color: #D65C15;
+    background: linear-gradient(to bottom, #D65C15 0, #E06716 100%);
+}
+.header .primary .wrapper ul li:nth-child(3) a:nth-child(4){
+    border-right: 1px solid #DB6B16;
+}
+.header .primary .wrapper ul li:nth-child(4) {
+    padding-left: 10px;
+    width: 246px;
+    position: relative;
+    top:15px;
+    left: 10px;
+}
+.header .primary .wrapper ul li:nth-child(4) .container{
+
+    width: 223px;
+    height: 30px;
+    border: 1px solid #DB6816;
+    border-radius: 3px;
+    background-color: #FFF;
+}
+.header .primary .wrapper ul li:nth-child(4) .container .keyword {
+    position: absolute;
+    left: 11px;
+    top: 2px;
+    width: 223px;
+    height: 28px;
+    border: none;
+    border-radius: 3px;
+    text-indent: 30px;
+}
+.header .primary .wrapper ul li:nth-child(4) .icon {
+    position: absolute;
+    left: 14px;
+    top: 4px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    margin-top: -1px;
+    background: url('http://img.xiami.net/static/img/common/header_icon.png?v=20140504113709') no-repeat 0 -48px;
+    text-indent: 100%;
+}
+.header .primary .wrapper ul li:nth-child(5) {
+    width: 60px;
+    padding: 15px 0 15px 10px;
+}
+.header .primary .wrapper ul li:nth-child(5) a {
+    display: block;
+    width: 56px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border: 1px solid #B25415;
+    border-radius: 3px;
+    color: #FFF;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+.header .primary .wrapper ul li:nth-child(5) a:hover {
+    background: linear-gradient(to bottom, #C25F13 0, #B85509 100%);
+}
+.header .primary .wrapper ul li:nth-child(6) {
+    width:119px;
+    padding: 15px 0 15px 5px;
+}
+.header .primary .wrapper ul li:nth-child(6) a {
+    display: block;
+    float: left;
+    /*width: 60px;*/
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+    border-color: #B25415;
+    background: linear-gradient(to bottom, #CC691D 0, #C25F13 100%);
+}
+.header .primary .wrapper ul li:nth-child(6) a:hover {
+    background: linear-gradient(to bottom, #C25F13 0, #B85509 100%);
+}
+.header .primary .wrapper ul li:nth-child(6) .first {
+    width: 60px;
+    border-radius: 3px 0 0 3px;
+}
+.header .primary .wrapper ul li:nth-child(6) .middle {
+    text-indent: 100%;
+    vertical-align: middle;
+}
+.header .primary .wrapper ul li:nth-child(6) .middle b {
+    display: block;
+    width: 26px;
+    height: 28px;
+    background:url('http://img.xiami.net/static/img/common/header_thirdparty_icon.png') no-repeat -24px 2px;
+    text-indent: 100%;
+    vertical-align: middle;
+}
+.header .primary .wrapper ul li:nth-child(6) .last {
+    width: 26px;
+    height: 28px;
+    border-radius: 0 3px 3px 0;
+    border-right-width: 1px;
+}
+.header .primary .wrapper ul li:nth-child(6) .last b {
+    display: block;
+    width: 26px;
+    height: 28px;
+    background:url('http://img.xiami.net/static/img/common/header_thirdparty_icon.png') no-repeat 0 2px;
+    text-indent: 100%;
+    vertical-align: middle;
+}
+/*secondary*/
+.secondary {
+    height: 30px;
+    border-bottom:1px solid #ccc;
+}
+.secondary .gap {
+    min-width: 984px;
+    height: 30px;
+    padding: 0 20px;
+    border-bottom: 1px solid #CCC;
+    background-color: #F0F0F0;
+}
+.secondary .gap .wrapper{
+    width: auto;
+    _width: 980px;
+    max-width: 1100px;
+    min-width: 980px;
+    height: 30px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.secondary .gap .wrapper .nav {
+    float: left;
+    margin-left: 100px;
+}
+.secondary .gap .wrapper .nav a {
+    float: left;
+    display: block;
+    height: 28px;
+    margin-right: 30px;
+    font-size: 14px;
+    line-height: 30px;
+}
+.secondary .gap .wrapper a:hover{
+    color: #FA7A19;
+}
+.secondary .gap .wrapper .nav .current {
+    color: #F60;
+}
+.secondary .gap .wrapper .nav .bigtext {
+    color: #333;
+}
+.secondary .gap .wrapper .nav .bigtext:hover {
+    color: #F60;
+}
+.secondary .gap  .wrapper a {
+    display: block;
+    float: right;
+    font-weight: bold;
+    line-height: 30px;
+    cursor: pointer;
+    color: #333;
+}
+.secondary .gap  .wrapper .history,.secondary .gap  .wrapper .vip{
+    margin-right: 20px;
+}
+.secondary .gap  .wrapper a b {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+.secondary .gap  .wrapper .software b {
+    background:url(http://img.xiami.net/static/img/common/header_icon.png?v=20140504113709) no-repeat -48px -48px;
+}
+.secondary .gap .wrapper .software:hover b {
+    background-position:  -48px -72px;
+}
+.secondary .gap  .wrapper .history b {
+    background: url(http://img.xiami.net/static/img/common/header_icon.png?v=20140504113709) no-repeat -24px -48px;
+}
+.secondary .gap  .wrapper .history:hover b {
+    background-position: -24px -72px;
+}
+.secondary .gap  .wrapper .vip b {
+    background:url(http://img.xiami.net/static/img/common/header_icon.png?v=20140504113709) no-repeat -72px -48px;
+}
+.secondary .gap  .wrapper .vip:hover b {
+    background-position: -72px -72px;
+}
+    /*main*/
+#main {
+    background: #F5F5F5;
+}
+/*login-mobile*/
+#main .gap {
+    min-width: 984px;
+    padding: 0 20px;
+}
+#main .wrapper1{
+    /*position: relative;*/
+    width: auto;
+    _width: 984px;
+    max-width: 1104px;
+    min-width: 984px;
+    margin: 0 auto;
+    padding: 20px 0 30px;
+}
+#main .wrapper1 .section {
+    float: left;
+    width: 100%;
+    margin-right: -332px;
+}
+#main .wrapper1 .sidebar {
+    float: right;
+    width: 302px;
+    border-radius: 3px;
+}
+#main .wrapper1 .sidebar .login-mobile {
+    position: relative;
+    height: 185px;
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+    background: url(http://img.xiami.net/static/img/index/unlogin_mobile.jpg) no-repeat;
+}
+#main .wrapper1 .sidebar .login-mobile .qrcode {
+    position: absolute;
+    left: 15px;
+    top: 60px;
+    width: 110px;
+    height: 110px;
+    background: url(http://img.alicdn.com/tps/TB13Ac0NXXXXXaLXpXXXXXXXXXX-116-116.png) no-repeat;
+}
+#main .wrapper1 .sidebar .login-mobile .ios{
+    position: absolute;
+    right: 30px;
+    top: 70px;
+    width: 104px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    background-color: #4398DE;
+    color: #FFF;
+    text-decoration: none;
+}
+#main .wrapper1 .sidebar .login-mobile .ios:hover {
+    background-color: #3B87C4;
+}
+#main .wrapper1 .sidebar .login-mobile .ios b{
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    background: url(http://img.xiami.net/static/img/index/unlogin_icon.png) no-repeat -3px -34px;
+}
+#main .wrapper1 .sidebar .login-mobile .android {
+    position: absolute;
+    right: 30px;
+    bottom: 29px;
+    width: 104px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    background-color: #7CA627;
+    color: #FFF;
+    text-decoration: none;
+}
+#main .wrapper1 .sidebar .login-mobile .android:hover {
+    background-color: #688C20;
+}
+#main .wrapper1 .sidebar .login-mobile .android b {
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    background: url(http://img.xiami.net/static/img/index/unlogin_icon.png) no-repeat -36px -34px;
+}
+/*login-secondPart*/
+#main .wrapper1 .sidebar .login-secondPart {
+    margin-top: 20px;
+    padding: 0 15px;
+    border:1px solid #EBEBEB ;
+    border-radius: 4px 4px 0 0;
+    background: #FFF;
+    overflow: hidden;
+}
+#main .wrapper1 .sidebar .login-secondPart span {
+    float: left;
+    font-size: 14px;
+    line-height: 80px;
+}
+#main .wrapper1 .sidebar .login-secondPart a {
+    margin: 20px 15px 0 ;
+    float: right;
+    display: block;
+    width: 42px;
+    height: 42px;
+    background: url(https://gw.alicdn.com/tps/TB1t9TeMVXXXXbAXFXXXXXXXXXX-84-168.jpg) no-repeat;
+    background-size: 42px 84px;
+}
+#main .wrapper1 .sidebar .login-secondPart a:hover {
+    background-position: 0 -42px;
+}
+/*login-thirdPart-*/
+#main .wrapper1 .sidebar .login-thirdPart {
+    padding: 0 15px;
+    border:1px solid #EBEBEB;
+    border-radius: 0 0 4px 4px;
+    background: #FCFCFC;
+    overflow: hidden;
+}
+#main .wrapper1 .sidebar .login-thirdPart .reg{
+    float: left;
+    margin-top: 8px;
+    padding: 0 10px;
+    border-radius: 4px;
+    background-color: #F60;
+    color: #FFF;
+    line-height: 30px;
+}
+#main .wrapper1 .sidebar .login-thirdPart .reg:hover {
+    background-color: #E55800;
+}
+#main .wrapper1 .sidebar .login-thirdPart span {
+    float: right;
+    line-height: 46px;
+    color: #666;
+}
+#main .wrapper1 .sidebar .login-thirdPart .reg1 {
+    color: #F60;
+}
+/*listen-party*/
+#main .wrapper1 .sidebar .listen-party {
+    margin-top: 20px;
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+    background-color: #FFF;
+}
+#main .wrapper1 .sidebar .listen-party h2 {
+    height: 40px;
+    margin: 0 15px;
+    border-bottom: 1px solid #EBEBEB;
+    line-height: 40px;
+    font-weight: 400;
+}
+#main .wrapper1 .sidebar .listen-party .party-wrapper {
+    margin:15px;
+    position: relative;
+    width: 270px;
+    height: 152px;
+    text-align: center;
+    background: url(http://pic.xiami.net/images/appv5/common/13748/5a41d4c4c1a22_a8Up_1514263748.jpg) no-repeat center  ;
+    background-size: cover;
+    color: #fff;
+    cursor: pointer;
+    z-index: 0;
+}
+#main .wrapper1 .sidebar .listen-party .party-wrapper .party-mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+#main .wrapper1 .sidebar .listen-party .party-wrapper{
+    display: block;
+}
+#main .wrapper1 .sidebar .listen-party .party-wrapper .party-title {
+    position: absolute;
+    z-index: 2;
+    margin-top: 15px;
+    width: 100%;
+    line-height: 14px;
+    font-size: 14px;
+    font-weight: bold;
+}
+#main .wrapper1 .sidebar .listen-party .party-wrapper .party-member {
+    position: relative;
+    z-index: 2;
+    padding-top: 36px;
+    font-size: 10px;
+}
+#main .wrapper1 .sidebar .listen-party .party-wrapper .party-avatar{
+    position: relative;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    margin: 5px auto 0;
+    background: url(https://img.alicdn.com/tfs/TB1cVw3agsSMeJjSspcXXXjFXXa-100-100.png) no-repeat center;
+    background-size: contain;
+}
+#main .wrapper1 .sidebar .listen-party .party-wrapper .party-avatar i{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background:url(http://pic.xiami.net/images/avatar_new/941/5a905c33ac7e7_47065698_1519410227.jpg@1e_1c_0i_1o_100Q_100w_100h.webp) no-repeat center;
+    background-size: cover;
+}
+#main .wrapper1 .sidebar .listen-party .party-wrapper .party-user {
+        position: relative;
+        z-index: 2;
+        margin-top: 5px;
+        font-size: 10px;
+}
+/*listen-mod*/
+#main .wrapper1 .sidebar .listen-mod {
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+    background-color: #FFF;
+    margin-top: 20px;
+    padding: 0 15px 20px;
+}
+#main .wrapper1 .sidebar .listen-mod h2 {
+    height: 40px;
+    border-bottom: 1px solid #EBEBEB;
+    line-height: 40px;
+    text-align: left;
+    overflow: hidden;
+    font-weight: 400;
+}
+#main .wrapper1 .sidebar .listen-mod h2  .change-icon{
+    float: right;
+    display: block;
+    margin-top: 14px;
+    width: 30px;
+    height: 15px;
+    overflow: hidden;
+    background: url(../images/chuanyue.png) no-repeat center;
+}
+#main .wrapper1 .sidebar .listen-mod .content {
+    margin-top:20px;
+    padding-bottom:10px;
+    border-bottom: 1px solid #EBEBEB;
+}
+#main .wrapper1 .sidebar .listen-mod .content .item-cover {
+    position: relative;
+    text-align: center;
+}
+#main .wrapper1 .sidebar .listen-mod .content .item-cover .img {
+    width: 270px;
+    height: 270px;
+    background: url(http://pic.xiami.net/images/album/img97/1004997397/1049976771427771121.jpg@1e_1c_100Q_270w_270h) no-repeat center;
+}
+#main .wrapper1 .sidebar .listen-mod .content .item-cover .img .itme_cover_play{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -22px;
+    margin-top: -22px;
+    width: 45px;
+    height: 45px;
+    background: url(../images/play_icon.png);
+}
+#main .wrapper1 .sidebar .listen-mod .content .item-cover  .img:hover .itme_cover_play {
+    display: block;
+}
+#main .wrapper1 .sidebar .listen-mod .content .item-cover .img .itme_cover_play:hover  {
+    background-position: -48px 0;
+}
+#main .wrapper1 .sidebar .listen-mod .content .item-cover .item-date {
+    position: absolute;
+    top: -7px;
+    left: 12px;
+    width: 55px;
+    height: 66px;
+    background: #FFCA68;
+}
+#main .wrapper1 .sidebar .listen-mod .content .item-cover .item-date ul {
+    padding: 5px 0 0 3px;
+}
+#main .wrapper1 .sidebar .listen-mod .content .item-cover .item-date li {
+    display: block;
+    color: #FFF;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 700;
+}
+#main .wrapper1 .sidebar .listen-mod .content .item-cover .item-date .new-day{
+    font-size: 18px;
+}
+#main .wrapper1 .sidebar .listen-mod .item-util {
+    background: #F5F5F5;
+    overflow: hidden;
+}
+#main .wrapper1 .sidebar .listen-mod .item-util .collect{
+    position: relative;
+    float: left;
+    width: 134px;
+    height: 40px;
+    overflow: hidden;
+}
+#main .wrapper1 .sidebar .listen-mod .item-util .share {
+    width: 134px;
+    height: 40px;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    border-left: 1px solid #EBEBEB;
+}
+#main .wrapper1 .sidebar .listen-mod .item-util .collect a {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -13px;
+    margin-top: -11px;
+    width: 30px;
+    height: 21px;
+    display: block;
+    background: url(../images/xin.png) no-repeat;
+}
+#main .wrapper1 .sidebar .listen-mod .item-util .share a {
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    margin-left: -13px;
+    margin-top: -11px;
+    width: 30px;
+    height: 21px;
+    display: block;
+    background: url(../images/change.png) no-repeat;
+}
+#main .wrapper1 .sidebar .listen-mod .content.item-song {
+    padding-bottom: 5px;
+    border-bottom: 1px solid  #EBEBEB;
+}
+#main .wrapper1 .sidebar .listen-mod .item-song .desc {
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    overflow: hidden;
+}
+#main .wrapper1 .sidebar .listen-mod .item-song .desc  .songName {
+    float: left;
+    margin-right: 2px;
+    color: #1e1e1e;
+    font-size: 17px;
+    font-weight: 400;
+}
+#main .wrapper1 .sidebar .listen-mod .item-song .desc .artistName {
+    float: left;
+    font-size: 12px;
+    color:#333;
+    font-weight: 400;
+}
+#main .wrapper1 .sidebar .listen-mod .item-comment {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 11px;
+    color: #FFF;
+    background-color: #FF6600;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    /*overflow: hidden;*/
+}
+
+/*scene*/
+#main .wrapper1 .sidebar  .primary1 .scene{
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+    background-color: #FFF;
+    margin-top: 20px;
+}
+#main .wrapper1 .sidebar .scene span {
+    display: block;
+    height: 40px;
+    margin: 0 15px;
+    border-bottom: 1px solid #EBEBEB;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+}
+#main .wrapper1 .sidebar .scene  .content {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0 10px 15px;
+}
+#main .gap .wrapper1 .sidebar .primary1 .scene  .content .item {
+    position: relative;
+    float: left;
+    width: 55px;
+    margin: 10px 0 0 10px;
+    text-align: center;
+    z-index: 0;
+    overflow: hidden;
+}
+#main .wrapper1 .sidebar .scene  .content .item .scene-img{
+    display: block;
+    /*width: 55px;*/
+    width: 100%;
+    height: 55px;
+    margin: 0 1px;
+    background-position: center;
+    background-size: cover;
+    background-repeat:no-repeat;
+    z-index: 0;
+}
+#main .gap .wrapper1 .sidebar .primary1 .scene  .content .item .scenePg {
+    display: block;
+    line-height: 24px;
+    color: #333;
+}
+#main .wrapper1 .sidebar .scene  .content .item .scene-img .scene-icon{
+    position: absolute;
+    display: none;
+    left: 15px;
+    top: 15px;
+    width: 24px;
+    height: 24px;
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat 0 -48px;
+    cursor: pointer;
+}
+#main .wrapper1 .sidebar .scene  .content .item .scene-img:hover .scene-icon {
+    display: block;
+}
+#main .wrapper1 .sidebar .scene  .content .item .scene-img .scene-icon:hover {
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat -24px -48px;
+}
+
+/*secondary*/
+/*group*/
+#main .wrapper1 .sidebar .secondary .group {
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+    background-color: #FFF;
+    margin-top: 20px;
+}
+#main .wrapper1 .sidebar .secondary .group #tabBox  ul{
+            overflow: hidden;
+}
+#main .wrapper1 .sidebar .secondary .group #tabBox li {
+    border-radius: 3px 0 0 0;
+    float: left;
+    width: 74px;
+    height:40px;
+    line-height:40px;
+    text-align: center;
+    /*margin-right: 5px;*/
+    border-bottom: 1px solid #EBEBEB;
+    background-color: #FCFCFC;
+    cursor: pointer;
+}
+#main .wrapper1 .sidebar .secondary .group #tabBox ul .selectedLi {
+    background-color: #FFF;
+    border-bottom: 0;
+}
+#tabBox .oBox {
+    display: none;
+    width: 100%;
+    height: 100px;
+    padding-top: 15px;
+    overflow: hidden;
+}
+#main .wrapper1 .sidebar .secondary .group  #tabBox .selectedDiv {
+    display: block;
+}
+#main .wrapper1 .sidebar .secondary .group  #tabBox .aaa{
+    display: block;
+    margin-left: 5px;
+    overflow: hidden;
+    line-height: 30px;
+    height: 30px;
+}
+#main .wrapper1 .sidebar .secondary .group  #tabBox .aaa p{
+    float: left;
+    text-align: left;
+}
+#main .wrapper1 .sidebar .secondary .group  #tabBox .aaa span {
+    float: right;
+    padding-right: 10px;
+}
+#main .wrapper1 .sidebar .secondary .report {
+    height: 52px;
+    margin-top: 20px;
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+}
+#main .wrapper1 .sidebar .secondary .report a {
+    display: block;
+    height: 52px;
+    /*border-radius: 3px;*/
+    background: url(http://img.xiami.net/images/common/uploadpic/61/14041087617369.png) no-repeat;
+}
+
+
+/*section*/
+#main .wrapper1 .section {
+    float: left;
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+    background-color: #FFF;
+    max-width: 760px;
+    min-width: 620px;
+}
+#main .wrapper1 .section .slider{
+    position: relative;
+    max-width: 740px;
+    min-width: 620px;
+    height: 170px;
+    margin: 15px 15px 0;
+}
+#main .wrapper1 .section .slider .content1 {
+    position: relative;
+    height: 170px;
+    background: url(../images/slider.jpg) no-repeat center;
+    cursor: pointer;
+    z-index: 1;
+}
+#main .wrapper1 .section .slider .action {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding-left: 5px;
+    border-radius: 18px;
+    background-color: rgba(0,0,0,0.1);
+    font-size: 0;
+    z-index: 2;
+}
+#main .wrapper1 .section .slider .action li {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 5px 5px 5px 0;
+    border-radius: 8px;
+    background-color: #FFF;
+    cursor: pointer;
+}
+#main .wrapper1 .section .slider .action li:nth-child(1) {
+    background-color: #FF6600;
+}
+
+/*recommend*/
+#main .wrapper1 .section .recommend {
+    margin: 0 15px;
+}
+#main .wrapper1 .section .recommend .title1{
+    height: 54px;
+    line-height: 54px;
+}
+#main .wrapper1 .section .recommend .title1 h2 {
+    float: left;
+    font-size: 18px;
+    font-weight: normal;
+}
+#main .wrapper1 .section .recommend .title1 span {
+    color: #f60;
+}
+#main .wrapper1 .section .recommend .title1 span a {
+    color: #f60;
+}
+
+
+
+#main .wrapper1 .section .recommend .content {
+    float: left;
+    /*margin-right: 10px;*/
+}
+#main .wrapper1 .section .recommend .content .mosaic {
+    float: left;
+}
+#main .wrapper1 .section .recommend .content .img {
+    /*overflow: hidden;*/
+    position: relative;
+    width: 134px;
+    height: 134px;
+    border: 3px solid #3A3935;
+    background-color: #3A3935;
+}
+#main .wrapper1 .section .recommend .content .img li{
+    float: left;
+    width: 67px;
+    height: 67px;
+    background-position: center;
+    background-repeat: no-repeat ;
+    background-size: cover;
+}
+#main .wrapper1 .section .recommend .content .img .icon {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 43px;
+    top: 43px;
+    z-index: 3;
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat 0 0;
+    cursor: pointer;
+}
+#main .wrapper1 .section .recommend .content .img .icon:hover {
+    background-position: -48px 0;;
+}
+#main .wrapper1 .section .recommend .content .reason {
+    width: 130px;
+    height: 24px;
+    padding: 0 5px;
+    background-color: #3A3935;
+    line-height: 24px;
+    color: #999;
+}
+#main .wrapper1 .section .recommend .content .bigtext {
+    text-align: center;
+    font-size: 18px;
+    line-height: 58px;
+    cursor: pointer;
+}
+#main .wrapper1 .section .recommend .content #view {
+    float: left;
+}
+#main .wrapper1 .section .recommend .content #view  .album {
+    float: left;
+    margin-right: 7px;
+    width: 130px;
+    background-color: #fff;
+}
+#main .wrapper1 .section .recommend .content #view  .album  .img {
+    position: relative;
+    display: block;
+    width: 140px;
+    height: 140px;
+    z-index: 1;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+#main .wrapper1 .section .recommend .content #view .album .reason {
+    width: 130px;
+    height: 24px;
+    padding-left:5px;
+    background-color: #F5F5F5;
+    line-height: 24px;
+    color: #999;
+}
+#main .wrapper1 .section .recommend .content #view .album .info .name {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+#main .wrapper1 .section .recommend .content #view .album .info .singer {
+    color: #999;
+    font-size: 12px;
+}
+#main .wrapper1 .section .recommend .content #view .album .info .singer i {
+    display: inline-block;
+    width: 12px ;
+    height: 12px ;
+    background: url(http://img.xiami.net/res/glory/img/glory_icon.png) no-repeat -54px -187px ;
+    vertical-align: middle;
+}
+#main .wrapper1 .section .recommend .content #view .album .img .blbum-cover {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 140px;
+    height: 140px;
+    box-shadow: 1px 1px rgba(0,0,0,0.5) inset, 1px -1px rgba(0,0,0,0.5) inset;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.7);
+}
+#main .wrapper1 .section .recommend .content #view .album .img:hover .blbum-cover {
+    display: block;
+}
+#main .wrapper1 .section .recommend .content #view .album .img .blbum-cover .album-toplay {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    right: 5px;
+    bottom: 5px;
+    width: 24px;
+    height: 24px;
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat 0 -48px;
+    cursor:pointer;
+}
+#main .wrapper1 .section .recommend .content #view .album .img .blbum-cover .album-toplay:hover {
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat -24px -48px;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect {
+    position: absolute;
+    left:5px;
+    top:5px;
+    z-index: 3;
+    width: 30px;
+    height: 14px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background: #FEFEFE;
+    cursor: pointer;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .toheart {
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin: 2px 0 0 4px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -6px -127px;
+}
+
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu {
+    float: left;
+    width: 10px;
+    height: 12px;
+    margin: 2px 0 0 2px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -153px -56px;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    /*width: 65px;*/
+    /*height: 65px;*/
+    padding: 5px 0;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background-color: #FFF;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    z-index: 4;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink{
+    display: block;
+    width: 64px;
+    padding: 0 2px 0 2px;
+    font-size: 12px;
+    line-height: 24px;
+    cursor: pointer;
+    color: #000000;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink span {
+    float: left;
+    width: 20px;
+    height: 24px;
+    margin-right: 3px;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .hover1 {
+    background: url(../images/icon.png) no-repeat 0 -120px;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .hover2 {
+    background: url(../images/icon.png) no-repeat -25px -120px;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .hover3 {
+    background: url(../images/icon.png) no-repeat -48px -120px;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu:hover .todropmenu-hover {
+    display: block;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover {
+    background: #f5914E;
+    color: #FFFFFF;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover1 {
+    background-position: 0 -145px;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover2 {
+    background-position: -25px -145px;
+}
+#main .wrapper1 .section .recommend .content .view .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover3 {
+    background-position: -48px -145px;
+}
+#main .wrapper1 .section .recommend .content .view .album .info {
+    position: relative;
+}
+#main .wrapper1 .section .recommend .content .view .album
+.reason .reason-cover {
+    position: absolute;
+    display: none;
+    top: -140px;
+    left: 0;
+    width: 140px;
+    height: 163px;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.6);
+    text-align: center;
+}
+#main .wrapper1 .section .recommend .content .view .album .reason .reason-cover .reason-cover-text {
+    display: block;
+    width: 110px;
+    height: 24px;
+    margin-top: 20px;
+    padding:0 15px;
+    white-space: normal;
+    font-size: 13px;
+    line-height: 24px;
+    color: #FFF;
+    font-weight: normal;
+    font-style: normal;
+}
+#main .wrapper1 .section .recommend .content .view .album .reason .reason-cover .reason-cover-bottom {
+    display: block;
+    margin:32px 36px 0;
+    padding: 0 10px;
+    border-radius: 4px;
+    background-color: #999;
+    color:  #FFF;
+    line-height: 33px;
+    text-decoration: none;
+}
+#main .wrapper1 .section .recommend .content .view .album .info .reason:hover .reason-cover{
+    display: block;
+}
+#main .wrapper1 .section .recommend .content .view .album .info .reason .clear-text {
+    width: 130px;
+    height: 24px;
+    padding-left:5px;
+    background-color: #F5F5F5;
+    line-height: 24px;
+    color: #999;
+    font-weight: 400;
+}
+#main .wrapper1 .section .recommend .content .view .album .info .reason:hover .clear-text {
+    display: none;
+}
+/*pr_ad*/
+#pr_ad {
+    min-height: 60px;
+    padding: 0 15px;
+    margin: 30px 0 10px 0;
+}
+#pr_ad ul  {
+    margin-left: -11px;
+    width: 800px;
+    height: 60px;
+    overflow: hidden;
+}
+#pr_ad ul li {
+    float: left;
+    width: 175px;
+    height: 60px;
+    overflow: hidden;
+    margin-left: 11px;
+}
+/*albums*/
+#albums{
+    position: relative;
+    margin: 0 15px;
+}
+#albums .title1{
+    height: 54px;
+    line-height: 54px;
+}
+#albums .title1 h2 {
+    float: left;
+    font-size: 18px;
+    font-weight: normal;
+}
+#albums .title1 span {
+    color: #f60;
+}
+#albums .title1 span a {
+    color: #f60;
+}
+
+#albums .title1 .action {
+    float: right;
+    overflow: hidden;
+}
+#albums .title1 .action ul {
+    overflow: hidden;
+}
+#albums .title1 .action ul li {
+    float: left;
+}
+#albums .title1 .action ul li {
+    margin: 0 10px;
+}
+#albums .title1 .action ul li a {
+    color: #333;
+}
+
+#albums .title1 .action ul li:nth-child(1) a {
+    border-bottom: 3px solid #3A3935;
+}
+#albums .title1 .action ul li:nth-child(even){
+    color: #EBEBEB;
+}
+#albums .title1 .action ul li:nth-child(odd):hover a{
+    border-bottom: 3px solid #3A3935;
+}
+
+
+
+
+#albums .nav {
+    position: absolute;
+    width: 25px;
+    height: 50px;
+    top:100px;
+    /*background: red;*/
+    z-index: 3;
+    background: url(http://img.xiami.net/static/img/index/page_icon.png) no-repeat;
+}
+#albums .prev {
+    right: -16px;
+    background-position: 0 0;
+}
+#albums .prev:hover{
+    background-position: 0 -50px;
+}
+#albums .next {
+    left: -16px;
+    background-position: -25px 0;
+}
+#albums .next:hover{
+    background-position: -25px -50px;
+}
+#view1 {
+    float: left;
+}
+#view1  .album {
+    float: left;
+    margin-right: 16px;
+    width: 130px;
+    background-color: #fff;
+}
+#view1  .album  .img {
+    position: relative;
+    display: block;
+    width: 140px;
+    height: 140px;
+    z-index: 1;
+    border: none;
+    background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+}
+#view1 .album .reason {
+    width: 130px;
+    height: 24px;
+    padding-left:4px;
+    background-color: #F5F5F5;
+    line-height: 24px;
+    color: #999;
+}
+#view1 .album .info .name {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#view1 .album .info .singer {
+    color: #999;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+}
+#view1 .album .info .singer i {
+    display: inline-block;
+    width: 12px ;
+    height: 12px ;
+    background: url(http://img.xiami.net/res/glory/img/glory_icon.png) no-repeat -54px -187px ;
+    vertical-align: middle;
+}
+#view1 .album .img .blbum-cover {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 140px;
+    height: 140px;
+    box-shadow: 1px 1px rgba(0,0,0,0.5) inset, 1px -1px rgba(0,0,0,0.5) inset;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.7);
+}
+#view1 .album .img:hover .blbum-cover {
+    display: block;
+}
+#view1 .album .img .blbum-cover .album-toplay {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    right: 5px;
+    bottom: 5px;
+    width: 24px;
+    height: 24px;
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat 0 -48px;
+    cursor:pointer;
+}
+#view1 .album .img .blbum-cover .album-toplay:hover {
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat -24px -48px;
+}
+#view1 .album .img .blbum-cover .album-collect {
+    position: absolute;
+    left:5px;
+    top:5px;
+    z-index: 3;
+    width: 30px;
+    height: 14px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background: #FEFEFE;
+    cursor: pointer;
+}
+#view1 .album .img .blbum-cover .album-collect .toheart {
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin: 2px 0 0 4px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -6px -127px;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu {
+    float: left;
+    width: 10px;
+    height: 12px;
+    margin: 2px 0 0 2px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -153px -56px;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    /*width: 65px;*/
+    /*height: 65px;*/
+    padding: 5px 0;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background-color: #FFF;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    z-index: 4;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink{
+    display: block;
+    width: 64px;
+    padding: 0 1px 0 2px;
+    font-size: 12px;
+    line-height: 24px;
+    cursor: pointer;
+    color: #000000;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink span {
+    float: left;
+    width: 20px;
+    height: 24px;
+    margin-right: 3px;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .hover1 {
+    background: url(../images/icon.png) no-repeat 0 -120px;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .hover2 {
+    background: url(../images/icon.png) no-repeat -25px -120px;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .hover3 {
+    background: url(../images/icon.png) no-repeat -48px -120px;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu:hover .todropmenu-hover {
+    display: block;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover {
+    background: #f5914E;
+    color: #FFFFFF;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover1 {
+    background-position: 0 -145px;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover2 {
+    background-position: -25px -145px;
+}
+#view1 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover3 {
+    background-position: -48px -145px;
+}
+#view1 .album .info {
+    position: relative;
+}
+#view1 .album .reason .reason-cover {
+    position: absolute;
+    display: none;
+    top: -140px;
+    left: 0;
+    width: 140px;
+    height: 163px;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.6);
+    text-align: center;
+}
+#view1 .album .reason .reason-cover .reason-cover-text {
+    display: block;
+    width: 110px;
+    height: 24px;
+    margin-top: 20px;
+    padding:0 15px;
+    white-space: normal;
+    font-size: 13px;
+    line-height: 24px;
+    color: #FFF;
+    font-weight: normal;
+    font-style: normal;
+}
+#view1 .album .reason .reason-cover .reason-cover-bottom {
+    display: block;
+    margin:32px 36px 0;
+    padding: 0 10px;
+    border-radius: 4px;
+    background-color: #999;
+    color:  #FFF;
+    line-height: 33px;
+    text-decoration: none;
+}
+#view1 .album .info .reason:hover .reason-cover{
+    display: block;
+}
+#view1 .album .info .reason .clear-text {
+    width: 130px;
+    height: 24px;
+    padding-left:5px;
+    background-color: #F5F5F5;
+    line-height: 24px;
+    color: #999;
+    font-weight: 400;
+}
+#view1 .album .info .reason:hover .clear-text {
+    display: none;
+}
+/*collects*/
+#collects {
+    position: relative;
+    margin-top: 20px;
+    padding: 0 15px;
+}
+#collects .title1{
+    height: 54px;
+    line-height: 54px;
+}
+#collects  .title1 h2 {
+    float: left;
+    font-size: 18px;
+    font-weight: normal;
+}
+#collects  .title1 span {
+    color: #f60;
+}
+#collects  .title1 span a {
+    color: #f60;
+}
+#collects .nav {
+    position: absolute;
+    width: 25px;
+    height: 50px;
+    top:272px;
+    /*background: red;*/
+    z-index: 3;
+    background: url(http://img.xiami.net/static/img/index/page_icon.png) no-repeat;
+}
+#collects .prev {
+    right: 0;
+    background-position: 0 0;
+}
+#collects .prev:hover{
+    background-position: 0 -50px;
+}
+#collects .next {
+    left: 0px;
+    background-position: -25px 0;
+}
+#collects .next:hover {
+    background-position: -25px -50px;
+}
+#view2 {
+    float: left;
+}
+#view2  .album {
+    float: left;
+    margin-right: 16px;
+    width: 130px;
+    background-color: #fff;
+}
+#view2  .album  .img {
+    position: relative;
+    display: block;
+    width: 140px;
+    height: 140px;
+    z-index: 1;
+    border: none;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#view2 .album .reason {
+    width: 130px;
+    height: 24px;
+    padding-left:4px;
+    background-color: #F5F5F5;
+    line-height: 24px;
+    color: #999;
+}
+#view2 .album .info .name {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#view2 .album .info .singer {
+    color: #999;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+}
+#view2 .album .info .singer i {
+    display: inline-block;
+    width: 12px ;
+    height: 12px ;
+    background: url(http://img.xiami.net/res/glory/img/glory_icon.png) no-repeat -54px -187px ;
+    vertical-align: middle;
+}
+#view2 .album .info .singer .singer-img {
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    margin-top: 5px;
+    border-radius: 2px;
+    vertical-align: middle;
+    background-image:  url(../images/singer1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#view2 .album .info .singer .singer-name {
+    color:#999;
+}
+#view2 .album .info .singer .icon-svip {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url(https://img.alicdn.com/tfs/TB1ljRgSFXXXXbFXVXXXXXXXXXX-32-32.png) no-repeat center;
+    background-size: contain;
+    vertical-align: middle;
+}
+#view2 .album .img .blbum-cover {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 140px;
+    height: 140px;
+    box-shadow: 1px 1px rgba(0,0,0,0.5) inset, 1px -1px rgba(0,0,0,0.5) inset;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.7);
+}
+#view2 .album .img:hover .blbum-cover {
+    display: block;
+}
+#view2 .album .img .blbum-cover .album-toplay {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    right: 5px;
+    bottom: 5px;
+    width: 24px;
+    height: 24px;
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat 0 -48px;
+    cursor:pointer;
+}
+#view2 .album .img .blbum-cover .album-toplay:hover {
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat -24px -48px;
+}
+#view2 .album .img .blbum-cover .album-collect {
+    position: absolute;
+    left:5px;
+    top:5px;
+    z-index: 3;
+    width: 30px;
+    height: 14px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background: #FEFEFE;
+    cursor: pointer;
+}
+#view2 .album .img .blbum-cover .album-collect .toheart {
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin: 2px 0 0 4px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -6px -127px;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu {
+    float: left;
+    width: 10px;
+    height: 12px;
+    margin: 2px 0 0 2px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -153px -56px;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    /*width: 65px;*/
+    /*height: 65px;*/
+    padding: 5px 0;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background-color: #FFF;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    z-index: 4;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink{
+    display: block;
+    width: 64px;
+    padding: 0 2px 0 2px;
+    font-size: 12px;
+    line-height: 24px;
+    cursor: pointer;
+    color: #000000;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink span {
+    float: left;
+    width: 20px;
+    height: 24px;
+    margin-right: 3px;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .hover1 {
+    background: url(../images/icon.png) no-repeat 0 -120px;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .hover2 {
+    background: url(../images/icon.png) no-repeat -25px -120px;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .hover3 {
+    background: url(../images/icon.png) no-repeat -48px -120px;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu:hover .todropmenu-hover {
+    display: block;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover {
+    background: #f5914E;
+    color: #FFFFFF;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover1 {
+    background-position: 0 -145px;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover2 {
+    background-position: -25px -145px;
+}
+#view2 .album .img .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover3 {
+    background-position: -48px -145px;
+}
+#view2 .album .info {
+    position: relative;
+}
+#view2 .album .reason .reason-cover {
+    position: absolute;
+    display: none;
+    top: -140px;
+    left: 0;
+    width: 140px;
+    height: 163px;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.6);
+    text-align: center;
+}
+#view2 .album .reason .reason-cover .reason-cover-text {
+    display: block;
+    width: 110px;
+    height: 24px;
+    margin-top: 20px;
+    padding:0 15px;
+    white-space: normal;
+    font-size: 13px;
+    line-height: 24px;
+    color: #FFF;
+    font-weight: normal;
+    font-style: normal;
+}
+#view2 .album .reason .reason-cover .reason-cover-bottom {
+    display: block;
+    margin:32px 36px 0;
+    padding: 0 10px;
+    border-radius: 4px;
+    background-color: #999;
+    color:  #FFF;
+    line-height: 33px;
+    text-decoration: none;
+}
+#view2 .album .info .reason:hover .reason-cover{
+    display: block;
+}
+#view2 .album .info .reason .clear-text {
+    width: 130px;
+    height: 24px;
+    padding-left:5px;
+    background-color: #F5F5F5;
+    line-height: 24px;
+    color: #999;
+    font-weight: 400;
+}
+#view2 .album .info .reason:hover .clear-text {
+    display: none;
+}
+/*charts*/
+#charts {
+    position: relative;
+    margin: 0 15px;
+}
+#charts .title1{
+    height: 54px;
+    line-height: 54px;
+}
+#charts .title1 h2 {
+    float: left;
+    font-size: 18px;
+    font-weight: normal;
+}
+#charts .title1 span {
+    color: #f60;
+}
+#charts .title1 span a {
+    color: #f60;
+}
+/*charts content*/
+#charts .content {
+
+}
+#charts .content ul li {
+    height: 35px;
+    line-height: 35px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #999;
+    border-top: 1px solid #EBEBEB;
+}
+#charts .content ul li .song_block {
+    float: left;
+    width: 280px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-left: 10px;
+}
+#charts .content ul li .song_block .song_block_img {
+    display: none;
+}
+#charts .content ul li .song_block p{
+    float: left;
+    color: #333333;
+}
+#charts .content ul li .song_block .singer_name {
+    margin-left: 6px;
+    color: #999;
+}
+#charts .content ul li .song_block .icon_mv {
+    display: inline-block;
+    width: 18px;
+    height: 12px;
+    padding: 0 2px;
+    border-radius: 3px;
+    color: #FFF;
+    vertical-align: middle;
+    background: url(//gtms02.alicdn.com/tps/i2/TB1T5vIIVXXXXaOaXXXoMvXGpXX-36-24.png) no-repeat center center;
+    background-size: 18px 12px;
+}
+#charts .action_block {
+    float: left;
+    width: 80px;
+    height: 24px;
+}
+#charts .user_block {
+    float:left;
+    width: 40px;
+    height: 24px;
+}
+#charts .common_block {
+    display: block;
+    float: left;
+    max-width: 270px;
+    min-width: 150px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #AAA;
+}
+#charts .time_block {
+    float: right;
+    width: 70px;
+    text-align: right;
+    color: #AAA;
+}
+#charts .time_block p {
+    margin-right: 10px;
+}
+#charts .content ul li.cur {
+    height: 75px;
+    padding: 10px 0 0 ;
+    background-color: #F5F5F5
+}
+#charts .content ul li.cur .song_block {
+    padding: 5px 0 0 1px;
+}
+#charts .content ul li.cur .song_block .song_block_img{
+    display: block;
+    position: relative;
+    float: left;
+    width: 55px;
+    height: 55px;
+    margin-right: 10px;
+    font-size: 0;
+    background: url(http://pic.xiami.net/images/album/img77/119277/21035274611520765518.jpg@1e_1c_100Q_100w_100h) no-repeat center;
+    background-size: cover;
+}
+#charts .content ul li.cur .song_block .song_block_img .icon {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    left: 15px;
+    top: 15px;
+    width: 24px;
+    height: 24px;
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat 0 -48px;
+    cursor: pointer;
+}
+#charts .content ul li.cur .song_block .song_block_img .icon:hover{
+    background-position: -24px -48px;
+}
+#charts .content ul li.cur .song_block .song_block_message{
+    float: left;
+}
+#charts .content ul li.cur .song_block .song_block_img:hover .icon ,#charts .content ul li.cur .song_block .icon_mv{
+    display: block;
+}
+#charts .content ul li.cur .song_block .song_block_message p{
+    display: block;
+    float: none;
+    margin-left: 0;
+    text-align: justify;
+    height: 21px;
+    line-height: 21px;
+}
+#charts .content ul li.cur .song_block .song_block_message .icon_mv{
+    float: none;
+    display: block;
+    line-height: 21px;
+    height: 21px;
+    text-align: justify;
+}
+#charts .content ul li.cur  .action_block {
+    margin-top: 8px;
+    position: relative;
+    float: left;
+    height:30px;
+}
+#charts .action_block  .album-collect {
+    display: none;
+    position: absolute;
+    left:5px;
+    top:5px;
+    z-index: 3;
+    width: 30px;
+    height: 14px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background: #FEFEFE;
+    cursor: pointer;
+}
+#charts .content ul li.cur .album-collect{
+    display: block;
+}
+#charts .content ul li.cur .album-collect .toheart {
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin: 1px 0 0 4px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -6px -127px;
+    border-top: 1px solid #fff;
+}
+#charts .content ul li.cur .album-collect.todropmenu {
+    float: left;
+    width: 10px;
+    height: 12px;
+    margin: 2px 0 0 2px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -153px -56px;
+}
+#charts .content ul li.cur .album-collect .todropmenu .todropmenu-hover {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    display: none;
+    /*width: 65px;*/
+    /*height: 65px;*/
+    padding: 5px 0;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background-color: #FFF;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    z-index: 4;
+}
+#charts .content ul li.cur .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink{
+    display: block;
+    width: 64px;
+    padding: 0 2px 0 2px;
+    font-size: 12px;
+    line-height: 24px;
+    cursor: pointer;
+    color: #000000;
+}
+#charts .content ul li.cur .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink span {
+    float: left;
+    width: 20px;
+    height: 24px;
+    margin-right: 3px;
+}
+#charts .content ul li.cur .album-collect .todropmenu .todropmenu-hover .hover1 {
+    background: url(../images/icon.png) no-repeat 0 -120px;
+}
+#charts .content ul li.cur .album-collect .todropmenu .todropmenu-hover .hover2 {
+    background: url(../images/icon.png) no-repeat -25px -120px;
+}
+#charts .content ul li.cur .album-collect .todropmenu .todropmenu-hover .hover3 {
+    margin-left: -24px;
+    background: url(../images/icon.png) no-repeat -48px -120px;
+}
+#charts .content ul li.cur .album-collect .todropmenu:hover .todropmenu-hover {
+    display: block;
+}
+#charts .content ul li.cur .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover {
+    background: #f5914E;
+    color: #FFFFFF;
+}
+#charts .content ul li.cur .album-collect.todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover1 {
+    background-position: 0 -145px;
+}
+#charts .content ul li.cur .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover2 {
+    background-position: -25px -145px;
+}
+#charts .content ul li.cur .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover3 {
+    background-position: -48px -145px;
+}
+#charts .user_block a {
+    display: none;
+}
+#charts .content ul li.cur .user_block a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-top: 8px;
+    border-radius: 4px;
+    background: url(http://pic.xiami.net/images/default/avatar_b.jpg@1e_1c_100Q_50w_50h) no-repeat center;
+    background-size: cover;
+}
+#charts .content ul li.cur .common_block p{
+      margin-top: 5px;
+      color: #333;
+}
+#charts .content ul li.cur .time_block p{
+    margin-top: 5px;
+}
+#charts .content ul li:nth-last-child(1) {
+    border-bottom: 1px solid #EBEBEB;
+}
+/*extra*/
+#charts .extra .toplay {
+    float: left;
+    height: 30px;
+    margin: 15px 0 0 10px;
+    padding: 0 10px 0 5px;
+    border-radius: 4px;
+    background-color: #F60;
+    line-height: 30px;
+    color: #FFF;
+    margin-bottom: 20px;
+}
+#charts .extra .toplay i {
+    display: inline-block;
+    margin-top: 2px;
+    float: left;
+    width: 24px;
+    height: 24px;
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat -48px -72px;
+    vertical-align: bottom;
+}
+/*personal_nav*/
+#personal_nav {
+    clear: both;
+    padding-top: 30px;
+}
+#personal_nav .content {
+    border-top: 2px solid #3A3935;
+    border-bottom: 1px solid #EBEBEB;
+    background-color: #FFF;
+}
+#personal_nav .content .tag1{
+    float: left;
+    height: 42px;
+    padding: 0 20px;
+    line-height: 42px;
+    font-size: 14px;
+    background-color: #3A3935;
+    color: #fff;
+}
+#personal_nav .content a {
+    float: left;
+    height: 42px;
+    padding: 0 20px;
+    line-height: 42px;
+    font-size: 14px;
+    text-decoration: blink;
+    color: #333;
+}
+#personal_nav .content .tag_set {
+    width: 42px;
+    height: 42px;
+    float: right;
+}
+#personal_nav .content .tag_set .icon_set {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#personal_nav .content .tag_set .icon_set b{
+    position: absolute;
+    top: 4px;
+    left: 0;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url(http://img.xiami.net/static/img/index/personal_icon.png) no-repeat 0 0;
+}
+#personal_nav .content .tag_set .icon_set:hover b {
+    background-position: -32px 0;
+}
+#personal {
+    margin-top: 20px;
+}
+#personal .personal_block {
+    float: left;
+    width: 20%;
+}
+#personal .personal_block .content {
+    position: relative;
+    width: 185px;
+    height: 280px;
+    /*margin: 0 auto;*/
+    padding: 10px;
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+    background-color: #FFF;
+}
+#personal .personal_block .content .album {
+    position: relative;
+}
+#personal .personal_block .content .album .image{
+    position: relative;
+    display: block;
+    width: 185px;
+    height: 185px;
+    background: url(http://pic.xiami.net/images/album/img58/1258/66221400571815.jpg@1e_1c_100Q_185w_185h) no-repeat center;
+}
+#personal .personal_block .content .album .info {
+    line-height: 24px;
+    height: 24px;
+    margin-top: 10px;
+}
+#personal .personal_block .content .album .info .sing_name a {
+    color: #333;
+    font-size: 14px;
+}
+#personal .personal_block .content .album .info .name a {
+    color: #999;
+}
+#personal .personal_block .content .action {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    bottom: 10px;
+    width: 185px;
+}
+#personal .personal_block .content .action .more {
+    float: left;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 2px;
+    line-height: 24px;
+    background-color: #3A3935;
+    color: #FFF;
+}
+#personal .personal_block .content .action .tochange {
+    float: right;
+    line-height: 24px;
+    color: #999;
+}
+#personal .personal_block .content .album .image .blbum-cover {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 185px;
+    height: 185px;
+    box-shadow: 1px 1px rgba(0,0,0,0.5) inset, 1px -1px rgba(0,0,0,0.5) inset;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.7);
+}
+#personal .personal_block .content .album .image:hover .blbum-cover {
+    display: block;
+}
+#personal .personal_block .content .album .image .album-toplay {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    right: 5px;
+    bottom: 5px;
+    width: 24px;
+    height: 24px;
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat 0 -48px;
+    cursor:pointer;
+}
+#personal .personal_block .content .album .image .album-toplay:hover {
+    background: url(http://img.xiami.net/static/img/common/play_icon.png) no-repeat -24px -48px;
+}
+#personal .personal_block .content .album .image .album-collect {
+    position: absolute;
+    left:5px;
+    top:5px;
+    z-index: 3;
+    width: 30px;
+    height: 14px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background: #FEFEFE;
+    cursor: pointer;
+}
+#personal .personal_block .content .album .image .album-collect .toheart {
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin: 2px 0 0 4px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -6px -127px;
+}
+
+#personal .personal_block .content .album .image .album-collect .todropmenu {
+    float: left;
+    width: 10px;
+    height: 12px;
+    margin: 2px 0 0 2px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -153px -56px;
+}
+#personal .personal_block .content .album .image .album-collect .todropmenu .todropmenu-hover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    /*width: 65px;*/
+    /*height: 65px;*/
+    padding: 5px 0;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background-color: #FFF;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    z-index: 4;
+}
+#personal .personal_block .content .album .image .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink{
+    display: block;
+    width: 77px;
+    padding: 0 2px 0 2px;
+    font-size: 12px;
+    line-height: 24px;
+    cursor: pointer;
+    color: #000000;
+}
+#personal .personal_block .content .album .image .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink span {
+    float: left;
+    width: 20px;
+    height: 24px;
+    margin-right: 3px;
+}
+#personal .personal_block .content .album .image .album-collect .todropmenu .todropmenu-hover .hover1 {
+    background: url(../images/icon.png) no-repeat 0 -120px;
+}
+#personal .personal_block .content .album .image .album-collect .todropmenu .todropmenu-hover .hover2 {
+    background: url(../images/icon.png) no-repeat -25px -120px;
+}
+#personal .personal_block .content .album .image .album-collect .todropmenu .todropmenu-hover .hover3 {
+    background: url(../images/icon.png) no-repeat -48px -120px;
+}
+#personal .personal_block .content .album .image .album-collect .todropmenu:hover .todropmenu-hover {
+    display: block;
+}
+
+
+#personal .personal_block .content .album .image .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover {
+    background: #f5914E;
+    color: #FFFFFF;
+}
+#personal .personal_block .content .album .image .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover1 {
+    background-position: 0 -145px;
+}
+#personal .personal_block .content .album .image.blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover2 {
+    background-position: -25px -145px;
+}
+#personal .personal_block .content .album .image .blbum-cover .album-collect .todropmenu .todropmenu-hover .todropmenu-hoverlink:hover .hover3{
+    background-position: -48px -145px;
+}
+#personal li.cur .content{
+    width: 205px;
+    height: 300px;
+    padding: 0 0 0 0;
+    border-radius: 5px;
+    border: 1px solid #EBEBEB;
+    background: url(http://img.xiami.net/images/common/uploadpic/97/14968876972393.jpg) no-repeat center;
+    background-size: cover;
+}
+#personal .personal_block:nth-child(1) .content .album .image {
+    background-image: url(http://pic.xiami.net/images/album/img11/1511/82731394072734.jpg@1e_1c_100Q_185w_185h);
+}
+#personal .personal_block:nth-child(3) .content .album .image {
+    background-image: url(http://pic.xiami.net/images/album/img65/898665/1292898666.jpg@1e_1c_100Q_185w_185h);
+}
+#personal .personal_block:nth-child(4) .content .album .image {
+    background-image: url(http://pic.xiami.net/images/collect/72/72/8182721267647344.jpg);
+}
+#charts .content ul li .album-collect .todropmenu {
+    float: left;
+    width: 10px;
+    height: 12px;
+    margin: 2px 0 0 2px;
+    background: url(http://img.xiami.net/static/img/music/icon.png) no-repeat -153px -56px;
+}
+
+/*foot*/
+/*sitemap*/
+#footer .gap {
+    max-width: 1100px;
+    min-width: 980px;
+    padding: 20px 40px;
+    border-top: 1px solid #e6e6e6;
+    background-color: #FFF;
+    color: #999;
+    margin: 0 auto;
+}
+#footer .gap .content {
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #CCC;
+}
+#footer .gap .content .sitemap {
+    float: left;
+}
+#footer .gap .content .sitemap ul {
+    /*position: relative;*/
+    float: left;
+    padding: 0 30px 0 10px;
+    line-height: 22px;
+}
+#footer .gap .content .sitemap ul li.headline {
+    margin: 0 0 8px;
+    font-weight: bold;
+    color: #666;
+    font-size: 14px;
+}
+#footer .gap .content .sitemap ul li a {
+    /*position: relative;*/
+    /*float: left;*/
+    /*display: block;*/
+    color: #999;
+    font-size: 12px;
+    font-style: normal;
+    /*height: 12px;*/
+    /*line-height: 12px;*/
+}
+#footer .gap .content .sitemap ul li a .hot {
+    /*position: absolute;*/
+    /*top: 0;*/
+    display: inline-block;
+    width: 19px;
+    height: 11px;
+    background: url(http://img.xiami.net/res/v3/img/sup_hot.gif) no-repeat;
+    vertical-align: middle;
+    font-size: smaller;
+    line-height: 0;
+}
+
+/*cooperation*/
+#footer .gap .content .cooperation {
+    float: right;
+    width: 430px;
+}
+#footer .gap .content .cooperation .vam  {
+    display: block;
+    background: url(../images/partners_icon.jpg) no-repeat  right top;
+    /*background-size: cover;*/
+    width: 430px;
+    overflow: hidden;
+}
+#footer .gap .content .cooperation span {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 150px;
+}
+#footer .gap .content .cooperation a {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 0 0 7px 5px;
+    text-decoration: none;
+}
+
+#footer .gap .ali_group {
+    border-bottom: 1px dashed #CCC;
+    overflow: hidden;
+}
+#footer .gap .ali_group a {
+    float: left;
+    margin: 10px 0 10px -1px;
+    padding: 0 10px;
+    border-left: 1px solid #EEE;
+    color: #999;
+}
+#footer .gap .ali_group a:nth-child(1), #footer .gap .ali_group a:nth-child(18){
+    border-left: none;
+}
+
+
+/*extra*/
+#footer .gap .extra {
+    margin-top: 15px;
+    clear: both;
+}
+#footer .gap .extra .sns {
+    float: left;
+    text-indent: 10px;
+    vertical-align: middle;
+}
+#footer .gap .extra .sns a {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    background: url(http://img.xiami.net/res/v3/img/sync-ico_v15.gif) no-repeat;
+    vertical-align: middle;
+}
+#footer .gap .extra .sns .icon_sina {
+    background-position: 0 -16px;
+}
+#footer .gap .extra .sns .icon_renren {
+    background-position: 0 -80px;
+}
+#footer .gap .extra .sns .icon_qzone {
+    background-position: 0 -272px;
+}
+#footer .gap .extra .sns .icon_tqq {
+    background-position: 0 -144px;
+}
+#footer .gap .extra .sns .icon_douban {
+    background-position: 0 -208px;
+}
+
+#footer .gap .extra .emark {
+    float: right;
+    margin-left: 5px;
+}
+#footer .gap .extra .emark a {
+    display: block;
+    height: 40px;
+    width: 40px;
+    background: url(http://gtms03.alicdn.com/tps/i3/TB17ZIFHpXXXXXCXVXXGEZzGpXX-40-40.png) no-repeat center;
+}
+#footer .gap .extra .copyright {
+    float: right;
+    color: #AAA;
+    text-align: right;
+}
+
+#footer .gap .extra .copyright span {
+    display: inline-block;
+    overflow: hidden;
+    width: 117px;
+    height: 25px;
+    margin-left: 15px;
+    background-image: url(http://img.xiami.net/res/v3/img/xiami_motto.png);
+    text-indent: 100%;
+    line-height: 25px;
+    vertical-align: middle;
+}
+#footer .gap .extra .copyright a {
+    color: #AAA;
+}
+
+
+/*sidebutton*/
+#sidebutton {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    z-index: 999;
+    /*outline: none;*/
+}
+#sidebutton a {
+    display: block;
+    position: relative;
+    width: 38px;
+    height: 34px;
+    padding-top: 4px;
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    border-color: #D5D5D5;
+    background-color: #FEFEFE;
+    border-radius: 3px;
+}
+#sidebutton .sidebutton_gotop {
+    border-bottom: 1px solid #D5D5D5;
+}
+#sidebutton a .sidebutton_icon{
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 4px 0 0 7px;
+    background: url(http://img.xiami.net/static/img/common/footer_icon.png) no-repeat;
+}
+#sidebutton .sidebutton_qrcode .sidebutton_icon {
+    background-position: 0 0;
+}
+#sidebutton .sidebutton_gotop .sidebutton_icon {
+    background-position: 0 -48px;
+}
+
+#sidebutton a span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 38px;
+    height: 36px;
+    display: none;
+    color: #FFF;
+    text-align: center;
+    padding-top: 4px;
+    border-width: 1px 1px 0 1px;
+    border-color: #E06E16;
+    background-color: #F60;
+}
+#sidebutton a:hover span {
+    display: block;
+}
+
+.sidebutton_code {
+    display: none;
+    position: absolute;
+    top: -47px;
+    right: 50px;
+    width: 140px;
+    height: 162px;
+    border: 1px solid #E06E16;
+    border-radius: 3px 3px;
+    background-color: #F60;
+    text-align: center;
+}
+#sidebutton .sidebutton_code i {
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    color: #FFF;
+    font-weight: normal;
+    font-size: 14px;
+    font-style: normal;
+}
+#sidebutton .sidebutton_qrcode .sidebutton_triangle {
+    position: absolute;
+    right: -11px;
+    top: 55px;
+    overflow: hidden;
+    margin-right:1px;
+    font-size: 18px;
+    color: #E06E16;
+}
+#sidebutton .sidebutton_qrcode .sidebutton_triangle i {
+    position: absolute;
+    left: -1px;
+    top:-1px;
+    color: #F60;
+}
+#sidebutton .sidebutton_qrcode:hover .sidebutton_code {
+    display: block;
+}

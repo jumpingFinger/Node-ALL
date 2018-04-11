@@ -1,0 +1,24 @@
+String.prototype.myQueryURLParameter = function myQueryURLParameter() {
+    let result = {};
+
+    //=>HASH
+    let link = document.createElement('a');
+    link.href = this;
+    let {hash: HASH, search} = link;
+    HASH ? result = {HASH: HASH.substring(1)} : null;
+
+    //=>SEARCH
+    let reg = /([^?&=]+)(?:=([^?&=]+)?)?/g;
+	console.log(reg);
+    search.replace(reg, (...arg) => {
+        result[arg[1]] = arg[2];
+    });
+    return result;
+};
+
+
+console.log('http://www.zhufengpeixun.cn/stu?name=lucy&age=28&lx=#teacher'.myQueryURLParameter());
+
+console.log('http://www.zhufengpeixun.cn/stu?name=lucy&age=28&lx='.myQueryURLParameter());
+
+console.log('http://www.zhufengpeixun.cn/stu?name=lucy&age=28&lx=&sex#teacher'.myQueryURLParameter());

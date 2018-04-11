@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #green{
+            color: green;  /*id选择器*/
+        }
+        #red{
+            color: red;    /*id选择器*/
+        }
+        [title]{
+           color:red/*属性选择器*/
+        }
+        [title="w3c"]{
+            color: #1BADBF;/*属性和值选择器*/
+        }
+        [title~="helo"]{
+            color: #2b142f;/*属性和值选择器-多个值*/
+        }
+
+
+    </style>
+</head>
+<body>
+<p><strong>我是粗体</strong>我是粗体还是斜体</p>
+<p id="green">213213213</p>
+<p id="red">1231231313</p>
+<p title="hello">属性选择器</p>
+<p title="w3c">w3cschool</p>
+<hr/>
+<p title="helo">hah</p>
+<p title="hhhhhhh">hhhhhhh</p>
+<hr/>
+
+</body>
+</html>

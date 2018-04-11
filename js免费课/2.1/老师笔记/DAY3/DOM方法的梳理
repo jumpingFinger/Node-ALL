@@ -1,0 +1,54 @@
+【获取DOM元素的8个方法】
+1.document.getElementById('ID名')
+2.[context].getElementsByTagName('标签名')
+3.[context].getElementByClassName('类名')
+4.document.getElementByName('name属性')
+5.document.body
+6.document.documentElement
+7.document.querySelector('选择器')
+8.document.querySelectorAll('选择器')
+
+ /!*获取一屏幕的宽度*!/
+document.body.clientWidth  || document.documentElement.clientWidth();
+
+/!*获取一屏幕的高度*!/
+document.body.clientHeight  || document.documentElement.clientHeight();
+
+// -> 需求: 获取p元素 (最少写2个以上)
+<div class ='tab' id = 'tab'>
+    <p></p>
+</div>
+
+获取p:  p / .tab p / #tab p(css)
+       document.querySelector('.tab p') /document.querySelector('#tab p')
+
+【节点的类型(4种)】
+             (节点的类型)    (节点的名称)      (节点的值)
+             nodeType      nodeName        nodeValue
+元素节点       1            大写的标签名         null
+文本节点       3            #text              文本的内容
+注释节点       8            #comment           注释的内容
+document      9            #document          null
+
+【节点关系 9个】
+1.childnodes 获取所有的子节点 (元素  注释  换行符等)
+2.children 获取所有的元素子节点 (元素)
+3.parentNode  获取的是元素的父亲节点(元素)
+4.previousSibling 获取上一个哥哥节点 (可能不是元素)
+5.previousElementSibling 获取上一个元素哥哥节点 (元素)
+6.nextSibling 获取下一个弟弟节点(可能不是元素)
+7.nextElementSibling 获取下一个元素弟弟节点(元素)
+8.firstChild  获取第一个子节点(可能不是元素)
+9.lastChild 获取最后一个子节点(可能不是元素)
+
+【DOM动态操作 10个】
+1.document.createElement 表示创建一个元素
+2.容器.appendChild('元素') 表示把元素添加到指定容器的末尾
+3.容器.insertBefore('newEle','refEle')
+5.元素.cloneNode();  只克隆外层标签
+ 元素.cloneNode(true); 表示把元素包括元素里面的内容完全克隆一份
+6.容器.removeChild('元素') 表示在指定容器中把元素移除掉
+7.容器.replaceChild('newEle','refEle'); 用元素去替换另一个元素
+8.setAttribute 设置属性
+9.getAttribute 获取属性
+10.removeAttribute 移除属性

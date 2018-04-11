@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM方法的封装</title>
+</head>
+<body>
+<div id="tab">
+    <!-- 选项卡的头部 -->
+    <ul>
+        <li>1</li>
+        <li id="li2">2</li>
+        <li>3</li>
+    </ul>
+    <!-- 选项卡的底部 -->
+    <div>1</div>
+    <!--我是上一个哥哥节点中的注释-->
+    <div id="box">2</div>
+    <div>3</div>
+</div>
+<script type="text/javascript">
+    var oBox = document.getElementById('box');
+    console.log(oBox.previousSibling); //#text
+
+    /*while(条件){
+        /!*条件成立执行的代码*!/
+    }*/
+    function prev(curEle) {
+        var p = curEle.previousSibling;
+        while(p && p.nodeType !== 1){ // 只要不是元素节点就一直往上查找
+            p = p.previousSibling;
+        }
+        return p;
+    }
+    console.log(prev(oBox)); //<div>1</div>
+
+    var oLi = document.getElementById('li2');
+    console.log(prev(oLi)); //<li>1</li>
+
+    /*&& 逻辑与 条件都满足 成立
+    || 逻辑或  只要有一个条件满足 就成立
+    var num = 3;
+    if (num > 1 && num < 5) {
+        console.log('ok');
+    }
+    if (num > 1 || num < 5) {
+        console.log('ok');
+    }*/
+
+</script>
+</body>
+</html>

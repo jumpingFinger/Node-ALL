@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #list {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        #list li {
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .bg1 {
+            background: red;
+        }
+
+        .bg2 {
+            background: #1D9FD3;
+        }
+        .bg3 {
+            background: fuchsia;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li>颠覆式创新 海外抢先试驾第十代本田雅阁</li>
+    <li>颠覆式创新 海外抢先试驾第十代本田雅阁</li>
+    <li>颠覆式创新 海外抢先试驾第十代本田雅阁</li>
+    <li>颠覆式创新 海外抢先试驾第十代本田雅阁</li>
+    <li>颠覆式创新 海外抢先试驾第十代本田雅阁</li>
+    <li>颠覆式创新 海外抢先试驾第十代本田雅阁</li>
+    <li>颠覆式创新 海外抢先试驾第十代本田雅阁</li>
+    <li>颠覆式创新 海外抢先试驾第十代本田雅阁</li>
+    <li>颠覆式创新 海外抢先试驾第十代本田雅阁</li>
+    <li>颠覆式创新 海外抢先试驾第十代本田雅阁</li>
+</ul>
+<script>
+    var oList = document.getElementById('list');
+    var oLis = oList.getElementsByTagName('li');
+    for (var i = 0; i < oLis.length; i++) {
+        if (i % 2 == 0) {
+            oLis[i].className = "bg1";
+            oLis[i].limeng = oLis[i].className
+            console.log(oLis[i].limeng);
+        } else if (i % 2 == 1){
+            oLis[i].className = "bg2";
+            oLis[i].limeng = oLis[i].className;
+        };
+        oLis[i].onmouseover = function () {
+           this.className = 'bg3' ;  // this 的情况1:给元素绑定事件   事件前面的主体是谁    this 就代表谁 获取当前事件必须这么用tjis
+        };
+        oLis[i].onmouseout = function () {
+            this.className = this.limeng;
+        }
+    }
+    //  onmouseover 鼠标移上事件   onclick  鼠标点击
+
+
+//    oLis[0].onmouseover =function () {
+//        oLis[0].className = 'bg3';
+//    }
+</script>
+</body>
+</html>

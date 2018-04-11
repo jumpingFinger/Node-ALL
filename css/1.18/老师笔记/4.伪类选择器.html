@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /* love  hate*/
+      /*
+        a:link 用户未被访问前
+        a:visited 用户访问后(只要a标签里面有href这个属性 a:visited就会起作用)
+        a:hover  用户鼠标移上效果
+        a:active  用户鼠标按下*/
+        a:visited{
+            color:red
+        }
+        a:hover{
+            font-weight: bold;
+        }
+        a:active{
+            background: yellow;
+        }
+        /*input 要获取焦点 一般会给input加一个边框颜色*/
+        input:focus{
+            border:1px solid red;
+            outline: 0;
+        }
+        p:first-line{
+            color:red
+        }
+        input::-webkit-input-placeholder {
+            color: red;
+        }
+        input:-ms-input-placeholder { // IE10+
+        color: red;
+        }
+        input:-moz-placeholder { // Firefox4-18
+        color:red;
+        }
+        input::-moz-placeholder { // Firefox19+
+        color: red;
+        }
+    </style>
+</head>
+<body>
+<a href="https://www.baidu.com">珠峰培训</a>
+
+<input type="text" placeholder="王娟娟">
+<p>珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训</p>
+</body>
+</html>

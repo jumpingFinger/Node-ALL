@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实战案列 - 隔行变色 - js</title>
+    <style type="text/css">
+        *{
+            /*去掉浏览器默认自带的间距*/
+            margin: 0; /*m0 tab*/
+            padding:0; /*p0 tab*/
+        }
+        li{
+            list-style:none;
+        }
+        #list{
+            width: 500px;
+            margin:0 auto;
+        }
+        #list li{
+            height: 30px; /*h50 tab*/
+            line-height: 30px;
+            cursor: pointer; /*让鼠标变成小手的形状*/
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li>习近平2017达沃斯日内瓦主旨演讲的世界意义</li>
+    <li>习近平贺信引发拉美各界人士热烈共鸣</li>
+    <li>党中央国务院决定了 在全国开展扫黑除恶专项斗争</li>
+    <li>为中国特色社会主义发展提供宪法保障 理上网来</li>
+    <li>宪法修改必须依法按程序进行 新时代新气象新作为</li>
+    <li>习近平2017达沃斯日内瓦主旨演讲的世界意义</li>
+    <li>习近平贺信引发拉美各界人士热烈共鸣</li>
+    <li>党中央国务院决定了 在全国开展扫黑除恶专项斗争</li>
+    <li>为中国特色社会主义发展提供宪法保障 理上网来</li>
+    <li>宪法修改必须依法按程序进行 新时代新气象新作为</li>
+</ul>
+<script type="text/javascript">
+    /*获取id 名: document.getElementById('id名');
+    * document 文档  上下文(元素活动的区域)
+    * .  的
+    * get  获取
+    * Element  元素
+    * By 通过
+    * Id  id名
+    * 在整个document中 通过id名去获取元素
+    * id的上下文只能是document
+    *
+    * 获取标签名:上下文.getElementsByTagName('li');
+    * 获取的结果是一个类数组集合:
+    * 特点:  有索引值 而且索引值从0开始 依次递增  还有一个叫length的长度属性
+    *       如果要获取类数组集合中的某一项 一定要通过索引去获取
+    *       就要只有一项 也必须要通过索引去获取元素 直接写 会报错
+    * 0:li
+    * 1:li
+    * 2:li
+    * ...
+    * 9:li
+    * length:10; 代表的是li的个数
+    * */
+
+    //1.想要操作谁  第一步先获取谁
+    /*var oList = document.getElementById('list');
+    var oLis = oList.getElementsByTagName('li');*/
+    var oList = document.getElementById('list'),
+        oLis = oList.getElementsByTagName('li');
+
+    //2. 确定奇数和偶数行的情况 -> i%2 是0   还是 1
+/* %  取余数
+   索引 0    代表第一个li      奇数行      0%2 -> 0
+       1    代表第二个li      偶数行      1%2 -> 1
+       2    代表第三个li      奇数行      2%2 -> 0
+       3
+       4
+               ...
+       9    代表第十个li      偶数行      9%2 -> 1
+       总结:我们可以根据以上取余的结果判断是奇数行还是偶数行
+       */
+    for (var i = 0; i < oLis.length; i++) {
+       if(i%2 == 0){
+           //奇数行
+           oLis[i].style.backgroundColor = 'greenyellow';
+       }else if(i %2 ==1){
+           //偶数行
+           oLis[i].style.backgroundColor = 'yellow'
+       }
+    }
+</script>
+</body>
+</html>

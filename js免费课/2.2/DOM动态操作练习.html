@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM动态操作练习</title>
+    <style type="text/css">
+        #box1{
+            margin:20px 10px;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        #box2 {
+            margin:20px 10px;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="teacher">王燕老师</div>-->
+<div id="box1" class="box">1</div>
+<div id="box2" class="box">2</div>
+<!--<div id="tab">-->
+    <!--<ul>-->
+        <!--<li>1</li>-->
+        <!--<li>2</li>-->
+        <!--<li>3</li>-->
+    <!--</ul>-->
+    <!--<div>1</div>-->
+    <!--<div id="box">2</div>-->
+    <!--<div>3</div>-->
+<!--</div>-->
+<!--<script>-->
+     <!--var tab=document.getElementById('tab');-->
+     <!--console.log(tab.firstChild);   //  #text-->
+     <!--console.log(tab.lastChild);    //  #text      nodevalue-->
+
+     <!--console.log(tab.childNodes);  // NodeList(9) [text, ul, text, div, text, div#box, text, div, text]-->
+     <!--console.log(tab.children);    //HTMLCollection(4) [ul, div, div#box, div, box: div#box]-->
+     <!--console.log(tab.parentNode);  //     <body>.... </body>-->
+
+     <!--var oLis=document.getElementsByTagName('li');-->
+     <!--console.log(oLis);    // HTMLCollection(3) [li, li, li]-->
+     <!--console.log(oLis[0].parentNode);  //  ul-->
+<!--//     console.log(olis.parentNode);   //Uncaught ReferenceError: olis is not defined  at        没有捕捉: 引用错误-->
+
+     <!--var  box=document.getElementById('box');-->
+     <!--console.log(box.previousSibling);    // #text-->
+     <!--console.log(box.previousElementSibling);    // <div>1</div>-->
+
+     <!--console.log(box.nextSibling);       // #text-->
+     <!--console.log(box.nextElementSibling);   // <div>3</div>-->
+
+
+<!--</script>-->
+<!--<script>-->
+    <!--//   创建   还要把他添加到容器当中-->
+        <!--var oDiv=document.createElement('div');-->
+        <!--oDiv.id='div1';-->
+        <!--oDiv.innerHTML='珠峰培训';-->
+        <!--oDiv.style.backgroundColor='red';      //    document.createElement('div')-->
+        <!--//  添加到页面当中-->
+        <!--document.body.appendChild(oDiv);-->
+
+      <!--var oDiv1=document.getElementById('teacher');-->
+        <!--document.body.insertBefore(oDiv,oDiv1);-->
+
+        <!--var oDiv2=oDiv.cloneNode(true);     //  元素.cloneNode(true)     前面唯一的是元素-->
+        <!--document.body.appendChild(oDiv2);-->
+
+        <!--document.body.removeChild(oDiv2);-->
+
+      <!--var   oP=document.createElement('p');-->        //先创建要替换老元素的新元素.在替换老元素    一般都是先创建在移除这样就可以了
+       <!--oP.innerHTML='我是要替换的元素';-->
+        <!--document.body.replaceChild(oP,oDiv);-->
+
+      <!--oDiv1.setAttribute('name','珠峰的大哥');-->
+ <!---->
+        <!--oDiv1.removeAttribute('name');-->
+    <!--console.log(oDiv1.getAttribute('name'));-->
+
+
+<!--</script>-->
+
+<script>
+//        var  link=document.createElement('a');
+//        link.href='http://www.zhufengpeixun.cn/stu/?name=zxt&age=27&sex=0#teacher';
+//        console.dir(link);
+
+    //->  hash 存储了哈希值   '#teacher'
+        // hostname:域名     'www.zhufengpeixun.cn'
+    //href   存储原始字符串
+    //pathname:路径   '/stu/
+        // protocol:协议   'http:'
+    //  search:  问好传递参数值   '?name=zxt&age=27&sex=0'
+
+//    link.search;
+//
+//       function queryURLParameter(url) {
+//           var  link =document.createElement('a');
+//           link.href=url;
+//
+//             var search=link.search,
+//                     obj={};
+//                     if (search.length==0)return;
+//           search=search.substr(1).split(/&|=/g);
+//           for(var i=0;1<search.length;i+=2);{
+//                 var  key=search[i],
+//                         value=search[i+1];
+//               obj[key]=value;
+//           }
+//           link=null;
+//           return obj;
+//       }
+                    
+                var box1=document.getElementById('box1'),
+                        box2=document.getElementById('box2');
+
+
+</script>
+</body>
+</html>

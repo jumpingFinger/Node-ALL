@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取随机的整数</title>
+    <style type="text/css">
+        .code{
+            width: 400px;
+            height: 100px;
+            font-size:30px;
+            background: firebrick;
+            margin: 0 auto;
+            line-height: 100px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="code">
+    验证码:  <span id="codeBox">11is</span>
+</div>
+<script>
+    //   点击获取的思维不重复验证码 (而且大小写一样也算重复)
+        var codeBox=document.getElementById('codeBox');
+        var atr='0123456789abcdfqwertyuiiopalksjfdahjgkdfABCDFQWERTYUIIOPALKSJFDAHJGKDF';
+    codeBox.onclick=function () {
+            var result='';
+        for (var i = 0; i < 4; i++) {
+            var ran=Math.round(Math.random()*str.length);
+            var  ranStr=str.charAt(ran);
+            if(result.toLowerCase().indexOf(ranStr.toLowerCase())>-1){
+                i--;
+                continue;
+            }
+            result+=ranStr;
+        }
+        codeBox.innerHTML=result;
+    };
+
+
+</script>
+</body>
+</html>

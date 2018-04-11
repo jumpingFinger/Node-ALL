@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header{
+    position: relative;
+    width: 1204px;
+    height: 84px;
+    margin: 0 auto;
+    /*background: rebeccapurple;*/
+}
+.header h1{
+    float: left;
+    margin-right: 65px;
+}
+.header h1 .logo{
+    display: block;
+    width: 176px;
+    height: 52px;
+    background: url("../images/logo.png");
+    text-indent: -9999px;/*让LOGO里面的文字隐藏*/
+    margin-top: 16px;  /*让它怎么垂直居中 高是84 自己高度 52 所以垂直居中是32/2*/
+}
+.header ul{
+    float: left;
+}
+.header ul li{
+    float: left;  /*子元素不继承父元素的浮动属性*/
+    line-height: 84px;  /*高度继承父元素的高度*/
+    font-size:14px;
+    padding: 0 50px 0 20px;
+}
+.header ul li a{
+    color:#2a2a2a;
+}
+.header ul li a:hover{
+    color: #2b7dd1;
+}
+.header .shopping-cart{
+    float: left;
+    line-height: 84px;
+}
+.header .shopping-cart .cart-txt{
+    line-height: 84px;
+    font-size: 14px;
+    color: #2a2a2a;
+    overflow: hidden;
+}
+.cart-txt .cart-icon{
+    display: inline-block;
+    width: 24px;
+    height: 22px;
+    background: url("../images/cart-icon.png") no-repeat;
+    vertical-align: -6px; /*行内块的垂直对齐方式*/
+    margin-right: 6px;/*错误*/
+}
+.cart-layer{
+    display: none;
+    position: absolute;
+    top:62px;
+    right: 35px;
+    width:349px;
+    height: 411px;
+    background: #fff;
+    box-shadow:0px 2px 6px rgba(2,2,2,.34);/*第一个值 X轴的偏移量 第二个值 Y值的偏移量 三个值模糊半径 第四个阴影的模糊的大小(外延) 第五个:阴影的颜色*/
+}
+.shopping-cart:hover .cart-layer{/*鼠标移上让下拉层显示*/
+    display: block;
+}
+.shopping-cart:hover .cart-icon{
+    background: url("../images/cart-icon-hover.png") no-repeat;
+}
+.shopping-cart:hover .cart-txt{
+    color: #2a2a2a;
+    /*让鼠标变成小手的形状*/
+    cursor:pointer;
+}
+.header .user-center{
+    float: right;
+}
+.header .user-center li{
+    padding:0 31px 0 4px;
+}
+
+.banner {
+    position: relative;
+    width: 1204px;
+    height: 360px;
+    margin: 20px auto;
+    background: url("../images/bg.jpg") no-repeat center;
+}
+.nav-wrap {
+    position: absolute;
+    width:240px;
+    height: 340px;
+    /*background-color: #000 ;*/
+    padding:10px 25px;
+    z-index: 2;
+}
+.nav-wrap ul li {
+    display: block;
+    width: 100%;
+    height: 68px;
+    line-height: 68px;
+    border-bottom: 1px solid #FFFFFF;
+}
+.nav-wrap ul li h3{
+    font-size: 14px;
+    color: #fdfdfe;
+    padding-left: 10px;
+    font-size: 14px;
+}
+.nav-wrap ul li:hover {
+    cursor: pointer;
+}
+.bg {
+    position: absolute;
+    left: 0;
+    top:0;
+    width:240px;
+    height: 340px;
+    background-color: #000 ;
+    opacity:.2;
+    padding:10px 25px;
+    z-index: 1;
+}
+.box{
+    width: 1204px;
+    height: 270px;
+    margin: 0 auto;
+    /*background: red;*/
+}
+.box-top
+{
+    width: 100%;
+    height: 55px;
+    line-height: 15px;
+    padding:20px 0;
+}
+.box-bottom{
+    width: 100%;
+    height:210px;
+    padding-bottom: 25px;
+    overflow: hidden;
+}
+.box-bottom-part1{
+    float: left;
+    width: 25%;
+    height: 100%;
+    padding-right: 42px;
+}
+.box-bottom ul {
+    width:  100%;
+    height: 185px;
+    border:1px solid #666666;
+}
+.box-bottom ul li .pic {
+    width: 100%;
+    height: 75px;
+    background: url("../images/bg2.png") no-repeat;
+}
+.txt{
+    width: 100%;
+    padding: 15px 15px;
+}
+.txt1 {
+    margin-top: 15px;
+    padding:0 12px;
+    overflow:hidden;
+}
+.txt1 p:nth-child(1){
+    float: left;
+}
+.txt1 p:nth-child(2) {
+    float: right;
+}
+
+.box-bottom-part2{
+    float: left;
+    width: 25%;
+    height: 100%;
+    padding: 0 20px;
+}
+.box-bottom-part4{
+    float: right;
+    width: 25%;
+    height: 100%;
+    padding-left: 42px;
+}
+.box-bottom-part3{
+    float: right;
+    width: 25%;
+    height: 100%;
+    padding-left: 42px;
+}
+.box2{
+    width: 1204px;
+    height: 468px;
+    margin: 0 auto;
+    background: red;
+    padding:33px 0;
+    overflow: hidden;
+}
+.box3 {
+    float: left;
+    width: 265px;
+    height: 100%;
+    padding:0 10px;
+    background: url("../images/bg3.png") no-repeat;
+    background-size: cover;
+}
+.box3-inner{
+    width:209px;
+    height:140px;
+    margin:0 18px;
+    /*border-bottom: 1px solid #FFFFFF;*/
+    padding-top: 45px;
+}
+.box3-inner h3{
+    font-size: 30px;
+    color: #FFFFFF;
+}
+.box3 a {
+    display: block;
+    margin-top: 20px;
+    color: #FFFFFF;
+    margin-left: 20px;
+}
+.box3 p{
+    display: block;
+}

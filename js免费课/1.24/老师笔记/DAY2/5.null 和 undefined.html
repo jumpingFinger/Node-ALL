@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> null 和 undefined</title>
+</head>
+<body>
+<script type="text/javascript">
+    /* null 表示的是空指针对象  但是它是属于数据类型中的基本数据类型
+    *  undefined 表示未定义  申明(var/let/const)一个变量名 如果只声明 未定义的情况下 返回的结果为undefined
+    *
+    *  null 意料之中的没有
+    *  undefined 意料之外的没有
+    *
+    *  田成力 男
+    *  田成力的女朋友 null
+    *  田成力的男朋友 undefined
+    *
+    *  0 ''  null undefined
+    *  0 ''  挖了坑  没种树  占了内存 只是内容为空而已
+     * null undefined 连坑都没有挖  null 不占内存 可以减少性能的消耗
+    * */
+    var name;
+    console.log(name); //undefined
+</script>
+</body>
+</html>

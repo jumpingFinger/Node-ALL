@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0
+        }
+        #tab{
+            width: 600px;
+            margin:  20px auto;
+        }
+        #tab ul{
+            text-align: center;
+        }
+        #tab ul li{
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            border:1px solid palegreen;
+            display: inline-block;
+            margin-left: -1px;
+        }
+        #tab ul li.selectedLi{
+            background: palegreen;
+        }
+        #tab div.selecteDiv{
+            display: block;
+        }
+        #tab div{
+            display: none;
+            height: 200px;
+            background: palegreen;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="selectedLi">新闻</li>
+        <li>推荐</li>
+        <li>导航</li>
+    </ul>
+    <div class="selecteDiv">内容1</div>
+    <div>内容2</div>
+    <div>内容3</div>
+</div>
+
+<script>
+    var oTab =document.getElementById('tab'),
+            oList=oTab.getElementsByTagName('li'),
+            oDivs=oTab.getElementsByTagName('div');
+    //方法1:
+//    var previous=0;
+//    var change =function (index) {
+//        if(index==previous) return;
+//        oList[previous].className=oDivs[previous].className=null;
+//        oList[index].className='selectedLi';
+//        oDivs[index].className='selecteDiv';
+//        previous=index;
+//    };
+//    for (var i = 0; i <oList .length; i++) {
+//        oList[i].cur=i;
+//        oList[i].onmouseover=function () {
+//            change(this.cur);
+//        }
+//    }
+    // 方法2:
+//    var previous=0;
+//    for (var i = 0; i < oList.length; i++) {
+//        oList[i].cur=i;
+//        oList[i].onmouseover=function () {
+//            if ( this.cur===previous){
+//                return;
+//            }
+//            oList[previous].className=oDivs[previous].className=null;
+//            oList[this.cur].className='selectedLi';
+//            oDivs[this.cur].className='selecteDiv';
+//            previous=this.cur;
+//        }
+//
+//    }
+    //方法3:
+    for (var i = 0; i < oList.length; i++) {
+            oList[i].cur=i;
+        oList[i].onmouseover=function () {
+            for (var i = 0; i < oList.length; i++) {
+                oList[i].className=oDivs[i].className=null
+            }
+            oList[this.cur].className='selectedLi';
+            oDivs[this.cur].className='selecteDiv';
+        }
+
+    }
+</script>
+</body>
+</html>

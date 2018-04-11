@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重</title>
+</head>
+<body>
+<script>
+//    var ary=[1,2,3,1,2,3,4,1];
+//    for (var i = 0; i < ary.length-1; i++) {
+//        var  cur = ary[i];//  拿出当钱项i    后一项的索引  i+1
+//        //每一轮 : 当前   跟当前项
+//        for (var j = i+1; j < ary.length; j++) {
+//            //判断 拿出来比较的那一项跟我当前项有没有重复  重复 删除掉
+//            if(cur==ary[j]){
+//                ary.splice(j,1);// 数组的坍塌:删除数组的一项后面的索引都会前往提前1
+//                j--;
+//            }
+//        }
+//    }
+//    console.log(ary);
+//var ary=[1,2,3,1,2,3,4,1];
+//for (var i = 0; i < ary.length-1; i++) {
+//    var   cur=ary[i];
+//    var  curNextAry=ary.slice(i+1);
+//    if(curNextAry.indexOf(cur)>-1){
+//        ary.splice(i,1);
+//        i--;
+//    }
+//}
+//console.log(ary);
+
+//var ary=[1,2,3,1,2,3,4,1];
+//    var obj={};
+//for (var i = 0; i < ary.length; i++) {
+//     var  cur=ary[i];
+//    if(typeof obj[cur] !== 'undefined'){
+//        ary.splice(i,1);
+//        i--;
+//        continue;
+//    }
+//    obj[cur]=cur;
+//}
+//console.log(ary);
+
+//var ary=[1,2,3,1,2,3,4,1];
+//var obj={};
+//for (var i = 0; i < ary.length; i++) {
+//    var  cur=ary[i];
+//    if(typeof obj[cur] !== 'undefined'){
+//      ary[i]=ary[ary.length-1];
+//        ary.length--;
+//        i--;
+//        continue;
+//    }
+//    obj[cur]=cur;
+//}
+//console.log(ary);
+
+    //在原型上扩展一个叫做去重的方法:
+//    Array.prototype.myUnqiue = function myUnqiue () {
+//        var obj={};
+//        for (var i = 0; i < this.length; i++) {
+//            var  cur=this[i];
+//            if(typeof obj[cur] !== 'undefined'){
+//                this[i]=this[ary.length-1];
+//                this.length--;
+//                i--;
+//                continue;
+//            }
+//            obj[cur]=cur;
+//        }
+//        return this;
+//    };
+//var ary=[1,2,3,1,2,3,4,1];
+//    console.log(ary.myUnqiue());
+
+
+
+</script>
+</body>
+</html>

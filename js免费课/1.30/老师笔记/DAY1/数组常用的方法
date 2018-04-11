@@ -1,0 +1,66 @@
+1.方法的作用和意义
+2.参数
+3.返回值
+4.原有的数组是否改变
+
+console.dir(Array.prototype) 15个
+push unshift
+pop(ary.length--)  shift
+splice
+slice
+concat
+toString join
+reverse  sort
+indexof  lastIndexOf
+forEach map
+...
+
+1.数组的增加 push(末尾) unshift(开头)
+2.数组的删除 pop(末尾)  shift(开头)
+3.数组的添加
+  splice(n,m) -> 删除  第二个参数: 个数
+  splice(n,m,x) -> 替换
+  splice(n,0,x)  -> 增加
+4.数组的查找
+  slice(n,m) 第二个参数:索引(不包括索引m)
+5.数组的拼接
+  concat(value,[ary])
+6.把数组转换为字符串
+  totring()
+  join('符号')  eval(join('+'))
+7.数组的排列和排序
+  reverse 倒序
+  sort() 升序、降序排列
+  sort(function(a,b){
+    return a-b;  //升序 : 从小到大
+  })
+  sort(function(a,b){
+    return b-a;  //降序 ： 从大到小
+  })
+8.验证数组中是否包含某一项
+ indexof  lastIndexOf
+9.循环遍历方法:
+forEach  ->  不能用return去操作
+map  -> 可以 用return来接收返回值 (通过return操作后的新数组)  原数组没变
+
+实战: 数组去重
+var ary = [1,2,3,4,2,4,1,5,1,4,2,1]
+-> var ary = [1,2,3,4,5]
+
+1.利用双层for循环:
+用当前项和数组中的每一项一一做比较;
+总的轮数: ary.length-1
+一一跟后面每一项比较  i+1
+
+2.利用数组的indexOf 检测是否存在
+当前项: ary[i]  1
+后面所有项:  newAry = ary.slice(i+1);   [2,3,4,2,4,1,5,1,4,2,1]
+newAry.indexOf(ary[i]) >  -1
+
+3.利用obj键值对的方法 typeof obj[cur] !== 'undefined'
+obj[cur] = cur;
+
+
+
+
+

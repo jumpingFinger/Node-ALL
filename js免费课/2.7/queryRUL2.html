@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var   str='http://www.baidu.com/stu?name=lucy&age=82&friend=&sex#teacher';
+    /*
+      利用A标签元素对象的固有属性解析出URL每部分的信息值
+        1.动态创建A标签,并且把需要解析的URL赋值给A标签的HREF属性
+        2.从A元素对象中通过属性解析出对应的信息
+        HASH:存储的是哈希值带(#)
+        host:存储的是当钱的RUL的域名+端口
+        pathname:存储的是请求资源文件的路径
+        protocol:存储的请求协议    http /https
+        search:存储的是问号传递参数的信息(带?)
+     */
+
+
+    var  oLink=document.createElement('a');
+    oLink.href=str;
+
+    var  HSHA=oLink.hash.substring(1),
+            ASk=oLink.search.substring(1);
+    //把获取的问号参数值进一步处理 第一步用&进行拆分
+    var  aryASk=ASK.split('&');
+ var result={};
+ if (ASk.length>0){
+    aryASk.forEach(function(item,index){
+        //TIME:循环的每一项值
+        var  temp=item.split('+');
+        key=temp[0];
+        val=temp[1];
+        result[key]=val;
+    })}
+   result['HSHA']=HSHA;
+
+
+</script>
+</body>
+</html>

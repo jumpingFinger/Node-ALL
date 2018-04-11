@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色</title>
+    <style type="text/css">
+        .bg1{
+            background: darkcyan;
+        }
+        .bg2{
+            background: darkgoldenrod;
+        }
+        .bg3{
+            background: violet;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>HTML+CSS基础</li>
+    <li>JS全栈开发(原生js + jquery.js + APP + AJAX + node基础)</li>
+    <li>VUE+REACT+NODEJS</li>
+    <li>架构师课</li>
+    <li>HTML+CSS基础</li>
+    <li>JS全栈开发(原生js + jquery.js + APP + AJAX + node基础)</li>
+    <li>VUE+REACT+NODEJS</li>
+    <li>架构师课</li>
+</ul>
+<script type="text/javascript">
+    var oLis = document.getElementsByTagName('li');
+    //console.log(oLis);
+    /*oLis[0].className = 'bg1';
+    oLis[1].className = 'bg2';
+    oLis[2].className = 'bg1';
+    oLis[3].className = 'bg2';
+    oLis[4].className = 'bg1';
+    oLis[5].className = 'bg2';
+    oLis[6].className = 'bg1';
+    oLis[7].className = 'bg2';
+
+     oLis[0].onmouseover  = function(){this.className = 'bg3'};
+     oLis[1].onmouseover  = function(){this.className = 'bg3'};
+     oLis[2].onmouseover  = function(){this.className = 'bg3'};
+     oLis[3].onmouseover  = function(){this.className = 'bg3'};
+     oLis[4].onmouseover  = function(){this.className = 'bg3'};
+     oLis[5].onmouseover  = function(){this.className = 'bg3'};
+     oLis[6].onmouseover  = function(){this.className = 'bg3'};
+     oLis[7].onmouseover  = function(){this.className = 'bg3'};
+
+     oLis[0].onmouseout  = function(){this.className = 'bg1'};
+     oLis[1].onmouseout  = function(){this.className = 'bg2'};
+     oLis[2].onmouseout  = function(){this.className = 'bg1'};
+     oLis[3].onmouseout  = function(){this.className = 'bg2'};
+     oLis[4].onmouseout  = function(){this.className = 'bg1'};
+     oLis[5].onmouseout  = function(){this.className = 'bg2'};
+     oLis[6].onmouseout  = function(){this.className = 'bg1'};
+     oLis[7].onmouseout  = function(){this.className = 'bg2'};*/
+
+    //i%2 -> 0 / 1
+    for(var i=0;i<oLis.length;i++){
+       /* if(i%2 == 0){
+            oLis[i].className = 'bg1';
+        }else{
+            oLis[i].className = 'bg2';
+        }*/
+        switch (i%2){
+            case 0:
+                oLis[i].dali =  oLis[i].className = 'bg1';
+                break;
+            default:
+                oLis[i].dali = oLis[i].className = 'bg2';
+        }
+
+        //oLis[i].dali = oLis[i].className = (i%2 == 0) ? 'bg1' : 'bg2';
+        oLis[i].onmouseover = function () {
+            this.className = 'bg3'
+        };
+        oLis[i].onmouseout = function () {
+            this.className =  this.dali
+        }
+    }
+
+</script>
+</body>
+</html>

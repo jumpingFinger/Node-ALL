@@ -1,0 +1,48 @@
+Array.prototype (15个)
+- 含义和作用
+- 参数
+- 返回值
+- 对原有数组是否改变
+
+1.push  unshift
+2.pop(ary.length--)   shift
+3.splice(n,m)
+  splice(n,m,x)
+  splice(n,0,x)
+4.slice(n,m)
+5.concat
+6.toString join
+7.reverse sort
+8.indexOf lastIndexOf
+9.forEach map
+
+dir.Math (10个)
+1.Math.abs()
+2.Math.ceil()
+3.Math.floor()
+4.Math.round()
+5.Math.random
+6.Math.max
+7.Math.min
+8.Math.PI
+9.Math.pow
+10.Math.sqrt
+
+String.prototype(15个)
+1.charAt(i)
+2.charCodeAt();
+3.String.fromCharCode
+4.substr  substring  slice
+5.split
+6.replace
+7.toUpperCase  toLowerCase
+8.indexOf lastIndexOf
+9.trimLeft trimRight trim
+
+
+
+
+
+
+
+

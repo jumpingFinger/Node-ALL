@@ -1,0 +1,264 @@
+body, html, .slide {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-inner {
+    width: 100%;
+    height: 100%;
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-2.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.nav {
+    /*让nav脱离文档流 叠加在图片上*/
+    width: 1040px;
+    padding: 15px 20px; /*左右各20px的内边距*/
+    margin: 0 auto; /*水平居中效果*/
+    background: red;
+    overflow: hidden; /*清除浮动产生的影响*/
+}
+
+.nav .logo {
+    float: left;
+    /*fl tab;logo靠左边显示*/
+    margin-top: 21px;
+}
+
+.nav .nav-links {
+    float: right;
+    /*fr tab;文字列表靠右显示*/
+    height: 80px;
+    line-height: 80px;
+}
+
+.nav .nav-links a {
+    color: #fff; /*白色*/
+    padding: 0 20px;
+}
+
+.pic {
+    overflow: hidden;
+}
+
+.pic .item {
+    float: left;
+    width: 25%;
+    min-height: 260px;
+}
+
+.pic .item:nth-child(1) {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-1.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.pic .item:nth-child(2) {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-2.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.pic .item:nth-child(3) {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-3.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.pic .item:nth-child(4) {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-4.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.container {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+
+.meta-links {
+    max-width: 1080px;
+    padding: 0 20px;
+    margin: 0 auto;
+    background: darkgoldenrod;
+    overflow: hidden; /*清除浮动产出的影响*/
+}
+
+.meta-link {
+    float: left; /*浮动的作用是让元素在一行显示*/
+    width: 33.33%;
+    padding: 45px 0;
+    overflow: hidden;
+}
+
+.meta-link .icon {
+    /*所有icon公用的代码*/
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.meta-link .txt {
+    float: left;
+    font-size: 16px;
+}
+
+.meta-link .txt h4 {
+    font-weight: 400;
+}
+
+/*
+:last-child 最后一个子元素
+:first-child 第一个子元素
+*/
+.meta-link:last-child .icon {
+    float: right;
+}
+
+.meta-link:last-child .txt {
+    float: right;
+}
+
+.meta-link:nth-child(2) {
+    text-align: center;
+    /*行内块元素的水平对齐可以用text-align:center去控制*/
+}
+
+.meta-link:nth-child(2) .icon {
+    display: inline-block;
+    float: none;
+    /*不利用浮动 利用行内块让元素在一行显示 这样就可以用text-align：center去让行内块元素居中*/
+}
+
+.meta-link:nth-child(2) .txt {
+    display: inline-block;
+    float: none;
+    text-align: left;
+    /*让居中的文字靠左显示*/
+    vertical-align: top;
+    /*行内块块元素的对齐方式是基线对齐，用vertical-align去实现垂直对齐*/
+}
+
+.icon1 {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/icon-wechat.png") no-repeat;
+    background-size: contain;
+}
+
+.icon2 {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/icon-rp.png") no-repeat;
+    background-size: contain;
+}
+
+.icon3 {
+    background: url("https://mobike.com/cn/assets/themes/moby/img/icon-credit.png") no-repeat;
+    background-size: contain;
+}
+
+.footer {
+    max-width: 1080px;
+    padding: 45px 20px;
+    margin: 0 auto;
+    background: greenyellow;
+    overflow: hidden;
+}
+
+.footer li {
+    list-style: none;
+    /*去掉li默认的小黑点*/
+}
+
+.main-links {
+    float: left;
+    width: 374px;
+    margin-right: 40px;
+}
+
+.main-links .font-logo {
+    display: block;
+    width: 160px;
+    height: 61px;
+    margin-bottom: 10px;
+    background: url("https://mobike.com/cn/assets/themes/moby/img/logo-text.svg") no-repeat;
+    background-size: cover;
+    text-indent: -9999px;
+    /*让logo标签里面的文字内容消失*/
+}
+
+.main-links li {
+    line-height: 1.7;
+    /*如果行内没有单位 表示的是字体大小的多少倍数
+    => 1.7 x 16px = 27.2px
+    */
+}
+
+.footer-list-wrap {
+    float: left;
+    overflow: hidden;
+}
+.footer-list {
+    float: left;
+    margin-left: 123px;
+}
+.footer-list:first-child {
+    margin-left: 0;
+}
+.footer-list h3{
+    margin-bottom: 10px;
+}
+.footer-list li {
+    line-height: 2;
+    /* 2 * 16 = 32px*/
+}
+.footer-list li a:hover{
+    color:#e23d0e
+}
+@media screen and (max-width: 1080px){
+    .pic .item{
+        width: 50%;
+    }
+    .nav .nav-links{
+       display: none;
+    }
+    .nav{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 640px){
+    .pic .item{
+        width: 100%;
+    }
+    .meta-link{
+        width: 100%;
+    }
+    .meta-link:nth-child(2){
+        text-align: left;
+    }
+    .meta-link:last-child .txt{
+        float: left;
+        margin-left:65px;
+    }
+    .meta-link:last-child .icon{
+        float: none;
+
+    }
+    .meta-link{
+        padding: 20px 0;
+    }
+    .footer-list-wrap{
+        width: 100%;
+    }
+    .footer-list{
+        margin-left: 0;
+        width: 50%;
+    }
+    .footer .main-links{
+        margin-bottom:40px ;
+    }
+    .footer .footer-list{
+        margin-bottom:40px ;
+    }
+}

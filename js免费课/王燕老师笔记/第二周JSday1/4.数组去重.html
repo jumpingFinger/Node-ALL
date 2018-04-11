@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //双for循环：分别拿出数组的每一项跟这一项后面所有的项进行比较，若重复，则把后面重复的那项删了
+    var ary = [22,5,3,3,3,5];
+    for(var i= 0 ;i<ary.length-1;i++){
+        //ary[i]
+        /*ary[0] ary[1]->最后
+        ary[1] ary[2]->最后*/
+        for(var k = i+1;k<ary.length;k++){
+            if(ary[i]==ary[k]){
+                //ary中删除索引是k这一项
+                ary.splice(k,1);//数组的塌陷，会跳过一项
+                k--;
+
+            }
+        }
+    }
+    console.log(ary);
+
+</script>

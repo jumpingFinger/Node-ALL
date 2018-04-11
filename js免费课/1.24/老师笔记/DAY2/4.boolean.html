@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>布尔数据类型</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*取值: true(真)  false(假)
+    * 1.Boolean(); 这个方法的返回结果: 要么是true 要么是false
+    * 只有以下5种情况返回的结果为假false,其余的都为真 true
+    * 0  ""  null  undefined  NaN
+    * 2. 符号 "! 或 !！"
+    *  ! 取反
+    *  !! 取反再取反 相当与调用了Boolean()方法
+    * */
+    console.log(Boolean('12')); //true
+    console.log(Boolean('12.3px12.3')); // true
+
+
+    console.log(Boolean(0)); //false
+    console.log(Boolean(''));//false
+    console.log(Boolean(NaN));//false
+    console.log(Boolean(null));//false
+    console.log(Boolean(undefined));//false
+
+
+    console.log(!Boolean(null)); //true
+    console.log(!!0); //false
+</script>
+</body>
+</html>

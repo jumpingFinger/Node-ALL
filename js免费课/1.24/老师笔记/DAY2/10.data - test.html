@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型的检测的方法</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    *  1,12,12.5 NaN number数据类型
+    *  '1','珠峰'  字符串数据类型
+    *  true false 布尔数据类型
+    *  null undefined
+    *  {} 对象
+    *  [] 数组
+    *  /^$/ 正则
+    *  function(){}  函数
+    * */
+
+    //1.typeof 用来检测数据类型 返回的结果都是引号引起来的 里面放的对应的数据类型 "number" "string" "boolean" "undefined" "object"
+    //特殊: typeof null 是"object"
+    //局限性: 用typeof去检测数据类型  遇到引用数据类型 返回的结果都为"object",所以没法具体去细分到底是对象，数组还是正则等 而且连typeof null 也是"object";
+
+/*  typeof 12         "number"
+    typeof '12'       "string"
+    typeof false      "boolean"
+    typeof true       "boolean"
+    typeof null       "object"
+    typeof undefined  "undefined"
+
+     typeof {}   "object"
+     typeof []   "object"
+     typeof /^$/ "object"
+    */
+    //腾讯的面试题(规律:只要超过2个以上 结果都为"string")
+    console.log(typeof typeof typeof typeof []);  //"string"
+    // typeof []  => "object"
+    //typeof "object" => "string"
+    //typeof "string" => "string"
+
+
+    //2.instanceof  用来检测实例是否属于这个类
+    //3.constructor 用来检测实例所属类的构造器
+    //4.Object.prototype.toString.call(value); 用来检测数据值对应的详细信息 =>['object 数据类型值']
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //冒泡排序:小的往前排，大的往后排 实现从小到大排列
+    //两两比较的，若前一项比后一项小则保持原排列位置，若前一项比后一项大，则它俩交换位置，这样一轮下来就能把最大的值排的最后
+    var ary = [12,17,6,5];
+  /*  for(var  i = 0;i<ary.length-1-0;i++){
+        //ary[i] 前一项 ary[i+1] 后一项
+        if(ary[i]>ary[i+1]){
+            var temp = null;//借助下中间变量
+            temp = ary[i];
+            ary[i] = ary[i+1];
+            ary[i+1] = temp
+
+        }
+    }
+    for(var  i = 0;i<ary.length-1-1;i++){
+        //ary[i] 前一项 ary[i+1] 后一项
+        if(ary[i]>ary[i+1]){
+            var temp = null;//借助下中间变量
+            temp = ary[i];
+            ary[i] = ary[i+1];
+            ary[i+1] = temp
+
+        }
+    }
+    for(var  i = 0;i<ary.length-1-2;i++){
+        //ary[i] 前一项 ary[i+1] 后一项
+        if(ary[i]>ary[i+1]){
+            var temp = null;//借助下中间变量
+            temp = ary[i];
+            ary[i] = ary[i+1];
+            ary[i+1] = temp
+
+        }
+    }
+    console.log(ary);*/
+
+for(var j = 0;j<ary.length-1;j++){//控制轮数
+    for(var  i = 0;i<ary.length-1-j;i++){//每轮比较的次数
+        //ary[i] 前一项 ary[i+1] 后一项
+        if(ary[i]>ary[i+1]){
+            var temp = null;//借助下中间变量
+            temp = ary[i];
+            ary[i] = ary[i+1];
+            ary[i+1] = temp
+
+        }
+    }
+}
+    console.log(ary);
+
+    /*var a = 10;
+    var b = 5;
+    var temp =null;
+    temp = a;
+    a  = b;
+    b = temp;*/
+
+</script>

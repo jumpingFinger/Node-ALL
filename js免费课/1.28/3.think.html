@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*获取属性名的方法有且只有:
+    * obj.属性名   obj['属性名']
+    * */
+    //思考题一
+    var age = 'name';
+    var obj = {
+        name:'耿大大',
+        age:18
+    };
+    console.log(obj.age); //18
+    console.log(obj['age']); //18
+    console.log(obj[age]); // => obj['name']  ->'耿大大'
+
+    //思考题二:
+    var sex = 'man';
+    var obj = {
+        man: '耿大大',
+        sex: 'man',
+        0: 1
+    };
+    console.log(obj.sex); // 'man'
+    console.log(obj[0]); //1
+    obj.sex = 'woman'; // 修改obj这个对象中的叫sex的属性 他对于的值改为woman
+    console.log(obj['sex']); //'woman'
+    console.log(obj[sex]); // 等同于 obj['man'] -> '耿大大'
+
+
+</script>
+</body>
+</html>

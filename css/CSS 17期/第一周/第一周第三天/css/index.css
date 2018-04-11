@@ -1,0 +1,100 @@
+/*reset*/
+*{
+    margin: 0; /*m0 tab*/
+    padding: 0; /*p0 tab*/
+}
+/*分组/并集选择器 符号逗号*/
+html,body,.main{
+    width: 100%; /*w100% tab*/
+    height: 100%;/*h100% tab*/
+}
+.item{
+    float: left; /*fl tab*/
+    width: 33.33%;
+    height: 33.33%;
+    background: #000; /*bg tab*/
+    overflow: hidden; /*让超出的部分隐藏*/
+}
+/*:nth-child(n) 第几个元素
+:nth-child(2n)/ :nth-child(even)偶数行
+:nth-child(2n+1) /:nth-child(odd)奇数行
+*/
+/*.item:nth-child(2n+1){
+    background: red;
+}
+.item:nth-child(2n){
+    background: forestgreen;
+}*/
+.item:nth-child(1){
+    /* 背景图片 background:url("图片的路径地址")*/
+    background: url("http://img.zcool.cn/community/012292583e28c1a801219c7760e0ba.gif") no-repeat center;
+    background-size: cover;
+}
+.item:nth-child(2){
+    background: url("http://img.zcool.cn/community/01504a576a5c1e0000012e7ed86eeb.gif") no-repeat center;
+    background-size: cover; /*背景的尺寸: 完全覆盖/填充内容*/
+}
+.item:nth-child(2) video{
+    display: none; /*让元素隐藏起来*/
+}
+.item:nth-child(2):hover video{
+    display: block; /*让元素显示出来*/
+}
+.item:nth-child(3){
+    background: url("http://img.zcool.cn/community/015ce258a704efa801219c7790030a.gif") no-repeat center;
+    background-size: cover;
+}
+.item:nth-child(4){
+    background: url("http://img.zcool.cn/community/01504a576a5c1e0000012e7ed86eeb.gif") no-repeat center;
+    background-size: cover;
+}
+/*.item:nth-child(5){
+    background: url("http://img.zcool.cn/community/0159e3576a5c1d0000018c1bed3a5b.gif") no-repeat center;
+    background-size: cover;
+}*/
+.item video{
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+.item:nth-child(6){
+    background: url("http://img.zcool.cn/community/01a8e556892cef6ac7251bb68ca5d9.gif") no-repeat center;
+    background-size: cover;
+}
+.item:nth-child(7){
+    background: url("http://img.zcool.cn/community/01a8e556892cef6ac7251bb68ca5d9.gif") no-repeat center;
+    background-size: cover;
+}
+.item:nth-child(8){
+    background: url("http://img.zcool.cn/community/01504a576a5c1e0000012e7ed86eeb.gif") no-repeat center;
+    background-size: cover;
+}
+.item:nth-child(9){
+    background: url("http://img.zcool.cn/community/0159e3576a5c1d0000018c1bed3a5b.gif") no-repeat center;
+    background-size: cover;
+}
+.item:nth-child(5){
+    position: relative; /*相对定位 =>作为绝对定位的参照物*/
+}
+.bg{
+    position: absolute; /*绝对定位*/
+    bottom:-102%; /*距离item上面的距离*/
+    left:0;/*距离item上面的距离*/
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    text-align: center; /*文字内容水平居中*/
+    background: #000;
+    color:#fff;
+    font-size: 50px;
+    /* transition 动画 (4个属性)
+    1.过渡动画的名称 all
+    2.过渡动画持续的时间  1s 1秒（时间越长 动画越慢 反之 动画越快）
+    3.过渡动画的运动曲线 ease 匀速过渡
+    4.过渡动画延迟的时间
+    */
+    transition: all 2s ease;
+}
+.item:nth-child(5):hover .bg{
+    bottom:0;
+}

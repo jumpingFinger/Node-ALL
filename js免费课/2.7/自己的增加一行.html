@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        a {
+            text-decoration: none;
+        }
+
+        #box {
+            width: 600px;
+            margin: 40px auto;
+            border: 1px inset red;
+            border-radius: 20px;
+        }
+
+        ul {
+
+        }
+
+        li {
+            position: relative;
+            display: block;
+            margin: 5px 25px;
+            /*width: 10;*/
+            border-bottom: 1px dashed burlywood;
+
+        }
+
+        #minus {
+            position: absolute;
+            display: none;
+            top: 0;
+            right: 10px;
+            width: 25px;
+            height: 15px;
+            line-height: 15px;
+            text-align: center;
+            border: 1px solid rebeccapurple;
+            border-radius: 5px;
+        }
+
+        #minus:hover {
+            background: lightpink;
+        }
+
+        #plus {
+            display: block;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin: 10px auto;
+            border: 1px solid rebeccapurple;
+            border-radius: 15px;
+            font-size: 20px;
+            color: yellow;
+        }
+
+        #plus:hover {
+            background: -webkit-linear-gradient(lightpink, lawngreen, lightblue);
+        }
+
+        #plus:active {
+            background: coral;
+        }
+
+        li:hover #minus {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li id="item">
+            <span>新闻</span>
+            <a href="javascript:;" id="minus" class="minus">-</a>
+        </li>
+    </ul>
+    <a href="javascript:;" id="plus">+</a>
+</div>
+<script>
+    var oBox = document.querySelector('#box'),
+            oul = oBox.querySelector('ul'),
+            oLis = oul.querySelector('#item'),
+            plus = oBox.querySelector('#plus'),
+            minus=oLis.querySelector('.minus');
+
+    plus.onclick = function () {
+        var newLi = oLis.cloneNode(true);
+        oul.appendChild(newLi);
+        minus=newLi.querySelectorAll('.minus');
+        for (var i = 0; i <  minus.length; i++) {
+            minus[i].onclick = function () {
+                var parent = this.parentNode;
+                oul.removeChild(parent);
+            }
+        }
+    };
+        minus.onclick=function(){
+            var parent= this.parentNode;
+            oul.removeChild(parent);
+        };
+
+
+
+
+</script>
+</body>
+</html>

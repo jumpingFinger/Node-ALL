@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实战案列 - 隔行变色 - js</title>
+    <style type="text/css">
+        *{
+            /*去掉浏览器默认自带的间距*/
+            margin: 0; /*m0 tab*/
+            padding:0; /*p0 tab*/
+        }
+        li{
+            list-style:none;
+        }
+        #list{
+            width: 500px;
+            margin:0 auto;
+        }
+        #list li{
+            height: 30px; /*h50 tab*/
+            line-height: 30px;
+            cursor: pointer; /*让鼠标变成小手的形状*/
+        }
+        .bg1{
+            background: yellow;
+        }
+        .bg2{
+            background: greenyellow;
+        }
+        .bg3{
+            background: darkkhaki;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li>习近平2017达沃斯日内瓦主旨演讲的世界意义</li>
+    <li>习近平贺信引发拉美各界人士热烈共鸣</li>
+    <li>党中央国务院决定了 在全国开展扫黑除恶专项斗争</li>
+    <li>为中国特色社会主义发展提供宪法保障 理上网来</li>
+    <li>宪法修改必须依法按程序进行 新时代新气象新作为</li>
+    <li>习近平2017达沃斯日内瓦主旨演讲的世界意义</li>
+    <li>习近平贺信引发拉美各界人士热烈共鸣</li>
+    <li>党中央国务院决定了 在全国开展扫黑除恶专项斗争</li>
+    <li>为中国特色社会主义发展提供宪法保障 理上网来</li>
+    <li>宪法修改必须依法按程序进行 新时代新气象新作为</li>
+</ul>
+<script type="text/javascript">
+    //自定义属性: 我们自己给元素加一个属性 目的是为了方便我们后期的操作
+
+    var oList = document.getElementById('list'),
+        oLis = oList.getElementsByTagName('li');
+    for (var i = 0; i < oLis.length; i++) {
+       if(i%2 == 0){
+           //奇数行
+//           oLis[i].className = 'bg1';
+           oLis[i].limeng = oLis[i].className = 'bg1'
+       }else if(i %2 ==1){
+           //偶数行
+           oLis[i].limeng = oLis[i].className = 'bg2';
+       }
+       
+       //onmouseover 鼠标移上事件  onmouseout 鼠标移出事件 onclick 鼠标点击事件
+
+        //i 0 1 2 3 4 5 6 7 8 9 
+
+
+       //this 的情况1:給元素绑定事件 事件前面的主体是谁 this就代表谁
+       /*oLis[0].onmouseover = function () {
+            this.className = 'bg3'
+       };
+        oLis[1].onmouseover = function () {
+            this.className = 'bg3'
+        }*/
+
+        oLis[i].onmouseover = function () {
+            this.className = 'bg3'
+        };
+        oLis[i].onmouseout = function () {
+            //原本是啥颜色 鼠标移出就要回到原本的颜色
+            this.className =  this.limeng
+        }
+       
+    }
+    
+</script>
+</body>
+</html>

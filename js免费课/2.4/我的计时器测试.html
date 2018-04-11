@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        p {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            display: block;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        button {
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<p id="oP">随机生成的数</p>
+<button>点击开始摇号</button>
+<p id="box1"></p>
+<script>
+    var  button=document.getElementsByTagName('button')[0];
+    var oP = document.getElementById('oP');
+    var oBox1= document.getElementById('box1');
+    function random(n, m) {
+        return Math.round(Math.random() * (m - n) + n);
+    }
+    function randomCode() {
+        var result = '';
+        var str = '0123456789';
+        for (var i = 0; i < 4; i++) {
+            var index = random(0, 9);
+            var code = str[index];
+            if (result.indexOf(code) > -1) {
+                i--;
+                continue;
+            }
+            result += code;
+        }
+        return result;
+    }
+
+    function curTime() {
+        var time = new Date();
+        console.log(time);
+        return time;
+    }
+        var aa = curTime();
+
+    //        button.onclick=function () {
+    //            n++;
+    //            if (n>1){
+    //                return ;
+    //            }
+    //            curTime();
+    ////            computed();
+    ////                alert(aa.getTime());
+    //        };
+        var n=0;
+    button.onclick=function buttonNum() {
+//        if(n>1){
+//            return;
+//        }
+        var timer = window.setInterval(computed, 500);
+        function computed() {
+        var Time = new Date();
+        var starTime = Time.getTime();
+        var lastTime = aa.getTime() + 10 * 1000;
+        var areaTime = lastTime - starTime;
+        console.log(areaTime);
+
+        if (areaTime <= 0) {
+//            oP.innerHTML = bb + '京';
+            window.clearInterval(timer);
+            oBox1.innerHTML=randomCode();
+//            return  randomCode();
+
+        }
+            var bb= randomCode();
+            oP.innerHTML = bb;
+
+        }
+        computed();
+        var cc=computed();
+//        console.log(cc);
+        return cc;
+    };
+//    var  dd=buttonNum();
+//    oBox1.innerHTML=dd;
+
+
+
+
+</script>
+
+</body>
+</html>

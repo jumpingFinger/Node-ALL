@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="oDiv"></div>
+</body>
+</html>
+<script>
+    var str='fdsajfkdslafjkdslajfldskafjl1231465798';
+
+    var filtrate=function (str){
+        var aa='';
+        for (var i = 0; i < 4;) {
+            var index=Math.round(Math.random()*(str.length-1));
+            if(aa.indexOf(str[index])<0){
+                aa+=str[index];
+                i++;
+            }
+        }
+        return aa;
+    };
+    console.log(filtrate(str));
+
+</script>

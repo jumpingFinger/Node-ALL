@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组所有常用的方法</title>
+</head>
+<body>
+<script type="text/javascript">
+    console.dir(Array.prototype); //可以找到数组上所有常用的属性和方法
+    /*四个方面:
+    1.方法的作用和意义
+    2.参数
+    3.返回值
+    4.原有的数组是否改变*/
+
+    //【1.数组的增加】  push unshift
+    /*1.push
+    含义: 向数组的末尾添加
+    参数: 任何数据类型的参数 一到多个参数;
+    返回值: 新数组的长度
+    原有的数组是否改变：改变了
+
+    2.unshift
+     含义: 向数组的开头添加
+     参数: 任何数据类型的参数 一到多个参数;
+     返回值: 新数组的长度
+     原有的数组是否改变：改变了
+    */
+
+    /*var ary = [12,23,34];
+    var res = ary.push(45,56);
+    console.log(ary); //[12, 23, 34, 45, 56]
+    console.log(res); //5  */
+
+    /*var ary = [12,23,34];
+    var res = ary.unshift(45,56);
+    console.log(ary); // [45, 56, 12, 23, 34]
+    console.log(res); // 5*/
+
+
+    //【2.数组的删除】 pop  shift
+    /*1.pop
+     含义: 删除数组的最后一项
+     参数: 无;
+     返回值: 被删除的那一项
+     原有的数组是否改变：改变了
+
+     2.shift
+     含义: 删除数组的开头的一项
+     参数: 无;
+     返回值: 被删除的那一项
+     原有的数组是否改变：改变了
+    * */
+    /*var ary = [12,23,34];
+    var res = ary.shift();
+    console.log(ary); //[23,34]
+    console.log(res); //12*/
+
+    //【3.数组的修改】
+    /*1.删除的作用
+    * splice(n,m)
+     含义: 表示从索引n开始 删除m个
+     参数: n,m;
+     返回值:把删除的那些项 以一个新数组的 形式返回
+     原有的数组是否改变：改变了
+
+     注意: splice(n) 表示从索引n开始 一直删除到数组的末尾
+          spclice() 原数组不发生改变 返回的结果为[]
+          splice(0) 表示把原数组清空 复制一份一模一样(克隆)的数组返回
+
+     2.替换的作用
+     splice(n,m,x)
+     含义: 表示从索引n开始 删除m个,而且把删除的那些项用x代替
+     参数: n,m,x;
+     返回值:把删除的那些项 以一个新数组的形式返回
+     原有的数组是否改变：改变了
+
+     3.增加的作用
+     splice(n,0,x)
+     含义: 表示从索引n开始  n之前增加一个x
+     参数: n,0,x;
+     返回值:[]
+     原有的数组是否改变：改变了
+    */
+    /*var ary = [12,23,34];
+    var res = ary.splice(1,2);
+    console.log(ary);  //[12]
+    console.log(res);  //[23, 34]*/
+
+   /* var ary = [12,23,34,45,56,67,78];
+    var res = ary.splice(1);
+    console.log(ary);  //[12]
+    console.log(res);  //[23, 34, 45, 56, 67, 78]*/
+
+    /*var ary = [12,23,34,45,56,67,78];
+    var res = ary.splice();
+    console.log(ary);  //[12, 23, 34, 45, 56, 67, 78]
+    console.log(res);  //[]*/
+
+    /*var ary = [12,23,34,45,56,67,78];
+    var res = ary.splice(0);
+    console.log(ary);  //[]
+    console.log(res); // [12,23,34,45,56,67,78]*/
+
+    /*var ary = [12,23,34,45,56,67,78];
+    var res = ary.splice(1,3,100);
+    console.log(ary);  // [12,100,56,67,78]
+    console.log(res); // [23, 34, 45]*/
+
+    /*var ary = [12,23,34,45,56,67,78];
+    var res = ary.splice(1,0,100);
+    console.log(ary);  //[12, 100, 23, 34, 45, 56, 67, 78]
+    console.log(res); //[]*/
+
+
+    //[4.数组的查询]
+    /*slice(n,m)
+     含义: 表示从索引n开始 查找到索引m 但是不包括索引m
+     参数: n,m;
+     返回值:把查找的结果以一个新数组返回
+     原有的数组是否改变：不变
+
+     注意: 索引为负数  索引+length 转换为正数索引
+
+    * */
+
+   /* var ary = [12,23,34,45,56,67,78];
+    var res = ary.slice(1,4);
+    console.log(ary);  // [12,23,34,45,56,67,78];
+    console.log(res);  // [23,34,45]*/
+
+    /*var ary = [12,23,34,45,56,67,78];
+    var res = ary.slice(1,-4);
+    console.log(ary);  // length:7  1,3  [12,23,34,45,56,67,78]
+    console.log(res);  // [23,34]*/
+
+    //[5.数组拼接]
+    /*
+    concat:
+    含义: 表示把当前数组和新一个新数组进行拼接
+    参数: 我们要拼接的内容;
+    返回值:最后拼接的结果 以一个新的数组返回
+    原有的数组是否改变：没变
+    * */
+    /*var ary = [12,23,34,45,56,67,78];
+    var ary1 = [89,100];
+    var res = ary.concat(ary1);
+    console.log(ary);  // [12,23,34,45,56,67,78];
+    console.log(res); //[12,23,34,45,56,67,78,89,100]*/
+
+    //[6.数组转换为字符串]
+    /*
+     1.toString();
+     含义: 把数组中的值 转换为字符串
+     参数: 无;
+     返回值:以字符串的形式返回
+     原有的数组是否改变：没变
+
+     2.join();
+     含义: 把数组中的值 以我们传进去的符号进行拼接
+     参数: 符号;
+     返回值:我们最后拼接的结果
+     原有的数组是否改变：没变
+
+    * */
+    /*var ary = [12,23,34,45,56,67,78];
+    var res = ary.toString();
+    console.log(ary);  //[12,23,34,45,56,67,78]
+    console.log(res);  //"12,23,34,45,56,67,78"*/
+
+   /* var ary = [12,23,34,45,56,67,78];
+    var res = ary.join('+');
+    console.log(ary);  // [12,23,34,45,56,67,78]
+    console.log(res);//"12+23+34+45+56+67+78"*/
+
+   /* eval(); 把js代码转换为js表达式计算出来*/
+    /*var ary = [12,23,34,45,56,67,78];
+    var res = eval(ary.join('+'));
+    console.log(res); // 12+23+34+45+56+67+78 = 315*/
+
+    //[7.数组中的排列和排序]
+    /*
+    1.reverse
+     含义: 把原数组倒过来
+     参数: 无;
+     返回值:倒过来的新数组
+     原有的数组是否改变：改变
+
+     2.sort();
+     含义: 把元素按照从小到大的顺序依次排列
+     参数: 无;
+     返回值:排序后的数组
+     原有的数组是否改变：改变
+
+     弊端: ary.sort() 不能排序10以上的数字
+
+
+    * */
+    /*var ary = [12,23,34,45,56,67,78];
+    var res = ary.reverse();
+    console.log(ary);  //[78, 67, 56, 45, 34, 23, 12]
+    console.log(res); //[78, 67, 56, 45, 34, 23, 12]*/
+
+    /*var ary = [1,4,5,3,2,9,0];
+    var res = ary.sort();
+    console.log(ary);  //[0, 1, 2, 3, 4, 5, 9]
+    console.log(res);//[0, 1, 2, 3, 4, 5, 9]*/
+
+    /*var ary = [1,4,5,3,22,9,0];
+    var res = ary.sort();
+    console.log(ary); //[0, 1, 22, 3, 4, 5, 9]
+    console.log(res);//[0, 1, 22, 3, 4, 5, 9]*/
+
+   /* var ary = [1,4,5,3,22,9,0];
+    var res = ary.sort(function(a,b){
+        return a-b; /!*可以处理10以上的数字 而且是按照从小到大的顺序依次排列 a比b的值大 就两者交换位置 大的值始终在最后*!/
+        //return b-a; /!*可以处理10以上的数字 而且是按照从大到小的顺序依次排列*!/
+    });
+    console.log(ary); //[0, 1, 3, 4, 5, 9,22]
+    console.log(res);//[0, 1, 3, 4, 5, 9,22]
+    /!* 算法: 冒泡排序  快速排序  插入排序*!/*/
+
+    //[8.验证数组中是否包含某一项]
+    /* 1.indexOf
+     含义: 第一次出现的索引值
+     参数: 我们要检测的那个值;
+     返回值:对应数的索引
+     原有的数组是否改变：没变
+
+    注意: 如果数组中没有某一项的值 我们用indexOf查找的结果为-1
+    所以我们这个原理 去检测判断存在或者不存在进行相对应的操作
+    if(ary.indexOf(i) > -1){
+        //存在
+    }else{
+        //不存在
+    }
+
+     2.lastIndexOf
+     含义: 最后一次出现的索引值
+     参数: 我们要检测的那个值;
+     返回值:对应数的索引
+     原有的数组是否改变：没变
+    * */
+
+    /*var ary = [1,4,5,3,22,9,0,22];
+    var res = ary.indexOf(22);
+    console.log(ary); // [1, 4, 5, 3, 22, 9, 0,22]
+    console.log(res); //4*/
+
+    /*var ary = [1,4,5,3,22,9,0,22];
+    var res = ary.lastIndexOf(22);
+    console.log(ary); // [1, 4, 5, 3, 22, 9, 0,22]
+    console.log(res); // 7*/
+
+    /* var ary = [1,4,5,3,22,9,0];
+     var res = ary.indexOf('100');
+     console.log(ary); // [1, 4, 5, 3, 22, 9, 0]
+     console.log(res); //-1*/
+
+    //[9.遍历数组的一些方法]
+//    1.forEach 循环遍历数组中的每一项
+    var ary = [1,4,5,3,22,9,0];
+    //Array.prototype.aa = 300;
+
+    /*for itar*/
+    /*for (var i = 0; i < ary.length; i++) {
+        console.log(ary[i]); //1 4 5 3 22 9 0
+    }*/
+    /* for in  itin 可以遍历出原型上公有的属性或者方法*/
+    /*for (var i in ary) {
+        console.log(ary[i]); //1 4 5 3 22 9 0 300
+    }*/
+    /*ary.forEach(function (value,index) {
+        console.log(value,index);
+        /!* 1       0
+        *  4       1
+        *  5       2
+        *  ....
+        *  0       6
+        * *!/
+    });*/
+
+    //2.map (通过返回值return会把原数组改变)
+   /* var res = ary.map(function (value,index) {
+        return 100;
+    });
+    console.log(res); //[100, 100, 100, 100, 100, 100, 100]*/
+
+    var res = ary.forEach(function (value,index) {
+        return 100;
+    });
+    console.log(ary);
+    console.log(res); // undefined
+
+
+</script>
+</body>
+</html>

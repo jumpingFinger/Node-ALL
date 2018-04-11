@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = 'https://www.baidu.com/s?wd=js&oq=unicode';
+    //  查找到问好的索引   indexOf('?')
+    var aa = str.indexOf('?');
+    console.log(aa);
+    //  把问好后面的参数全部截取出来
+    var bb = str.substring(aa + 1);
+    console.log(bb);
+    //拆分 &
+    var cc = bb.split('&');
+    console.log(cc);
+    //拆分   再继续以=把数组进行一一拆分
+    var obj = {};
+    for (var i = 0; i < cc.length; i++) {
+        var cur = cc[i];  //拿出数组我们要拆分的项 继续以=进行拆分
+        var newAry = cur.split('=');
+        console.log(newAry);
+        //  obj[属性名]=属性值
+        obj[newAry[0]] = newAry[1];
+        console.log(obj);
+    }
+
+            function  queryURLParmeter(url) {
+
+            }
+</script>
+</body>
+</html>

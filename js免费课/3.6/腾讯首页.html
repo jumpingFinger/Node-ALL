@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .header{
+
+            }
+            #tab{
+                /*position: relative;*/
+                width: 100%;
+                margin:0 auto;
+            }
+            #tab ul {
+                position: absolute;
+                padding-left: 10px;
+                width: 240px;
+                height: 360px;
+                top: 15%;
+                right: 100px;
+                overflow: hidden;
+                background:-webkit-linear-gradient(top,rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 20%,rgba(255,255,255,0.9) 80%,rgba(255,255,255,0) 100%);
+                z-index: 1;
+                font-size: 14px;
+            }
+            .header #tab div {
+                position: absolute;
+                top:0;
+                left: 0;
+                display: none;
+                width: 100%;
+                height: 600px;
+                z-index: 0;
+
+            }
+            .header #tab div:nth-of-type(1){
+                background: url(images/pic0.jpg) no-repeat center;
+            }
+            .header #tab div:nth-of-type(2){
+                background: url(images/pic1.jpg) no-repeat center;
+            }
+            .header #tab div:nth-of-type(3){
+                background: url(images/pic2.jpg) no-repeat center;
+            }
+            .header #tab div:nth-of-type(4){
+                background: url(images/pic3.jpg) no-repeat center;
+            }
+            .header #tab div:nth-of-type(5){
+                background: url(images/pic4.jpg) no-repeat center;
+            }
+            .header #tab div:nth-of-type(6){
+                background: url(images/pic5.jpg) no-repeat center;
+            }
+            .header #tab div:nth-of-type(7){
+                background: url(images/pic6.jpg) no-repeat center;
+            }
+            .header #tab div:nth-of-type(8){
+                background: url(images/pic7.jpg) no-repeat center;
+            }
+
+            .header #tab ul li{
+                width: 100%;
+                line-height: 30px;
+                /*overflow: hidden;*/
+            }
+            .header #tab ul li span {
+                margin:0 3px;
+               display: inline-block;
+
+            }
+            .header #tab ul li p {
+                display: inline-block;
+            }
+            .header #tab .selectedBg{
+                display: block;
+            }
+            .header #tab ul .selectedLi .selectedSpan{
+                display: block;
+                line-height: 23px;
+                font-size: 23px;
+                color: #2b142f;
+            }
+            .header #tab ul .selectedLi .selectedP {
+                display: none;
+                height: 35px;
+            }
+            .selectedLi {
+                background: #FFFFFF;
+            }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div id="tab">
+        <ul>
+            <li class="selectedLi"><span class="selectedSpan">1 </span><p class="selectedP">:</p>23213123</li>
+            <li><span>2 </span><p>:</p>46456456</li>
+            <li><span>3</span><p>:</p>645645645</li>
+            <li><span>4</span><p>:</p>645645645</li>
+            <li><span>5</span><p>:</p>6456456</li>
+            <li><span>6</span><p>:</p>6456456</li>
+            <li><span>7</span><p>:</p>645645645</li>
+            <li><span>8</span><p>:</p>645645645</li>
+
+        </ul>
+        <div class="selectedBg"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div> 
+</div>
+<script>
+        var oTab=document.getElementById('tab'),
+                oList=oTab.getElementsByTagName('li'),
+                oSpan=oList.getElementsByClassName('span'),
+                oDivs=oTab.getElementsByTagName('div');
+        var previous=0;
+    var change=function (index) {
+        oList[previous].className=oDivs[previous].className=oSpan[previous].className=null;
+        oList[index].className='selectedLi';
+        oDivs[index].className='selectedBg';
+        oSpan[previous].className='selectedSpan';
+        previous=index;
+    };
+        for (var i = 0; i < oList.length; i++) {
+            oList[i].currentIndex=i;
+            oList[i].onmouseover=function(){
+                change(this.currentIndex);
+            }
+        }
+
+
+</script>
+</body>
+</html>

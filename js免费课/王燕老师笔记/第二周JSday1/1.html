@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    var obj = {name:"lily",age:18,gender:true,0:"a",1:"b",2:"c"};
+    //若对象中存在以0开始依次递增的数字属性名，则把这样的属性从对象中分离单独独立成一个新的细分类型->数组  方便操作
+//    var obj2 = {0:"a",1:"b",2:"c"}
+    //数组每一项直接是值，数字属性名不显示出来
+    //ary.length 表示数组中有多少项
+    //数字属性名在数组这边索引，从0开始依次递增的数字
+    var ary = ["a","b","c"];
+    console.dir(ary);
+//    console.log(ary[0]);
+//    console.log(ary[1]);
+//    console.log(ary[2]);
+
+    //获取到数组的每一项 有几种办法？1.for...in  2.for
+    for(var attr in ary){
+        //attr表示索引
+        console.log(ary[attr]);
+    }
+    //更喜欢用for循环
+    for(var i = 0;i<ary.length;i++){
+        //i的值从0到length-1
+        console.log(ary[i]);
+    }
+
+
+
+
+</script>

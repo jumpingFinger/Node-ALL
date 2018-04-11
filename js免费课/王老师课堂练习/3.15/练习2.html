@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .bg0{
+            background: red;
+        }
+        .bg1{
+            background: green;
+        }
+        .bg2{
+
+        }
+        #oBox{
+            width: 400px;
+            margin: 0 auto;
+        }
+        #oBox ul{
+            overflow: hidden;
+            margin:-1px 0 ;
+        }
+        #oBox ul li {
+            float: left;
+            display: block;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            background: aquamarine;
+            font-size: 22px;
+            text-align: center;
+            margin-right: 15px;
+            border: 1px solid salmon;
+        }
+        #oBox .oDiv{
+            display: none;
+            width: 400px;
+            height: 250px;
+            background:rebeccapurple ;
+        }
+        #oBox li.selected {
+            /*display: block;*/
+            background: rebeccapurple;
+            border-bottom:none;
+
+        }
+        #oBox div.selected {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<!--<ul>-->
+    <!--<li class="22"></li>-->
+    <!--<li class="22"></li>-->
+    <!--<li class="22"></li>-->
+    <!--<li class="22"></li>-->
+    <!--<li class="22"></li>-->
+    <!--<li class="22"></li>-->
+<!--</ul>-->
+<div id="oBox">
+    <ul>
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div class="oDiv selected">1</div>
+    <div class="oDiv">2</div>
+    <div class="oDiv">3</div>
+</div>
+<script>
+    //求不确定有效形参个数之和
+    ~function () {
+        var sum=function (){
+            var total=null;
+            for (var i = 0; i < arguments.length; i++) {
+                var item=Number(arguments[i]);
+                if(!isNaN(item)){
+                    total+=item;
+                }
+            }
+            return total;
+        };
+        console.log(sum(10, 20, 30, '30', 'sdfsafa'));
+    }();
+   //隔行变色
+    ~function () {
+        var oList=document.getElementsByClassName("22");
+        for (var i = 0; i < oList.length; i++) {
+            oList[i].cur= oList[i].className='bg'+i%2;
+            oList[i].onmouseover=function (){
+                this.className='bg2';
+            };
+            oList[i].onmouseout=function (){
+                this.className=this.cur;
+            }
+        }
+
+    }();
+    //选项卡
+    ~function () {
+        var oBox=document.getElementById('oBox'),
+            oUl=oBox.getElementsByTagName('ul'),
+            oList=oBox.getElementsByTagName('li'),
+            oDivs=oBox.getElementsByClassName('oDiv');
+        console.log(oDivs);
+        var previous=0;
+        var change=function (index){
+            oList[previous].className=null;
+            oDivs[previous].className='oDiv';
+            oList[index].className='selected';
+            oDivs[index].className="oDiv selected";
+            previous=index;
+        };
+        for (var  i = 0; i < oList.length; i++) {
+            oList[i].cur=i;
+            oList[i].shaoshuai='shaodhfas';
+            oList[i].onmouseover=function (){
+                change(this.cur);
+                console.dir(this);
+            }
+
+        }
+
+    }();
+</script>
+</body>
+</html>

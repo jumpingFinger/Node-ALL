@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #tab{
+            width: 306px;
+            margin:50px auto;
+        }
+        #tab ul{
+            overflow: hidden;
+        }
+        #tab li{
+            float: left;
+            width: 100px;
+            height: 30px;
+            line-height:30px;
+            text-align: center;
+            border:1px solid #000;
+            list-style: none;
+        }
+        #tab .cur{
+            background: red;
+        }
+        #tab div{
+            display: none;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border:1px solid #000;
+            border-top:0;
+        }
+        #tab .cur{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="cur">新闻</li>
+        <li>娱乐</li>
+        <li>健康</li>
+    </ul>
+    <div class="cur">新闻</div>
+    <div>娱乐</div>
+    <div>健康</div>
+</div>
+<script type="text/javascript" src="js/tab%20-%20backup%2020180128.js"></script>
+</body>
+</html>

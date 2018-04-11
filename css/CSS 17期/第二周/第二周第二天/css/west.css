@@ -1,0 +1,54 @@
+body,html{
+    width: 100%;
+    height: 100%;
+}
+.bigPic1,.bigPic2{
+    width: 100%;
+    height: 400px;
+    background: url("../images/bg.webp") no-repeat top center;
+}
+.west{
+    width: 100%;
+    height: 100%;
+    background: url("../images/bg1.webp") no-repeat center ;
+    overflow: hidden; /*解决margin-top的传递问题*/
+}
+.west01{
+    float: left;
+    width: 200px;
+    height: 180px;
+    background: url("https://xyq.res.netease.com/pc/gw/20170118103441/img/west_01_3ca39fe.png") no-repeat;
+    margin-top:30%;
+    /*第二步:通过animation调用下面指定好的动画名称 infinite 无限次 */
+    animation:west01 .1s steps(8) infinite;
+}
+.west02{
+    float: left;
+    width: 200px;
+    height: 180px;
+    margin-top:30%;
+    background: url("https://xyq.res.netease.com/pc/gw/20170118103441/img/west_02_47bad19.png") no-repeat;
+    animation: west02 1s steps(8) infinite;
+}
+/*第一步:通过关键帧指定好动画的名称
+0% 相当于from  开始帧
+100% 相当于 to 结束帧
+*/
+/*孙悟空的动画*/
+@keyframes west01 {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: -1600px 0;
+    }
+}
+/*猪八戒的动画*/
+@keyframes west02 {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: -1600px 0;
+    }
+}

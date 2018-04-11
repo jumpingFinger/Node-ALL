@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>腾讯面试题</title>
+</head>
+<body>
+<script type="text/javascript">
+    function fun(a, b, c) {
+        /*var l = arguments.length;*/
+        var num = 0;
+        for (var i = 0; i < arguments.length; i++) {
+            num += arguments[i];
+        }
+        alert(num);
+    }
+    fun(1, 2, 3); //6  1+2+3
+    fun(1, 2, 3, 4); //10  1+2+3+4
+
+
+</script>
+</body>
+</html>

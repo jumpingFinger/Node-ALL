@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .multiBox {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid lightblue;
+            width: 916px;
+        }
+
+        .multiBox li {
+            margin-bottom: 2px;
+            height: 35px;
+            font-size: 0;
+        }
+
+        /*
+         * CSS3新增加的伪类
+         *  nth-child(n)：当前容器子元素中的第N个
+         *  nth-last-child(n)：当前容器子元素中的倒数第N个
+         *
+         *  nth-of-type / nth-last-of-type ?
+        */
+        .multiBox li:nth-last-child(1) {
+            margin-bottom: 0;
+        }
+
+        .multiBox li span {
+            display: inline-block; /*给元素设置了INLINE-BLOCK，当前元素和元素之间如果存在空格或者换行，将默认产生一定的间距；解决：给父容器设置字体大小为零，当前元素重新设置需要的字体大小即可；*/
+            margin-right: 2px;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+        }
+
+        .multiBox li span:nth-last-child(1) {
+            margin-right: 0;
+        }
+
+        .multiBox li span {
+            opacity: 0;
+            transition: .3s; /*当透明度样式从零到一，我们让其有一个过渡动画的效果*/
+        }
+    </style>
+</head>
+<body>
+<ul class="multiBox" id="multiBox">
+
+</ul>
+
+<script src="js/multi.js"></script>
+</body>
+</html>

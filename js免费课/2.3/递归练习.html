@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function sum(num) {
+
+        if(num>5){
+            return 0;
+        }
+//        console.log(num);
+        sum(num+1);
+//        console.log(num);
+        console.log(sum(num+1));
+        return sum(num+1)+num;
+//
+    }
+    sum(1);
+       var  cur=sum(1);
+//    console.log(cur);
+    //        alert(sum(1));
+//    console.log(sum(1));
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script type="text/javascript">
+    // 异步操作: js中所有的事件都是属于异步操作
+    // 我们还没有点击操作的时候，for循环已经结束了,而且结束的最后i的值是3
+
+
+    var oLis = document.getElementsByTagName('li');
+    for(var i=0;i<3;i++){
+        //console.log(i); //0 1 2
+        oLis[i].dali = i;  //通过自定义属性的方式去存取每一项的索引值
+        oLis[i].onclick  = function () {
+            //alert(i);  //3 3 3
+            alert(this.dali)
+        }
+    }
+    /*   初始值     条件          条件成立执行的代码       步长累加
+    *    i=0       0<3     oLis[0].onclick=function(){}  1
+    *    i=1       1<3     oLis[1].onclick=function(){}  2
+     *   i=2       2<3     oLis[2].onclick=function(){}  3
+    *    i=3       3<3
+    *
+    *    for 结束 i = 3
+    * */
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>固定定位</title>
+    <style type="text/css">
+        *{
+            margin: 0; /*m0 tab*/
+            padding: 0; /*p0 tab*/
+        }
+        .header{
+            width: 100%; /*w100% tab*/
+            height: 60px; /*h60 tab*/
+            /*background: #000; !*bg tab*!*/
+            border:10px solid #000;
+            position: fixed;
+            /*固定定位 - 滚条滚动 固定不动的模块都是用的这个属性值*/
+
+            bottom:20px;
+            right:20px;
+            left:0;
+
+        }
+        .box1{
+            width: 200px; /*w200 tab*/
+            height: 200px;/*h200 tab*/
+            background: blue;/*bg tab*/
+        }
+        .box2{
+            width: 200px; /*w200 tab*/
+            height: 200px;/*h200 tab*/
+            background: yellow;/*bg tab*/
+        }
+    </style>
+</head>
+<body>
+<!--div.header tab-->
+<div class="header"></div>
+<div class="box1"></div>
+<div class="box2"></div>
+<!-- 这个地方加一个空的div的目的是为了让页面出现滚动条 方便查看固定定位的效果
+style="" 行内式(把css样式写在标签里面)
+-->
+<div style="height:1000px;"></div>
+</body>
+</html>
