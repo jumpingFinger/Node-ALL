@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        li{
+            list-style: none;
+            line-height: 24px;
+            display: block;
+            overflow: hidden;
+        }
+        li span {
+            display: block;
+            float: left;
+            margin-right:10px;
+            width: 60px;
+            line-height: 24px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<ul id="oUL">
+</ul>
+</body>
+</html>
+<script>
+    // var oUl=document.getElementById('oUL');
+    // let str='';
+    // for (var i = 1; i <=9; i++) {
+    //     str+='<li>';
+    //     for (var j = 1; j <=i; j++) {
+    //         str+='<span>';
+    //         str+=j+'*'+i+'='+(j*i);
+    //         str+='</span>';
+    //     }
+    //     str+='</li>';
+    // }
+    // oUl.innerHTML=str;
+
+
+    ~function () {
+        var oUl=document.getElementById('oUL');
+        var str=''; //保存动态的li
+        for (var i = 1; i < 10; i++) {   //行数
+            str+='<li>';
+            for (var j = 1; j <=i; j++) {  //列数
+                str+='<span>'+j+'*'+i+'='+j*i+'</span>';
+            }
+            str+='</li>';
+        }
+        oUl.innerHTML=str;
+    }();
+</script>
