@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding:0;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li{
+            width: 100px;
+            height: 50px;
+            background: green;
+            margin: 10px 0;
+            font-size:30px;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+</body>
+</html>
+<script>
+    //每隔1秒，下一个li相对于前一个li往前移动100px
+    var oLis = document.getElementsByTagName("li");
+    for(var i = 0;i<oLis.length;i++){
+        (function(i){
+            window.setTimeout(function(){
+                oLis[i].style.marginLeft = 100*(i+1)+"px";
+            },1000*(i+1));
+        })(i);
+    }
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div1 {
+            width: 100px;
+            height: 100px;
+            color: red;
+            background: red;
+            opacity: 0.2;
+            filter: alpha(opacity=50);
+        }
+    </style>
+</head>
+<body >
+<div id="div1"></div>
+</body>
+</html>
+<script>
+    function getCss(ele, attr) {
+        var res;
+        if (window.getComputedStyle) {
+            res = window.getComputedStyle(ele, null)[attr];
+        } else {
+            if (attr == "opacity") {
+                res = ele.currentStyle.filter;
+                var reg = /^alpha\(opacity\s*=\s*(\d+(?:\.\d+)?)\)$/;
+                res = reg.test(res) ? RegExp.$1 / 100 : 1;
+            } else {
+                res = ele.currentStyle[attr];
+            }
+        }
+        //正则匹配下res，结果要是数值|数值+单位(px|pt|em|rem)
+        reg = /^[+-]?(\d|[1-9]\d+)(\.\d+)?(px|pt|em|rem)?$/;
+        return reg.test(res) ? parseFloat(res) : res;
+    }
+
+    var oDiv = document.getElementById("div1");
+    console.log(getCss(oDiv, "opacity"));
+    console.log(getCss(oDiv, 'width'));
+    console.log(getCss(oDiv, 'color'));
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //xml 不同语言，不同数据之间的通信,通过JSON格式数据相互通信非常方便快捷，一种通信，运输工具，规定好的一种数据格式
+    //JSON格式的数据，不是一种数据类型，是一种更加严格的数据，在之前数据类型的基础上有增加了一些规范：
+    //1.对于引用类型的数据，只可以是对象或数组，不能是函数，Math,Date等
+    //2.对于基本类型的数据，若是字符串，则引号要有双引号
+    //3.对象或数组最后一项后面不能有逗号
+    //4.对象或数组中，若有符串要拿字双引号包起来
+
+   // var obj = {name:'lily',age:18,hobby:"睡觉"};//普通的对象
+    var obj = {"name":"lily","age":18,"hobby":"睡觉"};//JSON格式的对象
+
+    //var str = "{name:'lily',age:18,hobby:'睡觉'}" //普通字符串
+    var str = '{"name":"lily","age":18,"hobby":"睡觉"}';//JSON格式的字符串
+
+    //通常情况下 后台返回时JSON格式的字符串，我们需要把JSON格式的字符串转换成JSON格式的对象进行操作
+    //window下提供了两个方法（JSON格式的字符串和JSON格式的对象）
+    //JSON.parse() //->JSON格式的字符串->JSON格式的对象
+    //JSON.stringify()//JSON格式的对象->SON格式的字符串
+
+    //Uncaught SyntaxError: Unexpected token u in JSON at position 0 at JSON.parse (<anonymous>) 语法错误：不是JSON格式数据，遇到了不可识别的符号
+    //var jsonStr = JSON.stringify(obj);
+    //var jsonObj = JSON.parse(str);
+    //console.log(jsonObj);
+    //若IE7及以下浏览器不支持JSON对象,如何处理？
+    //console.log(eval("(" + str + ")"));
+
+
+
+</script>

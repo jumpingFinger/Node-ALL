@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+   console.log(num);
+   var  num = 10;
+   /*
+   * 1.浏览器运行这个页面时，会形成一个全局作用域
+   * 2.在代码执行之前，首先开辟一个内存空间，把num存进来（对带var关键字的进行声明）
+   * 3.代码从上往下执行 把10赋值给变量num
+   * */
+   fn();
+   function fn(){
+       console.log(1);
+   }
+   //预解释 ->惯性的反射出，对带var和function关键字的进行声明和定义
+</script>

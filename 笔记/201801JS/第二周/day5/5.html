@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var reg = /(?:\d)(\w)/;
+    var str = "2018zhufeng2019";
+    console.log(reg.exec(str));//正则加（）后，exec方法的返回值则多了个分组的内容
+    //第一项还是匹配的内容
+    // 第二项开始是分组的内容
+    //倒数第二项匹配字符的起始索引
+    //倒数一项还是原字符
+    //若不需要分组的内容，则在每个括号加?: 表示匹配不捕获
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var reg = /\d+/g; //没加g ,reg.global值为false 加了g后值为true
+    var str = "2018zhufeng2019";
+    //封装一个方法，把匹配的内容一次性拿到
+    RegExp.prototype.allExec = function(str){
+        if(!this.global){//如果没有加g
+            return this.exec(str)[0];
+        }
+        var ary = [];
+        var result;
+        //不断通过exec方法取匹配的字符，若没有字符时，exec方法结果为null
+        while(result = this.exec(str)){
+            ary[ary.length] = result[0];
+        }
+        return ary;
+    };
+    //console.log(reg.allExec(str));
+
+    console.log(str.match(reg));//通过match方法可以把匹配的内容放在数组里一次性返回（必须要g）,不加g，exec和match返回值一样
+
+</script>

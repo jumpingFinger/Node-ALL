@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*var str = "14800";
+    var a = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+     str = str.replace(/\d/g,function () {
+         return a[arguments[0]]
+     })
+    console.log(str);*/
+
+    //模板引擎替换原理
+   /* var str = "my name is {0},i am {1},i come from {2}";
+    var ary = ["珠峰培训",8,"beijing"];
+    str = str.replace(/\{(\d)\}/g,function () {
+        return ary[arguments[1]]
+    })
+    console.log(str);*/
+
+    //敏感词替换 池子 珠峰培训 珠峰员工   ** ****
+    var str ="由于大家比较喜欢看80后脱口秀池子的表演,所以想把池子请到珠峰培训来表演下,但是由于费用比较高,需要把珠峰员工的工资降低以凑得上池子的演出费,珠峰员工表示非常不满意!";
+    str = str.replace(/(池子|珠峰培训|珠峰员工)/g, function ($0) {
+        var result = "";
+        //匹配字符的长度是*号的个数
+        for (var i = 0; i < $0.length; i++) {
+            result+="*";
+        }
+        return result;
+    });
+    console.log(str);
+
+
+</script>

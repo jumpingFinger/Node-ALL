@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //排除法
+    //获取地址栏中的参数并放入对象中 {id:"557131028857",name:"zhufeng",age:8}
+   /* var str = "http://www.baidu.com?id=557131028857&name=zhufeng&age=8";
+    var reg = /([^?&=]+)=([^?&=]+)/g;
+    var obj = {};
+    str.replace(reg,function ($0,$1,$2) {
+        obj[$1] = $2;
+    })
+    console.log(obj);*/
+
+
+   //偷小说
+    var str="<div id='div1' class='aa'>皇帝被废，太后痛哭流涕，皇室威严扫地，群臣无不悲愤。</div><p>“龙辇风驾？”刘辩把脑袋枕在美艳的唐姬腿上，不由自主的发出一声苦笑。</p>";
+    var reg = /<[^<>]+>/g;
+    str = str.replace(reg,"");
+    console.log(str);
+
+
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Foo() {
+        getName = function () {
+            console.log(1);
+        };
+        return this;//对于构造函数来说，默认就是返回的this,这一步可以省略
+    }
+    Foo.getName = function () {
+        console.log(2);
+    };
+    Foo.prototype.getName = function () {
+        console.log(3);
+    };
+    var getName = function () {
+        console.log(4);
+    };
+    function getName() {
+        console.log(5);
+    }
+
+    Foo.getName();//2  找Foo属性getName运行
+    getName();//4  找全局下getName运行
+    Foo().getName();//window.getName() ->1
+    getName();//找全局下getName运行 ->1
+    new Foo.getName();//new 运行Foo.getName这个方法->new function(){console.log(2)}()->2
+    new Foo().getName();//new Foo()产生一个匿名实例->匿名实例里找getName方法运行 ->3
+    new new Foo().getName();//3
+    //1.new (new Foo().getName)()当成是构造函数
+    //2.new Foo().getName->去匿名实例找getName属性->function(){console.log(3)}//
+
+    //new function(){console.log(3)}() ->3
+</script>

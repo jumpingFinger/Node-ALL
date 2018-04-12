@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //获取出现次数最多的字母和次数
+    var str = "asdadddabbCCCAAf";
+    //利用对象不重名特征  把每个字符作为属性名，字符出现的次数作为属性值
+    var obj = {};
+    for(var i = 0;i<str.length;i++){
+        var cur = str[i];
+        if(obj[cur]){
+           obj[cur]++;
+        }else{
+          obj[cur] = 1;
+        }
+    }
+   //利用假设法
+    var maxStr = "";
+    var max = 0;
+    for(var attr in obj){
+        if(obj[attr]>max){
+            max = obj[attr];
+            maxStr = attr;
+        }else if(obj[attr] == max){//不同字符出现次数是一样，都是最大值
+            maxStr+=","+attr;
+        }
+    }
+    console.log(maxStr,max);
+
+
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div1{
+            width: 150px;
+            height: 350px;
+            padding:10px;
+            border:15px solid #000;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    中央党校教授辛鸣说，把中央财经领导小组改为委员会，是健全党对重大工作领导体制机制的一项重要举措。谋划好新时代的中国经济发展，关键在党，尤其要通过中央财经委加强党对经济工作的集中统一领导，这是新时代我国打赢三大攻坚战、开启现代化新征程的重要保障。 要坚持底线思维，坚持稳中求进，抓住主要矛盾；要以结构性去杠杆为基本思路；要集中力量，优先处理可能威胁经济社会稳定和引发系统性风险的问题；要抓紧协调建立中央和地方金融监管机制，强化地方政府属地风险处置责任……此次会议就如何打好防范化解金融风险攻坚战进行了一系列周密部署。
+</div>
+</body>
+</html>
+<script>
+    /*var oDiv = document.getElementById("div1");
+    console.log(oDiv.scrollHeight);*/
+    /**
+     *
+     * @param ele 当前元素
+     * @return {t:t,l:l}
+     */
+    function offset(ele){
+        var l = ele.offsetLeft;
+        var t = ele.offsetTop;
+        var p = ele.offsetParent;
+        while(p){
+            //若不是IE8浏览器，需要累加上参照物的左边框和上边框
+            if(navigator.userAgent.indexOf("MSIE 8.0")==-1){
+                l+=p.clientLeft;
+                t+=p.clientTop;
+            }
+            l += p.offsetLeft;
+            t += p.offsetTop;
+            p = p.offsetParent
+        }
+        return {
+            l:l,
+            t:t
+        }
+    }
+</script>

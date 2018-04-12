@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //for(var i = 0;i<ary.length;i++)  编程式
+    //forEach ，map  声明式
+
+    /* var ary = [10,15,2,5,23];
+     var obj = {};
+     var res = ary.forEach(function(item,i,ary){
+         //item数组的每一项
+         //i   数组的索引
+         //ary 原数组本身
+        // console.log(item,i,ary); //回调函数的参数  次数是由数组长度决定的
+         //console.log(this);// 默认是window
+     },obj)//forEach第二个参数用来改变回调函数里this
+     console.log(res);//undefined  回调函数没有返回值*/
+
+    var ary1 = [1, 2];
+    var ary2 = ["a", "b", "c"];
+    //把回调函数每次执行的返回值都存入新数组中，最后把这个数组作为map方法的返回值
+    var res = ary1.map(function (item, i, ary) {
+        //return this[item] //ary2[item]
+        return item*2
+    }, ary2)
+    console.log(res);//["b","c"]
+
+
+</script>

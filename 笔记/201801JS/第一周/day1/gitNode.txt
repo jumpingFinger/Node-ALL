@@ -1,0 +1,100 @@
+### git
+多版本管理系统
+### 作用
+
+
+## 配置用户信息
+ - git config --list
+ - git config --global user.name "github用户名"
+ - git config --global user.email "github邮箱"
+
+## 常用的linux命令
+- cd 文件夹 进入到XX文件夹
+- cd .. 返回上一个文件夹
+- ls 目录
+- ls -al 详细的目录
+- rm -rf  文件夹
+- mkdir 创建文件夹
+- touch 文件名  创建文件
+- vi 文件名
+  按i 进入可编辑状态
+  按esc->:q!(强制退出)
+       ->:wq(保存并退出)
+- cat 文件名  查看文件
+
+
+切换账号:git config credential.helper ''
+
+保存账号git config credential.helper store
+
+## 创建本地git仓库
+ - 新建文件夹 ，右击git bash here ,当前文件夹目录为基准打开git窗口
+ - git init  初始化git仓库 .git
+
+## 在gitHub创建远程仓库
+New repository - >仓库名 create repository
+
+## 把本地的git仓库提交到github的远程仓库上  （工作流）
+** 把本地仓库和远程仓库关联起来**
+- git remote add origin（远程仓库名） https://github.com/zfpx/2018Test.git
+- git remote -v 查看关联的远程仓库
+- git remote rm origin(远程仓库名)
+
+- git pull origin(远程仓库名) master --allow-unrelated-histories
+
+- git status 状态
+- git add .  把所有的代码提交到暂存区  1
+- git commit -m'注释' 把暂存区的内容提交到历史区  2
+- git push origin(远程仓库名) master
+
+
+
+复习：
+1.先创建一个远程仓库
+2.初始化本地git仓库 git init
+3.本地仓库和远程仓库关联起来 git remote add origin 远程仓库地址
+4.把本地仓库的内容 git add . 提交暂存区
+5.git commit -m"注释" 提交到历史区
+6.git pull origin master --allow-unrelated-histories  把远程仓库的内容先拉到本地仓库，保持远程仓库和本地仓库同步
+7.git push origin master 提交到远程仓库
+
+
+##提交本地项目的另外一种方式
+ - 克隆远程仓库   git clone 远程仓库地址
+  ->相当于做了如下三件事：
+   1.在本地新建了git仓库
+   2.本地仓库和远程仓库关联起来
+   3.把远程仓库的内容拉取到本地仓库里
+ - 进入克隆的本地仓库 cd 2018A
+ - git add .
+ - git commit -m""
+ - git push origin master 提交到远程仓库
+
+## 获取每天上课的课件
+git clone  https://github.com/zfpx/201801JS.git
+git pull origin master
+
+## 组长如何把作业提交到老师的仓库
+ - 先以我的用户名，密码登入github
+ - https://github.com/zfpx/201801JS 黏贴到地址栏按回车
+ - 点fork按钮 相当于把老师的仓库克隆一份到我的仓库
+ - git clone https://github.com/amgYen/201801JS.git  把从老师那fork过来的远程仓库克隆到本地
+ - cd 201801JS
+ - git add .
+ - git commit -m"作业"
+ - git push origin master
+ - 点击按钮new pull request - >create pull request
+
+ 老师或组长做的事情merge pull request 或者close pull request
+
+
+
+
+
+
+
+
+
+
+
+

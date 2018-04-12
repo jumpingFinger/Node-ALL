@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //"use strict" 对整个脚本都起作用
+    function fn(n,m){
+        "use strict" ;  //若写在内部仅仅对当前函数起作用
+       // console.log(this+n+m);
+        console.log(this);
+    }
+    /*var obj = {
+        num:10,
+        fn:fn
+    }
+    fn()*/;//this->window
+    //obj.fn()->this obj
+
+    //fn()运行时改成任意的我希望的值
+   // fn.call(10);//基本类型值得包装类的实例 {10}
+    var obj = {};
+    fn.call(obj,3,4);
+    fn.apply(obj,[3,4]);
+    //非严格模式
+    //fn.call() //->window
+    //fn.call(null)//->window
+    //fn.call(undefined)//->window
+    //严格模式下
+    fn.call()//->undefined
+    fn.call(null)//->null
+    fn.call(undefined)//->undefined
+    fn.call(NaN)//->NaN
+
+
+</script>

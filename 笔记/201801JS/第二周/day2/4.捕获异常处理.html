@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //try....catch(e)...finally....
+    //1捕获到错误，并且可以进行其他方案处理
+    //2.不会终止代码的运行
+    /*try{
+     //走try里面的内容，若报错，则被catch语句捕获，走到catch里，不报错不会走到catch里
+    }catch(e){
+       //进行兼容处理
+    }finally{
+      //不管是否报错，都会走到finally,通过finally不怎么用
+    }*/
+    //处理程序意外报错的情况
+   /*try{
+        console.log(aa);
+    }catch(e){
+        console.log(e.message);//错误的信息
+    }
+    var num = 10;
+    console.log(num);*/
+    //调试代码时，需要手动的报错
+    //console.log(aa);
+    throw new Error("测试一下");
+    throw new ReferenceError("引用错误");
+    throw new TypeError("类型错误");
+    throw new SyntaxError("语法错误");
+    throw new RangeError("范围错误");
+    var num = 10;
+    console.log(num);
+
+
+
+</script>

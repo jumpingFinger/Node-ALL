@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary =  [1,2,3,2,1,2,3,4,2,1,2,3,4,3,2,1];
+    var newAry = [];
+    for(var i = 0;i<ary.length;i++){
+        if(newAry.indexOf(ary[i])==-1){
+            newAry.push(ary[i]);
+        }
+    }
+    newAry.sort(function(a,b){
+        return b-a;
+    });
+    console.log(newAry);
+</script>

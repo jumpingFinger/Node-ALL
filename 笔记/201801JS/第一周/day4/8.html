@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function short(material,size){
+        //1.创建一个对象
+        var obj = {};
+        //2.对这个对象添加属性和方法
+        obj.material = material;
+        obj.size = size;
+        obj.fn = function(){};
+        //3.返回对象
+        return obj;
+    }
+    for(var i = 0;i<10;i++){
+        console.log(short("棉","XXXL"));
+    }
+    for(var i = 0;i<100;i++){
+        short("涤纶","XL");
+    }
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var reg = /\d+/g;
+    var str = "2018zhufeng2019";
+    /*console.log(reg.exec(str));//调用一次只会匹配一次
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));*/
+    //allExec把匹配的内容放入数组中返回
+    RegExp.prototype.allExec = function(str){
+        //1.先判断下是否加g
+        if(!this.global){return this.exec(str)[0]};
+        var ary = [];
+        var result;
+        while(result = this.exec(str)){//若值不为null,说明有匹配内容
+            ary[ary.length] = result[0];//匹配的字符放在返回值数组的第一项
+        }
+        return ary;
+    };
+    console.log(reg.allExec(str));
+</script>

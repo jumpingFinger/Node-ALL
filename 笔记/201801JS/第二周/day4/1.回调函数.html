@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //概念：把一个方法的定义作为参数传给另一个方法，则这个方法就是回调函数
+    //一件事完成后再做另一个事件  异步，参数都有回调函数
+    function b(){//回调函数
+        console.log("b")
+    }
+    function a(m){
+        console.log("a");//a方法里的代码执行完后再去执行回调函数m
+        m();
+    }
+    a(b);
+    /*a(function (){
+        console.log("b")
+    })*/
+
+    //sort
+    var ary = [12,2,55];
+   /* function fn(a,b){//回调函数
+        return a-b
+    }*/
+   // ary.sort(fn);
+    ary.sort(function(a,b){return a-b})
+    console.log(ary);
+</script>

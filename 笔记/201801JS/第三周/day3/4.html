@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    window.setTimeout(function(){
+        console.log("a");
+    },1000)
+    window.setTimeout(function(){
+        console.log("b");
+    },500);
+    window.setTimeout(function(){
+        console.log("c");
+        while(true){
+            console.log("true");
+        }
+    })//浏览器有默认的间隔时间5ms左右
+    var a = 10;
+    console.log(a);
+
+</script>

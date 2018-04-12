@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+
+            width: 600px;
+            margin: 20px auto;
+
+        }
+
+        .tab ul {
+            text-align: center;
+        }
+
+        .tab ul li {
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+
+            border: 1px solid black;
+        }
+
+        .tab div {
+            border: 1px solid black;
+            height: 200px;
+            background: green;
+            display: none;
+        }
+
+        .tab .selectLi {
+            background: green;
+            height: 40px;
+            width: 150px;
+        }
+
+        .tab .selectDiv {
+            background: green;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div id="tab1" class="tab">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<div id="tab2" class="tab">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+</body>
+</html>
+
+<script>
+    //1.用哪种方式封装插件 ->构造函数+原型的方式
+    //2.哪些参数是必须传的，哪些是可选的
+        //必传：最外层的id 可选：默认下哪个是选中的，若手动设置则传选中的li的索引，不传则是第一个默认选中
+    //3.插件的功能有哪些？
+      //1.获取元素 2.绑定点击事件 3.实现点击时的逻辑
+    function Tab(options){
+        //哪些是私有的，哪些的是公有的
+        if(options.id == undefined){return;}
+        this.id = options.id;
+        this.select = options.select || 0;
+        this.init();
+    }
+    Tab.prototype.init = function(){
+        //初始化插件的功能，页面一加载时就运行
+        //1.获取元素
+         this.getEle();
+        //2.绑定点击事件
+        this.bind();
+
+        //3.实现点击时的逻辑（点击时运行）
+
+        //设置默认选中的li和Div
+        this.oLis[this.select].className = "selectLi";
+        this.oDivs[this.select].className ="selectDiv";
+    }
+    Tab.prototype.getEle = function(){
+        //this指的实例
+           var oTab = document.getElementById(this.id);
+           this.oLis = oTab.getElementsByTagName("li");
+           this.oDivs = oTab.getElementsByTagName("div");
+
+    };
+    Tab.prototype.bind = function(){
+        for(var i = 0;i<this.oLis.length;i++){
+            //this不能跨作用查找，但是变量可以的
+            var that = this;//实例
+            (function(i){
+                that.oLis[i].onclick = function(){
+                    that.changeTab(i);
+                }
+            })(i)
+        }
+    };
+    Tab.prototype.changeTab = function(n){
+        this.oLis[this.select].className ="";
+        this.oDivs[this.select].className = "";
+        this.oLis[n].className = "selectLi";
+        this.oDivs[n].className ="selectDiv";
+        this.select = n;
+    }
+    new Tab({id:"tab1"});
+    new Tab({id:"tab2",select:2})
+
+
+</script>

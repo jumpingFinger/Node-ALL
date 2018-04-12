@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //高级单例模式
+    var userModel = (function(){
+        var user = "";
+        var age = "";
+        var signIn = function(){console.log("signIn")};
+        var signOut = function(){console.log("signOut")};
+        return {signIn:signIn} //放在这个对象里才是暴露给外界的
+    })()
+
+    var searchModel = {
+        search: function(){
+            userModel.signIn();
+           // userModel.signOut();
+        }
+    };
+
+    searchModel.search();
+
+</script>

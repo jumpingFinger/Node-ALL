@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var str = "11a22b33c44d";
+    //replace回调函数里，若原有字符串需要被其他规则替换，则才需要写return
+    //回调函数执行的次数跟匹配的次数有关
+    str = str.replace(/\d+/g,function($0,$1,$2){
+         //return $0*2  //return 后面的内容替换匹配的内容
+        return arguments[0]*2
+        //若没写return ,则用undefined替换匹配的内容
+     })
+    //"11a22b33c44d"
+    //"22a44b33c44d"
+    //"22a44b66c44d"
+    //"22a44b66c88d"
+    console.log(str);
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+        this.writeCss = function(){console.log("myCss")};
+    }
+    Person.prototype.writeCss = function(){
+        console.log("writeCss");
+    }
+    Person.prototype.writeJS = function(){
+        console.log("writeJS");
+    }
+    var p1 = new Person("lily",18);
+    var p2 = new Person("lucy",20);
+    console.log(p1.writeCss == p2.writeCss);
+    console.log(p1.writeCss == Person.prototype.writeCss);//true
+    console.log(p1.__proto__.writeCss == Person.prototype.writeCss);//true
+    console.log(p1.__proto__.__proto__==Object.prototype);//true
+
+    var a1 = [10,20,30];
+    console.log(a1);
+</script>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+    <li>111</li>
+    <li id="li2">222</li>
+    <li >333</li>
+</ul>
+</body>
+</html>
+<script>
+    //获取ele下所有的子元素
+    var oUl = document.getElementById("list");
+    function getChild(ele){
+        //childNodes
+        var childs = ele.childNodes;//所有子节点
+        var ary = [];
+        for(var i = 0;i<childs.length;i++){
+            var cur = childs[i];
+            if(cur.nodeType==1){
+                ary[ary.length] = cur;
+            }
+        }
+        return ary;
+    }
+    //getChild(oUl);
+
+    //->获取ele的哥哥元素节点
+    var oLi2 = document.getElementById("li2");
+    function getPrev(ele){
+        //通过哥哥节点判断出是否是哥哥元素节点
+        var pre = ele.previousSibling;
+        //先判断是否存在，若存在则判断是否是元素节点，若不是则继续往上取哥哥节点，再判断是否存在，若存在.....
+        while(pre){
+            if(pre.nodeType == 1){
+                return pre;
+            }
+            pre = pre.previousSibling
+        }
+        return pre;
+    }
+
+   getPrev(oLi2);
+    //->获取所有的哥哥元素节点
+    function prevAll(ele){
+        var ary = [];
+        var pre = getPrev(ele);//要么是哥哥元素节点，要么就是null
+        while(pre){
+            ary[ary.length] = pre;
+            pre = getPrev(pre)
+        }
+        return ary;
+    }
+    //console.log(prevAll(oLi2));
+
+    //获取某个元素ele的索引
+    /*function getIndex(ele){
+       return  prevAll(ele).length;
+    }*/
+
+    function getIndex(ele){
+        var n = 0;
+        var pre = getPrev(ele);
+        while(pre){
+            n++;
+            pre = getPrev(pre);
+        }
+        return n;
+    }
+    console.log(getIndex(oLi2));
+</script>

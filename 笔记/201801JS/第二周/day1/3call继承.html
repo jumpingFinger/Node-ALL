@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //call() 1.改变点前面方法里this关键字，把this改成call方法的第一个参数 2.让点前面的方法运行
+    //S类的实例能调用F类公有和私有的属性 ，只要S类只要成了F类的子类
+    //1.解决能继承私有的属性 2.解决公有属性问题
+    function F(){
+        this.x = 10;//s.x = 10
+        this.y = 20;//s.y = 20
+    }
+    F.prototype.sum = function(){
+        console.log(this.x+this.y);
+    }
+    function S(){
+        this.z  = 50;
+        F.call(this);//1.F函数里this改成S类的实例 2.让F()
+        //把父类的属性拷贝一份放在子类的实例上
+    }
+    var s = new S();
+   // console.log(s.x);
+    s.x = 30;
+    var f = new F();
+    console.log(f.x);//10
+    console.log(s.x);//30
+</script>

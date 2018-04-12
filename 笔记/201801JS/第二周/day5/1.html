@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*var str = "hello&world";
+    var reg = /o\b/;//reg都是RegExp实例
+    //console.log(reg.test(str));
+    console.dir(reg);*/
+
+    //如何在正则里表示变量？
+    var name = "珠峰";
+    //var reg = /^\d+name+\d$/i;  //两个//之间的内容会被解析成元字符或普通字符，不会解析成变量
+    var reg = new RegExp("^\\d+"+name+"+\\d$","i");
+    console.log(reg.test("12珠峰3"));
+    //构造函数与字面量定义方式的区别
+    //1.通过RegExp定义的，两个\表示一个斜杠
+    //2.通过RegExp定义的能表示变量，但是直接量方式的不行
+
+
+</script>

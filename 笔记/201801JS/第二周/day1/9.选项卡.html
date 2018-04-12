@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #tab {
+
+            width: 600px;
+            margin: 20px auto;
+
+        }
+
+        #tab ul {
+            text-align: center;
+        }
+
+        #tab ul li {
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+
+            border: 1px solid black;
+        }
+
+        #tab div {
+            border: 1px solid black;
+            height: 200px;
+            background: green;
+            display: none;
+        }
+
+        #tab .selectLi {
+            background: green;
+            height: 40px;
+            width: 150px;
+        }
+
+        #tab .selectDiv {
+            background: green;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="selectLi">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div class="selectDiv">1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+</body>
+</html>
+<script>
+    //1.获取元素
+    var oTab = document.getElementById("tab");
+    var oLis = oTab.getElementsByTagName("li");
+    var oDivs = oTab.getElementsByTagName("div");
+    //2.给li绑定点击事件
+    for (var i = 0; i < oLis.length; i++) {
+        /*oLis[i].onclick = function(i){
+            return function(){
+                changeTab(i)
+            }
+        }(i)*/
+        (function (i) {
+            oLis[i].onclick = function () {
+                changeTab(i);
+            }
+        })(i)
+    }
+    //3.实现点击时的逻辑
+    var preIndex = 0;//保存点击前选中的li的索引
+    function changeTab(n) {
+        oLis[preIndex].className = "";
+        oDivs[preIndex].className = "";
+        oLis[n].className = "selectLi";
+        oDivs[n].className = "selectDiv";
+        preIndex = n;
+    }
+
+
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div class=" box1 box2 box3">111</div>
+    <div class=" box1 box2">222</div>
+    <div class=" box1 ">33</div>
+    <div class=" box2">444</div>
+    <div class="box2">555</div>
+    <div class="box2 box3 ">666</div>
+</div>
+</body>
+</html>
+<script>
+    //把页面上类名是box1元素获取到，最终放入数组返回
+    //筛选出类名有box1的元素
+    ///console.log(document.getElementsByClassName("box1 box2"));
+
+    function getOneClass(strClass,context){
+        context = context || document; //设定范围
+        var eles = context.getElementsByTagName("*");//获取所有的子元素
+        var ary = [];
+        //拿到每个子元素，并且看下这个子元素是否包含类名strClass
+        //var reg = /(^| +)strClass( +|$)/;//strClass是个变量得用构造函数的方式
+        var reg = new RegExp("(^| +)"+strClass+"( +|$)");
+        for(var i = 0;i<eles.length;i++){
+            if(reg.test(eles[i].className)){
+                ary.push(eles[i]);
+            }
+        }
+        return ary;
+    }
+
+    console.log(getOneClass("box1"));
+
+
+</script>

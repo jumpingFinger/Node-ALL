@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    Array.prototype.myMap = function(callback,context){
+        context = context || window;
+        if("map" in Array.prototype){
+            return   this.map(callback,context);
+        }
+        //以下就是浏览器不支持map方法做的处理
+        var res = null;
+        var ary = [];
+        for(var i = 0;i<this.length;i++){
+            res = callback.call(context,this[i],i,this);
+            ary.push(res);
+        }
+        return ary;
+    }
+    var ary = [12,15,3,2,10];
+    var obj = {};
+    var res = ary.myMap(function(item,i,ary){
+        return item*2  //对数组每一项操作，并把结果保存下来
+    },obj);
+    console.log(res);
+</script>

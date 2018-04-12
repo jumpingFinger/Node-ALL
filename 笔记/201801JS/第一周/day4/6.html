@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*var user = ""
+    var age = ""*/
+    /*var user = ""
+    var age = ""*/
+    //->完成搜索功能
+    var searchModel  = {//把所有的属性和方法都存入一个空间searchModel里，这空间称为"命名空间"
+        user:"",
+        age:"",
+        search:function(){}
+    };
+    //->完成用户注册登录
+    var userModel = {
+        user:"",
+        age:"",
+        signIn:function(){
+            //选项卡功能执行下
+            searchModel.select();
+            this.signOut();//同模块之间的调用
+            /*this.user
+            this.age*/
+        },
+        signOut:function(){}
+    };
+    userModel.signIn();
+    //完成选项卡功能
+    var selectModel = {
+        select : function(){}
+    }
+
+</script>

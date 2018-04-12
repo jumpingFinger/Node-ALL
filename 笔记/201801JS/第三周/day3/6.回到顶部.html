@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            height: 300%;
+            background: -webkit-linear-gradient(palegreen,palegoldenrod,paleturquoise);
+            background: linear-gradient(palegreen,palegoldenrod,paleturquoise);
+        }
+        #top{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50%;
+            background: pink;
+            color:green;
+            text-align: center;
+            position: fixed;
+            right: 30px;
+            bottom:30px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="top">top</div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+
+    //1.卷出去的高度大于等于一屏高度时，top按钮才显示出来
+    //2.点击top按钮，滚动条回到顶部（匀速运动）
+    //3.点击完top按钮了，防止不断点击top按钮，会产生定时器积累，需要把top按钮隐藏掉
+
+    //滚动条移动会触发scroll事件这时才去判断
+    var clientH = utils.win("clientHeight");
+    var oTop = document.getElementById("top");
+    function show(){
+        var scrollT = utils.win("scrollTop");
+        if(scrollT>=clientH){
+            oTop.style.display = "block";
+        }else{
+            oTop.style.display = "none";
+        }
+    };
+    window.onscroll = show;
+    //匀速：间隔时间走的路程是一样
+    //总时间/间隔时间*单步路程 = 总路程
+    //单步路程 = 总路程*间隔时间/总时间
+
+    var duration = 1000;//总时间
+    var interval = 15;//间隔时间
+
+    oTop.onclick = function(){
+        window.onscroll = null;//去掉绑定的行为
+        oTop.style.display = "none"; //防止不断点击top按钮
+        var target = utils.win("scrollTop");//总路程
+        var step = target*interval/duration;//单步路程
+        var timer = window.setInterval(function(){
+            var cur = utils.win("scrollTop");
+            cur-=step;
+            if(cur<=0){
+                clearInterval(timer);
+                //滚动条到达顶部，还得给scroll事件绑定show方法
+                window.onscroll = show;
+            }
+            utils.win("scrollTop",cur);
+        },interval);
+    };
+</script>

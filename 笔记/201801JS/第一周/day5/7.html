@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function fn1(){
+        console.log(1)
+    }
+    function fn2(){
+        console.log(2);
+    }
+    //fn1.call(fn2);//1
+    //call方法运行 ，运行时先让fn1里的this关键字变成fn2，再让fn1运行
+
+    /*Function.prototype.call = function(){
+        //1.前面方法里的this改成第一个参数->this里this改成第一个参数
+        //2.前面的方法运行 this()
+    };*/
+    fn1.call.call.call.call(fn2);//2
+    //console.log(fn1.call == Function.prototype.call);
+    //console.log(fn1.call.call == Function.prototype.call);
+    Function.prototype.call.call(fn2);
+    //最后一个call运行时执行的步骤:
+    //1.让.前面方法里的this关键字改成fn2->call方法里this->fn2
+    //2.让.前面方法运行->this()->fn2()
+
+    //1.让.前面方法里的this关键字改成fn2->call方法里的this->fn2
+    //2.让.前面方法运行->.前面的方法是最后一个call的this，让.前面的方法运行，也就是让call里的this运行，现在call里的this改成了fn2，也就是让fn2运行
+</script>

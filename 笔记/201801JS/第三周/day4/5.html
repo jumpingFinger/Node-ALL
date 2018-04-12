@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box">
+        <p>111</p>
+        <p>222</p>
+        <span>333</span>
+        <span>4444</span>
+        <div>
+            <p>5555</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    /**
+     * 获取ele下制定标记名的元素
+     * @param ele
+     * @param tagName
+     */
+    function getChildren(ele,tagName){
+        var ary = [];
+        if(typeof tagName === "string"){
+            //从所有子元素中筛选出标记名是tagName的元素
+            var childs = ele.childNodes;
+            for(var i = 0;i<childs.length;i++){
+                if(childs[i].nodeType===1){
+                   if(childs[i].nodeName.toLowerCase()===tagName.toLowerCase()){
+                       ary[ary.length] = childs[i];
+                   }
+                }
+            }
+        }else if(typeof tagName ==="undefined"){
+            var childs = ele.childNodes;//所有的子节点
+            for(var i = 0;i<childs.length;i++){
+                if(childs[i].nodeType === 1){
+                    ary.push(childs[i]);
+                }
+            }
+        }else{
+           throw new TypeError("第二个参数类型错误");
+        }
+        return ary;
+    }
+    var oBox = document.getElementById("box");
+    //console.log(oBox.getElementsByTagName("p").length);//把子子孙孙后代p标签都获取到了
+    console.log(getChildren(oBox, "p"));
+    //getChildren(oBox);
+//    getChildren(oBox,5);
+</script>

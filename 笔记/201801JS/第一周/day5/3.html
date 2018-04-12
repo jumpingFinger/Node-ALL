@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary = [1, 2, 3];
+    //内置类原型上的方法只能一个一个改，不能批量修改
+    //重写内置类原型上的方法
+    Array.prototype.toString = function () {
+        //this ->实例
+        return this.join("+");
+    }
+    console.log(ary.toString());//"1+2+3"
+
+    //在Array类的原型上添加一个方法
+    // 随机删除数组中的n项 把删除的内容放在一个数组里返回 原有数组不改变
+    Array.prototype.random = function (n) {
+        if (n > this.length) {
+            return [];
+        }
+        //1.把原有数组克隆一份
+        var newAry = this.slice(0);
+        var ary = [];
+        //2.通过遍历参数随机取出一项
+        for (var i = 0; i < n; i++) {
+            var num = Math.floor(Math.random() * newAry.length);//取出数组某一项的索引
+            //3.通过索引删除数组中的这一项
+            var val = newAry.splice(num, 1)[0];
+            ary.push(val);
+        }
+        return ary;
+    };
+
+    //原有数组改变
+    Array.prototype.random = function (n) {
+        if (n > this.length) {
+            return [];
+        }
+        var ary = [];
+        for (var i = 0; i < n; i++) {
+            var num = Math.floor(Math.random() * this.length);
+            var val = this[num];
+            //另一种方式删除数组的某一项
+            this[num] = this[this.length - 1];
+            this.length--;
+            ary.push(val);
+        }
+        return ary;
+    };
+
+    //添加一项
+    Array.prototype.push = function (num) {
+        this[this.length] = num;
+        return this; //this实现链式写法的关键
+    }
+    var ary = [2, 4, 7, 3, 2, 8, 9, 10, 33, 64, 23];
+    var result = ary.random(5).sort(function (a, b) {
+        return a - b
+    }).push(10).join("+")
+    console.log(result);
+
+    //思考题
+    //Number.prototype扩展两个方法
+    //(5).minus(2).plus(7)
+    Number.prototype.minus = function (n) {
+        //Number()强制转换引用类型的数据，先转换成字符串再强制转换
+        if (isNaN(n)) {
+            return this
+        }
+        return this - n;
+    };
+   Number.prototype.plus = function (m) {
+
+        if (isNaN(m)) {
+            return this
+        }
+        return this + Number(m);
+    };
+    console.log((5).minus([111]).plus(7));
+
+</script>

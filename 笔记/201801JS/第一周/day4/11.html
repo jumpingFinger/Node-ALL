@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Person(name,age){//构造函数（类）
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype.writeCss = function(){
+        console.log('writeCss');
+    }
+    Person.prototype.writeJs = function(){
+        console.log("writeJs");
+    }
+    Person.prototype.eat = function(){
+        console.log("eat")
+    }
+    Person.prototype.sleep = function(){
+        console.log("sleep")
+    }
+    Person.prototype.drink = function () {
+        console.log("drink");
+    }
+    var p1 = new Person("lily",18);//执行构造函数后就产生实例p1   对象
+    console.log(p1);
+    var p2 = new Person("lucy",20); //对象
+    console.log(p2);
+    console.log(Person.prototype.__proto__ == Object.prototype);//true
+    //原型对象是一个对象，所有的对象都是Object类的一个实例
+    console.log(p1.writeCss == p1.__proto__.writeCss);
+
+
+
+</script>

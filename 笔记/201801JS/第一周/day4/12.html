@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Person(name,age){//构造函数（类）
+        this.name = name;
+        this.age = age;
+    }
+    //重写原型对象，批量设置公有的属性
+    //重写的原型对象没有constructor属性
+    Person.prototype = {
+        constructor:Person,//手动添加constructor属性，让其指向对应类
+        writeCss:function(){console.log("writeCss")},
+        writeJS:function(){console.log("writeJs")},
+        drink :function(){console.log("drink")},
+        eat:function(){console.log("eat")}
+    };
+
+    var p1 = new Person("lily",18);
+    p1.writeCss();
+    //console.log(p1.constructor== Object);//true 不手动加constructor时，是指向的Object类
+
+
+</script>

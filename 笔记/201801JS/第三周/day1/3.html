@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var str = "asdadddabbCCCAAf";
+    //转换成数组->排序->字符串 ->分组的反向引用
+    var ary = str.split("").sort(function(a,b){
+        return a.localeCompare(b);
+    })
+    str = ary.join("");//"aaaAAbbCCCddddfs"
+    //分组反向引用能匹配到连续的相同的字符
+    var reg = /(\w)\1*/g;
+    var maxStr = '';
+    var max = 0;
+    str.replace(reg,function($0,$1){
+        //$0正则匹配的内容 $1指第一个分组的内容(对应的字符)
+        //console.log($1, $0.length);
+        if($0.length>max){
+            max = $0.length;
+            maxStr = $1;
+        }else if($0.length==max){
+            maxStr+=","+$1;
+        }
+    })
+    console.log(max,maxStr);
+
+
+</script>

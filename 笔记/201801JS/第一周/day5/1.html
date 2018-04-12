@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //构造函数 ->自己实现内置类实现的过程
+    //类->实例（当前端工程师的人）
+    //自定义类
+    function Person(name,age){//类  （抽象）
+        //1.创建实例 ->省
+        //2.给这个实例添加属性和方法->this.xxx
+            //->构造函数运行时，以实例为上下文执行这个构造函数
+        //3.返回实例 ->省
+        this.name = name;
+        this.age  = age;
+
+    }
+    Person.prototype.writeCss = function(){}
+    new Person() //若不赋值，返回实例的是匿名的实例
+    var p1 = new Person("lily",18);//构造函数运行完后的实例赋值给变量p1,p1也就代表Person的一个实例
+    var p2 = new Person("lucy",20);
+    //console.log(p1.writeCss == p2.writeCss);
+    console.log(p1.toString()); //"[object Object]"
+    console.dir(p1);
+    console.log(p1.hasOwnProperty("writeCss"));
+    //in 检测某个是否属于这个对象
+    console.log("writeCss" in p1);
+    //封装一个方法 检测某个属性是否是公有的,是->true，不是->false
+    function hasPublicProperty(obj,attr){
+       return  attr in obj && !obj.hasOwnProperty(attr)
+    }
+    //console.log(hasPublicProperty(p1, "name"));
+    Person.prototype.isPrototypeOf(Object.prototype);//true 前面这个对象指针最终会指向到object.prototype上
+
+
+
+</script>

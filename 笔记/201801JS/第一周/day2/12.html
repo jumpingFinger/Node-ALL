@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
+<script>
+    // 做一个抽奖程序，页面中有一个区域显示中奖人员的编号，在JS中写一段代码，要求每隔1秒中随机创建一个四位的数字（每一位数字的取值范围0-9），当10秒结束后，结束定时器，最后显示的四位数字即是中奖的号码
+    //每隔1秒在控制台输出i递增的值，当10秒时，把定时器清除
+    var oDiv = document.getElementById("div1");
+    var n = 0;
+    var timer = window.setInterval(function(){
+        n++;
+        var str = "";
+        for(var i = 0;i<4;i++){
+            var num = Math.floor(Math.random()*10);
+            str+=num;
+        }
+        oDiv.innerHTML = str;
+        if(n==10){
+            clearInterval(timer);
+        }
+    },1000);
+
+</script>

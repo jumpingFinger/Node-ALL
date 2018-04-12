@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+    <div class=" box1 box2 box3"  id="div4">111</div>
+    <div class=" box1 box2">222</div>
+    <div class=" box1 box22">33</div>
+    <div class=" box2 "  >444</div>
+    <div class="box2">555</div>
+    <div class="box2 box3 ">666</div>
+</div>
+</body>
+</html>
+<script>
+    /**
+     *
+     * @param ele 元素
+     * @param strClass  一个或多个类名
+     * @return  true|false
+     */
+    function hasClass(ele,strClass){
+        var allClass = strClass.replace(/^ +| +$/g,"").split(/\s+/g);
+        for(var i = 0;i<allClass.length;i++){
+            var curClass = allClass[i];
+            var reg = new RegExp("(^| +)"+curClass+"( +|$)");
+            if(!reg.test(ele.className)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 给某个元素添加一到多个类名
+     * @param ele
+     * @param strClass 一到多个类名
+     */
+    function  addClass(ele,strClass){
+        var allClass = strClass.replace(/^ +| +$/g,"").split(/\s+/g);
+        for(var i = 0;i<allClass.length;i++){
+            var curClass = allClass[i];
+            if(!hasClass(ele,curClass)){
+                ele.className+=" "+curClass;
+            }
+
+        }
+    }
+
+    /**
+     * 移除一个或多个类名
+     * @param ele
+     * @param strClass 一个或多个
+     */
+    function removeClass(ele,strClass){
+        var allClass = strClass.replace(/^ +| +$/g,"").split(/\s+/g);
+        for(var i = 0;i<allClass.length;i++){
+            var curClass = allClass[i];
+            var reg = new RegExp("(^| +)"+curClass+"( +|$)");
+            if(hasClass(ele,curClass)){
+                ele.className =  ele.className.replace(reg," ");//拿空格替换已有的类名
+            }
+        }
+    }
+
+
+
+    var oDiv4 = document.getElementById("div4");
+    removeClass(oDiv4, "box2");
+</script>

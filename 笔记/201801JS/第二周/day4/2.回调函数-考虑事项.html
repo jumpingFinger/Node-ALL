@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //概念：把一个方法的定义作为参数传给另一个方法，则这个方法就是回调函数
+    //一件事完成后再做另一个事件  异步，参数都有回调函数
+    //回调函数考虑事项：
+    //1.回调函数需不要传参
+    //2.回调函数执行次数 - 取决于条件 在数组这边通常指数组的长度
+    //3.回调函数有没有返回值
+    //4.回调函数里的this指的是谁
+    function a(m){
+        console.log(this);
+        return m*=2;
+    }
+    var obj = {};
+    function fn(callback){
+        var res = null;
+        var ary = [];
+        for(var i= 0;i<3;i++){
+            res =  callback.call(obj,i);
+            ary.push(res);
+        }
+        return ary;
+    }
+    console.log(fn(a));//[0,2,4]
+
+
+</script>

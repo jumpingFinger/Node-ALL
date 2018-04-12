@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+    <li>1111</li>
+    <li>2222</li>
+</ul>
+</body>
+</html>
+<script>
+    //DOM映射：js获取的元素/元素集合会跟页面的标签/容器一一对应起来
+    var oUl = document.getElementById("list");
+    var oLis = oUl.getElementsByTagName('li');
+    //oLis[0] 跟页面的第一个li标签对应起来
+    oLis[0].style.background = "pink";
+    //console.log(oLis.length);//2
+    var oLi = document.createElement("li");
+    oUl.appendChild(oLi);
+    console.log(oLis.length);//页面结构和元素结合一一对应集合 由于有DOM映射机制，不需要重新获取li标签就能直接通过oLis.length知道添加后li的长度
+
+
+    //并非所有js获取的元素/元素集合都跟页面的标签对应起来
+    //没有DOM映射机制 通过js获取的节点  staticNodeList 静态节点
+    var newLis = document.querySelectorAll("li");
+    console.log(newLis.length);
+    var oLi = document.createElement("li");
+    oUl.appendChild(oLi);
+    //newLis = document.querySelectorAll("li"); 没有DOM映射机制的，当结构发生改变时，需要重新获取元素
+    console.log(newLis.length);
+
+</script>

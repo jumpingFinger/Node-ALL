@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //去掉最高分，去掉最低分，返回一个分数的平均数
+    //->方案2
+    function fn() {
+        //console.log(typeof arguments);//object 类数组是对象类型 ，不能直接调用数组的方法
+        //1.把类数组转换成数组
+        var ary = [];
+        for (var i = 0; i < arguments.length; i++) {
+            ary[i] = arguments[i];
+        }
+        //2.排序，然后去掉最大值和最小值
+        ary.sort(function (a, b) {
+            return a - b;
+        });
+        ary.pop();
+        ary.shift();
+        //3.把数组的每一项安照"+"字符拼接，然后再求和求出平均数
+        return (eval(ary.join("+")) / ary.length).toFixed(2)
+    }
+
+    //console.log(fn(86, 56, 78, 35, 99, 12,36,17));
+
+    /*  Array.prototype.pop = function(){
+          //是数组时处理逻辑如下：
+          var last = this[this.length-1];
+          this.length--;
+          return last;
+
+          //若换成arguments处理逻辑如下：
+          var last = arguments[arguments.length-1];
+          arguments.length--;
+          return last;
+
+      }*/
+
+    //克隆数组
+    /*Array.prototype.slice = function(){
+        //是数组时处理逻辑如下：
+        var ary = [];
+        for(var i = 0;i<this.length;i++){
+            ary[i] = this[i];
+        }
+        return ary;
+
+        //若换成arguments处理逻辑如下：
+        var ary = [];
+        for(var i = 0;i<arguments.length;i++){
+            ary[i] = arguments[i];
+        }
+        return ary;
+    }*/
+    //arguments类数组和数组很像，实现一个功能时，处理的逻辑是一样的，只是主体对象不同，一个是数组，一个是arguments,所以类数组可以间接的调用数组的方法（只要把数组方法里的this改成arguments---通过call来改变）
+
+    function average() {
+        //[]代替Array.prototype 这样写起来更加简洁
+       /* [].sort.call(arguments, function (a, b) {
+            return a - b
+        });
+        [].shift.call(arguments);
+        [].pop.call(arguments);
+        return (eval([].join.call(arguments, "+")) / arguments.length).toFixed(2)*/
+
+       //操作类数组时，先转换成数组再操作slice
+        var ary = [].slice.call(arguments,0);//slice方法的返回值是数组类型
+        console.log(ary instanceof Array);//true
+        ary.sort(function (a, b) {
+            return a - b
+        });
+        ary.shift();
+        ary.pop();
+        return (eval(ary.join("+")) / ary.length).toFixed(2);
+
+    }
+
+    console.log(average(86, 56, 78, 35, 99, 12, 36, 17));
+</script>

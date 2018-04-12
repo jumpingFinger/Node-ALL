@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var n = 20;
+    function fn(n){
+        alert(n);//5
+        n = 10;
+    }
+    var m = 5;
+    fn(m);
+    alert(n);//20
+
+   /* var m = 20;
+    m = 20;
+    console.log("m" in window)
+*/
+   var m = 10;
+   function fn(){
+        alert(m);//10
+        m = 20;
+   }
+   fn();
+   alert(m);//20
+</script>

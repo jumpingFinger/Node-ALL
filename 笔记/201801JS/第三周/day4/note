@@ -1,0 +1,21 @@
+DOM方法
+getChildren(ele) 获取所有的子元素
+getPrev(ele) 获取相邻哥哥元素节点
+getPrevAll(ele) 获取所有的哥哥元素节点
+getNext(ele)  获取相邻的弟弟元素节点
+getNextAll(ele) 获取所有的弟弟元素节点
+siblings(ele)  获取当前元素的所有的兄弟节点
+getIndex(ele) 获取当前的元素索引
+
+根据类名获取元素
+根据单个类名获取元素 getOneClass()
+根据多个类名获取元素 getByClass
+- 获取到每个类名(之前先去掉收尾空格，然后按照一到多个空格拆分strClass)
+- 通过每个类名拿到对应的元素
+ 查找时应该是从上次的结果中筛选中有另一个类名，不应该再次从所有的元素中查找
+
+判断元素是否有这个类名  hasClass
+给某个元素添加一个或多个类名   addClass
+删除某个元素一个或多个类名  removeClass
+
+获取某个元素下指定标记名的子元素 getChildren

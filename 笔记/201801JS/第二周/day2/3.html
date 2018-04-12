@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+</ul>
+</body>
+</html>
+<script>
+    //索引是从0开始依次的递增 ，有length属性 ->类数组
+    var oUl = document.getElementById("list");
+    var oLis = oUl.getElementsByTagName("li");//元素集合也是类数组
+    //console.log(oLis);
+   //var ary = [].slice.call(oLis,0);//IE6~IE8不支持通过改变this关键字从而调用数组的方法
+    //在js中一旦遇到报错，则代码终止运行，应该有一种方式能捕获到错误，从而通过其他方案解决
+    try{
+        var ary = [].slice.call(oLis,0);
+    }catch(e){
+        var ary = [];
+        for(var i = 0;i<oLis.length;i++){
+            ary[i] = oLis[i];
+        }
+    }
+    console.log(ary);
+
+</script>

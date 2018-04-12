@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div1{
+            width: 100px;
+            height: 100px;
+            padding:10px;
+            border:2px dashed green;
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">珠峰培训</div>
+</body>
+</html>
+<script>
+    function getCss(ele,attr){
+       var res;
+      /* try{
+           res = window.getComputedStyle(ele,null)[attr];
+       }catch(e){//IE6~8
+           res = ele.currentStyle[attr];
+       }*/
+      //第二种 判断属性的方式
+      /*if("getComputedStyle" in window){
+          res = window.getComputedStyle(ele,null)[attr];
+      }else{
+          res = ele.currentStyle[attr];
+      }*/
+      //第三种 检测数据类型
+      /*if(typeof getComputedStyle == "function"){
+          res = window.getComputedStyle(ele,null)[attr];
+      }else{
+          res = ele.currentStyle[attr];
+      }*/
+      //第四种 检测浏览器的方式
+      //若是IE6~8则用currentStyle,若不是则用getComputedStyle方法
+        if(/MSIE [6-8]\.0/.test(navigator.userAgent)){
+            res = ele.currentStyle[attr]
+        }else{
+            res = window.getComputedStyle(ele,null)[attr];
+        }
+
+       return res;
+    }
+    var oDiv = document.getElementById("div1");
+    getCss(oDiv,"padding");
+
+  /*  console.log(getCss(oDiv, "paddingLeft"));
+    console.log(getCss(oDiv, "borderLeftWidth"));*/
+    console.log(getCss(oDiv, "color"));
+    console.log(getCss(oDiv, "fontSize"));
+</script>

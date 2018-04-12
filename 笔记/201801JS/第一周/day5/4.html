@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function fn(x,y){
+        return x+y
+    }
+    //所有的函数是Function类的实例
+    //var fn = new Function("x","y","return x+y");//非常的繁琐，不推荐用构造函数的方式创建实例
+    console.log(fn(10, 20));
+    //instanceof 检测某个对象是否属于这个类   这个对象是在这个类的原型链上
+    console.log(fn instanceof Object) //true
+    console.log(fn.__proto__.__proto__ == Object.prototype);
+    fn.name = "lily";
+    fn.writeCss = function(){console.log("writeCss")};
+    fn.writeCss()
+
+    //利用函数的三重身份来解答这道题
+     console.log(Function instanceof Object);//true
+    //Function.__proto__.__proto__ == Object.prototype
+     console.log(Object instanceof Function);//true
+    //Object.__proto__ == Function.prototype
+    //所有的构造函数是函数，函数是Function类的实例，fn作为实例另一种身份是对象，所有的对象都是有一个__proto__
+
+
+
+</script>

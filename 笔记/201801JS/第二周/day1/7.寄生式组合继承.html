@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function F(){
+        this.x = 10;
+        this.y = 20;
+    }
+    F.prototype.sum = function(){
+        console.log(this.x+this.y);
+    };
+    function S(){
+        this.z  = 50;
+        F.call(this);
+    }
+    //解决的办法：借助中间的空类达到S.prototype.__proto__ = F.prototype
+    function Temp(){
+
+    }
+    Temp.prototype = F.prototype;//Temp.prototype就指向了F的原型
+    S.prototype = new Temp();//作为空类的实例，S.prototype就不会受污染，并且同时S.prototype原型下的_prototype__指向F.prototype
+    var s = new S();
+    console.log(s);
+
+</script>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var n = 10;
+    function fn(n){ //形参n和带var的变量n是一个
+        alert(n);
+        var n= 20;
+        alert(n);
+    }
+    fn(n);
+    alert(n);
+</script>

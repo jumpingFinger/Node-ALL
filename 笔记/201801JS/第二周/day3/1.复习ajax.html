@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    //1.创建ajax对象
+    var xhr = new XMLHttpRequest();
+    //2.打开一个链接地址
+    //true异步（默认） false 同步
+    xhr.open("get","data.json",false);
+    //3.监听请求的状态   请求状态码（xhr.readyState）和网络状态码(xhr.status)
+    var data = null;
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState==4&&/^2\d{2}$/.test(xhr.status)){
+            //响应成功，则返回响应的数据
+            //console.log(xhr.responseText);//JSON格式的字符串
+            data = utils.toJSON(xhr.responseText);
+        }
+    };
+    //4.发送请求
+    xhr.send(null);
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+           /* opacity: 0.2;
+            filter: alpha(opacity=50);*/
+        }
+    </style>
+</head>
+<body>
+<div id="div1">珠峰培训</div>
+</body>
+</html>
+<script>
+    var oDiv = document.getElementById("div1");
+    //window.getComputedStyle(oDiv,null)["color"] = "white"; 不可以这样设置，报错These styles are computed, and therefore the 'color' property is read-only. 只能可读,不能赋值只能获取
+    //oDiv.style.color = "white";//设置值只能通过行内式的方式
+    function setCss(ele,attr,value){
+        if(attr == "opacity"){
+            ele.style.opacity = value;
+            ele.style.filter = "alpha(opacity = "+value*100+")";
+            return;
+        }
+        //attr验证是否是width|height|margin|padding|marginLeft|marginTop|top|right|left|bottom...这些属性中的一个
+        var reg = /^(?:width|height|(?:(?:margin|padding)?(?:top|bottom|left|right)?))$/i;
+        if(reg.test(attr)){
+            if(!isNaN(value)){//若没加单位才加px
+                value +="px";//value = value+"px"
+            }
+        }
+        ele.style[attr] = value;
+    }
+    setCss(oDiv,"color","white");
+    setCss(oDiv,"opacity","0.2");
+    setCss(oDiv,"width",200);
+    setCss(oDiv,"width","200px");
+
+</script>

@@ -1,0 +1,80 @@
+client系列
+clientWidth = width+padding(左右)
+clientHeight = height+padding(上下)
+clientLeft  左边框
+clientTop 上边框
+
+offset系列
+offsetWidth = width+padding(左右)+border(左右) = clientWidth+border(左右)
+offsetHeight = height+padding(上下)+border(上下) = clientHeight+border(上下)
+offsetParent 参照物
+    找最近已经定位的父级元素（可能是上上级）
+offsetLeft 左偏移 当前元素边框外到参照物边框内的距离
+offsetTop 上偏移
+
+->求当前元素ele到body的偏移量
+1.ele到ele参照物的偏移量
+2.加上 ele参照物到父级参照物的偏移量
+3.继续再加上父级参照物到它的父级参照物的偏移量....直到父级参照物为null时，返回累加的左偏移量和上偏移量
+
+
+scroll系列
+scrollWidth "约等于"真实内容的宽度+左paddding
+scrollHeight "约等于"真实内容的高度+上padding
+scrollLeft 横向滚动条卷出去的宽度
+scrollTop  纵向滚动条卷出去的高度
+
+clientHeight与scrollHeight区别
+1.clientHeight是获取一屏的高度
+2.scrollHeight是获取整个文档的高度
+
+
+②JS提供了相关方法，可以直接获取任意的CSS属性值
+window.getComputedStyle(ele,":before")[attr]  IE6~8不支持
+ele.currentStyle[attr];
+->封装处理兼容性问题 getCss(ele,attr);
+
+总结处理兼容问题的方式:
+1.try...catch(e)....
+2.判断属性的方式
+- window.getComputedStyle
+- "getComputedStyle" in window
+3.检测数据类型的方式
+- typeof 检测若变量不存在，则结果为undefined
+- typeof getComputedStyle == "function"
+- ary instanceof Array 可以检测出对象的细分类型
+- Object.prototype.toString.call(ary) "[object Array]" 精准的检测数据类型
+4.检测浏览器的方式
+- /MSIE [6-8]\.0/.test(navigator.userAgent)  同一浏览器不同版本
+- navigator.userAgent.indexOf("MSIE 8.0");  固定的一个浏览器
+
+③对getCss(ele,attr)方法升级
+1.若获取透明度值 标准浏览器是获取opacity IE浏览器是获取的filter属性值
+2.返回结果res进行处理 若返回的是数值|数值+单位，提取数值部分，其他情况原值返回
+width|height|margin|padding|top|right|left|bottom|zIndex|fontWeight...
+
+④设置样式的值 setCss(ele,attr,value);
+ - opacity各个浏览器设置不同的属性
+ - width|height|margin|padding|marginLeft|marginTop|top|right|left|bottom...这些属性加单位px
+
+⑤ 图片延迟加载
+1.图片延迟加载的意义和实现思路
+ - 提高网站加载的速度，让用户体验比较好
+2.首屏图片延迟加载
+ - 5s之内要把首屏的内容，先把首屏其他内容显示出来，遇到图片的先用的小的占位符代替，最后再真实的图片显示图片
+3.其他屏单张图片延迟加载
+4.其他屏多张图片延迟加载
+ - 先用占位符代替，等滚动这一屏时再显示真实的图片
+
+ 显示图片步骤：
+ 不是把真实图片的地址赋给src属性值
+ 优化：
+  保证在显示图片之前，图片已经加载完成
+  1.创建一个图片对象 var tempImg = new Image(); document.createElement("img")
+  2.把真实的图片路径赋值给图片对象的src属性 （则会在后台偷偷加载这张图片）
+  3.图片若加载成功，则触发load事件，若失败则触发error事件
+  4.当加载成功时，才把真实的图片的路径赋给页面上要显示img的src属性 加载失败时给个失败图片的提醒
+
+预习：
+其他屏图片延迟加载
+DOM封装

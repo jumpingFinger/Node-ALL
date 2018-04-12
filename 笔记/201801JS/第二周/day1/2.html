@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型继承</title>
+</head>
+<body></body>
+</html>
+<script>
+    function F(){
+        this.x = 10;
+        this.y = 20;
+    }
+    F.prototype.sum = function(){
+        console.log(this.x+this.y);
+    }
+    var f = new F();
+    console.log(f.x);//10
+    console.log(f.toString());//说明F是Object的子类
+    console.log(f.hasOwnProperty("x"));
+</script>

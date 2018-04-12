@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width: 730px;
+            height: 454px;
+            background: #eee url(img2/default.gif) no-repeat center center;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="" alt="" realImg = "img2/jd.jpg">
+</div>
+</body>
+</html>
+<script>
+    var oImg = document.getElementsByTagName("img")[0];
+    window.setTimeout(function(){
+        //1.创建一个图片对象
+        var tempImg = new Image();
+        //2.把真实的图片路径赋值给tempImg的src属性，让其在后台加载这种图片
+        tempImg.src = oImg.getAttribute("realImg");
+        //3.加载成功load事件，加载失败触发error事件
+        tempImg.onload = function(){
+            //this.src拿到真实的图片路径
+            oImg.src = this.src;//这里直接把加载好的图片显示出来
+        }
+        tempImg.onerror = function(){
+            oImg.src = "img2/error.gif";
+        }
+    },500);
+</script>

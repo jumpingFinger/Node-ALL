@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>求最大值和最小值</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary = [2, 32, 15, 17, 4, 11];
+    //->方案1 假设法
+    var max = ary[0];
+    var min = ary[0];
+    for (var i = 1; i < ary.length; i++) {
+        var cur = ary[i];
+        /*if(cur>max){
+            max = cur;
+        }
+        if(cur<min){
+            min = cur;
+        }*/
+        cur > max ? max = cur : cur < min ? min = cur : null;
+    }
+    console.log(max, min);
+    //->方案3
+    console.log(Math.max.apply(null, ary));//传时能打包式的传，传到max方法能散列开一个一个的传给max
+    console.log(Math.min.apply(null, ary));
+
+
+    //方案2
+    console.log(Math.max(ary));//NaN 传参的类型错误，应该是把参数一个一个的传
+    //eval(ary.toString());//=>(2, 32, 15, 17, 4, 11) 括号运算符，最终结果是最后一项
+    //Math.max(eval(ary.toString()))
+
+    var max = eval("Math.max("+ary.toString()+")");
+    console.log(max);
+
+    //方案4
+    //es6扩展运算符
+    var max = Math.max(...ary);//...ary会把数组每一个项展开传给max方法
+    console.log(max);
+
+
+</script>

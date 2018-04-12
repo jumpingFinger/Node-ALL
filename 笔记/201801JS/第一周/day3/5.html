@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="0">
+<input type="button" value="1">
+<input type="button" value="2">
+<input type="button" value="3">
+</body>
+</html>
+<script>
+    //点击每个按钮弹出相应的索引
+    var oInput = document.getElementsByTagName("input");
+   /* for(var i = 0;i<oInput.length;i++){
+        //oInput[i].zhufeng = i;
+        oInput[i].setAttribute("zhufeng",i);
+        oInput[i].onclick = function(){
+           //this 当前点击的元素
+//            console.log(this.zhufeng);
+            //console.log(this.getAttribute("zhufeng"));
+
+        }
+    }
+*/
+    //思路1:每次循环时都形成一个私有的作用域，能把i的值每次都保存下来
+    /*var i = 0;
+    for(;i<oInput.length;i++){
+        ~(function(i){//i是私有的，则在这个作用域操作的i都是形参i
+            oInput[i].onclick = function(){
+               console.log(i);
+            }
+        })(i)
+    }*/
+
+
+
+    //思路2
+    /*for(var i = 0;i<oInput.length;i++){
+        oInput[i].onclick = function(i){
+            return function(){
+                console.log(i);
+            }
+        }(i)
+    }*/
+
+  //思路3
+    /*for(var i = 0;i<oInput.length;i++){
+        changeTab(i)
+    }
+    function changeTab(i){
+        oInput[i].onclick = function(){
+            console.log(i);
+        }
+    }*/
+
+    //思路4
+    //let是es6定义变量的关键词 {}在es6表示块级作用域 for循环每次遍历都会开辟一个新的作用域  在es5没有块级作用域的概念
+    for(let i = 0;i<oInput.length;i++){
+        oInput[i].onclick = function(){
+            console.log(i);
+        }
+    }
+
+
+
+
+</script>

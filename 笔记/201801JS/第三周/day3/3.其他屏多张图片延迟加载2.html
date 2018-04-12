@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        div img {
+            width: 300px;
+            height: 300px;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div style="padding-top: 1000px"></div>
+<div>
+    <img src="img2/default.gif" alt="" realImg="img2/1.jpg">
+    <img src="img2/default.gif" alt="" realImg="img2/2.jpg">
+    <img src="img2/default.gif" alt="" realImg="img2/3.jpg">
+    <img src="img2/default.gif" alt="" realImg="img2/4.jpg">
+    <img src="img2/default.gif" alt="" realImg="img2/5.jpg">
+    <img src="img2/default.gif" alt="" realImg="img2/6.jpg">
+    <img src="img2/default.gif" alt="" realImg="img2/7.jpg">
+    <img src="img2/default.gif" alt="" realImg="img2/8.jpg">
+    <img src="img2/default.gif" alt="" realImg="img2/9.jpg">
+    <img src="img2/default.gif" alt="" realImg="img2/10.jpg">
+</div>
+<div style="padding-top: 500px"></div>
+</body>
+</html>
+<script>
+    function offset(ele) {
+        var l = ele.offsetLeft;
+        var t = ele.offsetTop;
+        var p = ele.offsetParent;
+        while (p) {
+            if (navigator.userAgent.indexOf("MSIE 8.0") === -1) {
+                l += p.clientLeft;
+                t += p.clientTop;
+            }
+            l += p.offsetLeft;
+            t += p.offsetTop;
+            p = p.offsetParent;
+        }
+        return {
+            l: l,
+            t: t
+        }
+    }
+    function win(attr, value) {
+        //value是否有传值，若没有值表示获取，若有值表示设置
+        if (typeof value === "undefined") {
+            return document.documentElement[attr] || document.body[attr];
+        } else {
+            if (attr === "scrollTop" || attr === "scrollLeft") {
+                document.documentElement[attr] = value;
+                document.body[attr] = value;
+            }
+
+        }
+    }
+    var oImgs = document.getElementsByTagName("img");
+    var clientH = win("clientHeight");//一屏的高度
+    window.onscroll = function(){//当滚动条发生移动时
+        //计算卷出去的高度+一屏的高度
+        for(var i = 0;i<oImgs.length;i++){
+                var oImg = oImgs[i];//每张图片
+                loadImg(oImg);
+        }
+    };
+    function loadImg(oImg){
+        var scrollT = win("scrollTop");
+        //求出每张图片底部到文档顶部的距离
+        var imgT = oImg.offsetHeight+offset(oImg).t;
+        if(scrollT+clientH>=imgT){
+            if(oImg.loaded) return;
+            //把这张图片显示出来
+            var tempImg = new Image();
+            tempImg.src = oImg.getAttribute("realImg");
+            tempImg.onload = function(){//当图片加载成功后才触发
+                oImg.src = this.src;
+                oImg.loaded = true;
+            };
+            tempImg.onerror = function(){
+                oImg.src = "img2/error.gif";
+            }
+        }
+    }
+
+</script>

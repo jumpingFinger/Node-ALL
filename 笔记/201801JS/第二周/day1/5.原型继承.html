@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function F(){
+        this.x = 10;
+        this.y = 20;
+    }
+    F.prototype.sum = function(){
+        console.log(this.x+this.y);
+    };
+    function S(){
+        this.z  = 50;
+        F.call(this);
+    }
+    //S.prototype.__proto__ = F.prototype;//__proto__IE浏览器禁止调用
+    //何时__proto__会指向F.prototype
+    S.prototype = new F();//S.prototype是F类的实例 S就是F类的子类
+    //因为S.prototype是作为F类的实例，S.prototype则会F类私有的属性，那样的话父类私有的属性会污染子类的原型 ，这样虽然好很多了，也是最常用的一种方式，但是还可以继续优化
+    var s = new S();
+    console.log(s);
+
+
+
+
+
+
+
+</script>

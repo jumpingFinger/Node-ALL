@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div1 {
+            width: 200px;
+            height: 200px;
+            border: 15px solid pink;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    华夏数千年历史，有不少风云人物，但是同一时代出现却不多见，两个王朝的开创者在同一时空，更是仅此一例。他们是秦始皇嬴政和汉高祖刘邦，刘邦仅比秦始皇小三岁，两人共同生活了四十七年。这样一来，不禁让人联想，嬴政当皇帝的时候，刘邦都在干啥？
+    公元前256年，刘邦出生在沛县，排行老三，虽然是农村家庭，生活条件并不差，还跟着别人读私塾。而这一年，嬴政3岁，生活在赵国邯郸；公元前242年，刘邦14岁，像许多青少年一样，刘邦有了自己的偶像，战国四君子之一，魏国的信陵君。信陵君招贤纳士，行侠仗义，出入兄弟众多，刘邦模仿之，结交村里各种人，只说好话，不讲坏话。这一年，嬴政17岁，做秦王已有4年，吕不韦专政。
+</div>
+</body>
+</html>
+<script>
+    var oDiv = document.getElementById("div1");
+  /*  window.setInterval(function () {
+        //如何判断滚动条到底部了？累加前和累加后值一样，则说明是最大值
+        var h = oDiv.scrollTop++;
+        if (h == oDiv.scrollTop) {
+            oDiv.scrollTop = 0;
+        }
+
+    }, 20);*/
+    //setInterval([Func],interval) 每隔一段时间就会执行一次
+    //setTimeout([Func],interval)  隔一段时间执行一次
+    var timer = null;
+    function move(){
+        clearTimeout(timer);//先清除掉上次开启的定时器
+        var h = oDiv.scrollTop++;
+        if (h == oDiv.scrollTop) {
+            oDiv.scrollTop = 0;
+        }
+        //arguments.callee 代表方法本身move
+        timer = setTimeout(arguments.callee,10);//重新每次再开启一个定时器
+    }
+    move();
+
+</script>

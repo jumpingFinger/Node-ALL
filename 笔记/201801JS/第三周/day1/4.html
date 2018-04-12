@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var str = "2017-09-10 15:30:40";
+    var template = "{0}年{1}月{2}日 {3}时{4}分{5}秒";
+    //->2017年09月10日 15时30分40秒
+   //1.把日期和时间放入数组中 2.通过模板中的数字拿到日期和时间
+   // var ary = str.split(/[-:\s]/g);
+    var ary = str.match(/\d+/g);
+    template = template.replace(/\{(\d)\}/g,function($0,$1){
+        //$0整个模板的内容 $1第一个分组的内容
+        return ary[$1];//数组中的日期和时间替换模板的内容
+    })
+
+    console.log(template);
+
+
+</script>

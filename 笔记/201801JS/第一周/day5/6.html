@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //预处理机制:提前把所有的事情都弄好，最终函数执行需要手动运行
+    function fn(n,m){
+        console.log(this+n+m)
+    }
+    var result = fn.bind({},3,5);//ie8及以下浏览器不支持
+    //bind方法做的事情
+    //1 .前面方法的this关键字改变第一个参数
+    //2 从第二个参数开始一个一个传给.前面方法
+    //3 返回一个传参后的函数，等待合适时，需要手动的运行
+    result();
+</script>

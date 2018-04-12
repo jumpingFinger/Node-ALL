@@ -1,0 +1,121 @@
+正则：
+处理字符串，设定匹配字符串的规则
+匹配（验证）和捕获
+元字符和普通字符，修饰符
+\ 转义
+\d 0-9
+\w 数字，字母，下划线
+\s 不可见的字符 空格 ，制表符
+. 除换行以外的其他字符
+\n换行
+\b匹配一个边界
+a|b a或者b
+[abc] 匹配a或b或c
+[a-z] 匹配a-z之间其中的一个字符
+[^a-z]匹配a-z以外的字符
+[*#+?]字符本身的意思
+() 改变优先级 分组 分组捕获
+?: 匹配不捕获
+
+量词元字符
++ 1到多次
+* 0到多次
+？ 0到1次
+{n} 匹配n次
+{n,} 匹配n到多次
+{n,m} 最少匹配n次，最多匹配m次
+
+修饰符
+g(global) 全文查找
+m(mutiline) 多行查找
+i(ignoreCase) 忽视大小写
+
+验证：test
+捕获：reg.exec() str.match() str.replace()
+正则的特征:
+1.贪婪 /\d{2,5}?/ 量词后面加？表示非贪婪匹配
+2.懒惰 只要匹配了字符，就不会继续往下查找，用g来解决
+exec方法每次只会捕获一次，若想把所有匹配的方法都捕获到，需要不断的反复调用exec方法，直接结果为null
+->allExec()
+
+exec和match区别（只加g以后）
+1.exec每次只能捕获一次匹配的内容  match 能把所有匹配的内容放入数组的返回
+2.exec还可以捕获到分组的内容
+
+replace(reg,function(){//回调函数里自己设定替换的规则
+    第一次形参 正则匹配的内容
+    从第二个形参开始 若正则里有分组，则表示分组的内容
+    倒数第二个形参 匹配字符的起始索引
+    倒数第一个形参 原字符串
+    return  后面 用XX替换匹配的内容
+)
+
+格式化时间 ->按照模板的方式拼接成一个新的字符串
+"2017-09-10 15:30:40"
+->2017年09月10日 15时30分40秒
+->2017/09/10 15:30:40
+
+通过JS获取样式（内嵌式和外链式的）
+- JS提供内置的属性（跟盒子模型相关的属性）
+- 通过JS提供的方法，可以获取任何的属性（操作任意样式的方法）
+
+在js提供了能获取盒子模型相关的属性
+client系列(与溢出的内容无关)
+    clientWidth = width+padding(左右)
+    clientHeight = height+padding(上下)
+    clientLeft 左边框
+    clientTop  上边框
+offset系列(与溢出的内容无关)
+    offsetWidth = width+padding(左右)+border(左右) = clientWidth+border(左右)
+    offsetHeight = height+padding(上下)+border(上下) = clientHeight+border(上下)
+
+    offsetParent 参照物
+    offsetLeft 左偏移
+    offsetTop  上偏移
+
+
+scroll系列
+   scrollWidth "约等于"真实内容的宽度+左padding
+   scrollHeight "约等于"真实内容的高度+上padding
+   "约等于"：
+   1.不同浏览器里，默认设置的行高不一样，导致这个属性值在各个浏览器里结果不一样
+   2.同一浏览器，设置overflow属性与不设置overflow，得出结果也不一样
+
+  获取一屏的宽高（可视窗口的宽高）- clientWidth/clientHeight
+  document.documentElement.clientWidth||document.body.clientWidth
+  document.documentElement.clientHeight||document.body.clientHeight
+  获取整个文档的宽高 - scrollWidth/scrollHeight
+  document.documentElement.scrollWidth ||document.body.scrollWidth
+  document.documentElement.scrollHeight ||document.body.scrollHeight
+
+  document.compatMode ->"CSS1Compat" 开启了兼容模式
+                      ->"BackCompat" 关闭了兼容模式
+
+   scrollLeft 横向滚动条卷出去的宽度
+   scrollTop  纵向滚动条卷出去的高度
+   有最大值和最小值
+   最小值是0
+    - 若赋值小于0，scrollTop获取时还是0
+   最大值 = 真实内容的高度（scrollHeight） - 一屏的高度(clientHeight)
+    - 若赋值大于最大值，scrollTop获取时还是最大值
+   ** scrollLeft和scrollTop是13个JS盒子模型相关属性里唯一两个可以赋值的属性，其他的11个属性只能获取不能赋值
+   细节知识点：
+    - scrollLeft和scrollTop 若赋值是浮点数，取的是整数部分,不会四舍五入
+    - 其他属性若值是浮点数，会四舍五入
+    - 13个JS盒子模型属性获取的值都不带单位
+
+
+    offsetParent 参照物
+    offsetLeft 左偏移
+    offsetTop  上偏移
+
+   注意事项：
+   1.偏移：当前元素（边框以外)到参照物(边框以内）的距离
+   2.获取偏移量，当前元素不一定要设成定位元素
+   3.当前元素找参照物的方式跟CSS里找参照物一样
+   4.默认的参照物是body ,但实际上到窗口左边和上边的距离,body是文档的代理人 ,对body不要设置margin,float等属性
+   5.其他元素margin，float等也都会对偏移量有影响
+
+
+
+

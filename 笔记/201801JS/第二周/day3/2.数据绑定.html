@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            line-height: 40px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        ul li.bg1 {
+            background: orange;
+        }
+
+        ul li.bg2 {
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li>推动朝中友好迈入新的更高阶段的历史性事件</li>
+    <li>为进一步继承发展具有悠久历史根基的传统朝中友好</li>
+    <li>受到中国党和国家领导人的热烈欢迎和极具诚意的款待</li>
+    <li>认为本次访问是继承发展朝中友好关系的“重大契机”</li>
+</ul>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    //1.创建ajax对象
+    var xhr = new XMLHttpRequest();
+    //2.打开一个链接地址
+    //true异步（默认） false 同步
+    xhr.open("get", "data.json", false);
+    //3.监听请求的状态   请求状态码（xhr.readyState）和网络状态码(xhr.status)
+    var data = null;
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && /^2\d{2}$/.test(xhr.status)) {
+            //响应成功，则返回响应的数据
+            //console.log(xhr.responseText);//JSON格式的字符串
+            data = utils.toJSON(xhr.responseText);
+        }
+    };
+    //4.发送请求
+    xhr.send(null);
+
+    var oList = document.getElementById('list');
+    var oLis = oList.getElementsByTagName("li");
+    for (var i = 0; i < oLis.length; i++) {
+        oLis[i].onmouseover = function(){
+            this.className = "bg1";
+        }
+        oLis[i].onmouseout = function(){
+            this.className  ="";
+        }
+    }
+    //1.字符串拼接的方式
+//    var str = "";
+//    for (var i = 0; i < data.length; i++) {
+//        str += '<li>' + data[i].name + '</li>'
+//
+//    }
+//    oList.innerHTML += str;
+
+    //缺点：之前所有的效果全没有
+
+    //2.动态创建DOM元素的方式
+    for(var n = 0;n<data.length;n++){
+       //每次遍历时都应该创建一个li
+        var oLi  = document.createElement("li");
+        oLi.innerHTML = data[n].name;
+        oList.appendChild(oLi);
+    }
+    //之前的绑定的效果还是有的
+
+
+
+</script>

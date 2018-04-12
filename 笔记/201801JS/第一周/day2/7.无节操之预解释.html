@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //fn();
+    //console.log(fn);
+    //var fn = function fn(){alert(1)};//函数表达式  函数是作为值存在
+    //fn();//函数表达式只能在下面运行，不能在前面运行
+
+   /* function fn(){
+      alert(sum);
+      return function sum(){console.log(1)};
+      var sum = 10;
+    }
+    fn();*/
+
+   /*alert(a);
+   var a = 10;
+   function a(){
+       alert(5);
+   }
+   alert(a);*/
+
+   //预解释时，遇到重名变量时，忽视，相同的变量只会声明一次
+    fn();//2
+    function fn(){console.log(1)};
+    fn();//2
+    var fn = 13;
+    fn();//报错 fn is not a function
+    function fn(){console.log(2)};
+    fn();
+
+
+
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //alert(sum);//sum is not defined
+    ~(function sum(){
+        alert(sum);
+        var sum = 10;
+
+    })()
+
+    ~(function f(){
+        function f(){console.log(1)};
+        f();
+        function f(){console.log(2)};
+    })();
+    //自执行函数
+//    ;(function (){
+//
+//    })()
+
+
+</script>

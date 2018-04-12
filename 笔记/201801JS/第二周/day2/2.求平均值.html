@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //去掉最高分，去掉最低分，返回一个分数的平均数
+    //->方案1
+    function fn(){
+        //arguments来接收实参
+        //1.拿到实参中最大值和最小值
+        var max = Math.max.apply(null,arguments);//apply第二个参数可以数组也可以是类数组
+        var min = Math.min.apply(null,arguments);
+        //2.对所有的实参求和，然后减去最大值和最小值
+        var total = null;
+        for(var i=0;i<arguments.length;i++){
+            total+=arguments[i];
+        }
+        //3.求平均数
+        var res = ((total-max-min)/(arguments.length-2)).toFixed(2);
+        return res;
+    }
+
+    console.log(fn(86, 56, 78, 35, 99, 12,36,17));
+</script>

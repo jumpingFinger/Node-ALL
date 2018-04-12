@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //myForEach 解决兼容性 ,若浏览器支持forEach方法则用forEach,若不支持，则重新把forEach功能实现一遍
+    //forEach有两个参数：第一个参数是回调函数 第二个参数 context
+    //回调函数考虑的事项
+    //参数:三个  数组的成员 成员的索引 原数组
+    //执行次数：数组的长度
+    //没有返回值
+    //this 默认是window,可以通过forEach方法的第二个参数来改变
+
+    Array.prototype.myForEach = function(callback,context){
+        context = context || window;
+        if([].forEach){//
+            this.forEach(callback,context);
+            return;
+        }
+        //以下就是浏览器不支持forEach方法做的处理
+        for(var i = 0;i<this.length;i++){
+            callback.call(context,this[i],i,this);
+        }
+    }
+    var ary = [12,15,3,2,10];
+    var obj = {};
+    ary.myForEach(function(item,i,ary){
+        console.log(item,i,ary,this);
+    },obj);
+
+</script>

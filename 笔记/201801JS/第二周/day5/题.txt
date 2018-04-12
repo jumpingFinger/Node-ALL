@@ -1,0 +1,61 @@
+
+->以1开头的11位的手机号码
+->前17位是数字,最后一位是数字或者X
+->有效数字的正则 整数,0,小数
+->验证邮箱  123@qq.com 123-aa@qq.com   aa123@qq.com.cn aa_123@qq.cn.com  123@-.com  _-@qq.com
+    /*
+    * 以数字,字母,_开头,其他的字符可以是数字,字母,_,-,.,出现0到多次
+    * 然后@
+    * 然后数字,字母,_,-出现一次或多次
+    * 然后邮箱域名,2~5字母,整个邮箱域名出现1到2次
+    * */
+
+
+
+
+
+
+
+
+
+exec正则贪婪与懒惰
+? 贪婪
+g 解决懒惰
+lastIndex 查找字符的起始索引  不加g一直为0
+封装allExec
+replace用法
+var reg = /\d+/g;
+var str = "11a22b33c44d55e";
+
+var str = "14800";
+var a = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+
+
+var str = "my name is {0},i am {1},i come from {2}";
+var ary = ["珠峰培训",8,"beijing"];
+
+//敏感词替换 池子 珠峰培训 珠峰群众
+var str ="由于大家比较喜欢看80后脱口秀池子的表演,所以想把池子请到珠峰培训来表演下,但是由于费用比较高,需要把珠峰群众的工资降低以凑得上池子的演出费,珠峰群众表示非常不满意!";
+
+//统计出现最多的字母和次数 (两种方法)
+//获取地址栏中的参数并放入对象中
+var str = "http://www.baidu.com?id=557131028857&name=zhufeng&age=8";
+
+偷小说
+var str = "<div class='aaa' id='bbb'>顾龙飞aaaa</div><p>好好学习,天天向上</p>";
+
+//格式化时间->时间按照指定的格式拼接成新的字符串
+var str = "2017-08-10 15:30:45";
+var tempStr = "{0}年{1}月{2}日 {3}时{4}分{5}秒";
+//->2017年08月10日 15时30分45秒
+
+
+function formatTime(template){
+    template = template||"{0}年{1}月{2}日 {3}时{4}分{5}秒";
+    var strAry = this.match(/\d+/g);//[2017,10,12];
+    template = template.replace(/{(\d)}/g,function($0,$1){
+        return strAry[$1];
+    });
+    return template;
+}
+String.prototype.formatTime = formatTime;

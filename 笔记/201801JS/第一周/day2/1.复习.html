@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary = [1, 2, 3, 4];
+    function fn(ary) {
+        ary[0] = 0;
+        ary = [0];
+        ary[0] = 100;
+        return ary;
+    }
+    var result = fn(ary);
+    console.log(result);//  [100]
+    console.log(ary);// [0,2,3,4]
+
+    //fn(3>5?5:3);//函数运行是，不管小括号里写的啥，都会转换成一个值，把值作为实参传给形参
+</script>

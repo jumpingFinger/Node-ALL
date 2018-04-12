@@ -1,0 +1,108 @@
+面向对象(oop) object oriented programming 以对象数据类型为基础的编程
+
+单例模式
+实现封装功能最简单的一种方式
+优点：避免冲突,封装的功能
+缺点：手工化的模式，效率低，有很多冗余代码
+var obj = {//命名空间
+    add:function(){},
+    get:function(){
+        this.add()
+    }
+}
+obj.add()
+
+模块之间相互调用：
+  不用模块：模块名.属性名
+  相同模块：this.属性名
+  门户大开型 - 模块的里任何属性，其他模块都可以访问的到
+
+ ->高级单例模式:解决变量和函数公有化和私有化问题
+ var searchModel = (function(){
+        var a = "";
+        var num = "";
+        function fn(){}
+        function user(){}
+        return {
+            fn:fn
+        }
+ })()
+
+工厂模式:批量生产
+缺点：产品相同，没有识别的功能
+function shirt(material){
+    var obj = {};
+    obj.material = material;
+    obj.size = "xxxL"
+    return obj;
+}
+document.createElement("div");
+document.querySelectorAll(".a1")
+
+构造函数模式
+目的：解决识别问题,通过分类去解决产品差异化问题
+构造函数注意事项：
+1.通过new运行的函数称为构造函数
+2.new Person()函数名后面的小括号可写可不写，若要传参则必须写，不需要传参可以不写
+3.构造函数里的this表示实例
+4.this.xxx的方式定义的属性都是每个实例自己私有的属性
+5.实例只跟this.xxx有关，若函数内定义一个私有变量var num = 10;这种跟实例无关
+6.若你非得写返回值，
+    若return 引用类型的数据则会覆盖原先要返回的实例
+    若return是基本类型的数据，则没有关系
+var ary = [1,2,3,4] ->Array 内置类
+var reg = /\d/ ->RegExp  内置类
+
+
+原型模式：解决共享问题
+原型这边三句话（强制记下）：
+1.每个函数(构造函数)里都有个属性prototype,prototype指向默认的原型对象
+2.每个原型对象上都有个属性叫constructor,指向构造函数
+3.每个对象（实例）上都有个属性__proto__,指向所属类的原型
+
+属性查找的顺序：
+先在实例上找，若没找到，则通过__proto__去所属类的原型找，若还没找到，则继续通过__proto__去父类的原型上找....Object.prototype 若还没找到，则返回undefined
+
+hasOwnProperty  判断是否是私有的属性
+isPrototypeOf  判断一个对象是否是在另一个对象的原型链上
+propertyIsEnumerable 是否是可枚举的 自己查
+toString()  转换成字符串  功能是用来检测数据类型，一定要调用的是原型上的toString方法
+var ary = [1]
+Object.prototype.toString.call(ary);"[object Array]"
+var str  = "";
+Object.prototype.toString.call(str);"[object String]"
+Number/String/Boolean ->包装类
+
+构造函数模式+原型模式学完后可以干什么呢？
+- 自定义类
+- 内置类原型上所有的方法
+- 扩展和修改内置类上的方法
+
+深入学习函数类型
+1.普通函数
+作用域,形参赋值,预解释，代码从上往下
+函数内变量查找的属性
+内存释放
+
+2.构造函数
+类，实例，原型，原型链，继承
+
+3.对象
+添加属性和方法
+
+查看函数原型上的方法
+console.dir(Function.prototype)
+call/apply/bind->改变调用主体的this关键字
+fn.call(),第一个参数：用来改变.前面方法的this关键字，从第二个参数开始，一个一个的给.前面的方法传参 - 散列式
+fn.apply() 第一个参数：用来改变.前面方法的this关键字,第二个参数是用来给.前面的方法传参（把所有的参数放在数组里传给.前面方法）- 打包式
+fn.bind() 第一个参数改变.前面方法的this关键字，从第二个参数开始，一个一个的给.前面的方法传参，最终返回一个传参后的函数
+
+非严格模式下
+call/apply 第一个参数不传，传null，传undefined ->.前面方法里的this是window
+严格模式 ->规范
+好处：1.更加安全，更加高效
+     2.可以提高编译器编译代码的速度
+     3.跟高版本浏览器接轨
+"use strict"
+第一个参数不传是undefined,其他的传啥是啥
+

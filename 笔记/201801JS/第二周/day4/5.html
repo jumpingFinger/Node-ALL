@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary = [10,15,2,5,23];
+    var obj = {};
+   /* ary.forEach(function(item,i,ary){
+        console.log(item,i,ary,this);
+    },obj);*/
+   //将原数组的每一项和其他内容进行操作，最终返回一个新的数组
+   var res = ary.map(function(item,i,ary){
+       return item+ary[i+1];  //数组的每一项分别加2，最终返回一个新的数组，新数组是作为map方法的返回值返回的
+   },obj);
+   console.log(ary);
+   console.log(res);//[12,17,4,7,25]
+
+</script>

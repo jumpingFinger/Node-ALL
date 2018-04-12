@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div1{
+            width: 100px;
+            height: 100px;
+            padding:10px;
+            border:2px dashed green;
+            color: red;
+            font-size: 20px;
+        }
+        #div1::before{
+            content:"1111" ;
+            color: red;
+            font-size: 30px;
+        }
+        #div1::after{
+            content:"2222" ;
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">珠峰你好</div>
+</body>
+</html>
+<script>
+    var oDiv = document.getElementById("div1");
+    //var res = window.getComputedStyle(oDiv,null);//CSSStyleDeclaration  返回值是一个对象，对象里放了所有的CSS属性
+   // console.dir(res);
+
+    console.log(window.getComputedStyle(oDiv, ":after").color);
+    //若css属性是确切的值，打点的方式或[]都可以，若css属性是变量，只能用[]方法
+    //console.log(window.getComputedStyle(oDiv, null)['color']);//IE6~8不支持
+    //console.log(oDiv.currentStyle);//CSSCurrentStyleDeclaration 对象
+   // console.log(oDiv.currentStyle["color"]);
+</script>

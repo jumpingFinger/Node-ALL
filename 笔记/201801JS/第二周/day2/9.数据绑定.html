@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list"></ul>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open("get", "data.json", false);
+    var data = null;
+    xhr.onreadystatechange = function () {//异步
+        if (xhr.readyState == 4 && /^2\d{2}$/.test(xhr.status)) {
+            data = utils.toJSON(xhr.responseText);//JSON格式的对象
+        }
+    };
+    xhr.send(null);
+
+    //字符串拼接的方式
+    var str ="";//用来累加li
+    for(var i = 0;i<data.length;i++){
+       // console.log(data[i]["name"]);
+        str += "<li>"+data[i]["name"]+"</li>"
+    }
+    var oUl = document.getElementById("list");
+    oUl.innerHTML = str;
+
+
+</script>

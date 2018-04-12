@@ -1,0 +1,58 @@
+*{
+    margin:0;
+    padding:0;
+}
+ul{
+    list-style: none;
+}
+html,body{
+    height: 100%;
+   font-size: 14px;
+}
+.wrap{
+    width: 1200px;
+    margin: 0 auto;
+}
+.menu{
+    border:1px solid #ddd;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+}
+.menu span{
+    padding-left: 30px;
+}
+.menu a{
+     display: inline-block;
+     padding: 0 15px;
+     color: #333;
+    text-decoration: none;
+}
+.product{
+    background: #fff;
+    overflow: hidden;
+    margin-left: -20px;
+}
+.product li{
+    width: 182px;
+    margin: 20px 0 20px 20px;
+    padding:20px 20px 0 20px;
+    border:1px solid #cccccc;
+    float: left;
+    text-align: center;
+    line-height: 35px;
+}
+.product li img{
+    width:180px;
+}
+.product li h3{
+    font-weight: normal;
+}
+.product li span{
+    display: block;
+}
+.product li span:nth-of-type(1){
+    color: red;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //统计出现最多的字母和次数 (两种方法)
+    var str = "aafbbcddddeeeAAABBCCCC";
+    //1.统计每个字母出现的次数 - 利用对象不重名的特征
+    //把每个字符作为属性名存入对象中，得出次数作为属性值
+    var obj = {};
+    for(var i = 0;i<str.length;i++){
+        var cur = str[i];
+        if(obj[cur]){
+            obj[cur]++;//次数应该累加1  obj[cur] = obj[cur]+1
+        }else{//第一次
+           obj[cur] = 1;
+        }
+    }
+    //2.找出次数最多的字母
+    //假设法
+    var maxStr = "";//出现最多的字母
+    var max=0;//出现最多的次数
+    for(var attr in obj){
+       // obj[attr] 次数
+        if(obj[attr]>max){
+            max = obj[attr];
+            maxStr = attr;
+        }else if(obj[attr]==max){ //"a,b" 8 相同次数的字母之间以逗号隔开
+            maxStr+=","+attr;
+        }
+    }
+    console.log(maxStr,max);
+
+</script>

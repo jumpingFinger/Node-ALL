@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /**
+     *
+     * @param obj  指父类的原型对象 例如F.prototype
+     * @return 空类的实例
+     */
+    function  myCreate(obj){
+        function Temp(){
+
+        }
+        Temp.prototype = obj;
+        return new Temp()
+    }
+    function F(){
+        this.x = 10;
+        this.y = 20;
+    }
+    F.prototype.sum = function(){
+        console.log(this.x+this.y);
+    };
+    function S(){
+        this.z  = 50;
+        F.call(this);
+    }
+
+    S.prototype = myCreate(F.prototype);//构造函数+原型最优的继承的方式
+    var s = new S();
+    console.log(s);
+
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            opacity: 0.2;
+            filter: alpha(opacity=50);/*ie6~8有影响*/
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
+<script>
+    function getCss(ele, attr) {
+        var res;
+        if (window.getComputedStyle) {
+            res = window.getComputedStyle(ele, null)[attr];
+        } else {//对IE低版本浏览器处理 ie6~ie8
+            if (attr == "opacity") {
+                //1.获取filter值
+                //2.若得到的是这样的alpha(opacity = 50)的结果才去取数值部分
+                //3.对数值除以100，得到一个0~1之间的小数
+                res = ele.currentStyle.filter; //"alpha(opacity = 50)"
+                var reg = /^alpha\(opacity\s*=\s*(\d+(?:\.\d+)?)\)$/;
+                /* reg.test(res) ? reg.exec(res)[1]/100:1;*/
+                //若调用了test或者exec方法，直接可通过RegExp.$1~$99获取分组的内容
+                res = reg.test(res) ? RegExp.$1 / 100 : 1;
+            } else{
+                res = ele.currentStyle[attr];
+            }
+        }
+        return res;
+    }
+
+    var oDiv = document.getElementById("div1");
+    //    console.log(getCss(oDiv, "color"));
+    //    console.log(getCss(oDiv, "fontSize"));
+    console.log(getCss(oDiv, "opacity"));//0~1之间数
+    console.log(getCss(oDiv, 'width'));
+</script>

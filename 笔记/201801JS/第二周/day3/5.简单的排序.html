@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--页面上最终按照li的内容进行排序-->
+<ul id="ul1">
+    <li>68</li>
+    <li>35</li>
+    <li>98</li>
+    <li>86</li>
+</ul>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+      //1.获取元素
+       var oUl = document.getElementById("ul1");
+       var oLis = oUl.getElementsByTagName("li");//类数组
+      //2.类数组转换成数组
+       var ary = utils.listToArray(oLis);//[li,li,li,li]
+      //3.排序
+       ary.sort(function(a,b){//按照每个li的内容进行排序
+          return a.innerHTML - b.innerHTML
+      })
+      //console.log(ary);//在数组里li已经按照内容从小到大排列
+      //4. 把数组里的每一项重新添加到页面上 这样在页面上才能排过来
+        for(var i = 0;i<ary.length;i++){
+           oUl.appendChild(ary[i]);//若之前已经存在，则不是添加而是移动
+        }
+</script>

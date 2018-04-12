@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+    <div class=" box1 box2 box3">111</div>
+    <div class=" box1 box2">222</div>
+    <div class=" box1 box22">33</div>
+    <div class=" box2 ">444</div>
+    <div class="box2">555</div>
+    <div class="box2 box3 ">666</div>
+</div>
+</body>
+</html>
+<script>
+    /**
+     * 通过多个类名获取元素的方法 getByClass
+     * @param strClass   一个或多个类名
+     * @param context   获取元素的范围
+     */
+    //console.log(document.getElementsByClassName(" box2 box3    "));
+    function getByClass(strClass, context) {
+        context = context || document;
+        var eles = context.getElementsByTagName("*");//所有的元素
+        var reg = /^\s+|\s+$/g;//匹配首尾空格 以一到多个空格开头或者一到多个空格结尾
+        var allClass = strClass.replace(reg, "").split(/\s+/g);
+        for (var i = 0; i < allClass.length; i++) {//遍历类名
+            var ary = [];
+            var curClass = allClass[i];
+            reg = new RegExp("(^| +)"+curClass+"( +|$)");
+            for(var j = 0;j<eles.length;j++){//遍历元素
+               var ele = eles[j];
+               if(reg.test(ele.className)){
+                   ary.push(ele);
+               }
+            }
+            eles = ary;//把每次查找的结果保存在eles里，下次就从上次结果中查找
+        }
+        return ary;
+    }
+
+    //getByClass("box1");
+    //getByClass("box1 box2");
+    var oDiv = document.getElementById("div1");
+    console.log(getByClass(" box1 box2 "),oDiv);
+
+
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function F(){
+        this.x = 10;//s.x =10
+        this.y = 20;//s.y = 20
+    }
+    F.prototype.sum = function(){
+        console.log(this.x+this.y);
+    };
+    function S(){
+        this.z  = 50;
+        F.call(this);//this指的是实例
+    }
+    //S.prototype.__proto__ = F.prototype;//__proto__IE浏览器禁止调用
+    S.prototype = Object.create(F.prototype);//寄生式组合继承 IE6~IE8不支持
+    //解决了子类继承父类原型上的属性时，父类的私有属性也会在子类原型上的问题
+    var s = new S();
+    console.log(s);
+
+</script>

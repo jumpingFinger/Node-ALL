@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Fn() {
+        this.x = 100;
+        this.y = 200;
+        this.getX = function () {
+            console.log(this.x);
+        }
+    }
+    Fn.prototype = {
+        y: 400,
+        getX: function () {
+            console.log(this.x);//this表示原型对象 原型对象找属性x,没找到则返回undefined
+        },
+        getY: function () {
+            console.log(this.y);
+        },
+        sum: function () {
+            console.log(this.x + this.y);
+        }
+    };
+    var f1 = new Fn;
+    var f2 = new Fn;
+    console.log(f1.getX === f2.getX);//false
+    console.log(f1.getY === f2.getY);//true
+    console.log(f1.__proto__.getY === Fn.prototype.getY);//true
+    console.log(f1.__proto__.getX === f2.getX);//false
+    console.log(f1.getX === Fn.prototype.getX);//false
+    console.log(f1.constructor);//Object
+    console.log(Fn.prototype.__proto__.constructor);//Object
+    f1.getX();//100
+    f1.__proto__.getX();//undefined
+    f2.getY();//200   //this->f2 f2实例上获取属性y的值 ->200
+    Fn.prototype.getY();//400
+    f1.sum();//300  //this->f1 f1.x+f1.y = 300
+    Fn.prototype.sum(); //this->Fn.prototype  undefined+400 = NaN
+
+
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    f = function(){return true};
+    g = function(){return false};
+    (function (){
+        //标准浏览器  g()-> g is not a function
+        //IE浏览器
+        //alert(g);//undefined
+        if(g()&&[]==![]){
+            f = function f(){return false};
+            function g(){return true};
+        }
+    })();
+    alert(f());//false
+    alert(g());//false
+
+    //[]==![]=>[]==false->0==0=>true
+
+
+
+    /*alert(a);//undefined
+    if(!("a" in window)){
+        var a = 10;
+    }
+    alert(a);*///undefined
+
+    /*fn();*/
+    console.log(fn); //标准浏览器下 不管条件是否成立，function进行声明，但不定义
+    //ie浏览器9以上  function声明+定义
+    if(9==8){
+        function fn(){
+            alert(2);
+        }
+    }
+
+    var n = 10;
+    function outer(){
+        function inner(){
+            function center(){
+                alert(n);
+            }
+            center()
+        }
+        inner()
+    }
+    outer()
+</script>

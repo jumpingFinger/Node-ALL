@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*var n=0;
+    function a(){
+        var n=10;
+        function b(){
+            n++;
+            alert(n);
+        }
+        b();
+
+    }
+    a();
+    alert(n);*/
+
+    console.log(num,str);//undefined,undefined
+    var num = 18;
+    var str = "lily";
+    function fn2(){
+        console.log(str,num);//"lily",undefined
+        num = 19;
+        str = "candy";
+        var num = 14;
+        console.log(str,num);//"candy",14
+    }
+    fn2();
+    console.log(str,num);//"candy",18
+</script>
