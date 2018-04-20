@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet/less" href="css/demo1.less">
+    <script src="js/less-2.5.3.min.js"></script>
+</head>
+<body>
+<div class="box">
+    <a href="#">珠峰培训</a>
+</div>
+</body>
+</html>
+<script>
+    // for (let i = 0; i < ary.length; i++) {
+    //     let item=ary[i];
+    //     item=item>max?max:item;
+    // }
+        // let ary=[12,13,52,22,55,66];
+        // console.log(Math.max(...ary));
+
+    // let ary1=[12,23];
+    // let arty=[22,33];
+    // let a=[...ary1,...arty];
+    // console.log(a);
+~function () {
+    var ary=[12,5,6,7,8,9,20];
+    Array.prototype.mySlice=function (){
+        for (var j = 0; j < arguments.length; j++) {
+            if(arguments[j]<0){
+                arguments[j]+=this.length;
+            }
+        }
+        if(arguments[0]>arguments[1]){
+            var temp=arguments[0];
+            arguments[0]=arguments[1];
+            arguments[1]=temp;
+        }
+
+        var ary=[];
+        for (var i = 0; i < this.length; i++) {
+            if (arguments[1] == undefined) {
+                console.log(i);
+                arguments[0] <= i ? ary.push(this[i]) : null;
+
+            }else{
+                if(arguments[0]<=i &&  arguments[1]>i){
+                    ary[ary.length]=this[i];
+                }
+            }
+        }
+        return ary;
+    };
+
+    var a=ary.mySlice(2);
+    var b=ary.slice(2);
+    var c=ary.mySlice(-1,2);
+    var d=ary.mySlice(3,2);
+    console.log(a, b, c, d);
+}();
+
+
+</script>

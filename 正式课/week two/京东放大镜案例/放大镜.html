@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+    <link rel="stylesheet/less" href="css/mymagnifier.less">
+    <script src="js/less-2.5.3.min.js"></script>
+</head>
+<body>
+<div class="main clearfix">
+    <div class="smallBox" id="smallBox">
+        <img src="img/1.jpg" alt="">
+        <div class="mark" id="mark"></div>
+    </div>
+    <div class="bigBox" id="bigBox">
+        <img src="img/2.jpg" alt="">
+    </div>
+</div>
+</body>
+</html>
+<script>
+    let magnifierRender=(function (){
+        var getEle=function () {
+            let smallBox=document.getElementById('smallBox'),
+                bigBox=document.getElementById('bigBox'),
+                mark=document.getElementById('mark'),
+                bigImg=bigBox.getElementsByTagName('img')[0];
+        };
+
+        let markW=mark.offsetWidth,
+            markH=mark.offsetHeight,//=>当前元素如果是隐藏的,是无法通过合资模型属性获取他的宽度的
+            smallW=smallBox.offsetWdith,
+            smallH=smallBox.offsetHeight;
+
+        let maxL=smallW-markW,
+            marT=smallH=markH;
+
+
+        //=>计算mark盒子的位置
+        let computedMark=function (e){
+             e=e || window.event;
+             //=>计算鼠标在mark中间的时候,mark的top和left的值
+            e.clientX,smallBox.offsetLeft,mar
+             let curL=e.clientX-smallBox.offsetLeft-markW/2,
+                 curT=e.clientY-smallBox.offsetTop-markH/2;
+             //=>把计算出来的结果进行边界判断
+            curL=curL<0?0:(curL>maxL?maxL:curL);
+            curT=curT<0?0:(curT>maxT?maxT:curT);
+             //设置mark的样式
+            mark.style.left=curL+'px';
+            mark.style.top=curT+'px';
+        };
+
+        //=>给smallBox的相关事件绑定方法
+        let bindEvent=function (){
+            smallBox.onmouseenter=function (e){
+                //=>计算进入smallBox:展示mark,计算mark当前的位置
+                mark.style.display='block';
+                computedMark(e);
+            };
+            smallBox.onmousemove=function (e){
+                //=>在smallBox中移动 : 随机计算mark的位置,让mark跟着鼠标走
+                computedMark(e);
+            };
+            smallBox.onmouseleave=function (e){
+                //=>计算进入smallBox:隐藏Mark
+                mark.style.display='none';
+            };
+        };
+
+
+        return {
+            init:function (){
+                getEle();
+                bindEvent();
+            }
+        }
+    })();
+
+    ~function () {
+        let fn=function () {
+            console.log(this);
+        };
+        let obj={fn :fn};
+        (obj.fn)();//=>this:Object
+    }();
+
+   ~function () {
+       let num = 10;
+       let obj = {
+           num:8,
+           inner:{
+               num:6,
+               print:function () {
+                   console.log(this.num);
+               }
+           }
+       };
+       num = 888;
+       obj.inner.print();//6
+       let fn = obj.inner.print;
+       fn();//undefined
+       (obj.inner.print)(); //6
+       (obj.inner.print = obj.inner.print)()
+   }();
+
+   ~function () {
+
+   }();
+</script>

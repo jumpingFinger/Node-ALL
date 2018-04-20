@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>珠峰培训</title>
+        <style>
+            html, body {
+                height: 500%;
+            }
+
+            .box {
+                margin: 20px auto;
+                width: 200px;
+                height: 200px;
+                background: lightcoral;
+                cursor: pointer;
+            }
+
+            #userName {
+                display: block;
+                width: 300px;
+                height: 35px;
+                line-height: 35px;
+                padding: 0 10px;
+                border: 1px solid green;
+            }
+        </style>
+    </head>
+<body>
+<div class="box" id="box"></div>
+<input type="text" id="userName">
+</body>
+</html>
+<script>
+    // var userName=document.getElementById('userName');
+    // userName.onkeydown=function (){
+    //     console.log('我按下了');
+    // };
+    // userNmae.onkeyup=function () {
+    //     console.log('我抬起来了');
+    // };
+    // userName.onkeypress=function () {
+    //     console.log('我是啥');
+    // };
+    // var oBox=document.getElementById('box');
+    // oBox.onclick=function (ev) {
+    //     console.dir(ev);
+    // }
+
+    userName.onkeyup=function (e){
+        e=e||window.event;
+        console.log(e.keyCode);
+    };
+
+
+
+</script>

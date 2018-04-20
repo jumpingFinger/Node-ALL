@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function unique(ary) {
+        var obj={};
+        //[12,13,12,13,13,13,14]//=>依次遍历数组中的每一项,让每一项的值作为对象的属性名和属性值(属性值存啥都可以)，每一次存储之前验证当前对象中是否已经存在这个属性了(in/hasOwnProperty/属性值不是undefined...),如果有这个属性了,说明当前项在数组中已经存在了,我们把当前项在原有数组中移除即可,如果不存在,存储到对象中即可
+        for (var i = 0; i < ary.length; i++) {
+           var item=ary[i];
+           if(item){
+               //会改变原有数组的顺序
+               item=ary[ary.length-1];
+               ary.length--;
+               i--;
+               continue;
+           }
+           obj[item]=true;
+        }
+        obj=null; //优化2 :中间变量用完后手动释放一下.节约内存
+        return ary;
+    }
+
+   var a= [...new Set([12,13,12,13,13,13,14])];
+    console.log(a);
+    var b=new Set([12,13,12,13,13,13,14]);
+    console.log(b);
+
+
+    Array.prototype.myUnique=function myUnique() {
+        var obj={};
+        for (var i = 0; i < this.length; i++) {
+          var item=this[i];
+          if(obj[item]){
+              console.log(item);
+              item=this[this.length-1];
+              this.length--;
+              i--;
+              continue;
+          }
+          obj[item]=true;
+        }
+        obj=null;
+        // console.log(this);
+        return this;
+    };
+    var c=[12,13,12,13,13,13,14];
+    console.log(c.myUnique());
+ //   ary.__proto__.myUnique();//=>(IE浏览器中屏蔽了我们队__proto__的操作)
+
+    ~function () {
+       Number.prototype.plus=function (item){
+           item=item ||0;
+           return this+Number(item);
+       };
+        Number.prototype.minus=function (item){
+           item=item ||0;
+            return this-Number(item);
+        };
+        var n=5;
+        var res=n.plus(3).minus(2);
+        // console.log(res);
+    }();
+    
+    ~function () {
+        function Fn() {
+            this.n=100;
+        }
+        Fn.prototype.getN=function () {
+            console.log(this.n);
+        };
+        Fn.AA=200;
+        var f=new Fn();
+    }();
+</script>
