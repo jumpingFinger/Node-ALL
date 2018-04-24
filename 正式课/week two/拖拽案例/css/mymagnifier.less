@@ -1,0 +1,53 @@
+@import "reset";
+
+@w:300;
+@h:300;
+.main{
+  margin:20px auto;
+  width : unit(@w*2,px);
+
+  .smallBox {
+    position: relative;
+    float: left;
+    width: unit(@w,px);
+    height: unit(@h,px);
+    overflow: hidden;
+    
+    img{
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .mark{
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: unit(@w/3,px);
+      height: unit(@h/3,px);
+      background: pink;
+      opacity:0.5;
+      filter:alpha(opacity=50);
+      cursor:move; //=>小手可以移动的
+    }
+  }
+
+  .bigBox{
+    //float: right;
+    //width: unit(@w,px);
+    //height: unit(@h,px);
+    //overflow: hidden;
+    .smallBox;
+    display: none;
+    img{
+      display: block;
+      //=>左侧mark/左侧盒子 =右侧img/右侧盒子
+      position:absolute;
+      top: 0;
+      left: 0;
+      width:unit(@w*3,px);
+      height:unit(@h*3,px);
+    }
+  }
+}

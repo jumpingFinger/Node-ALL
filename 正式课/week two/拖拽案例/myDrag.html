@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet/less" href="css/login.less">
+    <script src="js/less-2.5.3.min.js"></script>
+</head>
+<body>
+<!--login-->
+<div class="loginBoxMark"></div>
+<div class="loginBox" id="loginBox">
+    <h3>欢迎登陆珠峰培训视频平台</h3>
+    <div class="content">
+
+    </div>
+</div>
+</body>
+</html>
+<script>
+    let dragRender1 =(function(){
+        let loginBox=document.getElementById('loginBox'),
+            loginTitle=loginBox.getElementsByTagName('h3')[0];
+
+        let winW=document.documentElement.clientWidth||document.body.clientWidth,
+            winH=document.documentElement.clientHeight||document.body.clientHeight;
+        let maxL=winW-loginBox.offsetWidth;
+        let maxT=winH-loginBox.offsetHeight;
+        //=>鼠标按下我们要做的事情
+        let dragDown=function (e) {
+            e=e||window.event;
+            //=>记录鼠标起始位置  & 盒子的起始位置
+            this.strX=e.clientX;
+            this.strY=e.clientY;
+            this.strL=loginBox.offsetLeft;
+            this.strT=loginBox.offsetTop;
+
+            //=>按下代表拖拽开始
+            this.onmousemove=dragMove;
+            this.onmouseup=dragUp;
+        };
+
+        //=>鼠标移动
+        let dragMove=function (e){
+            e=e||window.event;
+            let curL=e.clientX-this.strX+this.strL;
+            let curT=e.clientY-this.strY+this.strT;
+
+            //边界判断
+            curL=curL<0?0:(curL>maxL?maxL:curL);
+            curT=curT<0?0:(curT>maxT?maxT:curT);
+            loginBox.style.left=curL+'PX';
+            loginBox.style.top=curT+'px';
+        };
+        //=>鼠标抬起
+        let dragUp=function (e) {
+            //=>鼠标抬起代表拖拽结束 : 把move 和up移除掉;
+            this.onmousemove=null;
+            this.onmouseup=null;
+        };
+
+        return {
+            init :function(){
+                //=>进来的第一件事 : 让盒子处于页面的中间
+                loginBox.style.left=maxL/2+'px';
+                loginBox.style.top=maxT/2+'px';
+                loginTitle.onmousedown=dragDown;//=>this:loginTitle
+            }
+        }
+    })();
+    let dragRender =(function(){
+        let loginBox=document.getElementById('loginBox'),
+            loginTitle=loginBox.getElementsByTagName('h3')[0];
+
+        let winW=document.documentElement.clientWidth||document.body.clientWidth,
+            winH=document.documentElement.clientHeight||document.body.clientHeight;
+        let maxL=winW-loginBox.offsetWidth;
+        let maxT=winH-loginBox.offsetHeight;
+        //=>鼠标按下我们要做的事情
+        let dragDown=function (e) {
+            e=e||window.event;
+            //=>记录鼠标起始位置  & 盒子的起始位置
+            this.strX=e.clientX;
+            this.strY=e.clientY;
+            this.strL=loginBox.offsetLeft;
+            this.strT=loginBox.offsetTop;
+
+
+            if (this.setCapture) {
+                this.onmousemove = dragMove;
+                this.onmouseup = dragUp;
+                this.setCapture();
+                return;
+            }
+            document.onmousemove = (e)=> {
+                dragMove.call(this, e);
+            };
+            document.onmouseup = (e)=> {
+                dragUp.call(this, e);
+            };
+        };
+
+        //=>鼠标移动
+        let dragMove=function (e){
+            e=e||window.event;
+            let curL=e.clientX-this.strX+this.strL;
+            let curT=e.clientY-this.strY+this.strT;
+            curL=curL<0?0:(curL>maxL?maxL:curL);
+            curT=curT<0?0:(curT>maxT?maxT:curT);
+            loginBox.style.left=curL+'PX';
+            loginBox.style.top=curT+'px';
+        };
+        //=>鼠标抬起
+        let dragUp=function (e) {
+            if (this.releaseCapture) {
+                this.onmousemove = null;
+                this.onmouseup = null;
+                this.releaseCapture();
+                return;
+            }
+            document.onmousemove=null;
+            document.onmouseup=null;
+        };
+
+        return {
+            init :function(){
+                loginBox.style.left=maxL/2+'px';
+                loginBox.style.top=maxT/2+'px';
+                loginTitle.onmousedown=dragDown;
+            }
+        }
+    })();
+    dragRender.init();
+</script>
