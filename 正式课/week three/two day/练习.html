@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        marquee{
+            display: block;
+            width: 1000px;
+            height: 30px;
+            line-height: 30px;
+            margin: 20px auto;
+            background: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+<marquee behavior="" direction="">马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅马少帅</marquee>
+</body>
+</html>
+<script>
+    ~function () {
+        //=>设置当前元素的某一个具体样式的属性值
+        //=>JS中给元素设置样式只有两种
+        //1. 设置元素的样式类名 (前提 : 样式类及对应的样式已经处理完成)
+        //2.通过行内样式设置 xxx.style.xxx=xxx;
+        let setCss=function (curEle,attr,value){
+            /*
+            * 细节处理 :
+            *    1. 如果需要考虑IE6~8兼容,透明度这个样式在低版本浏览器中不是使用opacity,而是filter (我们两套都要进行设置)
+            *    2. 如果传递进来的value值没有带单位,我们根据情况设置PX单位
+            *       ->某些样式属性才会加单位:width/height/padding(left..)margin(...)
+            *       ->用户自己传递的value值中是没有单位的
+            * */
+            if(attr==='opacity'){
+                curEle.style.opacity=value;
+                curEle.style.filter=`alpha(opacity=${value*100})`;
+                return;
+            }
+
+            if(!isNaN(value)){
+                //=>is-NaN检测的结果是false :说明value是纯数字没单位
+                let reg=/^(width|height|fontSize)|((margin|padding)?(top|left|bottom|right)?)$/i;
+               reg.test(attr)?value+='px':null;
+            }
+            curEle['style'][attr]=value;
+        };
+    }();
+
+    ~function () {
+        let setCss=function (curEle,attr,value) {
+          if(attr==='opacity'){
+              curEle.style.opacity=value;
+              curEle.style.filter=`alpha(opacity=${value*100})`;
+              return;
+          }
+          if(!isNaN(value)){
+              let reg=/(width|hegith|fontSize)((margin|padding)?(left|bottom|right|top)?)/i;
+               reg.test(value)?value+='px':null;
+          }
+            curEle.style[attr]=value;
+        };
+    }();
+    ~function () {
+        //=>给元素批量设置样式
+        let setGroupCss=function (curEle,options={}){
+                //=>遍历传递的options,有多少键值对 , 就循环多少次 ,每一次调取setCss方法逐一设置即可
+            for (let attr in options){
+                if (options.hasOwnProperty(attr)) {
+                    setCss(curEle,attr,options[attr]);
+                }
+            }
+        };
+
+        //=>css : 集合get/set/set-group为一体的方法
+        let css=function (...arg){
+            //=>arg : 传递的实参集合
+            let len=arg.length;
+            if(len>=3){
+                //=>单一设置 : setCss
+                setCss(...arg);
+                return;
+            }
+            if(len===2 && typeof arg[1]==='object' && arg[1]!==null){
+                //=>传递两个参数,第二个参数是一个对象 (不是null),说明想要操作的是批量设置
+                setGroupCss(...arg);
+                return ;
+            }
+            //=>剩下的代表获取样式
+             return getCss(...arg);
+        };
+        css(outer,'width');
+        css(outer,{
+            width:500,
+            height:400,
+            opacity:0.5
+        })
+    }();
+    ~function () {
+        let css=function (...arg) {
+            let len=arg.length,
+                second=arg[1],
+                fn=getCss; //=>这种思想很好
+            len>=3?fn=setCss:(len===2 && second instanceof Object?fn=setGroupCss:null);
+            return fn(...arg);
+        }
+        
+        let offset=function (curEle) {
+            //=>1.线获取当前元素本身的左/上偏移
+            let curLeft=curEle.offsetLeft,
+                curTop=curEle.offsetTop,
+                parent=curEle.offsetParent;
+            //tag.Name获取当前元素的标签名 (大写的)
+            while(parent.tagName!=='BODY'){//=>当找到的父级参照物是body时,结束查找和累加操作
+                //3. 把找到的父级参照物的边框和偏移值累加起来
+                curLeft+=parent.clientLeft;
+                curLeft+=parent.offsetLeft;
+                curTop+=parent.clientTop;
+                curTop+=parent.offsetTop;
+
+                parent=p.offsetParent;//=>基于当前找到的父级参照物继续向上查找
+            }
+            return {
+                curTop,
+                curLeft
+            }
+
+            //2.累加父级参照物的距离和偏移(一直向上找,找到body为止,每当找到一个父级参照都把它的边框和偏移累加起来,根据元素不一样,具体找几次也不知道)
+        }
+    }();
+
+    ~function () {
+        let winHandle=function (attr,value){
+            if(typeof  value !== 'undefined'){
+                //=>设置盒子模型属性值 : scrollTop/Left
+                document.documentElement[attr]=value;
+                document.body=value;
+                return;
+            }
+            return document.documentElement[attr] ||document.body[attr];
+        }
+    }();
+</script>

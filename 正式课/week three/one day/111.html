@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    Array.prototype.mySlice=function (){
+        for (var j = 0; j < arguments.length; j++) {
+            if(arguments[j]<0){
+                arguments[j]+=this.length;
+            }
+        }
+        if(arguments[0]>arguments[1]){
+            var temp=arguments[0];
+            arguments[0]=arguments[1];
+            arguments[1]=temp;
+        }
+        var ary=[];
+        for (var i = 0; i < this.length; i++) {
+            if (arguments[1] == undefined) {
+                arguments[0] <= i ? ary.push(this[i]) : null;
+            }else{
+                if(arguments[0]<=i &&  arguments[1]>i){
+                    ary[ary.length]=this[i];
+                }
+            }
+        }
+        return ary;
+    };
+    var aa=[12,13,55,44,22];
+    var a=aa.slice(0, -2);
+    console.log(a);
+    console.log(aa.mySlice(0, -2));
+</script>

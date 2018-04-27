@@ -1,0 +1,12 @@
+@con-bg:#fff;
+@text-black:#000;
+@text-gray:#ccc;
+@text-active:red;
+
+.transition(@property:all,@duration:1s,@timing-function:linear,@delay:0s){
+  -webkit-transition: @arguments;
+  -moz-transition:  @arguments;
+  -ms-transition:  @arguments;
+  -o-transition:  @arguments;
+  transition:  @arguments;
+}

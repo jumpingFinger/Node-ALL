@@ -147,6 +147,20 @@ var run =function (e) {
 })();
 
 (function () {
+	Function.prototype.myBind=function myBind(context){
+		context=context || window;
+		var _this=this,
+			outerArg=Array.prototype.splice.call(arguments,1);
+		if('bind' in Function.prototype){
+			outerArg.unshift(context);
+			return _this.bind.apply(_this,outerArg);
+		}
+		return function (){
+			var innerArg=Array.prototype.slice.call(arguments);
+			outerArg=outerArg.concat(innerArg);
+			_this.apply(context,outerArg);
+		};
+	};
 	function on(curEle,type,fn) {
 		if (document.addEventListener){
 			curEle.addEventListener(type,fn,false);
@@ -204,3 +218,77 @@ var run =function (e) {
 		}
 	}
 })();
+
+~function (){
+	Function.prototype.myBind=function myBind(context=window,..outer){
+		if (Function.prototype.bind) {
+			return this.bind(...arguments);
+		}	
+		return (...inner)=>this.apply(context,outer.concat(inner));
+	};
+	let on=function (curEle,type,fn) {
+		if(document.addEventListener){
+			curEle.addEventListener(type,fn,false);
+			return;
+		}
+		if (typeof curEle['Pond'+type]==='undefined') {
+			curEle['Pond'+type]=[];
+			// curEle.attachEvent('on'+type,function(){
+			// 	run.call(curEle,e);
+			// });
+			curEle.attachEvent('on'+type,run.myBind(curEle));
+		}
+		let pondAry=curEle['Pond'+type];
+		for (let i = 0; i < pondAry.length; i++) {
+			if (pondAry[i]===fn) {
+				return;
+			}
+		}
+		pondAry.push(fn);
+	};
+	let off=function (curEle,type,fn) {
+		if (document.removeEventListener) {
+				curEle.removeEventListener(type,fn,false);
+				return;
+		}
+		let pondAry=curEle['Pond'+type];
+		if (!pondAry) return;
+		for (let i = 0; i < pondAry.length; i++) {
+			let itemFn=pondAry[i];
+			if(itemFn===fn){
+				pondAry[i]=null; //=>不能写itemFn=null;
+				break;
+			}
+		}
+	};
+	let run=function (e){
+		e=e||window.event;
+		if(e.target){
+			e.target=e.srcElement;
+			e.pageX=e.clientX+(document.documentElement.scrollLeft||document.body.scrollLeft);
+			e.pageY=e.clientY+(document.documentElement.scrollTop||documentElement.body.scrollTop);
+			e.preventDefault=function(){
+				e.returnValue=false;
+			};
+			e.stopPropagation=function (){
+				e.cancelBubble=true;
+			}
+		}
+		let pondAry=this['Pond'+e.type];
+		if(!pondAry) return;
+		for (var i = 0; i < pondAry.length; i++) {
+			let itemFn=pondAry[i];
+			if(itemFn===fn){
+				pondAry.splice(i,1);
+				i--; 
+				continue;
+			}
+			itemFn.call(this.e);
+		}
+	};
+
+	window.$event={
+		on : on,
+		off : off
+	}
+}();

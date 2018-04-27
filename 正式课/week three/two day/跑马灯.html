@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .marqueeBox {
+            position: relative;
+            margin: 20px auto;
+            width: 500px;
+            height: 100px;
+            border: 1px solid green;
+            overflow: hidden;
+        }
+        .wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 900px;
+            height: 100px;
+        }
+        .wrapper li {
+            list-style: none;
+            float: left;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .wrapper li:nth-child(3n+1) {
+            background: lightblue;
+        }
+
+        .wrapper li:nth-child(3n+2) {
+            background: lightcyan;
+        }
+
+        .wrapper li:nth-child(3n+3) {
+            background: lightpink;
+        }
+    </style>
+</head>
+<body>
+<!--div.marqueeBox>ul.wrapper>li{$}*6-->
+<div class="marqueeBox">
+    <ul class="wrapper">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+    </ul>
+</div>
+
+</body>
+</html>
+<script src="js/utils.js"></script>
+<script>
+    let wrapper=document.querySelector('.wrapper');
+    wrapper.innerHTML+=wrapper.innerHTML; //重点
+    utils.css(wrapper,'width',utils.css(wrapper,'width')*2);
+    //1.
+    /*
+    * 实现JS动画
+    *   让wrapper每间隔一段时间 (最优动画时间是13-17MS)在原有的left值基础上减去补偿 (想让动画快一些,步长就大一点)
+    * */
+    setInterval(()=>{
+        //=>获取当前wrapper的left的值,减去步长,把最新的left值赋值给元素即可
+        let curL=utils.css(wrapper,'left');
+        utils.css(wrapper,{
+           left:--curL
+        });
+        //=>实现无缝 : 当我们UL距离marqueebox的左偏移已经是真个wrapper的一半宽度(第一组原始内容已经运动完成了,现在看到的是克隆后)
+        if(  Math.abs(wrapper.offsetLeft)>=utils.css(wrapper,'width')/2){
+            utils.css(wrapper,'left',0);//=>立即回到起始的位置
+        }
+
+    },13);
+</script>
