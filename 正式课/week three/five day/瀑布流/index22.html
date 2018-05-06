@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html, body {
+            background: #f4f4f4;
+            overflow-x: hidden;
+        }
+
+        .flowBox {
+            width: 1000px;
+            margin: 20px auto;
+        }
+
+        .flowBox li {
+            /*padding: 15px 0;*/
+            float: left;
+            width: 300px;
+            margin-right: 20px;
+        }
+
+        .flowBox li:nth-last-child {
+            margin-right: 0;
+        }
+
+        .flowBox li a {
+            /*padding:0 15px;*/
+            display: block;
+            width: 100%;
+            box-shadow: 2px 2px 5px 0 #666;
+            margin-bottom: 10px;
+        }
+
+        .flowBox li div {
+            position: relative;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: url("img/default.gif") no-repeat center center;
+            z-index: 1;
+        }
+
+        .flowBox li a img {
+            /*height: 100%;*/
+            position: relative;
+            left: 0;
+            right: 0;
+            width: 100%;
+            display: block;
+            z-index: 3;
+        }
+
+        .flowBox li a span {
+            display: block;
+            color: #333333;
+            line-height: 20px;
+            padding: 15px 10px;
+            overflow: hidden;
+        }
+
+        .top {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            right: 100px;
+            bottom: 40px;
+            background: #f0a63a;
+            color: #333333;
+            line-height: 50px;
+            text-align: center;
+            z-index: 15;
+        }
+    </style>
+</head>
+<body>
+<ul class="flowBox clearfix">
+    <li>
+        <!--<a href="#">-->
+        <!--<div>-->
+        <!--<img src="#" alt="">-->
+        <!--</div>-->
+        <!--<span></span>-->
+        <!--</a>-->
+    </li>
+    <li></li>
+    <li></li>
+</ul>
+<header class="top">
+    top
+</header>
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    //=>两个问题 : 结尾不能排序  , 刷新的时候滚动条自动跳到第一次一个地方
+    $($ => {
+        let data = null,
+            isRun = false,
+            page = 0,
+            start = false,
+            winH = $(window).outerHeight(),
+            pageH = document.documentElement.scrollHeight || document.body.scrollHeight;
+        let getData = () => {
+            page++;
+            $.ajax({
+                url: `json/data.json?page=${page}`,
+                method: 'get',
+                dataType: 'json',
+                async: false,
+                success: result => {
+                    data = result;
+                }
+            })
+        };
+        getData();
+        let lazyLoad=function (){
+            let $curImg=$(this).find('img:last'),
+                $curDiv=$(this).find('div:last'),
+                tempImg = new Image();
+            tempImg.onload = function () {
+                $curDiv.css('height', tempImg.naturalHeight);//=>让外面div的高度等于还未加载的img的高度
+                $curImg[0].tempImg=tempImg.src;//=>这样是否能实现懒人加载?
+                tempImg=null;
+            };
+
+            tempImg.src = this.pic;
+
+        };
+        let bindHTML = () => {
+            for (let i = 0; i < data.length; i += 3) {
+                $('.flowBox>li').sort((a, b) => {
+                    return $(a).outerHeight() - $(b).outerHeight();
+                }).each((index, item) => {
+                    let eachData = data[index + i];
+                    if (!eachData) return;
+                    let {pic, title, link} = eachData;
+                    $(` <a href="${link}">
+            <div >
+                <img src="" alt=""  realImg="${pic}">
+            </div>
+            <span>${title}</span>
+        </a>`).appendTo($(item));
+                    item.pic=pic;
+                    lazyLoad.call(item);
+                });
+            }
+            isRun = false;
+        };
+        bindHTML();
+        $(window).on('scroll load', () => {
+            let scrollT = $(window).scrollTop();
+            $('div').each((index, curDiv) => {
+                let curT = offset(curDiv).t;
+                let curH=curDiv.offsetHeight;
+                if (curT+curH <= scrollT + winH+200) {
+                    $(curDiv).css('height', 'auto');
+                    curDiv.style.backgroundImage = '';
+                    curImg=curDiv.getElementsByTagName('img')[0];
+          //          curImg.src = $(curImg).attr('realImg');   //=>这里如何实现懒人加载,解决不了......
+          //           curImg.src=curImg.tempImg;  //=>这样实现懒人加载对不对??
+                    $(curImg).attr('src',curImg.tempImg).stop().fadeIn(500);
+                }
+            });
+            if (scrollT + 100 >= (pageH - winH)) {
+                if (isRun) return;
+                isRun = true;
+                if (page > 5) {
+                    return;
+                }
+                getData();
+                bindHTML();
+            }
+        });
+        $('.top').on('click', function () {
+            if (start) return;
+            start = true;
+            let change = $(window).scrollTop() - 0,
+                duration = 2000,
+                interval = 17,
+                step = change / duration * interval;
+            let timer = window.setInterval(() => {
+                let scrollT = $(window).scrollTop();
+                if (scrollT === 0) {
+                    start = false;
+                    clearInterval(timer);
+                    return;
+                }
+                scrollT -= step;
+                $(window).scrollTop(scrollT);
+            }, interval)
+        });
+    });
+    function offset(ele) {
+        var l = ele.offsetLeft;
+        var t = ele.offsetTop;
+        var p = ele.offsetParent;
+        while (p) {
+            if (navigator.userAgent.indexOf("MSIE 8.0") === -1) {
+                l += p.clientLeft;
+                t += p.clientTop;
+            }
+            l += p.offsetLeft;
+            t += p.offsetTop;
+            p = p.offsetParent;
+        }
+        return {
+            l: l,
+            t: t
+        }
+    }
+</script>

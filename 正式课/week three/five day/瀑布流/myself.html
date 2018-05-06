@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            background: #f4f4f4;
+            overflow-x:hidden ;
+        }
+        .flowBox{
+            margin:20px auto;
+            width:1100px;
+        }
+        .flowBox li{
+            float: left;
+            margin-right:20px;
+            width:320px;
+        }
+        .flowBox li:nth-last-child{
+            margin-right:0;
+        }
+        .flowBox li a {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #FFF;
+            box-shadow: 3px 3px 10px 0 #666;
+        }
+
+        .flowBox li a div {
+            /*background: url("../img/default.gif") no-repeat center center #EEE;*/
+        }
+
+        .flowBox li a div img {
+            display: block;
+            width: 100%;
+        }
+
+        .flowBox li a span {
+            display: block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #555;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+<ul class="flowBox clearfix">
+    <li>
+        <!--<a href="#">-->
+            <!--<div>-->
+                <!--<img src="#" alt="">-->
+            <!--</div>-->
+            <!--<span>312312</span>-->
+        <!--</a>-->
+    </li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script src="js/utils.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    // let flowRender =(function(){
+    //     let data=null,
+    //         flowBox=document.querySelector('.flowBox'),
+    //         oLis=flowBox.querySelectorAll('li');
+    //
+    //     let getData=()=>{
+    //         let xhr=new XMLHttpRequest();
+    //         xhr.open('get','json/data.json',false);
+    //         xhr.onreadystatechange=()=>{
+    //            if( xhr.readyState===4 && xhr.status===200){
+    //                data=JSON.parse(xhr.responseText);
+    //                console.log(data);
+    //            }
+    //         };
+    //         xhr.send(null)
+    //     };
+    //
+    //     let queryHTML=()=>{
+    //         str=``;
+    //         data.forEach(({link,pic,title})=>{
+    //             str+=`<a href="${link}">
+    //         <div>
+    //             <img src="${pic}" alt="">
+    //         </div>
+    //         <span>${title}</span>
+    //     </a>`;
+    //         });
+    //
+    //      oLis.forEach((item)=>{
+    //          item.innerHTML=str;
+    //      })
+    //     };
+    //
+    //     let ary=[];
+    //     let picSort=()=>{
+    //         oLis.forEach((item)=>{
+    //             let links=item.querySelectorAll('a');
+    //             links.forEach((item)=>{
+    //                 let height=utils.css(item,'height');
+    //                 ary.push(height);
+    //             })
+    //         })
+    //     };
+    //
+    //     return {
+    //         init :function(){
+    //             getData();
+    //             bindHTML();
+    //             picSort();
+    //
+    //             ary.sort(function(a,b){
+    //
+    //             });
+    //             console.log(ary);
+    //         }
+    //     }
+    // })();
+    // flowRender.init();
+    // jQuery(function ($) {
+    //     let flowRender = (function () {
+    //         let $flowList = $('.flowBox>li'),
+    //             isRun = false,
+    //             page = 0;
+    //
+    //         //=>获取数据
+    //         let queryData = function () {
+    //             //=>记录是否正在加载中，加载中不在进行任何其余操作
+    //             if (isRun) return;
+    //             isRun = true;
+    //
+    //             //=>每次请求新数据都把PAGE累加，这样真实项目中从服务器获取的数据就是不一样的（加载10页不在加载，提示没有更多数据，具体页数根据项目需求来定）
+    //             if (page > 10) {
+    //                 alert('没有更多数据了');
+    //                 $(window).off('scroll', loadMore);
+    //                 return;
+    //             }
+    //             page++;
+    //
+    //             $.ajax({
+    //                 url: 'json/data.json?page=' + page,
+    //                 method: 'get',
+    //                 dataType: 'json',
+    //                 cache: false,
+    //                 success: insertHTML
+    //             });
+    //         };
+    //
+    //         //=>拼接出一个数据单元的字符串
+    //         let queryHTML = function ({id, pic, link, title}) {
+    //             return `<a href="${link}" target="_blank">
+    //             <div><img src="${pic}" alt=""></div>
+    //             <span>${title}</span>
+    //         </a>`;
+    //         };
+    //
+    //         //=>为三个LI进行排序：按照内容的高度进行排序
+    //         let sortLi = function () {
+    //             let flowListAry = [].slice.call($flowList);
+    //             if ($flowList[0].offsetHeight === 0) {
+    //                 //=>第一次：还没有加入任何内容，此时的顺序就是默认顺序
+    //                 return flowListAry;
+    //             }
+    //             //=>三列中已经存在内容,此时我们需要按照高度由小到大排序
+    //             return flowListAry.sort(function (a, b) {
+    //                 return a.offsetHeight - b.offsetHeight;
+    //             });
+    //         };
+    //
+    //         //=>每三个为一组,迭代所有的数据依次增加到页面中
+    //         let insertHTML = function (result) {
+    //             //=>result就是从服务器获取的数据
+    //             for (let i = 0; i < result.length; i += 3) {
+    //                 let item1 = result[i],
+    //                     item2 = result[i + 1],
+    //                     item3 = result[i + 2];
+    //                 //=>给LI排序，并且向每个LI中追加内容
+    //                 let flowListAry = sortLi();
+    //                 item1 ? flowListAry[0].innerHTML += queryHTML(item1) : null;
+    //                 item2 ? flowListAry[1].innerHTML += queryHTML(item2) : null;
+    //                 item3 ? flowListAry[2].innerHTML += queryHTML(item3) : null;
+    //             }
+    //             isRun = false;
+    //         };
+    //
+    //         //=>加载更多
+    //         let loadMore = function () {
+    //             let winH = document.documentElement.clientWidth,
+    //                 pageH = document.documentElement.scrollHeight,
+    //                 scrollT = document.documentElement.scrollTop;
+    //             if ((scrollT + 100) >= (pageH - winH)) {
+    //                 //=>距离底部还有100PX加载更多数据
+    //                 queryData();
+    //             }
+    //         };
+    //
+    //         return {
+    //             init: function () {
+    //                 queryData();
+    //
+    //                 //=>滚动到底部加载更多
+    //                 $(window).on('scroll', loadMore);
+    //             }
+    //         }
+    //     })();
+    //     flowRender.init();
+    // });
+
+    // let flowRender =(function(){
+    //     let data=null,
+    //         flowBox=document.querySelector('.flowBox'),
+    //         oLis=flowBox.querySelectorAll('li');
+    //         oLis=[...oLis];
+    //
+    //     let getData=()=>{
+    //         let xhr=new XMLHttpRequest();
+    //         xhr.open('get','json/data.json',false);
+    //         xhr.onreadystatechange=()=>{
+    //             if( xhr.readyState===4 && xhr.status===200){
+    //                 data=JSON.parse(xhr.responseText);
+    //                 console.log(data);
+    //             }
+    //         };
+    //         xhr.send(null);
+    //         console.log(data.length);
+    //     };
+    //
+    //     let queryHTML=()=>{
+    //         str=``;
+    //         data.forEach(({link,pic,title})=>{
+    //             str+=`<a href="${link}">
+    //         <div>
+    //             <img src="${pic}" alt="">
+    //         </div>
+    //         <span>${title}</span>
+    //     </a>`;
+    //         });
+    //
+    //         oLis.forEach((item)=>{
+    //             item.innerHTML=str;
+    //         })
+    //     };
+    //
+    //     let sort=()=>{
+    //         for (let i = 0; i < 20; i++) {
+    //             //按照ul的高度排序
+    //             oLis.sort((a,b)=>{
+    //                 return utils.css(a,'height')-utils.css(b,'height');
+    //             });
+    //             //=>2.获取最矮的是oLis[0]
+    //             oLis[0].innerHTML+=
+    //         }
+    //     };
+    //
+    //
+    //     return {
+    //         init :function(){
+    //             getData();
+    //             bindHTML();
+    //             picSort();
+    //
+    //             ary.sort(function(a,b){
+    //
+    //             });
+    //             console.log(ary);
+    //         }
+    //     }
+    // })();
+    // flowRender.init();
+    $(function ($){
+        //=> 当HTML结构加载完成,才会执行这里的代码(闭包)
+
+        //=>获取所需要的数据
+        //=>真实项目当中 , 我们第一页加载完成 , 当用户下拉到底部 , 开始获取第二页的内容.服务器端会给我们提供一个API获取数据的地址,并要求客户端把获取的是第几页的内容传递给服务器 , 服务器依照这个原理把对应不同的数据返回    //=>所谓的分页效果
+        let page=0,
+            imgData=null;
+        let queryData=function (){
+            page++;
+            $.ajax({
+                url:`json/data.json?page=${page}`,
+                method:'get',
+                async:false,//=>同步请求 (真实项目中使用的是异步)
+                dataType:'json',//=>把从服务器端获取的JSON字符串转化为对象 (我们这样设置后,JQ内部都会帮我们转化)
+                success:result=>{
+                    //=>result就是我们从服务器端获取的结果
+                    imgData=result;
+                }
+                }
+            );
+        };
+        queryData();
+
+        //=>数据绑定
+        //=>传递一个对象进来获得对应的结构字符串
+        let bindHTML=({id,pic,link,title}={})=>{
+            if( typeof id ==='undefined') return ``;
+            return `<a href="${link}">
+            <div>
+                <img src="${pic}" alt="">
+            </div>
+            <span>${title}</span>
+        </a>`
+        };
+
+        let $boxList=$('.flowBox >li'),
+            boxList=[].slice.call($boxList);
+        for (let i = 0; i < imgData.length; i+=3) {
+            //=>分别获取每三个为一组,一组中的三个内容
+            //=>imgData.length可能不是3的倍数 , 存在隐性风险,数据不是3的倍数,最后一次循环的时候,3个中的某一个会不存在,获取的的item的值就是undefined
+            let item1=imgData[i],
+                item2=imgData[i+1],
+                item3=imgData[i+2];
+            //=>我们接下来要把获取的item一次插入到每一个li中,但是绝对不是按照顺序插入 , 我们需要先诏安每个li的现有高度给li进行排序 (小到大),按照最新的顺序依次插入即可
+            // boxList.sort((a,b)=> a.offsetHeight-b.offsetHeight);
+            // item1?boxList[0].innerHTML+=bindHTML(item1):null;
+            // item2?boxList[1].innerHTML+=bindHTML(item2):null;
+            // item3?boxList[2].innerHTML+=bindHTML(item3):null;
+            boxList.sort((a,b)=>{
+               return  a.offsetHeight-b.offsetHeight
+            }).forEach((item,index)=>[
+                item.innerHTML+=bindHTML(eval('item'+(index+1)))
+            ]);
+        }
+
+    });
+</script>

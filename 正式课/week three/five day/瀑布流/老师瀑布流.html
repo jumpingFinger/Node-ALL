@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            background: #f4f4f4;
+            overflow-x:hidden ;
+        }
+        .flowBox{
+            margin:20px auto;
+            width:1100px;
+        }
+        .flowBox li{
+            float: left;
+            margin-right:20px;
+            width:320px;
+        }
+        .flowBox li:nth-last-child{
+            margin-right:0;
+        }
+        .flowBox li a {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #FFF;
+            box-shadow: 3px 3px 10px 0 #666;
+        }
+
+        .flowBox li a div {
+            /*background: url("../img/default.gif") no-repeat center center #EEE;*/
+        }
+
+        .flowBox li a div img {
+            display: block;
+            width: 100%;
+        }
+
+        .flowBox li a span {
+            display: block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #555;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+<ul class="flowBox clearfix">
+    <li>
+        <!--<a href="#">-->
+        <!--<div>-->
+        <!--<img src="#" alt="">-->
+        <!--</div>-->
+        <!--<span>312312</span>-->
+        <!--</a>-->
+    </li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script src="js/utils.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function ($){
+        let page=0,
+            imgData=null,
+            isRun=false;
+        let queryData=function (){
+            page++;
+            $.ajax({
+                    url:`json/data.json?page=${page}`,
+                    method:'get',
+                    async:false,//=>同步请求 (真实项目中使用的是异步)
+                    dataType:'json',//=>把从服务器端获取的JSON字符串转化为对象 (我们这样设置后,JQ内部都会帮我们转化)
+                    success:result=>{
+                        //=>result就是我们从服务器端获取的结果
+                        imgData=result;
+                    }
+                }
+            );
+        };
+        queryData();
+        let bindHTML = () => {
+            let $boxList = $('.flowBox > li');
+
+            for (let i = 0; i < imgData.length; i += 3) {
+
+                $boxList.sort((a, b) => {
+                    return $(a).outerHeight() - $(b).outerHeight();
+                }).each((index, curLi) => {
+                    //第一个LI索引0  index  =>imgData[i+0]
+                    //第二个LI索引1  index  =>imgData[i+1]
+                    let item = imgData[i + index];
+                    if (!item) return;
+                    let {pic, link, title} = item;
+                    $(`<a href="${link}">
+                    <div><img src="${pic}" alt=""></div>
+                    <span>${title}</span>
+                </a>`).appendTo($(curLi));
+                });
+            }
+            isRun=false; //=>当加载完结构让isRun变为false
+        };
+        bindHTML();
+        //=>当滚动页面底部的时候 , 加载下一页的更多数据
+        $(window).on('scroll',()=>{
+            let winH=$(window).outerHeight(),
+                pageH=document.documentElement.scrollHeight ||document.body.scrollHeight,
+                scrollT=$(window).scrollTop();
+            //=>蜷曲的高度大于真实高度一屏高度
+            if((scrollT+100)>=(pageH-winH)){
+                //=>隐性问题 :人为操作滚动,这个在同一个操作内被触发N次,也就是同一个时间段,获取数据会被执行N次,此时需要做 "重复操作限定"
+                // console.log(1);
+                // if(isRun)return ;
+                isRun=true;
+
+                if(page>5){
+                    alert('没有更多数据了');
+                    return
+                }
+                queryData();
+                bindHTML();
+
+
+            }
+        })
+    });
+</script>

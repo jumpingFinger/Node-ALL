@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    let fn = (callback) => {
+        //=>callback : 传递进来的函数
+        //      callback && callback(100,20);//=>typeof callback==='function'?callback();null
+        //      callback && callback.call(obj,100,20);
+        let res = callback(100, 20);
+        //console.log(res);//=>30
+    };
+    fn((n, m) => {
+        // console.log(n, m);
+        //=>this :window 回到函数中一般this指的是window,除非数组函数执行回调函数的时候把this特殊指向了 (箭头函数除外 : 箭头函数中的this是它的上下文)
+        return n + m;
+    });
+
+    //=>和内置的forEach类似 (但是forEach只能遍历数组), 用来遍历数组 (类数组,对象)中的每一项
+    //$.each();
+    [12, 23, 4].forEach(function (item, index) {
+        //=>this :window
+        // console.log(item, index, this);
+    }, 'hah'); //=>forEach 第二个参数是用来改变回调函数中this的
+
+    $.each([12, 23, 34], function (index, item) {
+        //=>this : 当前遍历的这一项 (item)
+        // console.log(item, index, this);
+    })
+
+    ~function () {
+        //=>我们需要迭代的数组,类数组,对象
+        let each = function (obj, callback) {
+            //=>验证是数组 (类数组)还是对象
+            let flag = 'length' in obj;//=>我们先简单验证 : 有length是数组或者类数组,没有对象
+            if (flag) {
+                for (let i = 0; i < obj.length; i++) {
+                    let item = obj[i];
+                    let res = callback && callback.call(item, i, item); //=>接收回调函数的返回值,如果返回的是false,我们结束循环即可
+                    if (res === false) {
+                        break
+                    }
+                }
+            } else {
+                for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        let res = callback && callback.call(obj[key], key, obj[key]);
+                        if (res === false) {
+                            break
+                        }
+                    }
+                    ;
+
+                }
+            }
+        };
+        each([12, 23, 34], function (index, item) {
+            // console.log(index, item,this);
+            // return false;//=>如果回调函数返回false , 我让其代表,结束当前迭代
+            // console.log(item);
+            if (index >= 1) {
+                return false;
+            }
+        });
+        each({name: 'fas', age: 18}, function (key, value) {
+            // console.log(key, value);
+            if (key === 'name') {
+                return false;
+            }
+        })
+    }();
+
+    ~function () {
+        String.prototype.myReplace=function myReplace(reg,callback){
+            //=>this :str
+            //=>默认REG肯定加g了,callback肯定传递了
+            let res=reg.exec(this),
+                _this=this; //=> 我们修改克隆的这一个 ,不能改this
+            while(res){
+                //=>res : 每一次EXEC捕获的结果 (数组)
+                let returnv=callback(...res);//=>捕获一次执行一次回调函数 , 并且通过exec捕获的数组,每一项都一次传递给回调函数 (returnv :当前回调函数执行的返回结果,我们要拿这个结果替换字符串中当前大正则匹配的内容)
+
+                let v=res[0],
+                    i=_this.indexOf(v);
+                _this=_this.substring(0,i)+returnv+_this.substring(v.length+i);
+                res=reg.exec(this);
+            }
+            return _this
+        };
+        let str='name is {0} , i am {1} years old',
+            ary=['周啸天','28'];
+        str=str.myReplace(/\{(\d+)\}/g,function ($0,$1){
+            return ary[$1]
+        });
+    }();
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跑马灯</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .container{
+            width: 400px;
+            overflow: hidden;
+            margin:30px auto;
+        }
+        ul{
+            position: relative;
+            left: 0;
+            top:0;
+            width: 800px;
+        }
+        li{
+            float: left;
+            width: 200px;
+            height: 100px;
+        }
+        li:nth-child(2n){
+            background: red;
+        }
+        li:nth-child(2n+1){
+            background: darkblue;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container" id="container">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/utils.min.js"></script>
+<script>
+    ~function () {
+        let oUl=document.querySelector('ul');
+        oUl.innerHTML+=oUl.innerHTML;
+        let width= utils.css(oUl,'width');
+        utils.css(oUl, 'width', width * 2);
+        setInterval(()=>{
+            let left=utils.css(oUl,'left');
+            left-=2;
+            utils.css(oUl,'left',left);
+            if(Math.abs(left)>=width){
+                utils.css(oUl,'left',0);
+            }
+        },17)
+    }();
+
+    ~function () {
+        let container=document.querySelector('#container'),
+            oUl=document.querySelector('ul');
+        oUl.innerHTML+=oUl.innerHTML;
+        let width=utils.css(oUl,'width');
+        utils.css(oUl,'width',width*2);
+        setInterval(()=>{
+            if(container.scrollLeft===container.scrollWidth/2){
+                container.scrollLeft=0;
+            }
+            container.scrollLeft+=2;
+        },17)
+    }();
+</script>

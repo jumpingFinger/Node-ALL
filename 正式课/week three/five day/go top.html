@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            height: 1000%;
+            /*CSS3新增加的北京颜色线性渐变*/
+            /*background: -webkit-linear-gradient(top left,lightpink,lightblue,lightseagreen,lightgrey);*/
+        }
+        #link{
+            display: none;
+            position: fixed;
+            right:20px;
+            bottom:150px;
+            width: 100px;
+            height:100px;
+            text-align: center;
+            line-height: 100px;
+            background: rgba(0,0,0,.5);
+            font-size: 20px;
+            color: #fff1f0;
+        }
+    </style>
+</head>
+<body>
+<a href="javascript:;" id="link">go</a>
+</body>
+</html>
+<script>
+    // ~function () {
+    //     let link=document.querySelector('#link');
+    //     window.onscroll=function (){
+    //         let scrollT=document.documentElement.scrollTop,
+    //             winH=document.documentElement.clientHeight;
+    //         if(scrollT>winH*1.5){
+    //             link.style.display='block';
+    //         }else{
+    //             link.style.display='none';
+    //         }
+    //     };
+    //     let isRun=false;
+    //     link.onclick=function (){
+    //         if(isRun) return ;
+    //         isRun=true;
+    //         let change=document.documentElement.scrollTop-0,
+    //             duration=1000,
+    //             interval=17,
+    //             step=change/duration*interval;
+    //         let timer=setInterval(()=>{
+    //             let curT=document.documentElement.scrollTop;
+    //             if(curT===0){
+    //                 isRun=false;
+    //                 clearInterval(timer);
+    //                 return ;
+    //             }
+    //             curT=curT-step;
+    //             document.documentElement.scrollTop=curT;
+    //
+    //         },interval);
+    //
+    //     };
+    // }();
+
+    ~function () {
+        let link=document.querySelector('a');
+        window.onscroll=function () {
+            let scrollT=document.documentElement.scrollTop,
+                winH=document.documentElement.clientHeight;
+            if(scrollT>1.5*winH){
+                link.style.display='block';
+            }else{
+                link.style.display='none';
+            }
+        };
+        let isRun=false;
+        link.onclick=function () {
+          if(isRun) return ;
+          isRun=true;
+          let change=document.documentElement.scrollTop,
+              duration=1000,
+              interval=17,
+              step=change/duration*interval,
+              timer=window.setInterval(()=>{
+                let curT=document.documentElement.scrollTop;
+                if(curT===0){
+                    isRun=false;
+                    clearInterval(timer);
+                    return;
+                }
+                curT=curT-step;
+                  document.documentElement.scrollTop=curT;
+           },interval);
+        };
+    }();
+</script>

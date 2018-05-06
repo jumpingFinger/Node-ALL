@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .container{
+            margin: 20px auto;
+            width: 1000px;
+        }
+        .container .imgBox{
+            margin-bottom: 10px;
+            height: 290px;
+            background: url("img/default.gif") no-repeat center center #EEE;
+        }
+        .container .imgBox img{
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="imgBox">
+        <img src="" alt="" realImg="img/">
+    </div>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function (){
+        let lazy =(function(){
+            let $container=$('.container'),
+                $imgLis=null;
+
+            let lazyload=$curImgBox=>{
+                let $curImg=$curImgBox.find('img');
+                let tempImg=new Image();
+                tempImg.onload=function () {
+                    $curImg.attr('src',this.src).css('display','block');
+                    $curImgBox[0].aa=true;
+                    console.log($curImgBox[0].aa);
+                    tempImg=null;
+                };
+                tempImg.src= $curImg.attr('realImg');
+            };
+            let bindHTML=()=>{
+                let str=``;
+                for (let i = 0; i < 15; i++) {
+                    let random=Math.round(Math.random()*3+1);
+                    str+=` <div class="imgBox">
+        <img src="" alt="" realImg="img/banner${random}.jpg">
+    </div>`;
+                }
+                $container.html(str);
+                $imgLis=$container.find('.imgBox');
+            };
+            let winH=$(document).height();
+            $(window).on('scroll load',()=>{
+
+               let pageH=$(window).scrollTop();
+                $imgLis.each((index,item)=>{
+                    if(item.aa) return;
+                    console.log($(item).find('img').offset().top,$(item).offset().top);
+                    item.hegiht= $(item).outerHeight()+$(item).offset().top;
+                    if (item.hegiht<=winH+pageH){
+
+                        lazyload($(item));
+                    }
+                })
+            });
+
+            return {
+                init :function(){
+                    bindHTML();
+                }
+            }
+        })();
+        lazy.init();
+    })
+</script>

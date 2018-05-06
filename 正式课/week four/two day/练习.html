@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    // function timeOut(ms) {
+    //
+    //    return   new Promise(function (resolve, reject) {
+    //           setTimeout(resolve, ms, "done");
+    //     })
+    // }
+    //
+    // timeOut(3000).then(function (value) {
+    //     console.log(value);
+    // });
+
+    // Function.prototype.myBind=function (context,...arg) {
+    //     context=context ||window;
+    //     return ()=>{
+    //         this.apply(context,arg);
+    //     }
+    // };
+    // box.onclick = fn.myBind(obj, 100, 200);
+    // var obj = {
+    //     tagName: 'OBJ'
+    // };
+    // function fn() {
+    //     console.log(this, arguments);
+    // }
+    // box.onclick = fn.myBind(obj, 100, 200);
+    // let aa=(...arg)=>result=>{
+    //     arg.reverse().forEach((item)=>{
+    //         result=item(result)
+    //     });
+    //     return result
+    // };
+
+    String.prototype.myReplace = function (reg, callback) {
+        let val = reg.exec(this),
+            that = this;
+        while (val) {
+            let item = callback(...val);
+            let index = that.indexOf(val[0]);
+            let length = val[0].length;
+            that = that.substr(0, index) + item + that.substr(index + length);
+            val = reg.exec(this);
+        }
+        return that
+    };
+    let str = 'my name is {0}，i am {1} years old!',
+        ary = ['周啸天哈哈', '28'];
+    console.log(str.myReplace(/\{(\d+)\}/g, (...arg) => ary[arg[1]]));
+
+
+   function myEach(obj,callback){
+       if(obj.length){
+           for (let i = 0; i < obj.length; i++) {
+               let item=obj[i];
+               callback.call(item.valueOf());
+           }
+       }
+   }
+    myEach([1231,1231,123132],function (){
+        console.log(this);
+    })
+
+    function fn() {
+        console.log(this);
+    }
+    function fn1() {
+
+    }
+    fn.call([12,2321,45646])
+</script>

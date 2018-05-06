@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            width: 1000px;
+            overflow-x: hidden;
+        }
+
+        .imgBox {
+            width: 1000px;
+            height: 300px;
+            margin: 20px auto;
+            background: url("img/default.gif") no-repeat center center #cccccc;
+        }
+
+        img {
+            width: 1000px;
+            display: block;
+            height: 300px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="imgBox" id="imgBox">
+        <img src="" alt="" data-src="">
+    </div>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function () {
+        let $container = $('.container'),
+            $imgList = null;
+
+        //获取数据
+        ~function () {
+            let str = ``;
+            for (let i = 0; i < 100; i++) {
+                str += `<div id="imgBox" class="imgBox">
+    <img src="" data-src="img/banner${Math.round(Math.random() * 4)}.jpg" alt="">
+</div>
+`;
+            }
+            $container.html(str);
+            $imgList = $container.find('img');
+        }();
+
+        //加载图片
+        let lazyImg = (curImg) => {
+
+            let timer=setTimeout(()=>{
+                console.log(curImg);
+
+                let $curImg = $(curImg),
+                    selfSrc = $curImg.attr('data-src');
+
+                let tempImg = new Image();
+                tempImg.onload = function () {
+                    $curImg.attr('src',selfSrc).css({display:'block'});
+                    tempImg = null;
+                };
+                tempImg.src = selfSrc;
+            },1000)
+        };
+
+        lazyImg($imgList[2]);
+    });
+</script>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    ~function () {
+        // let compose=(...arg)=>{
+        //     arg.reverse();
+        // return (m)=>{
+        //     let result=null;
+        //     arg.forEach((item)=>{
+        //        result=item(result);
+        //     });
+        //     return result;
+        // }
+        // };
+        let compose=(...arg)=>result=>{
+            arg.reverse().forEach(item=>{
+                result=item(result);
+            });
+            return result;
+        };
+
+
+        const add1 = (x) => x + 1;
+        const mul3 = (x) => x * 3;
+        const div2 = (x) => x / 2;
+        const operate = compose(div2, mul3, add1, add1);
+        // console.log(operate(0));
+
+
+
+
+
+
+        // function fn (n,total=0){
+        //     if(n>100){
+        //         return total;
+        //     }
+        //    return fn(n+1,total+=n)
+        // }
+
+        function fn (n,total=0){
+            if(n>100){
+                return total;
+            }
+            if(n%15===0){
+                return fn(n+1,total+=n)
+            }
+            return fn(n+1,total)
+        }
+
+        // console.log(fn(1));
+
+        //=>数组扁平化 (多维数组=>一维数组)
+
+        let str='dsafsadfsdafsdfdsafsadjkljlkjiouojlncxaaaaabbbbb,nv,xzcnv';
+        let obj = {},
+            max = 1,
+            result = [];
+        str.replace(/./g, char => {
+            if (obj.hasOwnProperty(char)) {
+                obj[char]++;
+                if (obj[char] > max) {
+                    max = obj[char];
+                    result=char;
+                }else if (obj[char]===max){
+                    result+=' '+char;
+                }
+                return;
+            }
+            obj[char] = 1;
+        });
+        // console.log(`最多出现的次数是：${max} 次，对应的字符有：${result}`);
+    }();
+
+    ~function () {
+        Array.prototype.myUnique=function () {
+            let ary=[];
+            this.forEach(item=>{
+                if(ary.indexOf(item)===-1){
+                    ary[ary.length-1]=item;
+                }
+            });
+            return ary;
+        };
+        let ary = [1, 2, 3, 2, 3, 4, 3, 2, 2, 2, 2, 3, 4, 5, 6, 7, 4, 1, 3, 2];
+        let uniqueAry = ary.myUnique();
+        // console.log(uniqueAry);
+    }();
+
+    ~function () {
+        let ary = [1,[2,[3,[4,5]]],6];
+        Array.prototype.delayering=function () {
+            let result=[];
+            let delayering=function (ary){
+                if(ary.length===0) return ;
+                ary.forEach(item=>{
+                    if(item instanceof Array){
+                        delayering(item);
+                    }else  {
+                        result[result.length]=item;
+                    }
+                });
+            };
+            delayering(this);
+            return result;
+        };
+        // console.log(ary.delayering());
+        let str=JSON.stringify(ary);
+        // console.log(str);//=>[1,[2,[3,[4,5]]],6]
+        let reg=/(\[|\])/g;
+        ary=str.replace(reg,'').split(',');//  ["1", "2", "3", "4", "5", "6"]
+
+    }();
+    ~function () {
+        let ary = [1, [2, [3, [4, 5]]], [6, 7, [8, 9, [11, 12]], 10]];  //=>[1,2,3,4,5,6]
+
+        let str = JSON.stringify(ary);
+//=>第一种处理
+   //     console.log(str);//=>[1,[2,[3,[4,5]]],6]
+        ary = str.replace(/(\[|\])/g, '').split(',');
+        // console.log(ary);
+    }();
+    ~function () {
+        let ary = [1, [2, [3, [4, 5]]], [6, 7, [8, 9, [11, 12]], 10]];  //=>[1,2,3,4,5,6]
+
+        let str = JSON.stringify(ary);
+        str = str.replace(/(\[|\])/g, '');
+        str = '[' + str + ']';
+    //    console.log(str);//'[1,2,3,4,5,6,7,8,9,11,12,10]'
+        ary = JSON.parse(str);
+    //    console.log(ary);// [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 10]
+    }();
+
+    ~function () {
+        let insetAfter=function (newEle,originEle) {
+            let next=originEle.nextElementSibling,
+                parent=originEle.parentNode;
+            if(next){
+                parent.insertBefore(newEle,next);
+            }else{
+                parent.appendChild(newEle);
+            }
+        }
+    }();
+
+    ~function () {
+        let str = "珠峰培训zhufeng哈哈，javascript高级程序设计，good good study!";
+        let reg=/(?:(?:([a-zA-Z]+)([\u4e00-\u9fa5]+))|(?:([\u4e00-\u9fa5]+)([a-zA-Z]+)))/g;
+        str=str.replace(reg,(...arg)=>{
+          //  console.log(arg);
+           // ["珠峰培训zhufeng", undefined, undefined, "珠峰培训", "zhufeng", 0, ..]
+            // ["javascript高级程序设计", "javascript", "高级程序设计", undefined, undefined, 14, ..]
+            [,a,b,c,d]=arg;
+            if(a && b){
+                return ` ${a} ${b}`
+            }
+            return `${c} ${d} `
+        });
+        // console.log(str);
+    }();
+
+    ~function () {
+        let str = "珠峰培训zhufeng哈哈，javascript高级程序设计，good good study!";
+        let reg=/.?([a-zA-Z]+).?/g;
+
+        str=str.replace(reg,function ($0,$1) {
+            // console.log($0,$1);
+            let reg=/[\u4e00-\u9fa5]/g;
+            if(reg.test($0)){
+                $0=$0.replace($1,` ${$1} `);
+                return $0
+            }
+            return $0
+        });
+    }();
+
+    ~function () {
+        let str = 'the-man is practice is to cultivate his body and cultivate his virtues. Not indifferent to clear ambition, non tranquil and far away. If we need to study quietly, we must learn and learn. Prostitution is not able to help, and impatience can not be smelt. When the year goes with the time, the meaning goes with the sun, and then it becomes dry and withered.';
+        let reg=/([a-zA-Z\-]+)/g;
+        str=str.replace(reg,$0=>{
+            return $0[0].toUpperCase()+$0.substr(1);
+        });
+        // console.log(str);
+    }();
+
+
+    //=>重写bind还没有完成
+    ~function () {
+        for (var i = 0; i < 5; i++) {
+            setTimeout(function (i) {
+                // console.log(i)
+            }.bind(null, i), 1000);
+        }
+        Function.prototype.myBind=function (context,...arg){
+            context=context ||window;
+
+            return this(...arg);
+        }
+        for (var i = 0; i < 5; i++) {
+            setTimeout(function (i) {
+                console.log(i)
+            }.myBind(null, i), 1000);
+        }
+    }();
+
+    ~function () {
+        var str='hello<img src="haha.png" alt="哈哈"/>world';
+        var reg=/<.*alt="(.*)"\/>/g;
+        str=str.replace(reg,(...arg)=>{
+      //      console.log(arg);
+            let str=`[${arg[1].replace(/"|'/g, )}]`
+            return str;
+        });
+        // console.log(str);
+    }();
+
+    ~function () {
+        let str = 'hello<img alt="哈哈" src="haha.png"/>world<img alt="邪恶" src="xiee.png" />';
+        var reg=/<([^<>]*alt=(.*?))>/g;
+        reg = /<(?:[^<>]*alt="([\u4e00-\u9fa5]*)")\/>/g;
+        str.replace(reg,(...arg)=>{
+            console.log(arg);
+        })
+    }();
+
+    ~function () {
+        let str = 'hello<img alt="哈哈" src="马少帅"/>world<img src="xiee.png" alt="邪恶"/>';
+        let reg=/<[^<>]*>/g;
+        str=str.replace(reg,(...arg)=>{
+            let val=arg[0],
+                reg=/([\u4e00-\u9fa5]+)/g,
+                result=null;
+            if(reg.test(val)){
+                 val.replace(reg,$0=>{
+                     result=$0;
+                });o
+            }
+            return result;
+        });
+    }();
+    ~function () {
+        var str='hello<img  alt="哈哈" src="haha.png"/>world<img src="haha.png" alt="邪恶"/>crazy';
+        let reg = /<[^<>]+alt="([\u4e00-\u9fa5]+)"\/>/g;
+        str = str.replace(reg, (...arg)=>{
+            let [, val] = arg;
+            return `[${val}]`;
+        });
+        console.log(str);
+    }();
+
+    ~function () {
+        // let url = require('url');
+        // console.log(url.parse('http://www.zhufengpeixun.cn:80/stu/index.html?name=xxx&age=9#teatcher', true));
+    }();
+
+    ~function () {
+        const add1 = (x) => x + 1;
+        const mul3 = (x) => x * 3;
+        const div2 = (x) => x / 2;
+
+        const compose=(...arg)=>val=>{
+            let str=``;
+            arg.forEach(item=>{
+                 str+=item.name+ ',';
+            });
+            str=str.replace(/,/g,'(');
+            console.log(str);// ` div2(mul3(add1(add1(`
+            str+=val;
+            arg.forEach(()=>{
+                str+=')';
+            });
+            //   str='div2(mul3(add1(add1(0))))'
+            return eval(str);
+        };
+        const operate = compose(div2, mul3, add1, add1);
+        console.log(operate(0));
+    }();
+
+
+</script>

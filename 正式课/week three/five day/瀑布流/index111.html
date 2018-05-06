@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .flowBox{
+            overflow: hidden;
+            margin:30px auto;
+            width: 1100px;
+        }
+        .flowBox li {
+            float: left;
+            margin-right: 20px;
+            width: 300px;
+        }
+        .flowBox li a {
+            display: block;
+            margin-bottom: 10px;
+            padding:10px;
+            background: #fff;
+            box-shadow: 3px 3px 10px 0 #666;
+        }
+        .flowBox a img {
+            display: block;
+            width: 100%;
+        }
+        .flowBox a span {
+            display: block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #555;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+<ul class="clearfix flowBox">
+    <li>
+        <!--<a href="#">-->
+        <!--<div>-->
+        <!--<img src="img/1.jpg" alt="">-->
+        <!--</div>-->
+        <!--<span>-->
+        <!--我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人-->
+        <!--</span>-->
+        <!--</a>-->
+    </li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function ($){
+        let imgData=null,
+            page=0,
+            isRun=false;
+        let getData=()=>{
+            page++;
+            $.ajax({
+                method:'get',
+                url:`json/data.json?page=${page}`,
+                dataType:'json',
+                async:false,
+                success:result=>{
+                    imgData=result;
+                }
+            })
+        };
+        getData();
+        let bindHTML=()=>{
+            for (let i = 0; i < imgData.length; i+=3) {
+                $('.flowBox>li').sort((a,b)=>{
+                    return $(a).outerHeight()-$(b).outerHeight();
+                }).each((index,item)=>{
+                    let eachData=imgData[i+index];
+                    if(!eachData) return;
+                    let {pic,title,link}=eachData;
+                    $(`<a href="${link}">
+                    <div><img src="${pic}" alt=""></div>
+                    <span>${title}</span>
+                </a>`).appendTo($(item));
+                })
+            }
+            isRun=false;
+        };
+
+        // let bindHTML = () => {
+        //     let $boxList = $('.flowBox > li');
+        //     for (let i = 0; i < imgData.length; i += 3) {
+        //         $boxList.sort((a, b) => {
+        //             return $(a).outerHeight() - $(b).outerHeight();
+        //         }).each((index, curLi) => {
+        //             let item = imgData[i + index];
+        //             if (!item) return;
+        //             let {id, pic, link, title} = item;
+        //             $(`<a href="${link}">
+        //             <div><img src="${pic}" alt=""></div>
+        //             <span>${title}</span>
+        //         </a>`).appendTo($(curLi));
+        //         });
+        //     }
+        //     isRun = false;
+        // };
+        bindHTML();
+        $(window).on('scroll',()=>{
+            let winH=$(window).outerHeight(),
+                pageH=document.documentElement.scrollHeight ||document.body.scrollHeight,
+                scrollT=$(window).scrollTop();
+            if(scrollT+20>=(pageH-winH)){
+                if(isRun) return ;
+                isRun=true;
+                if(page>5)return ;
+                getData();
+                bindHTML();
+            }
+        })
+    })
+
+</script>

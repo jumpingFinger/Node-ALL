@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //=>执行一次的
+    // let count=0;
+    // setTimeout(()=>{
+    //     count++;
+    //     console.log(count);
+    // },1000);
+
+    //=>轮循定时器 : 每间隔interval这么长时间 , 都会把设定的方法重新执行一次 , 直到定时器被清除
+    // setInterval(()=>{
+    //     count++;
+    //     console.log(count);
+    // },1000)
+
+    //=>设置定时器会有一个返回的值 , 这个值是一个数字 , 属于定时器的编号,代表当前是第几个定时器 (不管是基于那个定时器设定的, 这个编号都会累加)
+    // let count=0;
+    // let timer=setTimeout(()=>{
+    //     count++;
+    //     if(count===5){
+    //         clearTimeout(timer);
+    //     }
+    // },1000);
+    // console.log(timer);// 1
+    // let timer2=setTimeout(()=>{},1000);
+    // console.log(timer2);// 2
+
+    // setTimeout(()=>{
+    //     console.log(1);
+    // },20);
+    // console.log(2);
+    // setTimeout(()=>{
+    //     console.log(3);
+    // },10);
+    // console.log(4);
+
+    //=>很重要很重要  测试程序的反应时间
+    // let starTime =new Date();
+    // console.time('aa');
+    // for (let i = 0; i < 900000000; i++) {
+    //
+    // }
+    // console.log(new Date() - starTime);
+    // console.timeEnd('aa');
+
+    ~function () {
+        // let p=new Promise();
+        // p.then();
+//=>三个状态 : pending(准备状态:初始化成功开始执行异步的任务)\fulfilled(成功)\rejected (失败)
+//         new Promise(()=>{
+//             //=>执行一个异步的任务  (new Promise的时候,创建一个Promise的一个实例,立即会把当前函数体中的异步操作执行)
+//             setTimeout(()=>{
+//
+//             },1000)
+//             console.log(1); //=>先输出1
+//         }).then();
+//         console.log(2); //=>再输出2
+    }();
+
+    ~function () {
+        //什么叫做异步操作执行成功,操作执行失败
+        new Promise((resolve,reject)=>{
+            //=>resolve : 当异步操作执行成功 ,我们执行resolve方法
+            //=>reject :当异步操作执行失败 ,我们执行reject方法
+            setTimeout(()=>{
+                resolve(100);
+            },1000)
+        }).then(()=>{
+            //=>第一个传递的函数是resolve
+            console.log('ok');
+        },()=>{
+            //=>第二个传递的函数是reject
+            console.log('ok');
+        });
+    }();
+</script>

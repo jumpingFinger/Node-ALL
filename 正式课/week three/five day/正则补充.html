@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let reg= /\d+/;
+    let str='zhufeng2018peixun2019';
+    // console.log(reg.lastIndex);
+    // console.log(reg.exec(str));
+    // console.log(reg.lastIndex);
+    // console.log(reg.exec(str));
+    // console.log(reg.lastIndex);
+    //
+    //
+    // console.log(reg.exec(str));
+    // reg.lastIndex=11;
+    // console.log(reg.exec(str));
+
+    reg= /\d+/g;
+    // console.log(reg.lastIndex);
+    // console.log(reg.exec(str));
+    // console.log(reg.lastIndex);
+    // console.log(reg.exec(str));
+    // console.log(reg.lastIndex);
+    // console.log(reg.exec(str));
+    // console.log(reg.lastIndex);
+    str='zhufeng2018peixun2019yangfan2020qiang2021';
+    RegExp.prototype.myExecAll=function (str){
+        //=>为了防止出现死循环 , 检测一下正确是否加g,没有加g只把第一次一直循环成死循环
+        if(!this.global) return this.exec(str);
+
+        //=>this : 当前操作的正则
+        //=>str : 我们要捕获的字符串
+        //=>执行exec开始捕获 , 具体捕获多少次不定 , 但是一直到捕获不到内容 (null)为止 , 期间把捕获到的内容存储到数组中即可
+        let result=[],
+            item=this.exec(str);
+        while(item){
+            result.push(item[0]);//=>把每一次捕获到的结果第一项(具体捕获的内容)存储到容器中
+            item=this.exec(str);
+        }
+        return result;
+    };
+    // console.log(reg.myExecAll(str));
+
+    // console.log(str.match(reg));
+
+    RegExp.prototype.myExecAll1=function (str){
+        if(!this.global) return this.exec(str);
+        let item=this.exec(str),
+            result=[];
+        while (item){
+            result.push(item[0]);
+            item=this.exec(str);
+        }
+        return result
+    }
+
+    str='zhufeng{2018}peixun{2019}yangfan{2020}qiang2021';
+    reg=/\{(\d+)\}/g;
+ //   console.log(reg.exec(str));//(2) ["{2018}", "2018", index: 7, input: "zhufeng{2018}peixun{2019}yangfan{2020}qiang2021"] //=>正则捕获的时候,如果正则中存在分组 , 捕获的时候不仅仅把大正则匹配到的字符捕获到 (数组第一项) , 而且把小分组匹配的内容也单独抽取出来 (数组中的第二项开始就是小分组捕获的内容)  //=>分组捕获   //  ?: 是用来阻止分组捕获的内容 "只匹配不捕获"
+
+    // reg=/\{(?:\d+)\}/g;
+ //   console.log(str.match(reg)); //=>   match方法也有自己的局限性,在正则设置了g的情况下,基于match捕获的内容只有大正则匹配的 , 小分组的内容没有单独抽取出来 (不设置g的情况下和执行exec一样)
+
+ //    str='zhufeng2018peixun2019';
+ //    reg= /\d+/g;
+ // //   console.log(reg.exec(str)); //=>2018
+ //    reg.test(str);//=>true
+ //    console.log(reg.lastIndex); //=>11 基于test进行匹配的时候,如果设置了g , test匹配也相当于捕获 , 修改了lastIndex的值
+ //    // console.log(reg.test(str));
+ //    console.log(reg.exec(str));//=>2019
+    str='zhufeng2018';
+       reg= /\d+/g;
+    // if(reg.test(str)){
+    //     console.log(reg.exec(str));//null
+    // }
+ //   console.log(reg.exec(str));//console.log(reg.exec('zhufeng2018peixun2019'));//=>2019  虽然捕获的不是同一个字符串,但是正则是同一个 , 上一次正则处理的时候,修改了他们的last-index,也会对下一次匹配新的字符串产生影响
+
+
+    // str='zhufeng2018peixun2019';
+    // reg= /(\d+)/g;
+    // console.log(reg.test(str)); // true
+    // console.log(RegExp.$1);   //===>把上一次匹配 (test/exec)到的结果获取到,获取的是第一个小分组匹配的内容 ,大正则匹配的内容无法获取,它是一个全局的值,浏览器中$1只有一个,其他的正则操作会覆盖这个值, 所以这种方式没啥用
+    // console.log(reg.test(str)); // true
+    // console.log(RegExp['$&']);
+    // console.log(RegExp.$1);  // 2019
+    // console.log(reg.test(str)); //false
+    // console.log(RegExp.$1);  // 2019
+    // console.log(reg.test(str)); //true
+    // console.log(RegExp.$1);  // 02018
+
+    str='zhufeng2018zhufeng2019';  //=>zhufeng替换成zhufengpeixun
+ //    //=>真实项目中很多需求不基于正则是无法实现的
+ // //   str=str.replace('zhufeng','zhufengpeixun');
+ // //     str=str.replace('zhufeng','zhufengpeixun');//=>zhufengpeixunpeixun...
+ //    str=str.replace(/zhufeng/,'zhufengpeixun');
+ //    console.log(str);
+
+    str='zhufeng{val:2018}zhufeng{val:2019}';
+    reg=/\{val:(\d+)\}/g;
+    // str=str.replace(reg,'@');
+    // console.log(str);//zhufeng@zhufeng@
+
+    // str=str.replace(reg,'$1');
+ //   console.log(str); //zhufeng2018zhufeng2019 =>$1不是拿这个字符串替换掉大正则匹配的内容,此处的$1代表第一个分组匹配的内容 ,等价于RegExp.$1
+
+    /*
+    *  1. reg 和 str 匹配多少次,函数就被触发执行多少次 ,而且传递了一些参数信息值
+    *  2. 每一次arg中存储的信息 , 和执行exec捕获的信息相似 (内置原理 : 每一次正则匹配到的结果,都把函数执行 ,基于exec把本次匹配到的信息捕获到,然后把捕获的信息传递给这个函数)
+    *  3. 每一次函数中返回的是啥,就把当前大正则匹配的内容替换成啥
+    * */
+    str =str.replace(reg,(...arg)=>{
+    //    console.log(arg); //["{val:2018}", "2018", 7, "zhufeng{val:2018}zhufeng{val:2019}"]  第二次 :["{val:2019}", "2019", 24, "zhufeng{val:2018}zhufeng{val:2019}"]
+        return 'AA'
+    });
+    // console.log(str);//zhufengAAzhufengAA
+
+    // str ='2018/4/30 17 :50:23';
+    // ary=str.split(/(?:\/| |: )/g); //["2018", "4", "30", "17", ":50:23"]
+    // console.log(ary);
+    // let [,month,day,hours,minutes]=ary,
+    // result=`${month}-${day} ${hours}:${minutes}`;
+    // console.log(result);
+
+    str ='2018/4/30 17:50:23';
+    /*
+    * 1.获取时间字符串中的所有数字 (split)
+    * */
+
+    let ary =str.match(/\d+/g).map(item=>{
+        return item<10?'0'+item:item;
+    });//=>map相对于forEach来讲多了个返回值,函数中return的是啥,就是把当前数组中迭代的这一样替换成啥
+    console.log(ary); //["2018", "04", "30", "17", "50", "23"]
+
+     //2. 指定最后想要的时间格式 , 我们基于这个数组中的内容 ,帮你拼接好即可
+    let template='{0}年{1}月{2}日 {3}时{4}分{5}秒';
+    //=> {0} /0 => '2018' ary[0]
+    //=> {1} /1 => '04' ary[1]
+    //=>...
+
+    template=template.replace(/\{(\d)\}/g,(...arg)=>{
+        console.log(arg);
+        let [,index]=arg;//=>index : 每一次匹配小分组捕获的结果(也就是数字)
+        console.log(index);
+        return ary[index];
+    });
+    console.log(template);
+
+
+    // let template='{0}年{1}月{2}日 {3}时{4}分{5}秒';
+    // String.prototype.myFormatTime=function myFormatTime(template='{0}年{1}月{2}日 {3}时{4}分{5}秒') {
+    //         //=>this ;str
+    //     let ary=this.match(/\d+/g).map(item=>item<10?'0'+item:item);
+    //     return template.replace(/\{(\d)\}/g,(...[,index])=>ary[index] || '00');
+    // };
+    // console.log(str.myFormatTime(template));
+</script>

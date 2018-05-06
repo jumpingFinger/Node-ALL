@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            height: 1000%;
+            /*CSS3新增加的北京颜色线性渐变*/
+            /*background: -webkit-linear-gradient(top left,lightpink,lightblue,lightseagreen,lightgrey);*/
+        }
+        #link{
+            display: none;
+            position: fixed;
+            right:20px;
+            bottom:150px;
+            width: 100px;
+            height:100px;
+            text-align: center;
+            line-height: 100px;
+            background: rgba(0,0,0,.5);
+            font-size: 20px;
+            color: #fff1f0;
+        }
+    </style>
+</head>
+<body>
+<a href="javascript:;" id="link">go</a>
+</body>
+</html>
+<script>
+~function () {
+    let link=document.querySelector('#link');
+    //=>当页面在滚动的时候 ( 鼠标滚轮 /键盘按键 /手动拖动滚动条/基于JS控制滚动的时候....,我们随时获取当前页面卷去的高度,如果卷曲的高度>一屏幕的高度,让link显示,否则隐藏)
+    //=>window.onscroll:当页面股东的时候出发的事件
+    window.onscroll=function (){
+        let scrollT=document.documentElement.scrollTop,
+            winH=document.documentElement.clientHeight;
+        if(scrollT>winH*1.5){
+            link.style.display='block';
+        }else{
+            link.style.display='none';
+        }
+    };
+
+    //=>给当前的按钮绑定点击事件 , 当点击的时候控制页面的scrollTop=即可
+    let isRun=false;//=>记录当前是否正在运动,防止重复点击的操作
+    link.onclick=function (){
+        if(isRun) return ;
+        isRun=true;
+        // document.documentElement.scrollTop=0;//=>立即回到顶部
+        //动画 : 在指定时间内(1s), 匀速运动到顶部
+        // 1. 每间隔多长时间走一步 ,(在原有的scrollTop基础上减去步长)
+        //2. 规定时间内完成动画 ,我们需要根据距离和总时间算出步长
+        let change=document.documentElement.scrollTop-500,
+            duration=1000,
+            interval=17,//=>频率
+            step=change/duration*interval;
+      let timer=setInterval(()=>{
+            //=>基于定时器完成动画 :每间隔17ms都执行这个方法,方法中在当前的scrollTop的基础上减去步上完成动画
+            let curT=document.documentElement.scrollTop;
+
+            //=>当我们已经运动到顶部位置了,我么你需要清除定时器:timer代表当前这个定时器 ,
+            if(curT<2000){
+                document.documentElement.scrollTop=2000;
+                document.body.scrollTop=2000;
+                isRun=false;
+                clearInterval(timer);
+                return ;
+            }
+            curT=curT-step;
+            document.documentElement.scrollTop=curT;
+          console.log(document.documentElement.scrollTop);
+
+      },interval);
+
+    };
+}();
+</script>

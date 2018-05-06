@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet/less" href="css/index.less">
+    <script src="js/less-2.5.3.min.js"></script>
+</head>
+<body>
+<div class="container" id="container">
+    <ul class="wrapper clearfix">
+        <li class="slide">
+            <a href="">
+                <img src="" alt="">
+            </a>
+        </li>
+    </ul>
+    <ul class="focusBox clearfix">
+        <li class="select"></li>
+        <li></li>
+    </ul>
+    <a href="javascript:;" class="arrow arrowLeft"></a>
+    <a href="javascript:;" class="arrow arrowRight"></a>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+~function () {
+    let banner = options => new banner.prototype.init(options);
+
+    banner.prototype = {
+        constructor: banner,
+        initDefault: function ({
+                                   container = null,
+                                   url = null,
+                                   initIndex = 0,
+                                   speed = 300,
+                                   lazyImgTime = 500,
+                                   needAutoChange = true,
+                                   autoInterval = 2000,
+                                   isFocusShow = true,
+                                   needFocusChange = true,
+                                   focusEvent = 'click',
+                                   isArrowShow = true
+                               } = {}) {
+            this.container = container;
+            this.url = url;
+            this.initIndex = initIndex;
+            this.speed = speed;
+            this.lazyImgTime = lazyImgTime;
+            this.needAutoChange = needAutoChange;
+            this.autoInterval = autoInterval;
+            this.isFocusShow = isFocusShow;
+            this.needFocusChange = needFocusChange;
+            this.focusEvent = focusEvent;
+            this.isArrowShow = isArrowShow;
+        },
+        queryData: function(){
+            let xhr = new XMLHttpRequest(),
+                bannerData = null;
+            xhr.open('GET', this.url, false);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    bannerData = JSON.parse(xhr.responseText);
+                }
+            };
+            xhr.send(null);
+            this.bannerData = bannerData;
+        },
+        bindData:function(){
+            let str=``,
+                strFocus = ``;
+            this.bannerData.forEach(({link,img,desc},index)=>{
+                str += `<li class="slide">
+                <a href="${link}">
+                    <img src="" data-img="${img}" alt="${desc}">
+                </a>
+            </li>`;
+                strFocus += `<li data-index="${index}"></li>`;
+            });
+            this.wrapper.innerHTML = str;
+            this.isFocusShow ? this.focusBox.innerHTML = strFocus : null;
+            this.slideList = this.wrapper.getElementsByTagName('li');
+            this.imgList = this.wrapper.getElementsByTagName('img');
+            this.isFocusShow ? this.focusList = this.focusBox.getElementsByTagName('li') : null;
+            this.wrapper.appendChild(this.slideList[0].cloneNode(true));
+            this.wrapper.style.width = (this.bannerData.length + 1) * this.containerWidth;
+        },
+        lazyImg:function (){
+            let that=this;
+            let timer=setTimeout(function (){
+                [].forEach.call(_this.imgList, function (curImg) {
+                    let tempImg = new Image;
+                    tempImg.onload = function () {
+                        curImg.src = this.src;
+                        curImg.style.display = 'block';
+                        animate({
+                            curEle: curImg,
+                            target: {opacity: 1},
+                            duration: 200
+                        });
+                        tempImg = null;
+                    };
+                    tempImg.src = curImg.getAttribute('data-img');
+                });
+                clearTimeout(timer);
+            }, this.lazyImgTime);
+        },
+
+        init: function (options) {
+            this.initDefault(options);
+            let _this=this;
+            ['wrapper', 'focusBox', 'arrowLeft', 'arrowRight'].forEach(function (item, index) {
+                _this[item] = _this.container.querySelector('.' + item);
+            });
+            this.containerWidth = this.container.clientWidth;
+            this.queryData();
+            this.bindData();
+            // this.lazyImg();
+            // this.showInit();
+            // if (this.needAutoChange) {
+            //     this.autoTimer = setInterval(this.autoMove.bind(this), this.autoInterval);
+            // }
+            // this.mouseEvent();
+            // this.delegateEvent();
+        }
+    };
+    banner.prototype.init.prototype = banner.prototype;
+    window.banner = window.banner = banner;
+}();
+    banner({
+        container: document.getElementById('container'),
+        url: 'json/banner.json',
+        autoInterval: 3000,
+        initIndex: 2
+    });
+</script>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            left: 50px;
+            top: 50px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    ~function () {
+        let utils=(function (){
+            let getCss=(ele,attr)=>{
+                let val=null,
+                    reg=/^-?\d+(\.\d+)?(px|rem|em)?$/;
+                if('getComputedStyle' in window){
+                    val=window.getComputedStyle(ele)[attr];
+                }
+                return reg.test(val)?parseFloat(val):val;
+            };
+            let setCss=(ele,attr,value)=>{
+                if(!isNaN(value)){
+                    if(!/^(opacity|zIndex)$/.test(attr)){
+                        value+='px'
+                    }
+                }
+                ele['style'][attr]=value;
+            };
+            let setGroupCss=(ele,options)=>{
+                for (let key in options) {
+                    if (!options.hasOwnProperty(key)) break;
+                    setCss(ele,key,options[key]);
+                    console.log(getCss(ele, key));
+                }
+            };
+            let css=(...arg)=>{
+                let length=arg.length,
+                    fn=getCss;
+                length>=3?fn=setCss:(length===2 && typeof arg[1]==='object'?fn=setGroupCss:null);
+                return fn(...arg);
+            };
+            return {
+                css
+            }
+        })();
+        let effect={
+            linear:({begin,duration,change,time})=>time/duration*change+begin
+        };
+        window.animate=function ({ele,target,duration=1000,callback}){
+            let change={},
+                begin={},
+                time=0;
+            for (let key in target) {
+                if (!target.hasOwnProperty(key)) break;
+                    begin[key]=utils.css(ele,key);
+                    change[key]=target[key]-begin[key];
+
+            }
+            clearTimeout(ele.timer);
+            ele.timer=setInterval(()=>{
+                time+=17;
+                let cur={};
+                if(time>=duration){
+                    clearTimeout(ele.timer);
+                    utils.css(ele,target);
+                    callback.call(ele);
+                    return;
+                }
+                for (let attr in target) {
+                    if (target.hasOwnProperty(attr)) {
+                        console.log(change, change[attr]);
+                        cur[attr]=effect.linear({time:time,duration:duration,change:change[attr],begin:begin[attr]});
+                    }
+                }
+                utils.css(ele,cur);
+            },17)
+        };
+    }();
+    let fn= ()=>{
+        animate({
+          ele:box,
+          target:{left:300},
+          duration:500,
+          callback:function (){
+              animate({
+                  ele:this,
+                  target:{top :300},
+                  callback:function (){
+                      animate({
+                          ele:this,
+                          target:{left:50},
+                          duration:2000,
+                          callback:function (){
+                              animate({
+                                  ele:this,
+                                  target:{top:50}
+                              })
+                          }
+                      })
+                  }
+              })
+          }
+      })
+    };
+    fn();
+    setInterval(fn,4500);
+</script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .flowBox{
+            overflow: hidden;
+            margin:30px auto;
+            width: 1100px;
+        }
+        .flowBox li {
+            float: left;
+            margin-right: 20px;
+            width: 300px;
+        }
+        .flowBox li a {
+            display: block;
+            margin-bottom: 10px;
+            padding:10px;
+            background: #fff;
+            box-shadow: 3px 3px 10px 0 #666;
+        }
+        .flowBox a img {
+            display: block;
+            width: 100%;
+        }
+        .flowBox a span {
+            display: block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #555;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+<ul class="clearfix flowBox">
+    <li>
+        <!--<a href="#">-->
+            <!--<div>-->
+                <!--<img src="img/1.jpg" alt="">-->
+            <!--</div>-->
+            <!--<span>-->
+            <!--我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人 我是草人-->
+        <!--</span>-->
+        <!--</a>-->
+    </li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function ($){
+        let page=0,
+            data=null;
+        let getData=function () {
+            page++;
+            $.ajax({
+                url:`json/data.json?page=${page}`,
+                dataType:'json',
+                method:'get',
+                async:false,
+                success:result=>{
+                    data=result;
+                }
+            })
+        };
+        getData();
+
+        let bindHTML=()=>{
+            let $boxList=$('.flowBox >li');
+            for (let i = 0; i < data.length; i+=3) {
+                if(!data[i+2]) return ;
+                if(i<=18){
+                    alert(1);
+                }
+                let ary=[data[i],data[i+1],data[i+2]];
+                ary.sort(function (a,b){
+                    let cur=new Image(),
+                        next=new Image();
+                    cur.src=a.pic;
+                    next.src=b.pic;
+                    return next.height-cur.height
+                });
+
+                $boxList.sort((a,b)=>{
+                    return $(a).outerHeight-$(b).outerHeight
+                }).each((index,item)=>{
+                    let  aa=ary[index];
+                    if(!aa) return ;
+                    let{pic,link,title}=aa;
+                    $(`<a href="${link}">
+            <div>
+                <img src="${pic}" alt="">
+            </div>
+            <span>${title}</span>
+        </a>`).appendTo($(item));
+                })
+            }
+        };
+        bindHTML();
+
+        $(window).on('scroll',()=>{
+            let winH=$(window).outerHeight(),
+                pageH=document.documentElement.scrollHeight || document.body.scrollHeight,
+                scrollT=$(window).scrollTop();
+            if(scrollT+200>=pageH-winH){
+                console.log(1);
+                if(page>3)  {
+                    return
+                }
+                getData();
+                bindHTML();
+            }
+        })
+    });
+</script>
