@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            position: relative;
+            left: 20px;
+            top: 20px;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    let $box=$('#box');
+    //=>animate:$.prototype
+    //=>efect: linear\ease\ease-in\ease-out\ease-in-out
+
+    //=>stop:结束正在运行的动画,继续执行下一个新的动画 (直接结束当前元素的运动)
+    //=>finish : 同stop一样也是结束正在运行的动画  (结束当前运动的动画,并且让元素立即运动到目标位置,从上一个动画的目标位置作为下一个动画的起始位置)
+    $box.stop().animate({
+        top:300,
+        left:500
+    },500,()=>{
+        $box.css({
+            backgroundColor:'yellow'
+        })
+    })
+
+    //=>快捷动画
+    //1 . show/hide/toggle
+    //2. fadeIn/fadeOut/fadeToggle
+    //3. slideDown/slideUp/slideToggle
+    //可以指定具体运动时间,也可以指定 `show / fast`
+</script>

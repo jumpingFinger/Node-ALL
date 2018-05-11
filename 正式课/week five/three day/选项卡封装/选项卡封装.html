@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <!--选项卡样式 (用户决定的)-->
+    <style>
+        .tabBox{
+            margin:20px auto;
+            width: 360px;
+        }
+        .tabBox .options{
+            height: 34px;
+            border: 1px solid #debee1;
+            background: #eee;
+        }
+        .tabBox .options li {
+            float: left;
+            padding:0 12px;
+            height: 34px;
+            line-height: 34px;
+        }
+        .tabBox .options li a {
+            display: block;
+            color: #000;
+            font-size: 14px;
+        }
+        .tabBox .options li a .active{
+            /*谁让选中给谁加*/
+            border-top: 3px solid #FF8400;
+            height:33px;
+            line-height: 33px;
+        }
+        .tabBox .con {
+            display: none;
+            padding-top:10px;
+            height: 200px;
+            font-size:14px;
+            text-align: center;
+            background: lightseagreen;
+        }
+        .tabBox .con.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tabBox">
+    <ul class="options">
+        <li><a href="">图片</a></li>
+        <li><a href="">专栏</a></li>
+        <li><a href="">热点</a></li>
+    </ul>
+    <div class="con">1</div>
+    <div class="con">2</div>
+    <div class="con">3</div>
+</div>
+</body>
+</html>
+<script>
+</script>

@@ -1,0 +1,33 @@
+html,body{
+    background: #f4f4f4;
+    overflow-x:hidden;
+}
+.list{
+    margin: 20px auto;
+    width: 1000px;
+
+}
+.list li{
+     float: left;
+    width: 320px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 10px 0;
+
+}
+.list li:nth-of-type(3n){
+    margin-right: 0;
+}
+.list li a{
+    display: block;
+    background: white;
+    margin-bottom: 10px;
+}
+.list li a img{
+    width: 100%;
+}
+.list li span{
+    display: block;
+    font-size: 12px;
+    color: #555;
+}

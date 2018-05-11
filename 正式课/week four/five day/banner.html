@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet/less" href="css/less.less">
+    <script src="js/less-2.5.3.min.js"></script>
+    <style>
+        .title{
+            font-size: 17px;
+            color: red;
+            text-align: center;
+            line-height: 25px;
+        }
+    </style>
+</head>
+<body>
+<p class="title">上下轮播不会有箭头无箭头</p>
+<section class="container" id="container1">
+    <div class="wrapper">
+        <!--<div class="slide">-->
+        <!--<img src="img/banner1.jpg" alt="">-->
+        <!--</div>-->
+        <!--<div class="slide">-->
+        <!--<img src="img/banner1.jpg" alt="">-->
+        <!--</div>-->
+    </div>
+    <ul class="focus">
+        <!--<li class="active"></li>-->
+        <!--<li></li>-->
+    </ul>
+    <a href="javascript:;" class="arrow arrowRight"></a>
+    <a href="javascript:;" class="arrow arrowLeft"></a>
+</section>
+<p class="title">渐隐渐现,跟左右轮播用法一样</p>
+<section class="container" id="container2">
+    <div class="wrapper">
+        <!--<div class="slide">-->
+        <!--<img src="img/banner1.jpg" alt="">-->
+        <!--</div>-->
+        <!--<div class="slide">-->
+        <!--<img src="img/banner1.jpg" alt="">-->
+        <!--</div>-->
+    </div>
+    <ul class="focus">
+        <!--<li class="active"></li>-->
+        <!--<li></li>-->
+    </ul>
+    <a href="javascript:;" class="arrow arrowRight"></a>
+    <a href="javascript:;" class="arrow arrowLeft"></a>
+</section>
+<p class="title">左右轮播,有焦点,有箭头</p>
+<section class="container" id="container">
+    <div class="wrapper">
+        <!--<div class="slide">-->
+            <!--<img src="img/banner1.jpg" alt="">-->
+        <!--</div>-->
+        <!--<div class="slide">-->
+            <!--<img src="img/banner1.jpg" alt="">-->
+        <!--</div>-->
+    </div>
+    <ul class="focus">
+        <!--<li class="active"></li>-->
+        <!--<li></li>-->
+    </ul>
+    <a href="javascript:;" class="arrow arrowRight"></a>
+    <a href="javascript:;" class="arrow arrowLeft"></a>
+</section>
+<p class="title">左右轮播,有焦点,无箭头</p>
+<section class="container" id="container0">
+    <div class="wrapper">
+        <!--<div class="slide">-->
+        <!--<img src="img/banner1.jpg" alt="">-->
+        <!--</div>-->
+        <!--<div class="slide">-->
+        <!--<img src="img/banner1.jpg" alt="">-->
+        <!--</div>-->
+    </div>
+    <ul class="focus">
+        <!--<li class="active"></li>-->
+        <!--<li></li>-->
+    </ul>
+    <a href="javascript:;" class="arrow arrowRight"></a>
+    <a href="javascript:;" class="arrow arrowLeft"></a>
+</section>
+<p class="title">左右轮播,无焦点,有箭头</p>
+<section class="container" id="container3">
+    <div class="wrapper">
+        <!--<div class="slide">-->
+        <!--<img src="img/banner1.jpg" alt="">-->
+        <!--</div>-->
+        <!--<div class="slide">-->
+        <!--<img src="img/banner1.jpg" alt="">-->
+        <!--</div>-->
+    </div>
+    <ul class="focus">
+        <!--<li class="active"></li>-->
+        <!--<li></li>-->
+    </ul>
+    <a href="javascript:;" class="arrow arrowRight"></a>
+    <a href="javascript:;" class="arrow arrowLeft"></a>
+</section>
+</body>
+</html>
+<script src="js/animate.js"></script>
+<!--<script src="js/轮播图的封装.js"></script>-->
+<!--<script src="js/JQ原理的轮播图.js"></script>-->
+<script src="js/JQ原理的轮播图.js"></script>
+<script>
+
+        // banner({
+        //     ele:'#container1',
+        //     url: 'json/banner2.json',
+        //     isArrow:false,
+        //     focusEventType:'mouseover',
+        //     defaultIndex:1
+        // });
+        banner({
+            ele:'#container0',
+            url: 'json/banner.json',
+            isArrow:false,
+            interval:3000,
+            steep:500,
+            defaultIndex:2
+        });
+        banner({
+            ele:'#container3',
+            url: 'json/banner.json',
+            isFocus:false,
+            interval:3000,
+            steep:500,
+            defaultIndex:1
+        })
+</script>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .container{
+            position: relative;
+            margin:20px auto;
+            width:462px;
+            height: 77px;
+        }
+        .container .imgBox li {
+            float: left;
+            margin-right:18px;
+            width: 100px;
+            height: 75px;
+            border: 1px solid #eee;
+        }
+        .container .imgBox li:nth-last-child(1){
+            margin-right:0;
+        }
+        .container .imgBox li img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .container .mark{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 300px;
+            border: 1px solid #000;
+            box-sizing:border-box;
+        }
+        .container .mark img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<section class="container">
+    <!--ul.imgBox>li*4>img[src='img/apple_$.jpg']-->
+    <ul class="imgBox clearfix">
+        <!--
+            如果小图和大图在名字上没有固定的规则,我们把大图地址都以自定义属性方式存起来,后期需要展示大图的时候,从自定义属性获取即可,没有固定规则按这种
+
+            如果有固定的规则,我们完全可以不采用自定义属性的方式,而是基于规则匹配即可
+        -->
+        <li><img src="img/apple_1.jpg"  data-big="img/apple_1_.jpg" alt=""></li>
+        <li><img src="img/apple_2.jpg" alt=""></li>
+        <li><img src="img/apple_3.jpg" alt=""></li>
+        <li><img src="img/apple_4.jpg" alt=""></li>
+    </ul>
+    <!--div.mark>img[src='img/apple_1_bigger.jpg']-->
+    <!--JS动态创建的-->
+    <!--<div class="mark">-->
+        <!--<img src="img/apple_1_bigger.jpg" alt="">-->
+    <!--</div>-->
+</section>
+</body>
+</html>
+<!--方案一:
+      每一个li中都有一个大盒子 , 大盒子中存放的是大图,开始是隐藏的,鼠标进入,让其显示 ,并且让他的位置跟随鼠标的位置改变即可,鼠标离开li让自己的大盒子隐藏即可,类似于放大镜smallBox出现的mark
+   方案二:
+    只有一个大盒子(可以在JS中动态创建,也可以事先写好,控制显示隐藏),鼠标进入另一个li,都让大盒子出来 , 并且大盒子中都存放的图片根据当前进入的li动态改变,同样实现鼠标移动跟随大盒子移动
+-->
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    let $imgList=$('.container>.imgBox>li'),
+        $mark=null,
+        $container=$('.container');
+
+    $imgList.on('mouseover',function (ev){
+        //=>创建mark,根据经过的li中的小图片,动态管控mark中的大图片
+        let srcStr=$(this).children('img').attr('src');
+        //=>加个下划线
+        srcStr=srcStr.replace(/_(\d+)/g,'_$1_bigger');
+        if(!$mark){
+            $mark=$(` <div class="mark">
+        <img src="${srcStr}" alt="">
+    </div>`);
+            $container.append($mark)
+        }
+    }).on('mouseout',function (ev){
+            //=>移除mark
+        if($mark){
+            $mark.remove();
+            $mark=null;
+        }
+    }).on('mousemove',function (ev){
+        //=>根据鼠标的位置计算出mark的位置
+        //container 上左偏移
+        let {top:conTop,left:conLeft}=$container.offset(),
+            curL=ev.pageX-conLeft-60;
+            curT=ev.pageY-conTop+40;
+        $mark.css({
+            left:curL,
+            top:curT
+        })
+    })
+
+</script>

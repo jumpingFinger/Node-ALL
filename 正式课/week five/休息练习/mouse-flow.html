@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .container {
+            position: relative;
+            margin:20px auto;
+            width:500px;
+            border:1px solid red;
+            padding: 30px;
+        }
+        .container .imgBox li {
+            float: left;
+            padding-right: 15px;
+            width: 20%;
+            border:1px solid #eee;
+        }
+        .container .imgBox li img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .container .mark {
+            position: absolute;
+            left: 0;
+            top: 100px;
+            width: 400px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+        .container .mark img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<section class="container">
+    <ul class="imgBox clearfix">
+        <li><img src="img/apple_1.jpg" alt=""></li>
+        <li><img src="img/apple_2.jpg" alt=""></li>
+        <li><img src="img/apple_3.jpg" alt=""></li>
+        <li><img src="img/apple_4.jpg" alt=""></li>
+    </ul>
+    <!--<div class="mark">-->
+        <!--<img src="img/apple_1_bigger.jpg" alt="">-->
+    <!--</div>-->
+</section>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    let container=document.querySelector('.container'),
+        oUl=container.querySelector('ul'),
+        imgList=container.querySelectorAll('li'),
+        mark=null;
+    container.onmouseover=function (ev){
+        let target=ev.target,
+           src='',
+           markStr;
+        if(target.nodeName==='IMG' || target.nodeName==='LI'){
+            if(!mark){
+            if (target.nodeName==='LI'){
+                src=target.querySelector('img').getAttribute('src');
+            }else{
+                src=target.getAttribute('src');
+            }
+            src=src.replace(/_(\d+)/g,'_$1_bigger');
+
+                markStr=` <div class="mark">
+        <img src="${src}" alt="">
+    </div>`;
+                container.innerHTML+=markStr;
+                mark=container.querySelector('.mark');
+            imgList=container.querySelectorAll('li')
+             }
+        }
+    };
+    container.onmouseout=function (){
+            if(mark){
+                container.removeChild(mark);
+                mark=null;
+            }
+    };
+    container.onmousemove =function (ev){
+        // if(ev.target.target==='IMG' || ev.target.tagName==='LI') {
+        ev.stopPropagation();
+            let {top: conscrollT, left: conscrollL} = $(container).offset(),
+                curL = ev.pageX - conscrollL,
+                curT = ev.pageY - conscrollT,
+                $mark = $('.mark');
+            let left=$mark.css('left'),
+                    top=$mark.css('top');
+            $mark.css({
+                left: curL -20+left ,
+                top: curT + 20+top
+            });
+        // }
+    };
+
+
+</script>

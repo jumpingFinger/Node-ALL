@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .menu{
+            margin:20px auto;
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            border:1px solid red;
+        }
+        .menu ul{
+            float: left;
+            width: 100px;
+            height: 100%;
+        }
+        .menu ul li {
+            height: 50px;
+            line-height: 50px;
+            background: lightsalmon;
+        }
+        .menu ul li a {
+            display: block;
+            padding:0 10px;
+            height: 100%;
+            font-size: 14px;
+            color:#555;
+        }
+        .menu ul li:hover{
+            background: lightseagreen;
+        }
+        .detailedList{
+            display: none;
+            float: left;
+            width: 400px;
+            height: 100%;
+            font-size:20px;
+            background: lightseagreen;
+        }
+
+    </style>
+</head>
+<body>
+<section class="menu">
+    <ul class="nav">
+        <li><a href="javascript:;" target="_blank">导航1</a></li>
+        <li><a href="javascript:;" target="_blank">导航2</a></li>
+        <li><a href="javascript:;" target="_blank">导航3</a></li>
+        <li><a href="javascript:;" target="_blank">导航4</a></li>
+    </ul>
+    <div class="detailedList">
+        <ul>
+            <li>导航1</li>
+            <li>导航1</li>
+            <li>导航2</li>
+            <li></li>
+        </ul>
+    </div>
+</section>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    let menu=document.querySelector('.menu'),
+        detailedList=menu.querySelector('.detailedList');
+    menu.onmouseover=function (ev){
+        let $parents=$(ev.target).parents();
+        if((ev.target.tagName==='A' ||ev.target.tagName==='LI' || ev.target.classList.contains('detailedList'))){
+            let val=ev.target.innerHTML.match(/\d+/g);
+            $(detailedList).css('display','block').html(`导航${val}对应的内容`);
+            return ;
+        }
+    };
+    menu.onmouseout=function (ev){
+        let $parents=$(ev.target).parents();
+        if(ev.target.tagName==='A' ||ev.target.tagName==='LI' ||ev.target.classList.contains('detailedList')){
+            detailedList.style.display='none';
+        }
+    };
+</script>

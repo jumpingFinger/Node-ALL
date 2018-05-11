@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/banner.css">
+</head>
+<body>
+
+<!--section.container#container>(div.wrapper>div>img[src='img/banner$.jpg'])+(ul.focus>li.active+li*3)+(a[href='javascript:;'].arrow*2)-->
+<section class="container" id="container">
+    <div class="wrapper">
+        <!--<div class="slide"><img src="img/banner1.jpg" alt=""></div>-->
+        <!--<div class="slide"><img src="img/banner2.jpg" alt=""></div>-->
+        <!--<div class="slide"><img src="img/banner3.jpg" alt=""></div>-->
+        <!--<div class="slide"><img src="img/banner4.jpg" alt=""></div>-->
+    </div>
+    <ul class="focus">
+        <!--<li class="active"></li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+    </ul>
+    <a href="javascript:;" class="arrow arrowLeft"></a>
+    <a href="javascript:;" class="arrow arrowRight"></a>
+</section>
+
+<!--<section class="container" id="container2">-->
+    <!--<div class="wrapper">-->
+    <!--</div>-->
+    <!--<ul class="focus">-->
+    <!--</ul>-->
+    <!--<a href="javascript:;" class="arrow arrowLeft"></a>-->
+    <!--<a href="javascript:;" class="arrow arrowRight"></a>-->
+<!--</section>-->
+
+<script src="js/animate.js"></script>
+<!--<script src="js/banner.js"></script>-->
+<script src="js/banner-plugin.js"></script>
+<script>
+    new Banner({
+        ele: '#container',
+        url: 'json/banner2.json',
+        width: 800,
+        height:400,
+        // isAuto:false,
+        // isArrow: false,
+        // isFocus: false,
+        // isMouse: false,
+        // defaultIndex:0,
+        interval: 2000,
+        speed:500,
+        direction: 'vertical',//水平(horizontal)或垂直(vertical)
+    });
+
+    // new Banner({
+    //     ele: '#container2',
+    //     url: 'json/banner2.json',
+    //     interval: 2000,
+    //     speed:500
+    // });
+</script>
+</body>
+</html>

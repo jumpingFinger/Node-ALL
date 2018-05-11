@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html body {
+            height: 100%;
+            overflow: hidden;
+        }
+        .menuBox {
+            margin: 20px auto;
+            width: 700px;
+            height: 270px;
+            border: 1px solid #000;
+        }
+        .navBox {
+            float: left;
+            width: 200px;
+            background: lightblue;
+        }
+        .navBox ul li {
+            height: 30px;
+            line-height: 30px;
+        }
+        .navBox ul li a {
+            display: block;
+            padding: 0 10px;
+            height: 100%;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .navBox ul li a:hover {
+            background: lightcoral;
+        }
+        .detailBox {
+            display: none;
+            float: left;
+            width: 500px;
+            height: 100%;
+            background: #EEE;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<section class="menuBox">
+    <nav class="navBox">
+        <ul>
+            <li><a href="#" target="_black">导航1</a></li>
+            <li><a href="#" target="_black">导航2</a></li>
+            <li><a href="#" target="_black">导航3</a></li>
+            <li><a href="#" target="_black">导航4</a></li>
+            <li><a href="#" target="_black">导航5</a></li>
+            <li><a href="#" target="_black">导航6</a></li>
+            <li><a href="#" target="_black">导航7</a></li>
+            <li><a href="#" target="_black">导航8</a></li>
+        </ul>
+    </nav>
+    <div class="detailBox">导航1对应的详细内容</div>
+</section>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    // let menuBox=document.querySelector('.menuBox');
+    // console.dir(menuBox);
+    // console.dir(document);
+    let $detailBox = $('.detailBox');
+    $(document.body).on('mouseover', function (ev) {
+        let target = ev.target,
+            tag = target.tagName,
+            $target = $(target),
+            $pars = $target.parents();//=>获取当前事件源的祖先元素
+        let flag = $pars.filter('.navBox').length > 0 ? true : false;
+        if((tag==='A' || tag ==='LI') && flag){
+            let val=$target.text().match(/\d+/);
+            $detailBox.css('display','block').html(`导航${val}对应的内容`);
+            return;
+        }
+        $detailBox.css('display', 'none');
+    });
+    $detailBox.on('mouseover', function (ev) {
+        ev.stopPropagation();
+    });
+</script>

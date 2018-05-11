@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            margin:50px auto;
+            background: red;
+        }
+        #outer{
+            width: 200px;
+            height: 200px;
+            position:absolute;
+            top: 30px;
+            left: 30px;
+            background: red;
+            cursor:pointer;
+        }
+        #inner{
+            width: 100px;
+            height: 100px;
+            position:absolute;
+            top: 300px;
+            left: 30px;
+            background:rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="box"></div>-->
+<!--<input type="text" id="tempInp">-->
+<!--<input type='submit'>-->
+<div class="outer" id="outer">
+    <div class="inner" id="inner"></div>
+</div>
+</body>
+</html>
+<script>
+    //=>IE兼容
+    // ~function () {
+    //     box.onclick=function (ev){
+    //         //=>在IE低版本浏览器中吗,浏览器执行绑定的方法,并没有把事件对象传递进来,此时ev =undefined , 需要机遇window.event来获取  (由于是全局属性,鼠标每次操作都会把上一次操作的值替换掉)
+    //         ev=ev ||window.event;
+    //         ev.target=ev.target ||ev.srcElement; //=>srcElement 是获取事件源
+    //         console.log(ev.type);//都有
+    //         console.log(ev.clientX);//都有
+    //         console.log(ev.pageX);//低版本浏览器的时间对象中不存在pageX/pageY
+    //         ev.pageX=ev.clientX+(document.documentElement.scrollLeft ||document.body.scrollLeft);
+    //         ev.pageY=ev.clientY+(document.documentElement.scrollTop ||document.body.scrollTop);
+    //         ev.which=ev.keyCode;
+    //         ev.preventDefault=function (){
+    //             ev.returnValue=false; //=>阻止低版本默认行为
+    //         };
+    //         ev.stopPropagation=function (){
+    //             ev.cancelBubble=true;  //=>阻止他的冒泡传播
+    //         };
+    //         console.log(ev);
+    //     }
+    // }();
+
+   ~function () {
+       //  document.onclick=function (){
+       //      console.log('document');
+       //  };
+       // document.documentElement.onclick=function (){
+       //     console.log('html');
+       // };
+       let aa=null;
+       let bb=null;
+       document.body.onclick=function (ev){
+           // console.log('body',ev===aa);
+       };
+       outer.onclick=function (ev){
+            aa=ev.currentTarget;
+           console.log(aa, bb);
+           // console.log(ev);
+           // console.log('outer',ev===aa);
+       };
+       inner.onclick=function (ev){
+         let   bb=ev.currentTarget;
+           console.log(aa, bb);
+           // ev.stopPropagation?  ev.stopPropagation():ev.cancelBubble=true;
+           // console.log(ev);
+           // console.log('inner');
+       };
+   }();
+</script>

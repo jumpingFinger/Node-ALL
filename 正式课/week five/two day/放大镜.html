@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        .magnifierBox{
+            margin:20px auto;
+            width: 600px;
+            height: 300px;
+            overflow: hidden;
+        }
+        .magnifierBox .smallBox, .magnifierBox .bigBox{
+            position: relative;
+            float: left;
+            width: 300px;
+            height: 100%;
+            overflow: hidden;
+        }
+        .magnifierBox .smallBox img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .magnifierBox .smallBox .mark{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            z-index: 10;
+            background: #f0a63a;
+            opacity: 0.3;
+            filter:alpha(opacity=30);
+            cursor:move; //=>鼠标是可以移动的图标
+        }
+        .magnifierBox .bigBox img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 900px;
+            height: 900px;
+        }
+        .magnifierBox .smallBox .mark,.magnifierBox .bigBox{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<section class="magnifierBox">
+    <div class="smallBox">
+        <img src="img/1.jpg" alt="">
+        <div class="mark"></div>
+    </div>
+    <div class="bigBox">
+        <img src="img/2.jpg" alt="">
+    </div>
+</section>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js">
+</script>
+<script>
+    /*
+    * 1.鼠标进入和离开smallBox ,控制mark以及bigBox的位置
+    * 2.控制mark在small-box中运动,但是不能超过边界
+    * 3.当marik在smallbox移动的时候 , 根据mark移动的距离,计算出bigimg在bigbox中移动的距离(反向三倍 : x/y移动的都是3倍,整体都是9倍)
+    * */
+    $(function (){
+        var $magnifierBox=$('.magnifierBox'),
+            $smallBox=$magnifierBox.find('.smallBox'),
+            $mark=$magnifierBox.find('.mark'),
+            $bigBox=$magnifierBox.find('.bigBox'),
+            $bigImg=$bigBox.find('img');
+
+        //=>控制mark和bigBox的显示隐藏
+        $smallBox.on('mouseenter',function (ev){
+            $mark.add($bigBox).css('display','block');
+            conmputedMark(ev);//=>刚进入到盒子中,也罢mark位置计算出来
+        }).on('mouseleave',function (){
+            $mark.add($bigBox).css('display','none');
+        }).on('mousemove',function (ev){
+            //=>用mousemove让鼠标在smallBox移动的时候,让mark跟着鼠标一起动
+            //=>JQ中的ev已经是兼容所有的浏览器了 ,(JQ处理了) ,我们只要按照标准浏览器的属性使用即可
+            conmputedMark(ev); //=>鼠标在盒子中移动
+        });
+
+        //=>跟着动让mark跟着鼠标
+        function conmputedMark(ev){
+            var offsetObj=$smallBox.offset(),
+                curL=ev.pageX-offsetObj.left-$mark.outerWidth()/2,
+                curT=ev.pageY-offsetObj.top-$mark.outerHeight()/2;
+
+            //=>边界判断
+            var minL=0,
+                minT=0,
+                maxL=$smallBox.outerWidth()-$mark.outerWidth(),
+                maxT=$smallBox.outerHeight()-$mark.outerHeight();
+            curL<minL?curL=minL:curL;
+            curL>maxL?curL=maxL:curL;
+            curT<minT?curT=minT:curT;
+            curT>maxT?curT=maxT:curT;
+            $mark.css({
+                top:curT,
+                left:curL
+            });
+            //=>mark动,而右侧大图反向运动 ,(横竖都是3倍)
+            $bigImg.css({
+                top:-curT*3,
+                left:-curL*3
+            })
+        }
+    })
+</script>
