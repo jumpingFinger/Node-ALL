@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #main{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<!--给echarts 准备一个DOM容器,图标会放到这个容器中-->
+<div id="main"></div>
+
+</body>
+</html>
+<script src="utils/echarts.min.js">
+</script>
+<script>
+    let main=document.getElementById('#main');
+    //=>初始化当前echart元素;返回值就会有一个setOptions
+    let myEchart=echarts.init(main);
+</script>

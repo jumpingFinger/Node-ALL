@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <link rel="stylesheet/less" href="css/index.less">
+    <script src="utils/less-2.5.3.min.js"></script>
+    <script src="utils/prefixfree.min.js"></script>
+    <script>
+        ~function anonymous(window) {
+            let computedREM = function () {
+                let winW = document.documentElement.clientWidth,
+                    desW = 640;
+                if (winW > 640) {
+                    document.documentElement.style.fontSize = '100px';
+                    return;
+                }
+                document.documentElement.style.fontSize = (winW / desW * 100)+'px';
+            };
+            computedREM();
+            window.addEventListener('resize',computedREM);
+        }(window);
+    </script>
+</head>
+<body>
+<main class="mainBox">
+    <!--bg img-->
+    <img src="img/myDream.jpg" alt="" class="backgroundImg">
+    <div class="backgroundMark"></div>
+    
+    <!--audio-->
+    <audio src="img/myDream.m4a" preload="auto" id="musicAudio"></audio>
+    <!--header-->
+    <header class="headerBox">
+        <img src="img/myDream.jpg" alt="" class="pic">
+        <div class="title">
+            <h1>我的梦-my-dream</h1>
+            <h2>张靓颖</h2>
+        </div>
+        <a href="javascript:;" class="playBtn"></a>
+    </header>
+    <!--content-->
+    <section class="contentBox">
+        <div class="wrapper">
+            <p>我的梦(华为手机主题曲) -张靓颖</p>
+        </div>
+    </section>
+    <!--footer-->
+    <footer class="footerBox">
+        <div class="progressBox">
+            <span class="already">00:00</span>
+            <div class="progress">
+                <div class="current"></div>
+            </div>
+            <span class="duration">03:00</span>
+        </div>
+        <a href="javascript:;" class="downLoadBtn">
+            下载这首音乐
+        </a>
+    </footer>
+</main>
+
+<!--<audio>-->
+    <!--<source src="xxx.mp3" type="audio/mpeg">-->
+    <!--<source src="xxx.ogg" type="audio/ogg">-->
+    <!--<source src="xxx.wav" type="audio/wav">-->
+    <!--当前浏览器版本过低,不支持audio播放  (有的项目中上面三种都不支持会继续使用flash完成音频的播放)-->
+    <!--<objct></objct>//=>这个标签会播放flash 查查-->
+<!--</audio>-->
+
+<!--
+    controls
+-->
+<!--<audio src="img/myDream.m4a" controls autoplay loop preload="metadata"></audio>-->
+<!--&lt;!&ndash;poster :  设置视频的封面&ndash;&gt;-->
+<!--<video src="" poster=""></video>-->
+</body>
+</html>
+<script src="utils/zepto.min.js">
+</script>
+<script src="js/index.js"></script>
+<script>
+</script>

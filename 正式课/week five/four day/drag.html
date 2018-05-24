@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            height: 100%;
+            -webkit-user-select: none; //=>禁止用户选中文字
+        }
+        /*一般模态框做固定定位*/
+        /*dialog*/
+        .diaLogMark{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.2);
+            z-index: 888;
+        }
+        .diaLogBox {
+            /*控制盒子在中间我们最好在JS中实现,经过精密的计算,算出具体的top,left,而不是模糊的百分比,这样以后我们在JS中通过修改它的top/left就可以改变位置了*/
+            position: fixed;
+            width: 200px;
+            height: 300px;
+            background: #fff;
+            z-index: 999;
+
+        }
+        .diaLogBox .title{
+            position: relative;
+            height: 35px;
+            line-height: 35px;
+            padding: 0 10px;
+            background: #ddd ;
+            border-bottom:1px solid #333333;
+            cursor:move;
+        }
+        .diaLogBox .title i {
+            position: absolute;
+            right:10px;
+            top: 50%;
+            margin-top:-10px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: palevioletred;
+            font-weight: normal;
+            z-index: 1000;
+            cursor:pointer;
+            font-family: "Microsoft JhengHei";
+        }
+    </style>
+</head>
+<body>
+<!--dialog : 模态框 (弹出框)-->
+<div class="diaLogMark"></div>
+<div class="diaLogBox">
+    <h3 class="title">
+        珠峰培训diaLogBox
+        <i>x</i>
+    </h3>
+    <div class="con">
+
+    </div>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $(function (){
+        let $diaLogMark=$('.diaLogMark'),
+            $diaLogBox=$('.diaLogBox'),
+            $boxTitle=$diaLogBox.find('.title'),
+            $closeBtn=$boxTitle.find('i');
+        let winW=$(document).width(),
+            winH=$(document).height(),
+            boxW=$diaLogBox.outerWidth();
+            boxH=$diaLogBox.outerHeight();
+        //=>1.先让dialog-box在屏幕中间就可以了
+        let minL=0,
+            minT=0,
+            maxL=winW-boxW,
+            maxT=winH-boxH;
+        $diaLogBox.css({
+            left:(winW-boxW)/2,
+            top:(winH-boxH)/2
+        });
+
+        //=>2.点击关联按钮让dialog消失
+        $closeBtn.on('click',function (){
+            $diaLogBox.stop().fadeOut(500,()=>{
+                $diaLogMark.css('display','none');
+            })
+        })
+
+        //=>3.实现拖拽效果
+        /*
+        *  思路
+        *       A: 鼠标在H3中按下 (mousedown)证明拖拽开始
+        *       B: 鼠标在H3中移动 (mousemove)让盒子也跟着移动
+        *       C :鼠标在H3上松开 (mouseup)证明拖拽结束,此时我们再在H3中移动,不会做任何处理
+        *
+        *  */
+
+        //=>鼠标按下做的处理
+        let dragStart=function (ev){
+            //记录鼠标的起始位置和移动过程中的鼠标的位置
+            //this : H3
+
+                //=>attr:JQ中的设置自定义属性 (属性值最后都是字符串)
+                //=>基于JQ中的css获取的属性值都是带单位的
+                this.starX=ev.clientX;
+                this.starY=ev.clientY;
+                this.starL=parseFloat($diaLogBox.css('left'));
+                this.starT=parseFloat($diaLogBox.css('top'));
+
+            //=>只有按下才会给move行为绑定方法()这H3中移动鼠标才会让其做一些事情
+            this.setCapture();//=>把当前元素this和鼠标绑在一起
+            this.releaseCapture();
+            $boxTitle.on('mousemove',dragMove);
+        };
+        //=>鼠标移动做的处理事情 :鼠标移动,盒子跟着动
+        let dragMove=function (ev){
+            let {starX,starY,starL,starT}=this;
+            let curL=ev.clientX-starX+starL,
+                curT=ev.clientY-starY+starT;
+            curL=curL<minL?minL:(curL>maxL?maxL:curL);
+            curT=curT<minT?minT:(curT>maxT?maxT:curT);
+            $diaLogBox.css({
+                left:curL,
+                top:curT
+            })
+        };
+        //=>鼠标离开处理事情
+        let dragEnd=function (){
+
+            //=>手指在H3中抬起,证明结束拖拽,我们把move绑定的方法移除,鼠标再移动时,不会变
+            $boxTitle.off('mousemove',dragMove);
+        };
+        $boxTitle.mousedown(dragStart);
+        $boxTitle.mouseup(dragEnd);
+    });
+</script>

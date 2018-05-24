@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            height: 100%;
+            -webkit-user-select: none; //=>禁止用户选中文字
+        }
+        /*一般模态框做固定定位*/
+        /*dialog*/
+        .diaLogMark{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.2);
+            z-index: 888;
+        }
+        .diaLogBox {
+            /*控制盒子在中间我们最好在JS中实现,经过精密的计算,算出具体的top,left,而不是模糊的百分比,这样以后我们在JS中通过修改它的top/left就可以改变位置了*/
+            position: fixed;
+            width: 200px;
+            height: 300px;
+            background: #fff;
+            z-index: 999;
+
+        }
+        .diaLogBox .title{
+            position: relative;
+            height: 35px;
+            line-height: 35px;
+            padding: 0 10px;
+            background: #ddd ;
+            border-bottom:1px solid #333333;
+            cursor:move;
+        }
+        .diaLogBox .title i {
+            position: absolute;
+            right:10px;
+            top: 50%;
+            margin-top:-10px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: palevioletred;
+            font-weight: normal;
+            z-index: 1000;
+            cursor:pointer;
+            font-family: "Microsoft JhengHei";
+        }
+    </style>
+</head>
+<body>
+<!--dialog : 模态框 (弹出框)-->
+<div class="diaLogMark"></div>
+<div class="diaLogBox">
+    <h3 class="title">
+        珠峰培训diaLogBox
+        <i>x</i>
+    </h3>
+    <div class="con">
+
+    </div>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $(function (){
+        let $diaLogMark=$('.diaLogMark'),
+            $diaLogBox=$('.diaLogBox'),
+            $boxTitle=$diaLogBox.find('.title'),
+            $closeBtn=$boxTitle.find('i');
+        let winW=$(document).width(),
+            winH=$(document).height(),
+            boxW=$diaLogBox.outerWidth();
+        boxH=$diaLogBox.outerHeight();
+        let minL=0,
+            minT=0,
+            maxL=winW-boxW,
+            maxT=winH-boxH;
+        $diaLogBox.css({
+            left:(winW-boxW)/2,
+            top:(winH-boxH)/2
+        });
+        $closeBtn.on('click',function (){
+            $diaLogBox.stop().fadeOut(500,()=>{
+                $diaLogMark.css('display','none');
+            })
+        });
+        let dragStart=function (ev){
+            this.starX=ev.clientX;
+            this.starY=ev.clientY;
+            this.starL=parseFloat($diaLogBox.css('left'));
+            this.starT=parseFloat($diaLogBox.css('top'));
+            // this.setCapture();//=>把当前元素this和鼠标绑在一起
+            // this.releaseCapture();
+     //       $('document').on('mousemove',dragMove).on('mouseup',dragEnd);//this :都变为了document了,但是我们在dragmove中使用的this希望是dragStar的this一样是h3
+            this.dragMove=dragMove.bind(this);
+            this.dragEnd=dragEnd.bind(this);
+            $(document).on('mousemove',this.dragMove).on('mouseup',this.dragEnd);
+        };
+        let dragMove=function (ev){
+            let {starX,starY,starL,starT}=this;
+            let curL=ev.clientX-starX+starL,
+                curT=ev.clientY-starY+starT;
+            curL=curL<minL?minL:(curL>maxL?maxL:curL);
+            curT=curT<minT?minT:(curT>maxT?maxT:curT);
+            $diaLogBox.css({
+                left:curL,
+                top:curT
+            })
+        };
+        let dragEnd=function (){
+            $(document).off('mousemove',this.dragMove).off('mouseup',this.dragEnd);
+        };
+        $boxTitle.mousedown(dragStart);
+    });
+</script>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <!--<link rel="stylesheet" href="交互简历/css/reset.min.less">-->
+    <!--<srcipt src="交互简历"></srcipt>-->
+    <style>
+        .box{
+            position: absolute;
+            margin:auto;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="box"></div>
+</body>
+</html>
+<script src="交互简历/utils/zepto.min.js"></script>
+<script>
+    //     let $box=$('#box');
+    // //=>zepto中提供专门供移动端操作的事件办法
+    // $box.tap(ev=>{
+    //    //点击
+    // });
+    // $box.singleTap(ev=>{
+    //     //单击
+    // });
+    // $box.doubleTap(ev=>{
+    //     //双击
+    // });
+    // $box.longTap(ev=>{
+    //     //长按
+    // });
+    //
+    // //=>swipe  /swipeLeft  /swipeRight / swipeUp  / swipeDown...
+    // //=>pinchIn  / pinchOut ...缩放
+
+    let box=document.querySelector('.box');
+    box.ontouchstart=function (ev){
+        //=>按下的时候记录手指的起始位置
+
+        let point=ev.changedTouches[0];
+        this.strX=point.clientX;
+        this.strY=point.clientY;
+        this.isMove=false;
+    };
+    box.ontouchmove=function (ev){
+        let point=ev.changedTouches[0];
+        this.changeX=point.clientX-this.strX;
+        this.changeY=point.clientY-this.strY;
+
+        if(Math.abs(this.changeX)>10 || Math.abs(this.changeY)>10){
+            //->10的偏移误差
+            this.isMove=true;
+        }
+    };
+    box.ontouchend=function (ev){
+        if(this.isMove){
+            //=>滑动
+            return;
+        }
+        //=>点击
+        console.log('我是点击操作');
+    };
+</script>

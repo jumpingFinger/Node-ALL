@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            background: rebeccapurple;
+        }
+    </style>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin:50px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    ~function () {
+        function fn1 () {
+            console.log(1);
+        }
+        function fn2 () {
+            console.log(2);
+        }
+        function fn4 () {
+            console.log(4);
+        }
+        function fn4 () {
+            console.log(4);
+        }
+        function fn5 () {
+            console.log(5);
+        }
+        function fn6 () {
+            console.log(6);
+        }
+        function fn7 () {
+            console.log(8);
+        }
+        function fn8 () {
+            console.log(8);
+        }
+        function fn9 () {
+            console.log(9);
+        }
+        function fn10 () {
+            console.log(10);
+        }
+        function fn11 () {
+            console.log(11);
+        }
+        function fn12 () {
+            console.log(13);
+        }
+    }();
+
+    ~function () {
+    // box.addEventListener('click',function (){
+    //     console.log(1);
+    // });
+    // box.onclick=function (){
+    //     console.log(2);
+    // };
+    // box.addEventListener('click',function (){
+    //     console.log(3);
+    // });
+}();
+
+   //=>JQ的事件
+    ~function () {
+        // let fn=function (ev) {
+        //     console.log(1);
+        // };
+        // // $(document).on('click',fn);
+        // // $(document).off('click',fn);
+        // // $(document).one('click',fn);
+        // $(document).click(fn);
+        // $(document).delegate('#box','click',fn);//=>把点击行为委托给document,不管点击文档中的哪一个元素,都会触发文档的点击行为,第一个参数代指事件源是#box我们执行fn这件事
+        // $(document).delegate('a','click',fn2);
+    }();
+</script>

@@ -1,0 +1,302 @@
+@import 'reset';
+@import (reference)'common';
+
+html{
+  font-size: 100px;
+}
+
+html,body{
+  position: relative;
+  z-index: -4;
+  height: 100%;
+  overflow: hidden;
+  background: #F4F4F4;
+  font-family: 'Microsoft JhengHei';
+}
+
+.mainBox{
+  position: relative;
+  z-index: -3;
+  margin:0 auto;
+  max-width:640px;
+  height: 100%;
+  background: #FFF;
+}
+
+.loadingBox,.phoneBox,.messageBox{
+  display: none;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+/*loading*/
+.loadingBox{
+  background: #000;
+  .title{
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 100%;
+    height: 1.4rem;
+    margin-top: -2.2rem;
+    color: #fff;
+    h1{
+      line-height: .75rem;
+      font-size: .5rem;
+      text-align: center;
+    }
+    h2{
+      margin-top: .4rem;
+      line-height: .45rem;
+      text-align: center;
+      letter-spacing: .04rem;
+      font-size: .40rem;
+    }
+  }
+
+  .progress{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin:-1.5rem 0 0 -2.3rem;
+    width: 4.6rem;
+    height: .3rem;
+    background: #FFF;
+    border-radius: 2px;
+
+    .curProgress{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100px;
+      height: 100%;
+
+
+      background: -webkit-linear-gradient(left bottom, #5CB85C 0%, #5CB85C 25%, #74c274 25%, #74c274 50%, #5CB85C 50%, #5CB85C 75%, #74c274 75%, #74c274 100%);
+      background: linear-gradient(left bottom, #5CB85C 0%, #5CB85C 25%, #74c274 25%, #74c274 50%, #5CB85C 50%, #5CB85C 75%, #74c274 75%, #74c274 100%);
+      background-size: .3rem .3rem;
+
+      animation:loadingMove .5s linear 0s infinite both;
+      //transition: .5s;
+    }
+  }
+}
+@keyframes loadingMove  {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -.3rem;
+  }
+}
+
+/*phone*/
+.phoneBox{
+  z-index: -2;
+  background: url("../img/zf_phoneBg.jpg") no-repeat;
+  background-size:cover;
+
+  h2{
+    margin-top: .5rem;
+    text-align: center;
+
+    img{
+      /*这里设置行内块为了居中*/
+      display: inline-block;
+      width: 2.62rem;
+      height: 1.25rem;
+    }
+    span{
+      display: none;
+      margin-top: .2rem;
+      font-size: .4rem;
+      color: #FFF;
+      letter-spacing: 0.08rem;
+    }
+  }
+
+  .answer{
+    position: absolute;
+    width: 5.2rem;
+    height: 3.6rem;
+    bottom: .5rem;
+    left: 50%;
+    margin-left: -2.6rem;
+    background: url("../img/zf_phoneListen.png") no-repeat;
+    background-size: 100% 100%;
+    .markMove{
+      position: absolute;
+      right: -.06rem;
+      bottom: .48rem;
+      z-index: -1;  //=>看下这里的Z-index
+      box-sizing: border-box;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      border: .03rem solid #0F0;
+      animation:answerMove 1s linear infinite both;
+    }
+    .markLink{
+      .markMove;
+      z-index: 1;
+      border: none;
+      border-radius: 0;
+      animation:none;
+    }
+  }
+
+  .hang{
+    position: absolute;
+    bottom: .3rem;
+    left: 50%;
+    margin-left: -2.6rem;
+    width: 5.2rem;
+    height: 6.59rem;
+    background: url('../img/zf_phoneDetail.png') no-repeat;
+    background-size: 100% 100%;
+
+    //=>用transform开启了硬件加速,性能更高一些
+    transform: translateY(6.89rem);
+    transition: .3s;
+
+    .markLink{
+      position: absolute;
+      bottom:.26rem;
+      left:50%;
+      z-index: 1;
+      margin-left:-.8rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      //background: red;
+    }
+  }
+}
+
+@keyframes answerMove {
+  from{
+    transform: scale(1.2);
+  }
+  to{
+    transform:scale(0);
+  }
+}
+/*message*/
+.messageBox{
+  background: #EAEAEA;
+
+  .list{
+    position: absolute;
+    top: .2rem;
+    left: 0;
+    width: 100%;
+    transition:.3s;
+
+    li{
+      position: relative;
+      max-width: 3.6rem;
+      padding: .25rem;
+      margin-bottom: .4rem ;
+      border-radius: .1rem;
+      line-height: .4rem;
+      font-size: .26rem;
+      opacity: 0;
+      &.active{
+        animation:messageListMove .3s linear both;
+      }
+      .pic{
+        position: absolute;
+        top: 0;
+        width: .82rem;
+        height: .82rem;
+        border-radius: 50%;
+      }
+
+      .arrow{
+        position: absolute;
+        top: .2rem;
+        width: .1rem;
+        height: .2rem;
+      }
+
+      &.self{
+        float: left;
+        margin-left: 1.25rem;
+        background: #FFF;
+        border:.02rem solid #CACACA;
+        
+        .pic{
+          left: -1rem;
+        }
+        .arrow{
+          left: -.1rem;
+          background: url("../img/zf_messageArrow1.png") no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+
+      &.inter{
+        float: right;
+        margin-right: 1.25rem ;
+        background: #A2E45C;
+        border: .02rem solid #96B474;
+        .pic {
+          right: -1rem;
+        }
+
+        .arrow {
+          right: -.1rem;
+          background: url("../img/zf_messageArrow2.png") no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+    }
+  }
+
+  .keyBoard{
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    bottom: -.5rem;
+    width: 100%;
+    height: 5.16rem;
+    background: url("../img/zf_messageKeyboard.png") no-repeat;
+    background-size: 100% 100%;
+
+    /*让初始位置隐藏*/
+    transform: translateY(3.7rem);
+    transition: .3s;
+
+    span{
+      /*相对位置变了,是相当于keyboard的相对位置,因为是子元素*/
+      position: absolute;
+      left: .9rem;
+      top: .35rem;
+      width: 4rem;
+      height: .4rem;
+      line-height: .4rem  ;
+      font-size: .25rem;
+    }
+    .submit{
+      //z-index: 999;
+      display: none;
+      position: absolute;
+      right: .1rem;
+      bottom: .6rem;
+      width: 1.47rem;
+      height: .74rem;
+      background: url("../img/zf_messageChat.png") no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+}
+@keyframes messageListMove {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+}

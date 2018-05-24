@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="js/ajax.js"></script>
+<script>
+    //=>$.ajax([url],[options]) 或者$.ajax([options])在optons中农有url字段代表请求的url地址
+    //=>$.get  /$.post / $.getJSON  / $.getScript  这些方法都是基于$.ajax来构建出来的
+
+    // $.ajax({
+    //     url:`https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/list`,
+    //     method:'get',
+    //     // data:{
+    //     //     name:'haha',
+    //     //     age:88
+    //     // },
+    //     data:'hah',
+    //     dataType:'json',
+    //     async:true,
+    //     cache:true,
+    //     success:(result,xhr,textStatus)=>{
+    //         console.log(result, xhr, textStatus);
+    //         xhr.getResponseHeader('date');
+    //         //=>result就是从服务器获取的结果
+    //     },
+    //     error:()=>{
+    //
+    //     }
+    // });
+
+    ajax({
+        url:`https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/list`,
+        method:'post',
+        data:{
+            name:'马少华',
+            age:28
+        },
+        dataType:'json',
+        cache:false,
+        success:(result)=>{
+            console.log(result);
+        }
+    })
+</script>

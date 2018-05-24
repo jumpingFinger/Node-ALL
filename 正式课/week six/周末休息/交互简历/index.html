@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马少帅的简历</title>
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet/less" href="css/index.less">
+    <script src="utils/less-2.5.3.min.js"></script>
+    <script src="utils/prefixfree.min.js"></script>
+    <script>
+        ~function anonymous(window) {
+            let computedREM=function (){
+                let winW=document.documentElement.clientWidth,
+                    desw=640;
+                if(winW>640){
+                    document.documentElement.style.fontSize='100px';
+                    return;
+                }
+                document.documentElement.style.fontSize=(winW/desw*100)+'px';
+            };
+            computedREM();
+            window.addEventListener('resize',computedREM);
+        }(window);
+    </script>
+</head>
+<body>
+<!--最外层给个div,控制整个页面的最大的宽度-->
+<main class="mainBox">
+    <!--loading part-->
+    <section class="loadingBox">
+        <div class="title">
+            <h1>软件开发工程师马少帅</h1>
+            <h2>H5场景交互简历</h2>
+        </div>
+        <!--进度条progress-->
+        <div class="progress">
+            <div class="curProgress"></div>
+        </div>
+    </section>
+
+    <!--phone part-->
+    <section class="phoneBox">
+        <h2>
+            <img src="img/zf_phoneLogo.png" alt="">
+            <span>00:00</span>
+        </h2>
+        <div class="answer">
+            <div class="markMove"></div>
+            <a href="javascript:;" class="markLink"></a>
+        </div>
+        <div class="hang">
+            <a href="javascript:;" class="markLink"></a>
+        </div>
+        <audio src="audio/bell.mp3" preload="metadata" id="answerBell"></audio>
+        <audio src="audio/say.mp3" preload="metadata" id="introduction"></audio>
+    </section>
+
+    <!--message part-->
+    <section class="messageBox">
+        <ul class="list clear">
+            <li class="self ">
+                <i class="arrow"></i>
+                <img src="img/zf_messageStudent.png" alt="" class="pic">
+                本人擅长：原生JS、ES6、Promise等设计模式、组件和插件封装，看过JQ源码，可以开发各种Hybrid混合APP...
+            </li>
+            <li class="inter">
+                <i class="arrow"></i>
+                <img src="img/zf_messageLogo.png" alt="" class="pic">
+                框架会吗？我们公司现在使用的是VUE和REACT
+            </li>
+            <!--有个添加在这里的电话-->
+        </ul>
+        <div class="keyBoard">
+            <span></span>
+            <a href="javascript:;" class="submit"></a>
+        </div>
+        <audio src="audio/music.mp3" preload="metadata" loop id="demonMusic"></audio>
+    </section>
+</main>
+</body>
+</html>
+<script src="utils/zepto.min.js"></script>
+<script src="utils/swiper-3.4.2.jquery.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+</script>

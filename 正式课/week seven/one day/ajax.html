@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let xhr=new XMLHttpRequest();
+    // xhr.open('get',"https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/list");
+    xhr.open('get','temp.json');
+    xhr.setRequestHeader('zhufeng','$$$');//=> 不能有中文而且必须在open之后
+    // xhr.timeout=1000;
+    // xhr.ontimeout=()=>{
+    //     console.log('请求超时了');
+    //     xhr.abort();
+    // };
+    xhr.onabort=()=>{
+        console.log('强制终端了');
+    };
+    xhr.onreadystatechange=function (){
+        if(!/^(2|3)\d{2}$/.test(xhr.status)) return; //=>证明服务器已经返回内容了 (http请求成功)
+        if (xhr.readyState===2){
+            //=>响应头信息已经回来了
+            let time=xhr.getResponseHeader('date');//=>获取的结果是格林尼治时间,是字符串
+            console.log(time);
+            console.log( typeof time);
+          time=  new Date(time);//=>获取当前客户端时间
+            console.log(time);
+            //=>new Data(时间字符串) 把指定的时间字符串格式化成为标准的北京时间 (不是字符串了)
+        }
+        if(xhr.readyState===4){
+            console.log(JSON.parse(xhr.responseText));
+        }
+      // if(xhr.readyState===4 && xhr.status===200){
+      //     console.log(JSON.parse(xhr.responseText));
+      // }
+    };
+    xhr.send(JSON.stringify({id:1000,lx:2000}));//=>请求主体中传递给服务器的是JSON格式的字符,但是真实项目中常用的是urlEncode  格式的字符串 "id=1000&lx=2000"
+
+    // setTimeout(()=>{
+    //     xhr.abort();
+    // },300)
+</script>

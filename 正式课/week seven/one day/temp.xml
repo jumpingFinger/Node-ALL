@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'>
+<root>
+    <student>
+        <name>张三</name>
+        <chinese>100</chinese>
+        <math>100</math>
+    </student>
+</root>
+<root>
+<student>
+    <name>李四</name>
+    <chinese>24</chinese>
+    <math>88</math>
+</student>
+</root>

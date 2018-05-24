@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            /*position: relative;*/
+        }
+
+        #box {
+            /*user-select:这里是拖拽的关键*/
+            -webkit-user-select: none;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 150px;
+            height: 150px;
+            background: red;
+            cursor: move;
+            z-index: 0;
+            border-radius: 50%;
+        }
+
+        #box1 {
+            -webkit-user-select: none;
+            position: absolute;
+            left: 300px;
+            top: 300px;
+            width: 100px;
+            height: 100px;
+            background: green;
+            cursor: move;
+            z-index: 0;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+</body>
+</html>
+<script src="js/Callbacks.js"></script>
+<script src="js/drag-plugins.js"></script>
+<script src="js/drag-physical-movement.js"></script>

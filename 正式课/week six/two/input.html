@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #userEmail{
+            border: 1px solid red;
+        }
+        #userEmail:focus{
+            /*当文本框获取焦点后取消浏览器默认边框选中颜色*/
+            outline:none;
+        }
+        #userEmail:valid{
+            /*验证通过 : 不熟如或者输入的格式正确*/
+
+        }
+        #userEmail:invalid{
+            /*没有通过验证*/
+            border-color:green;
+        }
+        #userEmail:valid +span:after{
+            content: "邮箱格式正确";
+        }
+        #userEmail:invalid +span:after{
+            content: "邮箱不符合格式";
+        }
+    </style>
+</head>
+<body>
+<!--<input type="number" step="1" max="65" min="18" value="25" disabled>-->
+<!--<input type="range" step="1" max="65" min="18" value="25">-->
+<input type="number" id='ageinput' step="1" max="65" min="18" value="25" disabled>
+<input type="range" id="range"  step="1" max="65" min="18" value="25">
+<!--色板-->
+<input type="color" id="colorInp">
+<!--日历框-->
+<input type="date">
+
+<!--
+表单元素中新增加的类型作用 :
+-->
+<input type="email" id="userEmail" placeholder="请输入邮箱!">
+<span id="spanEmail"></span>
+
+<!--下拉框子 ,可以加地区(省市县三级联动)-->
+<select name="" id="selectCity">
+    <option value="">==请选择==</option>
+    <option value="北京">北京</option>
+    <option value="上海">上海</option>
+    <option value="广州">广州</option>
+    <option value="深圳">深圳</option>
+    <option value="深圳">杭州</option>
+    <option value="深圳">成都</option>
+</select>
+
+<!--datalist:模糊匹配-->
+<input type="text" list="liebiao">
+<datalist id="liebiao">
+    <option value="PS">图像处理</option>
+    <option value="DW">网页制作</option>
+    <option value="AI">矢量绘制</option>
+    <option value="PPT">幻灯片</option>
+</datalist>
+</body>
+</html>
+<script>
+    ~function () {
+        //=>input :移动端没有keydown/up 用input代替,代表正在操作当前表单元素(例如正在输入)
+        range.oninput=function (){
+            let val=this.value;
+            ageinput.value=val
+        }
+    }();
+~function () {
+    //获取色板
+    colorInp.onchange=function (){
+        console.log(this.value);
+    }
+}();
+~function () {
+    userEmail.onkeyup=userEmail.onkeydown=function (){
+        //=>checkValidity :H5新提供的表单内容格式验证方法(新表单类型中的内置验证机制的,都可以基于这个方法验证)
+        if (this.checkValidity()){
+            spanEmail.innerHTML='ok';
+        }else{
+            spanEmail.innerHTML='no';
+        }
+    };
+
+
+    //blur:失去焦点
+    //focus:获取焦点
+    userEmail.onkeyup=userEmail.onblur=function (){
+        let val=this.value.trim();
+        if(val.lenghth===0){
+            spanEmail.innerHTML='必填';
+            return
+        }
+        let reg=/^\w+$/g;
+        if(!reg.test(val)){
+            spanEmail.innerHTML='no';
+            return;
+        }
+        spanEmail.innerHTML='ok';
+    }
+
+}();
+</script>

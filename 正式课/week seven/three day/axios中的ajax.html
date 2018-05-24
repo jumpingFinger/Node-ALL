@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<!--<script src="js/promise.js"></script>-->
+<script>
+    //=>回调地域
+    // $.ajax({
+    //     url:`https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/list`,
+    //     success:()=>{
+    //         $.ajax({
+    //             url:`https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/info`,
+    //             success:()=>{
+    //                 $.ajax({
+    //                     url:`https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/add`,
+    //                     success:function (){
+    //
+    //                     }
+    //                 })
+    //             }
+    //         })
+    //     }
+    // })
+
+    //=>解决回调地域  //=>发布订阅
+    // let $plan=$.Callbacks();
+    // $.ajax({
+    //     url:`https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/list`,
+    //     success:(result)=>{
+    //         $plan.fire(result);
+    //     }
+    // })
+    // $plan.add((result)=>{
+    //     $.ajax({
+    //         url:`https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/info`,
+    //         success:(result)=>{
+    //             $plan.fire(result);
+    //         }
+    //     })
+    // });
+
+    //=>用promise写
+    let queryA = function () {
+        return new Promise(resolve => {
+            $.ajax({
+                url:`https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/list`,
+                success(result){
+                    resolve(result);
+                }
+            })
+        })
+    }
+    let queryB = function () {
+        return new Promise(resolve => {
+            $.ajax({
+                url:`https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/info`,
+                success(result){
+                    resolve(result);
+                }
+            })
+        })
+    }
+    let queryC = function () {
+        return new Promise(resolve => {
+            $.ajax({
+                url:`https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/add`,
+                method:'post',
+                success(result){
+                    resolve(result);
+                }
+            })
+        })
+    }
+    queryA().then(()=>{
+        return queryB();//=>如果方法中返回的一个具体指,而且执行中没有错误异常,会立即执行下一个then中的方法 (不写return也是返回了具体指 :undefined),但是如果返回的是一个promise实例 (并且管控了一个异步操作) ,只能等promise完成,把成功后的结果当做具体的值返回,才会进入下一个函数执行
+    }).then(()=>{
+        return queryC();
+    })
+</script>

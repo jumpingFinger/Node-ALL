@@ -1,0 +1,730 @@
+/*
+  虽然移动端 (安卓&IOS)上的浏览器大部分是webkit内核的,但是由于很多手机做系统版本过低 (尤其安卓机子) ,导致很多css3新特性不能有效识别,此时我们使用的大部分属性要写两套才能兼容 (加前缀在前 ,不加在后)
+  -webkit-animation:
+    animation:
+
+
+   太麻烦 ,不过没关系 ,有JS插件可以帮我们搞定这件事 (prefixfree.min.js),导入插件后帮我们都加上前缀
+*/
+@import 'reset';
+//@import(reference) "common";  //=>只引用不编译/**/
+html {
+  /*640的设计稿尺寸中 , 让1rem=100px*/
+  font-size: 100px;
+}
+
+html, body {
+  position: relative;
+  z-index: -4;
+  height: 100%;
+  overflow: hidden;
+
+}
+
+.mainBox {
+  /*这个控制最大的宽度,不用rem来修改*/
+  margin: 0 auto; /*当前页面的宽度超过了640px,让他在这个页面水平居中*/
+  max-width: 640px;
+  height: 100%;
+  background: #000000;
+  position: relative;
+  z-index: -3;
+}
+
+.loadingBox, .phoneBox, .messageBox ,.cubeBox,.detailBox{
+  display: none;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+/*loading*/
+
+.loadingBox {
+  background: #000;
+
+  .title {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    margin-top: -2.5rem; /*-0.7rem(正中间)+1.5(距离中间考上的位移)*/
+    height: 1.4rem;
+    //background: red;
+    color: #FFFFFF;
+
+    h1 {
+      line-height: .75rem;
+      font-size: .5rem;
+      text-align: center;
+      font-weight: normal;
+      letter-spacing: .08rem;
+    }
+    h2 {
+      font-size: .3rem;
+      margin-top: .3rem;
+      line-height: .45rem;
+      text-align: center;
+      letter-spacing: .08rem;
+      font-weight: normal;
+    }
+  }
+  .progress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0.5rem 0 0 -2.3rem;
+    width: 4.6rem;
+    height: .3rem;
+    background: #FFF;
+    border-radius: 0.1rem;
+  }
+  .curProgress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+
+    //background: -webkit-linear-gradient(45deg);/*这里这个效果不会*/
+    background: -webkit-linear-gradient(left bottom, #5CB85C 0%, #5CB85C 25%, #74c274 25%, #74c274 50%, #5CB85C 50%, #5CB85C 75%, #74c274 75%, #74c274 100%); /*这里这个效果不会*/
+    background: linear-gradient(left bottom, #5CB85C 0%, #5CB85C 25%, #74c274 25%, #74c274 50%, #5CB85C 50%, #5CB85C 75%, #74c274 75%, #74c274 100%);
+    background-size: .3rem .3rem;
+    /*一定要写两套,-webkit-在前不加灾后*/
+    //-webkit-animation: loadingMove .5s linear 0s infinite both;
+    animation: loadingMove .5s linear 0s infinite both;
+
+    /*设置一个过渡动画,当我们在JS中控制它的宽度在变的时候,给其一个平稳的过渡动画效果*/
+    transition: .5s;
+  }
+  /*@keyframes 也需要写两套*/
+  @keyframes loadingMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 -.3rem;
+    }
+  }
+}
+
+/*phone*/
+.phoneBox {
+  display: none;
+  background: url("../img/zf_phoneBg.jpg") no-repeat;
+  background-size: cover;
+  z-index: -2;
+  width: 100%;
+
+  h2 {
+    margin-top: .5rem;
+    text-align: center;
+
+    img {
+      display: inline-block;
+      width: 2.62rem;
+      height: 1.25rem;
+    }
+
+    span {
+      display: none;
+      margin-top: .1rem;
+      line-height: .3rem;
+      font-size: .3rem;
+      color: #FFF;
+      letter-spacing: .05rem;
+    }
+  }
+
+  .answer {
+    position: absolute;
+    left: 50%;
+    bottom: .3rem;
+    margin-left: -2.6rem;
+    width: 5.2rem;
+    height: 3.6rem;
+    background: url("../img/zf_phoneListen.png") no-repeat;
+    background-size: 100% 100%;
+
+    .markMove {
+      z-index: -1;
+      position: absolute;
+      right: -.06rem;
+      bottom: .48rem;
+      box-sizing: border-box;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      border: 0.03rem solid #00FF00;
+      animation: answerMove 1s linear infinite both;
+    }
+
+    .markLink {
+      .markMove; //=>把mark-move的样式继承过来
+      z-index: 1;
+      animation: none;
+      border: none;
+      border-radius: 0;
+    }
+  }
+
+  .hang {
+    position: absolute;
+    width: 5.2rem;
+    height: 6.59rem;
+    left: 50%;
+    bottom: .3rem;
+    margin-left: -2.6rem;
+    background: url("../img/zf_phoneDetail.png") no-repeat;
+    background-size: 100% 100%;
+
+    //=>初始位置是phone的底部 (看不见 :溢出内容隐藏) , 当点击接听按钮后 ,控制它从底下出来即可 (JS中改变样式)  "我们可以基于transform改变样式的尽量不要使用传统的样式属性"
+
+    transform: translateY(6.89rem);
+    transition: .3s;
+
+    .markLink {
+      position: absolute;
+      bottom: .26rem;
+      left: 50%;
+      margin-left: -.8rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      z-index: 1;
+      //background: rgba(255,255,255,0.2);
+    }
+  }
+}
+
+@keyframes answerMove {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+.messageBox {
+  background: #EAEAEA;
+
+  .wrapper {
+    position: relative;
+    top: .2rem;
+    left: 0;
+    width: 100%;
+    transition: .3s;
+
+    li {
+      position: relative;
+      max-width: 3.6rem;
+      padding: .25rem;
+      margin-bottom: .4rem;
+      border-radius: 1px;
+      line-height: .4rem;
+      font-size: .26rem;
+      //text-align: right;
+      opacity:0;
+
+
+      &.self{
+        margin-left:1.3rem;
+        float: left;
+        background: #FFF;
+        border:.02rem solid #CACACA;
+        margin-right:.40rem;
+
+        .pic{
+          position: absolute;
+          top: 0;
+          width: .82rem;
+          height: .82rem;
+          font-size: .18rem;
+          left:-1rem;
+
+        }
+        .arrow{
+          position: absolute;
+          top: .2rem;
+          width: .1rem;
+          height: .2rem;
+          left: -.1rem;
+          background: url("../img/zf_messageArrow1.png") no-repeat;
+          background-size:100% 100% ;
+        }
+      }
+      &.inter{
+        float: right;
+        margin-right:1.25rem;
+        background: #A2E45C;
+        border:.02rem solid #96b474;
+
+        .pic{
+          right:-1rem ;
+          position: absolute;
+          top: 0;
+          width: .82rem;
+          height: .82rem;
+          font-size: .18rem;
+        }
+        .arrow{
+          position: absolute;
+          top: .2rem;
+          width: .1rem;
+          height: .2rem;
+          right: -.1rem;
+          background: url("../img/zf_messageArrow2.png") no-repeat;
+          background-size:100% 100% ;
+        }
+      }
+      &.active{
+        animation:messageListMove .3s linear both;
+      }
+
+
+
+
+    }
+  }
+
+  .keyBoard{
+    position: absolute;
+    left: 0;
+    bottom: -.5rem;
+    width: 100%;
+    height: 5.16rem;
+    box-sizing: border-box;
+    background: url("../img/zf_messageKeyboard.png");
+    background-size:100% 100% ;
+
+    /*初始位置*/
+    transform: translateY(3.7rem);
+    transition: .6s;
+
+    span{
+      position: absolute;
+      left: .9rem;
+      top: .35rem;
+      width: 4rem;
+      height: .4rem;
+      line-height: .4rem ;
+      font-size: .26rem ;
+    }
+
+    .submit{
+      display: none;
+      position: absolute;
+      right: .1rem;
+      bottom:.6rem;
+      width: 1.47rem;
+      height: .74rem;
+      background: url("../img/zf_messageChat.png")no-repeat;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%;
+    }
+  }
+}
+
+@keyframes messageListMove {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+}
+
+.cubeBox{
+  background:url("../img/zf_cubeBg.jpg") no-repeat;
+  background-size: cover;
+  .cube{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin:-2.55rem 0 0 -2.55rem;
+    width: 5.1rem;
+    height: 5.1rem;
+
+    li{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+
+      img{
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .tip {
+    position: absolute;
+    left: 50%;
+    bottom: .5rem;
+    margin-left: -1.97rem;
+    width: 3.94rem;
+    height: .44rem;
+  }
+}
+/*在二维平面中实现3D效果*/
+.cubeBox{
+ //=>1.给需要实现3D变形元素所在的舞台设置'视距' (1000~2000)
+  perspective: 2000px;
+
+  .cube{
+    //=>2.给需要操作的元素设置3D变形效果
+    transform-style: preserve-3d;
+
+    //  transform-origin: center center 0; //=>设置中心点
+    //=>3.基于transform实现3D变形
+
+    li {
+      &:nth-child(1) {
+        transform: translateZ(2.55rem);
+      }
+      &:nth-child(2) {
+        transform: translateZ(-2.55rem) rotateY(180deg);
+      }
+      &:nth-child(3) {
+        transform: translateX(2.55rem) rotateY(90deg);
+      }
+      &:nth-child(4) {
+        transform: translateX(-2.55rem) rotateY(-90deg);
+      }
+      &:nth-child(5) {
+        transform: translateY(-2.55rem) rotateX(90deg);
+      }
+      &:nth-child(6) {
+        transform: translateY(2.55rem) rotateX(-90deg);
+      }
+    }
+
+
+    //=>给魔方一个初始的旋转角度 ,让其可以看到3D的效果 (最后魔方太大了,给魔方缩小一点)
+    transform: scale(0.6) rotateY(55deg) rotateX(-35deg);
+    transition:.3s;//=>后期让魔方旋转的时候有一个平稳的过渡动画效果
+  }
+}
+
+/*detail*/
+.detailBox{
+  .swiper-container{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    .swiper-slide{
+      position: relative;//=>每个页面的元素相对于自己的页面定位就可以了
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+
+      &:nth-child(2){
+        background: #fff9c1;
+        }
+      &:nth-child(3){
+        background: #E45454;
+      }
+      &:nth-child(4){
+        background: #FACA71;
+      }
+      &:nth-child(5){
+        background: #FBFFE8;
+      }
+      &:nth-child(6){
+        background: #5975FF;
+      }
+    }
+  }
+
+  /*每一页单独调出来*/
+  .page1{
+    dl {
+      position: absolute;
+      width: 5.4rem;
+      left: 50%;
+      top: 50%;
+      height: 7.2rem;
+      margin: -3.6rem 0 0 -2.7rem;
+
+      dt,dd{
+        box-sizing: border-box;
+        height: .6rem;
+        line-height: .6rem;
+        background: #8fbb4c;
+      }
+      dt{
+        text-align: center;
+        color: yellow;
+        font-size: .4rem;
+      }
+      dd{
+        position: relative;
+        border-top:0.02rem dashed rgba(255,255,255,.3);
+
+        em{
+          position: absolute;
+          width: .36rem;
+          height: .42rem;
+          line-height: .42rem;
+          text-align: center;
+          left: .15rem;
+          top: 50%;
+          margin-top:-.21rem;
+          font-size: .2rem;
+          color: #FFFFFF;
+          font-style:normal;
+          background: url('../img/zf_outline.png') no-repeat;
+          background-size: 100% 100%;
+        }
+
+        a{
+          display: block;
+          margin-left: .66rem ;
+          font-size: .28rem  ;
+          color:#555;
+
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+
+        }
+
+        //em,a{
+        //  position: relative;
+        //  z-index: 1000;//=>基于maski实现3D折叠,为了保证内容不被折叠创建的span
+        //}
+
+      }
+
+
+    }
+  }
+
+  .page2 {
+    h2 {
+      margin-top: .8rem;
+      line-height: .9rem;
+      text-align: center;
+      font-size: 0.6rem;
+      font-weight: normal;
+      opacity: 0;
+    }
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -.5rem 0 0 -.5rem;
+      width: 1rem;
+      height: 1rem;
+      opacity: 0;
+      transition: .5s; //从中心到四周的动画，我们就transtion完成
+      &:nth-last-of-type(1) {
+        margin: -.85rem 0 0 -.66rem;
+        width: 1.32rem;
+        height: 1.7rem;
+      }
+    }
+  }
+  #page2 {
+    //page2中动画，都写在id下
+    h2 {
+      animation: bounceInLeft 1s both;
+    }
+    img {
+      &:nth-last-of-type(1) {
+        animation: shake 1s both;
+      }
+      &:not(:nth-last-of-type(1)) {
+        opacity: 1;
+        animation: tada 1s .5s infinite both;
+      }
+      &:nth-of-type(1) {
+        margin-top: -2.9rem;
+      }
+      &:nth-of-type(2) {
+        margin-top: -1.9rem;
+        margin-left: 1.5rem;
+      }
+      &:nth-of-type(3) {
+        margin-top: .7rem;
+        margin-left: 1.5rem;
+      }
+      &:nth-of-type(4) {
+        margin-top: 1.9rem;
+      }
+      &:nth-of-type(5) {
+        margin-top: 0.7rem;
+        margin-left: -2.5rem;
+      }
+      &:nth-of-type(6) {
+        margin-top: -1.7rem;
+        margin-left: -2.5rem;
+      }
+    }
+  }
+
+
+  //#page2{
+  //  //=>所有page2下的动画都写在ID选择器中
+  //  h2{
+  //    animation: bounceInLeft 1s both;
+  //  }
+  //  img{
+  //    &:nth-last-of-type(1){
+  //      animation:shake 1s both;
+  //    }
+  //    &:not(nth-last-of-type(1)){
+  //      animation: tada 1s .5s infinite both;
+  //    }
+  //      opacity: 1;
+  //    }
+  //    &:nth-of-type(1){
+  //      margin-top: -2.9rem;/**/
+  //    }
+  //    &:nth-of-type(2){
+  //      margin-top: -2.9rem;/**/
+  //      margin-left: -1.7rem;/**/
+  //    }
+  //    &:nth-of-type(3){
+  //      margin-top: -1.7rem;/**/
+  //    }
+  //    &:nth-of-type(4){
+  //      margin-top: -1.7rem;/**/
+  //    }
+  //    &:nth-of-type(5){
+  //      margin-top: .7rem;/**/
+  //      margin-left: -2.5rem;/**/
+  //    }
+  //    &:nth-of-type(6){
+  //      margin-top: -1.5rem;/**/
+  //      margin-left: -2.7rem;/**/
+  //    }
+  //
+  //
+  //  }
+  #page2 {
+    //page2中动画，都写在id下
+    h2 {
+      animation: bounceInLeft 1s both;
+    }
+    img {
+      &:nth-last-of-type(1) {
+        animation: shake 1s both;
+      }
+      &:not(:nth-last-of-type(1)) {
+        opacity: 1;
+        animation: tada 1s .5s infinite both;
+      }
+      &:nth-of-type(1) {
+        margin-top: -2.9rem;
+      }
+      &:nth-of-type(2) {
+        margin-top: -1.9rem;
+        margin-left: 1.5rem;
+      }
+      &:nth-of-type(3) {
+        margin-top: .7rem;
+        margin-left: 1.5rem;
+      }
+      &:nth-of-type(4) {
+        margin-top: 1.9rem;
+      }
+      &:nth-of-type(5) {
+        margin-top: 0.7rem;
+        margin-left: -2.5rem;
+      }
+      &:nth-of-type(6) {
+        margin-top: -1.7rem;
+        margin-left: -2.5rem;
+      }
+    }
+  }
+  }
+
+  /*tips关于swiper的技巧*/
+  /*基于swiper实现切换到哪一个页卡,让哪一个页卡中的后代元素有动画效果
+  1. 除了编写正常的CSS样式 (都写在page-x中),把需要实现动画的元素所对应的 动画写在#pageX(IE选择器优先级高)
+  2.在wiper插件的某些回调函数中(例如:onTransitionEnd...)获取当前展示slide的索引,根据索引为其设置对应的ID值,当前展示的slide有ID,其余的没有ID
+  3.为了保证切换到这以页面的时候,元素是动画运动出来的 (也就是开始啥都看不见),每个元素都是基于动画显示的 (在初始样式中,.page? 把所有需要运动的元素透明度设置为零 加ID厚执行动画效果,在动画的最后一帧位置让透明度为1)
+  */
+@keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000)
+  }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-3000px, 0, 0);
+    transform: translate3d(-3000px, 0, 0)
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(25px, 0, 0);
+    transform: translate3d(25px, 0, 0)
+  }
+  75% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0)
+  }
+  90% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0)
+  }
+  to {
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+  }
+  0% {
+    opacity: 0
+  }
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0)
+  }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0)
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes tada {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  10%, 20% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg)
+  }
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg)
+  }
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg)
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    opacity: 1
+  }
+}
