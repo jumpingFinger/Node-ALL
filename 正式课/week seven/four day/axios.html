@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="node_modules/axios/dist/axios.min.js">
+</script>
+<script>
+    // ~function () {
+    //     let result=null;
+    //     axios.get('A').then(resultA=>{
+    //         result=resultA;
+    //         return  axios.get('B');
+    //     }).then(resultB=>{
+    //         console.log(result);//=>可以拿到
+    //     })
+    // }();
+
+
+    //=>axios请求合并!!!!!!!
+
+    // ~function () {
+    //     //=>sendAry 里面放了三个ajax请求的promise的实例
+    //     let sendAry=[ axios.get('https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/list'), axios.get('https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/info'), axios.post('https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/add')];
+    //     //=>三个请求都完成了才做一些事情 ,可以基于all实现
+    //     axios.all(sendAry).then(result=>{
+    //         console.log(result);//=>s是一个数组,分别存储每一个请求的结果
+    //     });
+    //
+    //
+    //     //=>柯理化函数思想axios.spread(callback)
+    //     axios.all(sendAry).then(axios.spread((...arg)=>{
+    //         //=>arg里存放了三次请求的结果
+    //     }))
+    // }();
+
+    //=>初始化一些常用的配置项
+    axios.defaults.baseURL='https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp';
+
+    //=>使用
+    axios.get('/list').then(result=>{
+
+    });
+
+    //=>自定义成功失败规则
+    axios.defaults.validateStatus=function(status){
+        //=>默认是已2规则默认成功
+        return status >= 200 && status <300;//default
+    };
+
+    //=>常用的
+    axios.defaults.timeout=2000;
+    //=>自定义请求头
+    axios.defaults.headers={
+        name:'马'
+    };
+    axios.defaults.data={};
+    axios.defaults.parmas={};//=>get传参
+    axios.defaults.data={};//=>post 传参
+
+
+    //=>设置在post请求中基于请求主体向服务器发送内容的格式 ,默认是raw,项目中常用的ur urlencoded格式
+    axios.defaults.headers.post['content-Type'] = 'appliction/x-www-form-urlencoded';
+
+    axios.defaults.transformRequest=function(data){
+        let str=``;
+        for (let attr in data) {
+            if (!data.hasOwnProperty(attr)) break;
+            str+=`${attr}=${data[attr]}&`;
+
+        }
+        return str.substring(0,str.length-1);
+    };
+
+    //添加一个响应拦截器
+    axios.interceptors.response.use(function success(res){
+        //在这里对返回的数据进行处理 (在执行成功后设定的方法之前,贤惠执行拦截器中的方法)
+
+        return res;
+    },function error(err){
+         //=>这个一般不做处理
+        //Do something with response error
+        return Promise.reject(error);
+    })
+
+
+
+</script>

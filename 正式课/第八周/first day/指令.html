@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!--v-text 只看文本不识别标签-->
+    <p v-text="text"></p>
+    <!--v-html 识别标签-->
+    <p v-html="text"></p>
+    <!--v-model 双向数据绑定-->
+    <input type="text" v-model="a">
+    <!-- v-once 初始的时候渲染一次 以后不发生改变-->
+    <P v-once>{{a}}</P>
+</div>
+
+
+</body>
+</html>
+<script src="vue/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+           text:'<a>11</a>',
+            a:1
+        }
+    })
+</script>

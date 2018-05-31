@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="node_modules/axios/dist/axios.min.js">
+</script>
+<script src="node_modules/qs/dist/qs.js"></script>
+<script>
+
+ ~function () {
+     //=>初始默认的配置项
+     axios.defaults.baseURL='https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp';
+     //=>响应拦截器
+     axios.interceptors.response.use(result=>{
+         let {data,headers,config,request,status,statusText}=result;
+         return data;
+     });
+     //=>post/put等请求中,基于请求主体传递给服务器的内容 (对象),我们一般都会把它转换为x-www-form-urlencoded格式
+     axios.defaults.transformRequest=function(data){
+         // let str=``;
+         // for (let attr in data) {
+         //     if (!data.hasOwnProperty(attr)) break;
+         //     str+=`${attr}=${data[attr]}&`;
+         //
+         // }
+         // return str.substring(0,str.length-1);
+         //=>用qs :安装QS插件实现把对象转换为x-www-form-urlencoded格式的字符串 (可以实现互逆的需求);
+         // console.log(Qs);
+         return Qs.stringify(data);
+     };
+     //=>自定义成功失败规则
+     axios.defaults.validateStatus=function(status){
+         //=>默认是已2规则默认成功
+         return status >= 200 && status <300;//default
+     };
+
+     axios.get('/list',{
+             params:{
+                 a:1,b:2
+             },
+             headers:{
+                 //=>设置请求头信息
+             },
+             timeout:3000
+         }
+     ).then(result=>{
+         // let {data,headers,config,request,status,statusText}=result;
+     });
+
+     axios.post('/info',{
+         a:1,
+         b:2
+     },{
+         headers:{
+
+         }
+     }).then(result=>{});
+ }();
+
+
+ axios.defaults.baseURL='https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp';
+    let promise1=axios.get('/list'),
+        promise2=axios.post('/add');
+    axios.all([promise1,promise2]).then(axios.spread((...arg)=>{
+     console.log(arg);
+ })).catch(msg=>{
+        console.log(msg);
+    })
+</script>

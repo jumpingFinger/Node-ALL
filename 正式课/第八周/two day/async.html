@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let f=async function fn(){  //=>执行f就把它变为了promise的实例
+        throw new Error('sorry');
+        return 1
+    };
+    // console.log(f());
+    // f().then(res=>{
+    //     console.log(res);
+    // }).catch(msg=>{
+    //     console.log(msg);
+    // })
+
+
+    //?????????????在await后面加一个函数,函数是异步的函数看看什么情况
+
+    //=>语法糖,把复杂的语法简单化这就叫语法糖
+    let fn = async function (){
+      // let a= await 1 ; //=>一般不这么写
+        let a=await new Promise((resolve,reject)=>{ //await 语法糖,直接能拿到成功或者失败的参数,这时候a就是成功的参数
+            setTimeout(()=>{
+                resolve(100);
+            },1000)
+            // reject('a');
+        });
+        console.log(a);
+    };
+    fn();
+</script>

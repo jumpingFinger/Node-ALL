@@ -1,0 +1,215 @@
+[
+  [
+    {
+    "flags":"热卖",
+    "pic":"./img/小米手机.png",
+    "title":"小米MIX 2",
+    "price":"2799元"
+  },
+    {
+      "flags":"热卖",
+      "pic":"./img/小米手机.png",
+      "title":"小米MIX 2",
+      "price":"2799元"
+    },
+    {
+      "flags":"热卖",
+      "pic":"./img/小米手机.png",
+      "title":"小米MIX 2",
+      "price":"2799元"
+    },
+    {
+      "flags":"热卖",
+      "pic":"./img/小米手机.png",
+      "title":"小米MIX 2",
+      "price":"2799元"
+    },
+    {
+      "flags":"热卖",
+      "pic":"./img/小米手机.png",
+      "title":"小米MIX 2",
+      "price":"2799元"
+    }
+  ],
+  [
+    {
+      "flags":"新品",
+      "pic":"./img/红米.png",
+      "title":"红米S2",
+      "price":"999元起"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/红米.png",
+      "title":"红米S2",
+      "price":"999元起"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/红米.png",
+      "title":"红米S2",
+      "price":"999元起"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/红米.png",
+      "title":"红米S2",
+      "price":"999元起"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/红米.png",
+      "title":"红米S2",
+      "price":"999元起"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/红米.png",
+      "title":"红米S2",
+      "price":"999元起"
+    }
+  ],
+  [
+    {
+      "flags":"新品",
+      "pic":"./img/电视.jpg",
+      "title":"小米电视4A 40英寸",
+      "price":"1399元"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/电视.jpg",
+      "title":"小米电视4A 40英寸",
+      "price":"1399元"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/电视.jpg",
+      "title":"小米电视4A 40英寸",
+      "price":"1399元"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/电视.jpg",
+      "title":"小米电视4A 40英寸",
+      "price":"1399元"
+    }
+  ],
+  [
+    {
+      "pic":"./img/笔记本.png",
+      "title":"小米笔记本 Pro",
+      "price":"5599元起"
+    },
+    {
+      "pic":"./img/笔记本.png",
+      "title":"小米笔记本 Pro",
+      "price":"5599元起"
+    },
+    {
+      "pic":"./img/笔记本.png",
+      "title":"小米笔记本 Pro",
+      "price":"5599元起"
+    }
+  ],
+  [
+    {
+      "pic":"./img/盒子.png",
+      "title":"小米盒子4c",
+      "price":"219元"
+    },
+    {
+      "pic":"./img/盒子.png",
+      "title":"小米盒子4c",
+      "price":"219元"
+    },
+    {
+      "pic":"./img/盒子.png",
+      "title":"小米盒子4c",
+      "price":"219元"
+    },
+    {
+      "pic":"./img/盒子.png",
+      "title":"小米盒子4c",
+      "price":"219元"
+    }
+  ],
+  [
+    {
+      "flags":"新品",
+      "pic":"./img/小米新品.png",
+      "title":"TS太阳镜 旅行者款 米家定制",
+      "price":"249元"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/小米新品.png",
+      "title":"TS太阳镜 旅行者款 米家定制",
+      "price":"249元"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/小米新品.png",
+      "title":"TS太阳镜 旅行者款 米家定制",
+      "price":"249元"
+    },
+    {
+      "flags":"新品",
+      "pic":"./img/小米新品.png",
+      "title":"TS太阳镜 旅行者款 米家定制",
+      "price":"249元"
+    }
+  ],
+  [
+    {
+      "flags":"双千兆",
+      "pic":"./img/路由器.png",
+      "title":"小米路由器 3G",
+      "price":"219元"
+    },
+    {
+      "flags":"双千兆",
+      "pic":"./img/路由器.png",
+      "title":"小米路由器 3G",
+      "price":"219元"
+    },
+    {
+      "flags":"双千兆",
+      "pic":"./img/路由器.png",
+      "title":"小米路由器 3G",
+      "price":"219元"
+    }
+  ],
+  [
+    {
+      "pic":"./img/智能硬件.png",
+      "title":"小米净水器",
+      "price":"1499元起"
+    },
+    {
+      "pic":"./img/智能硬件.png",
+      "title":"小米净水器",
+      "price":"1499元起"
+    },
+    {
+      "pic":"./img/智能硬件.png",
+      "title":"小米净水器",
+      "price":"1499元起"
+    },
+    {
+      "pic":"./img/智能硬件.png",
+      "title":"小米净水器",
+      "price":"1499元起"
+    },
+    {
+      "pic":"./img/智能硬件.png",
+      "title":"小米净水器",
+      "price":"1499元起"
+    },
+    {
+      "pic":"./img/智能硬件.png",
+      "title":"小米净水器",
+      "price":"1499元起"
+    }
+  ]
+]

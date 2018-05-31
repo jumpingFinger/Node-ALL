@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let ary=[1,2,3];
+    console.log(ary);//=>有一个数组的遍历接口
+    /*ary[Symbol.iterator]这是一个函数*/
+    console.log(ary[Symbol.iterator]());//=>默认的就是values
+    // for (let item in ary) {
+    //     console.log(item);//=>是value
+    //
+    // }
+
+
+    let interval=ary.values();
+     interval=ary[Symbol.iterator]();
+    console.log(interval);
+    console.log(interval.next());//{value: 1, done: false}
+    console.log(interval.next());
+    console.log(interval.next());//{value: 3, done: false}
+    console.log(interval.next());//{value: undefined, done: true}
+
+
+
+    ~function () {
+        let o={
+            0:'A',
+            1:'B',
+            2:'C',
+            length:3
+        };
+        console.dir(o);
+        //=>给Object的原型上添加一个数组的interval接口
+        o.__proto__[Symbol.iterator]=Array.prototype[Symbol.iterator]
+
+        //=>遍历接口的实现
+        o.__proto__[Symbol.iterator]=function (){
+           let _this=this;
+           this.i=0;
+            return{
+                next(){
+                    return{
+                        value:_this[_this.i++],
+                        done:_this.i>=_this.length,
+                    }
+                }
+            }
+        }
+
+        for(let item of o){
+            console.log(item);
+        }
+        //=>现在的对象就可以调用.... 原理是有这个interator接口
+        console.log([...o]);
+    }();
+
+</script>

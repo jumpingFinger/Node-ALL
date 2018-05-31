@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function fn(e){
+        console.log(e);
+        console.log(1);
+    }
+</script>
+<div onclick="fn(event)">1111</div>
+<!--<div onclick="fn(实参事件对象 window.event)">1111</div>-->
+
+<div id="app">
+    <!--绑定事件@事件类型-->
+    <div @click="fn">2222222222222</div>
+    <!-- <div @click="fn"></div> 不写()默认执行的时候就会传一个事件对象 -->
+    <div @click="fn($event)">333333
+
+        <i @click="fn">iiiiiiiiiiiii</i>
+        <i @click.stop="fn">阻止事件传播</i>
+    </div>
+    <!--<div @click="fn()"></div>   如果用到事件对象必须手动传   $event就代表原生的事件对象-->
+
+
+    <!--事件修饰符-->
+    <!--
+        .stop  阻止冒泡
+        .prevent  阻止默认行为
+        .capture  捕获阶段发生
+        .self     自己作为事件源的时候才会触发
+        .once     执行一次
+        .passive  (下去查查) 一般在移动端的滚动事件  修饰符尤其能够提升移动端的性能
+
+
+按键修饰符
+.enter
+.tab
+.delete (捕获“删除”和“退格”键)
+.esc
+.space
+.up
+.down
+.left
+.right
+
+    -->
+
+    <!--按键修饰符-->
+    <input type="text" @keyup.enter="get" v-model="a">
+</div>
+</body>
+</html>
+<script src="vue/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+           a:1
+        },
+        methods:{
+            //函数放在这里面   这里面的this就是vm
+            fn(e){
+                console.log(e);
+            },
+            get(){
+                this.a=10000;
+            }
+        }
+
+    })
+</script>

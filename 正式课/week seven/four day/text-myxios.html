@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="myaxios.js">
+</script>
+<script>
+    myAxios.defaults.baseURL='https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp';
+
+    // myAxios.get('/list').then((result,xhr)=>{
+    //     console.log(result, xhr);
+    // });
+
+
+    myAxios.get('/list',{
+        params:{
+            id:1000
+        },
+        cache:false
+    }).then((result,xhr)=>{
+        console.log(result, xhr);
+    }).catch(msg=>{
+        console.log(msg);
+    });
+
+
+    // myAxios.post('/list',{
+    //     name:'马少帅'
+    // },{
+    //     headers:{
+    //         'conte':"fafasf"
+    //     }
+    // }).then((result,xhr)=>{
+    //     console.log(result, xhr);
+    // })
+</script>

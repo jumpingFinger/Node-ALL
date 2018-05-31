@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let set=new Set([1,1,NaN,NaN,'aa','aa',true,undefined]);//=>参数放的是数组和类数组
+    console.log(set);
+
+
+    let arr=[1,2,3,1,1,1,1,1];
+    let ary=[...new Set(arr)];//=>去重后的数组
+    console.log(ary);
+
+    //=>扩展  Object.is(NaN, NaN)
+    console.log(Object.is(NaN, NaN));//=>true
+    console.log(Object.is(+0, -0));//=>老浏览器是false
+
+
+    //=>set 方法
+    ~function () {
+        let set=new Set([1,1,NaN,NaN,'aa','aa',true,undefined]);
+
+        //=>size和ary.length是一样的
+        console.log(set.size);
+
+        //=>add 增加一项   (只能增加一个)  //=>返回的是增加完返回来的原数组
+        set.add(1);//=>不增加,有就不增加
+        set.add(100);//=>增加上了
+        console.log(set);
+
+        //=>delete  返回true/false
+        console.log(set.delete(1000));//=>false
+        console.log(set.delete(1));//=>true
+
+        //=>has  判断有没有 true/false
+        console.log(set.has(NaN));//=>true
+        //=>但是数组里面includes方法检测NaN就返回的是false
+
+        //=>clear 清空所有
+        // set.clear();
+        // console.log(set);
+
+        //=>set 只有value 遍历的时候只有value值
+        set.forEach((a,b,c)=>{
+            console.log(a, b, c);//=>a和b都代表value的值
+        });
+
+        //都是遍历的value   四种遍历方法
+        console.log(set.keys());
+        console.log(set.values());
+        console.log(set.entries());
+
+        for (let key of set) {
+            console.log(key);//=>遍历的当前项的value值
+        }
+
+        let a1=["a",'B','c'];
+        for (let item of a1) {
+            console.log(item);//=>数组的每一项
+        }
+        //=>a1.keys()=>这就是一种接口的形式
+        for (let item of a1.keys()) {
+            console.log(item);//=>数组的每一项索引
+        }
+        console.log(a1.entries(),'a1.entries()');
+        for (let e of a1.entries()) {
+            let [index,item]=e;
+            console.log(e);
+            console.log(index, item);
+        }
+
+
+        //=>扩展
+        //=>obj 的显示问题
+        let obj={name:"mashaoshuai"};
+        obj.age=18;
+        console.log(obj);
+        delete obj.name;
+
+    }();
+
+</script>
+
+<script>
+    ~function () {
+
+        //=>重点
+        let a=1;
+        a={};
+        let obj={[a]:a};
+        //=>原始对象数据类型的属性名只能是字符串(不是字符串转换为字符串),为了让属性名可以是所有数据类型的结构,出来了map数据结构
+        console.log(obj);//=>[object Object]:{}
+
+        let map=new Map([[true,true],[{},{}],[[],[]],[null,null],[]]);
+        console.log(map);
+    }();
+
+
+    ~function () {
+        //=>map的方法
+        // let map=new Map([[true,true],[{},{}],[[],[]],[null,null],[a,'a']]);  //=>看一个这个怎么写
+        let map=new Map([[true,true],[{},{}],[[],[]],[null,null]]);
+
+        //=>map.set(key,value)  返回值是这个map
+        console.log(map.set(NaN, NaN));
+
+        //=>get(key)   返回对应的value
+        console.log(map.get(true));
+
+        //=>has(key) => 返回的是布尔值
+        console.log(map.get(NaN));//=>true
+
+        //=>forEach keys values entries
+        map.forEach((value,key,c)=>{
+            console.log(value, key, c);
+        });
+
+        for(let key of map.keys()){
+            console.log(key);
+        }
+        for(let value of map.values()){
+            console.log(value);
+        }
+        for(let [key,value] of map.entries()){
+            console.log(key, value);
+        }
+    }();
+</script>

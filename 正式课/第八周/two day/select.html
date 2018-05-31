@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--
+        1.单选 v-model中是一个值 存放的时候选中的options的value的值没有value就是option中的内容
+
+        multiple  (多选)   v-model 绑定数组就变成了一个数组 数组中存放是选中的所有option value没有value用的是option的内容
+    -->
+    <select v-model="sel" multiple>
+        <option value="1">小米</option>
+        <option >大米</option>
+        <option disabled>中米</option><!-- 禁用 disabled -->
+        <option value="1">黄米</option>
+    </select>
+    {{sel}}
+</div>
+</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            sel:''
+        }
+    })
+</script>

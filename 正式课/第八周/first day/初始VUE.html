@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--约定俗成的根实例一般用app,并且只有一个根实例 root根实例-->
+<div id="app">
+    <!--小胡子语法  :  {{小胡子语法:vue的数据,里面可以写简单的运算表达式,三元运算符,赋值运算}}} 展示数据, 只能展示一个数据,里面不支持逗号写多个数据,默认显示第一个数据-->
+    {{name}} {{age+1}} {{sex?"男":"女"}}
+</div>
+
+
+</body>
+</html>
+<script src="vue/vue.js"></script>
+<script>
+    //=>通过构造函数方式创建vue的实例
+    let vm=new Vue({
+        el:"#app",//=>给当前实例设定一个视图的管辖范围 .//=>根实例 (必须写这个el确定管辖范围. 1.不可以直接写成body或者html,设置body会把script标签顶掉)
+        data:{  //=>数据必须放在data里面
+            name:"珠峰",
+            age:1,
+            sex:0
+        }
+    })
+</script>

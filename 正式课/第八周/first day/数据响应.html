@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--小胡子里面的name也叫做获取数据-->
+    {{name}}
+    <!--{{obj.name}}-->
+    {{ary}}
+    {{obj}}
+</div>
+</body>
+</html>
+<script src="vue/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            //=>加载data中的数据可以通过 vm.$data.name获取而且还将数据加载了vm上,可以通过vm.xx获取
+            name:"珠峰",
+            obj:{
+                name:''
+                // name:"小米"
+                //这里要做初始化
+                //对象中的属性初始化了之后才会有set/get
+            },
+            ary:[1,2,3],
+            ary2:[
+                //=>改变地址就会刷新视图的响应,记住了
+            ]
+        }
+    });
+
+    // console.log(vm.$data.name);
+    // console.log(vm.name);
+    // vm.name='vue';
+
+    // vm.$data.obj.name='vm';
+    vm.obj.name='222';
+    //=>通过以下方式解决忘记初始化的问题   $set增加的属性会set和get(让视图和数据建立关联)
+    // vm.$set(vm.obj,'name','ff');
+
+    // vm.ary[0]=10000;
+    // vm.ary=[10000];//=>数组的情况:想让数据跟着跟新必须改变原数组的地址(必须!!!!!!)
+
+
+    console.log(vm);
+
+</script>

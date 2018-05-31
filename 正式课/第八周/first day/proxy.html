@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+   /*get(target, propKey, receiver)：拦截对象属性的读取*/
+    let obj={name:'珠峰',age:88};
+    //=>new Proxy(target目标对象,{代理的方法})
+    let proxy1=new Proxy(obj,{
+        get(target,prop){
+            //=>获取属性名的属性值的时候就会触发这个get
+            console.log(1,'get');//=>实例点什么就会触发
+            // return '111';
+            console.log(arguments);//=>target prop
+            return target[prop]
+        },
+        set(target,prop,value){
+            console.log(arguments);//=>target,prop,value
+            console.log(2, 'set');
+            target[prop]=value;
+        }
+    });
+   console.log(proxy1.age);
+   proxy1.name='孟倩';  //=>只会触发set 方法
+
+
+
+   console.log(Object.getOwnPropertyDescriptor(obj, 'name'));
+   /*
+   *   value: 123,
+        writable: false,  是否可以修改  (这个属性值是否可以修改)
+     enumerable: true,    是否可枚举    (是否能用for in 遍历到)
+    configurable: false   是否可配置 是否可以删除这个属性
+   * */
+
+   //=>扩展
+   //=>字符串的length是不可以修改的
+
+
+    Object.defineProperty(obj,'name',{
+       value:'mq',
+       enumerable:false,
+        writable :false,
+        configurable: false
+    });
+   console.log(obj);
+   delete obj.name;
+   console.log(obj.name);//=>把这个配置信息变了,他是删不掉的
+    obj.name='zzz';
+   console.log(obj.name);
+   //=>同时for in 不可以遍历到
+</script>

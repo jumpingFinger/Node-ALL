@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="node_modules/axios/dist/axios.min.js">
+</script>
+<script>
+    // console.dir(axios);
+
+
+    //=>get请求中,会把params中的简直对凭借成urlencode格式的字符串,然后问号传递参数的方式 ,传递给服务器,类似于JQ-ajax中的data (或者自己基于url后面拼接也可以,不用params)
+
+    /*
+    axios.get('https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/list',{
+        params : {
+            name : '珠峰',
+            age:9
+        }
+    });
+    */
+
+/*
+    //=>配置项中传递的内容都相当于基于请求主体传递给服务器,但是传递给服务器的内容格式是raw (JSON格式的字符串),不是x-www-form-urlencoded
+    axios.post('https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/list',{
+            name : '珠峰',
+            age:9
+    })
+*/
+
+// ~function () {
+//     let promise=axios.get('https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/list',{
+//         params :{
+//             name:2
+//         }
+//     });
+//     // console.log(promise);
+//
+//     promise.then((result)=>{
+//         console.log(result);//=>获取的结果是一个对象
+//         /*
+//            data : 从服务器获取的响应主体内容
+//            headers: 从服务器获取的响应头信息
+//            request :穿件的ajax实例
+//            status :状态码
+//            statusText : 状态码的描述
+//            config : 基于axios发送请求的时候做的配置项
+//          */
+//     }).catch((msg)=>{
+//         console.log(msg);//=>请求失败的结果
+//     })
+// }();
+
+
+    //post 方式是三个参数, 修改请求头什么在第三个参数里
+// ~function () {
+//     let promise=axios.post('https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/add',{
+//             name:"马少帅",
+//             age:18
+//     });
+//     promise.then((result)=>{
+//         console.log(result);//=>获取的结果是一个对象
+//         /*
+//            data : 从服务器获取的响应主体内容
+//            headers: 从服务器获取的响应头信息
+//            request :穿件的ajax实例
+//            status :状态码
+//            statusText : 状态码的描述
+//            config : 基于axios发送请求的时候做的配置项
+//          */
+//     }).catch((msg)=>{
+//         console.log(msg);//=>请求失败的结果
+//     })
+// }();
+
+    // ~function () {
+    //     let promise=axios.head('pack.json',{
+    //         name:"马少帅",
+    //         age:18
+    //     });
+    //     promise.then((result)=>{
+    //         console.log(result);//=>获取的结果是一个对象
+    //         /*
+    //            data : 从服务器获取的响应主体内容
+    //            headers: 从服务器获取的响应头信息
+    //            request :穿件的ajax实例
+    //            status :状态码
+    //            statusText : 状态码的描述
+    //            config : 基于axios发送请求的时候做的配置项
+    //          */
+    //     }).catch((msg)=>{
+    //         console.log(msg);//=>请求失败的结果
+    //     })
+    // }();
+
+    axios.get('https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/info',{
+        params:{
+            lx:12
+        }
+    }).then(result=>{
+        let {data}=result;
+        //.....
+        console.log(data);
+        return axios.post('https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/add')
+    }).then(result=>{
+        let {data}=result;
+        console.log(data);
+    })
+</script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="node_modules/axios/dist/axios.min.js">
+</script>
+<script src="node_modules/qs/dist/qs.js"></script>
+<script>
+    fetch("https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/info1", {
+        method:'get',
+        header: {
+            'content-type':'x-www-form-urlencoded'
+        },
+        credentials:'include'//=>不管同源还是跨域请求都带着cookie信息
+    }).then(function(result) {
+        console.log(result);
+        /*
+        * headers :{} 包含响应头的信息
+        * redirected : false  //=>是否重定向
+        * status:状态码
+        * statusText
+        * type: 'basic/cors'
+        * url : 请求的地址
+        *
+        * __proto__: Response.prototype
+        * arrayBuffer
+        * blob()
+        * json()
+        * text()
+        * ....
+        * 基于这些方法可以快速的把从服务器获取的结果找到
+        *
+        * */
+    });
+
+ ~function () {
+
+ }();
+
+    fetch("https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/info1", {
+        method:'post',
+        header: {
+            'content-type':'x-www-form-urlencoded'
+        },
+        body:'a=1&b=2',//=>body中只支持字符串 (get请求还无法设置body)
+        credentials:'include'//=>不管同源还是跨域请求都带着cookie信息
+    }).then(result=>{
+        let {status}=result;
+        if(/^(4|5)\d{2}$/.test(status)){
+            throw new Error('query data is error!~');
+        }
+       return result.json();
+    }).then(result=>{
+        console.log(result);
+    }).catch(msg=>{
+        console.log(msg);
+    });
+
+
+
+    fetch("https://www.easy-mock.com/mock/5b0412beda8a195fb0978627/temp/info1").then(result=>{
+        let {status}=result;
+        if(/^(4|5)\d{2}$/.test(status)){
+            throw new Error('query data is error!~');
+        }
+        return result.json();
+    }).then(result=>{
+        console.log(result);
+    }).catch(msg=>{
+        console.log(msg);
+    })
+</script>

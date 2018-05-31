@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--  v-bind 动态绑定属性 绑定的是vue中的数据-->
+<div id="app">
+    <!--不好看,所以省略-->
+   <!--<div v-bind:class="className1"></div>  -->
+   <div :class="className1"></div>
+    <!-- 绑定属性的时候,我们想让他变为动态的值,我们就给它前面加一个冒号-->
+    <input type="text" v-for="item in list" :value="item">
+</div>
+</body>
+</html>
+<script src="js/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            className1:"box",
+            list:['js','VUE','node','react']
+        }
+    })
+</script>
